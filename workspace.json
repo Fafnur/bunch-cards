@@ -1,6 +1,9 @@
 {
   "version": 2,
   "projects": {
-    "nativescript-cards": "apps/nativescript-cards"
+    "card-common": "libs/card/common",
+    "nativescript-cards": "apps/nativescript-cards",
+    "web-cards": "apps/web-cards",
+    "web-cards-e2e": "apps/web-cards-e2e"
   }
 }

@@ -1,0 +1,94 @@
+{
+  "projectType": "application",
+  "root": "apps/web-cards",
+  "sourceRoot": "apps/web-cards/src",
+  "prefix": "bunch",
+  "targets": {
+    "build": {
+      "executor": "@angular-devkit/build-angular:browser",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/apps/web-cards",
+        "index": "apps/web-cards/src/index.html",
+        "main": "apps/web-cards/src/main.ts",
+        "polyfills": "apps/web-cards/src/polyfills.ts",
+        "tsConfig": "apps/web-cards/tsconfig.app.json",
+        "inlineStyleLanguage": "scss",
+        "assets": [
+          "apps/web-cards/src/favicon.ico",
+          "apps/web-cards/src/assets"
+        ],
+        "styles": ["apps/web-cards/src/styles.scss"],
+        "scripts": []
+      },
+      "configurations": {
+        "production": {
+          "budgets": [
+            {
+              "type": "initial",
+              "maximumWarning": "500kb",
+              "maximumError": "1mb"
+            },
+            {
+              "type": "anyComponentStyle",
+              "maximumWarning": "2kb",
+              "maximumError": "4kb"
+            }
+          ],
+          "fileReplacements": [
+            {
+              "replace": "apps/web-cards/src/environments/environment.ts",
+              "with": "apps/web-cards/src/environments/environment.prod.ts"
+            }
+          ],
+          "outputHashing": "all"
+        },
+        "development": {
+          "buildOptimizer": false,
+          "optimization": false,
+          "vendorChunk": true,
+          "extractLicenses": false,
+          "sourceMap": true,
+          "namedChunks": true
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "serve": {
+      "executor": "@angular-devkit/build-angular:dev-server",
+      "configurations": {
+        "production": {
+          "browserTarget": "web-cards:build:production"
+        },
+        "development": {
+          "browserTarget": "web-cards:build:development"
+        }
+      },
+      "defaultConfiguration": "development"
+    },
+    "extract-i18n": {
+      "executor": "@angular-devkit/build-angular:extract-i18n",
+      "options": {
+        "browserTarget": "web-cards:build"
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": [
+          "apps/web-cards/src/**/*.ts",
+          "apps/web-cards/src/**/*.html"
+        ]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/apps/web-cards"],
+      "options": {
+        "jestConfig": "apps/web-cards/jest.config.js",
+        "passWithNoTests": true
+      }
+    }
+  },
+  "tags": []
+}
