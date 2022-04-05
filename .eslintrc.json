@@ -1,7 +1,16 @@
 {
   "root": true,
   "ignorePatterns": ["**/*"],
-  "plugins": ["@typescript-eslint", "prettier", "simple-import-sort", "import", "jsdoc", "ngrx", "@nrwl/nx"],
+  "plugins": [
+    "@typescript-eslint",
+    "prettier",
+    "simple-import-sort",
+    "import",
+    "jsdoc",
+    "ngrx",
+    "@nrwl/nx",
+    "@nativescript"
+  ],
   "overrides": [
     {
       "files": ["*.ts", "*.tsx", "*.js", "*.jsx"],
@@ -23,7 +32,13 @@
     },
     {
       "files": ["*.ts", "*.tsx"],
-      "extends": ["plugin:@nrwl/nx/typescript", "plugin:@nrwl/nx/angular", "plugin:import/recommended", "plugin:ngrx/recommended"],
+      "extends": [
+        "plugin:@nrwl/nx/typescript",
+        "plugin:@nrwl/nx/angular",
+        "plugin:import/recommended",
+        "plugin:ngrx/recommended",
+        "plugin:@nativescript/recommended"
+      ],
       "rules": {
         "@typescript-eslint/naming-convention": [
           "error",
@@ -62,7 +77,14 @@
         "simple-import-sort/imports": [
           "error",
           {
-            "groups": [["^\\u0000"], ["^@?(?!bunch)\\w"], ["^@bunch?\\w"], ["^\\w"], ["^[^.]"], ["^\\."]]
+            "groups": [
+              ["^\\u0000"],
+              ["^@?(?!bunch)\\w"],
+              ["^@bunch?\\w"],
+              ["^\\w"],
+              ["^[^.]"],
+              ["^\\."]
+            ]
           }
         ],
         "sort-imports": "off",
@@ -81,6 +103,21 @@
       "files": ["*.js", "*.jsx"],
       "extends": ["plugin:@nrwl/nx/javascript"],
       "rules": {}
+    },
+    {
+      "files": ["*.html"],
+      "extends": [
+        "plugin:@nrwl/nx/angular-template",
+        "plugin:@nativescript/recommended"
+      ],
+      "rules": {
+        "max-len": [
+          "error",
+          {
+            "code": 140
+          }
+        ]
+      }
     }
   ]
 }

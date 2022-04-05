@@ -38,6 +38,7 @@
     "@angular/cli": "~13.2.0",
     "@angular/compiler-cli": "^13.3.1",
     "@angular/language-service": "^13.3.1",
+    "@nativescript/eslint-plugin": "^0.0.4",
     "@nativescript/nx": "^3.0.14",
     "@nativescript/types": "^8.2.0",
     "@nativescript/webpack": "^5.0.6",
