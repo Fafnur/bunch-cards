@@ -1,0 +1,123 @@
+{
+  "root": true,
+  "ignorePatterns": ["**/*"],
+  "plugins": [
+    "@typescript-eslint",
+    "prettier",
+    "simple-import-sort",
+    "import",
+    "jsdoc",
+    "ngrx",
+    "@nrwl/nx",
+    "@nativescript"
+  ],
+  "overrides": [
+    {
+      "files": ["*.ts", "*.tsx", "*.js", "*.jsx"],
+      "rules": {
+        "@nrwl/nx/enforce-module-boundaries": [
+          "error",
+          {
+            "enforceBuildableLibDependency": true,
+            "allow": [],
+            "depConstraints": [
+              {
+                "sourceTag": "*",
+                "onlyDependOnLibsWithTags": ["*"]
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "files": ["*.ts", "*.tsx"],
+      "extends": [
+        "plugin:@nrwl/nx/typescript",
+        "plugin:@nrwl/nx/angular",
+        "plugin:import/recommended",
+        "plugin:ngrx/recommended",
+        "plugin:@nativescript/recommended"
+      ],
+      "rules": {
+        "@typescript-eslint/naming-convention": [
+          "error",
+          {
+            "selector": "default",
+            "format": ["camelCase"],
+            "leadingUnderscore": "allow",
+            "trailingUnderscore": "allow"
+          },
+          {
+            "selector": "variable",
+            "format": ["camelCase", "UPPER_CASE"],
+            "leadingUnderscore": "allow",
+            "trailingUnderscore": "allow"
+          },
+          {
+            "selector": "typeLike",
+            "format": ["PascalCase"]
+          },
+          {
+            "selector": "enumMember",
+            "format": ["PascalCase"]
+          }
+        ],
+        "complexity": "error",
+        "max-len": [
+          "error",
+          {
+            "code": 140
+          }
+        ],
+        "no-new-wrappers": "error",
+        "no-throw-literal": "error",
+        "import/no-unresolved": "off",
+        "simple-import-sort/exports": "error",
+        "simple-import-sort/imports": [
+          "error",
+          {
+            "groups": [
+              ["^\\u0000"],
+              ["^@?(?!bunch)\\w"],
+              ["^@bunch?\\w"],
+              ["^\\w"],
+              ["^[^.]"],
+              ["^\\."]
+            ]
+          }
+        ],
+        "sort-imports": "off",
+        "import/named": "off",
+        "import/first": "error",
+        "import/newline-after-import": "error",
+        "import/no-duplicates": "error",
+        "@typescript-eslint/consistent-type-definitions": "error",
+        "no-shadow": "off",
+        "@typescript-eslint/no-shadow": "error",
+        "no-invalid-this": "off",
+        "@typescript-eslint/no-invalid-this": ["warn"]
+      }
+    },
+    {
+      "files": ["*.js", "*.jsx"],
+      "extends": ["plugin:@nrwl/nx/javascript"],
+      "rules": {}
+    },
+    {
+      "files": ["*.html"],
+      "extends": [
+        "plugin:@nrwl/nx/angular-template",
+        "plugin:@nativescript/recommended"
+      ],
+      "rules": {
+        "max-len": [
+          "error",
+          {
+            "code": 140
+          }
+        ]
+      }
+    }
+  ]
+}
