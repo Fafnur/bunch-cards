@@ -6,6 +6,7 @@
     "nativescript-cards": "apps/nativescript-cards",
     "web-cards": "apps/web-cards",
     "web-cards-e2e": "apps/web-cards-e2e",
-    "web-core-hammer": "libs/web/core/hammer"
+    "web-core-hammer": "libs/web/core/hammer",
+    "web-localization": "libs/web/localization"
   }
 }

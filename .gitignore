@@ -42,3 +42,11 @@ yarn.lock
 /libs/**/yarn.lock
 
 .angular
+
+# Custom
+package-lock.json
+.env
+/apps/**/.env
+/apps/**/routes.txt
+/apps/**/sitemap.xml
+/libs/**/source.xlf

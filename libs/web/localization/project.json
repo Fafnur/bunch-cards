@@ -1,0 +1,26 @@
+{
+  "projectType": "library",
+  "root": "libs/web/localization",
+  "sourceRoot": "libs/web/localization/src",
+  "prefix": "bunch",
+  "targets": {
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/libs/web/localization"],
+      "options": {
+        "jestConfig": "libs/web/localization/jest.config.js",
+        "passWithNoTests": true
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": [
+          "libs/web/localization/src/**/*.ts",
+          "libs/web/localization/src/**/*.html"
+        ]
+      }
+    }
+  },
+  "tags": []
+}
