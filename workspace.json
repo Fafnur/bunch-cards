@@ -2,6 +2,7 @@
   "version": 2,
   "projects": {
     "card-common": "libs/card/common",
+    "core-environments": "libs/core/environments",
     "nativescript-cards": "apps/nativescript-cards",
     "web-cards": "apps/web-cards",
     "web-cards-e2e": "apps/web-cards-e2e"

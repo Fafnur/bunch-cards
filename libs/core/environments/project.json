@@ -1,0 +1,26 @@
+{
+  "projectType": "library",
+  "root": "libs/core/environments",
+  "sourceRoot": "libs/core/environments/src",
+  "prefix": "bunch",
+  "targets": {
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/libs/core/environments"],
+      "options": {
+        "jestConfig": "libs/core/environments/jest.config.js",
+        "passWithNoTests": true
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": [
+          "libs/core/environments/src/**/*.ts",
+          "libs/core/environments/src/**/*.html"
+        ]
+      }
+    }
+  },
+  "tags": []
+}

@@ -4,14 +4,14 @@ import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 
 import { AppComponent } from './app.component';
+import { AppCoreModule } from './app.core.module';
 import { AppRoutingModule } from './app.routing';
-import { CoreModule } from './core/core.module';
 import { environment } from './environments/environment';
 import { SharedModule } from './features/shared/shared.module';
 
 @NgModule({
   imports: [
-    CoreModule,
+    AppCoreModule,
     SharedModule,
     AppRoutingModule,
     StoreModule.forRoot(

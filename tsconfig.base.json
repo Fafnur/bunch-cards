@@ -15,7 +15,8 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@bunch/card/common": ["libs/card/common/src/index.ts"]
+      "@bunch/card/common": ["libs/card/common/src/index.ts"],
+      "@bunch/core/environments": ["libs/core/environments/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

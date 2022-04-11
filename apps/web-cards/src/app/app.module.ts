@@ -3,15 +3,17 @@ import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
 
 import { AppComponent } from './app.component';
-import { NxWelcomeComponent } from './nx-welcome.component';
+import { AppCoreModule } from './app.core.module';
+import { AppRoutingModule } from './app.routing.module';
 
 @NgModule({
-  declarations: [AppComponent, NxWelcomeComponent],
   imports: [
     BrowserModule,
+    AppCoreModule,
+    AppRoutingModule,
     RouterModule.forRoot([], { initialNavigation: 'enabledBlocking' }),
   ],
-  providers: [],
+  declarations: [AppComponent],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
