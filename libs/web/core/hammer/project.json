@@ -1,0 +1,26 @@
+{
+  "projectType": "library",
+  "root": "libs/web/core/hammer",
+  "sourceRoot": "libs/web/core/hammer/src",
+  "prefix": "bunch",
+  "targets": {
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/libs/web/core/hammer"],
+      "options": {
+        "jestConfig": "libs/web/core/hammer/jest.config.js",
+        "passWithNoTests": true
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": [
+          "libs/web/core/hammer/src/**/*.ts",
+          "libs/web/core/hammer/src/**/*.html"
+        ]
+      }
+    }
+  },
+  "tags": []
+}
