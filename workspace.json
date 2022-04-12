@@ -4,6 +4,7 @@
     "card-common": "libs/card/common",
     "core-environments": "libs/core/environments",
     "core-platform": "libs/core/platform",
+    "core-testing": "libs/core/testing",
     "core-utils-destroy": "libs/core/utils/destroy",
     "core-utils-operators": "libs/core/utils/operators",
     "core-utils-types": "libs/core/utils/types",
