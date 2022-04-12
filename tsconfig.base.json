@@ -18,6 +18,7 @@
       "@bunch/card/common": ["libs/card/common/src/index.ts"],
       "@bunch/core/environments": ["libs/core/environments/src/index.ts"],
       "@bunch/core/platform": ["libs/core/platform/src/index.ts"],
+      "@bunch/core/utils/destroy": ["libs/core/utils/destroy/src/index.ts"],
       "@bunch/web/core/hammer": ["libs/web/core/hammer/src/index.ts"],
       "@bunch/web/core/storage": ["libs/web/core/storage/src/index.ts"],
       "@bunch/web/core/window": ["libs/web/core/window/src/index.ts"],
