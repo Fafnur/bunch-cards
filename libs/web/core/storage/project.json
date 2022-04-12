@@ -1,0 +1,26 @@
+{
+  "projectType": "library",
+  "root": "libs/web/core/storage",
+  "sourceRoot": "libs/web/core/storage/src",
+  "prefix": "bunch",
+  "targets": {
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/libs/web/core/storage"],
+      "options": {
+        "jestConfig": "libs/web/core/storage/jest.config.js",
+        "passWithNoTests": true
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": [
+          "libs/web/core/storage/src/**/*.ts",
+          "libs/web/core/storage/src/**/*.html"
+        ]
+      }
+    }
+  },
+  "tags": []
+}

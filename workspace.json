@@ -7,6 +7,7 @@
     "web-cards": "apps/web-cards",
     "web-cards-e2e": "apps/web-cards-e2e",
     "web-core-hammer": "libs/web/core/hammer",
+    "web-core-storage": "libs/web/core/storage",
     "web-localization": "libs/web/localization"
   }
 }

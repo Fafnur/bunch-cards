@@ -18,6 +18,7 @@
       "@bunch/card/common": ["libs/card/common/src/index.ts"],
       "@bunch/core/environments": ["libs/core/environments/src/index.ts"],
       "@bunch/web/core/hammer": ["libs/web/core/hammer/src/index.ts"],
+      "@bunch/web/core/storage": ["libs/web/core/storage/src/index.ts"],
       "@bunch/web/localization": ["libs/web/localization/src/index.ts"]
     }
   },
