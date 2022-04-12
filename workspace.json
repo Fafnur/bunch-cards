@@ -6,6 +6,7 @@
     "core-platform": "libs/core/platform",
     "core-utils-destroy": "libs/core/utils/destroy",
     "core-utils-operators": "libs/core/utils/operators",
+    "core-utils-types": "libs/core/utils/types",
     "nativescript-cards": "apps/nativescript-cards",
     "web-cards": "apps/web-cards",
     "web-cards-e2e": "apps/web-cards-e2e",
