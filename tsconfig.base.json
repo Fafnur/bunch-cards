@@ -18,6 +18,7 @@
       "@bunch/card/common": ["libs/card/common/src/index.ts"],
       "@bunch/core/environments": ["libs/core/environments/src/index.ts"],
       "@bunch/core/platform": ["libs/core/platform/src/index.ts"],
+      "@bunch/core/store/root": ["libs/core/store/root/src/index.ts"],
       "@bunch/core/testing": ["libs/core/testing/src/index.ts"],
       "@bunch/core/utils/destroy": ["libs/core/utils/destroy/src/index.ts"],
       "@bunch/core/utils/operators": ["libs/core/utils/operators/src/index.ts"],
