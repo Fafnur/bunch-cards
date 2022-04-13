@@ -11,7 +11,7 @@
     "serve:ssr": "node dist/web-cards/server/ru-RU/main.js",
     "build:ssr": "nx build web-cards && ng run web-cards:server",
     "prerender": "nx run web-cards:prerender",
-    "extract-i18n": "nx extract-i18n web-cards --out-file=libs/localization/src/lib/russian/source.xlf",
+    "extract-i18n": "nx extract-i18n web-cards --out-file=libs/web/localization/src/lib/russian/source.xlf",
     "generate-sitemap": "ts-node --project=apps/web-cards/tsconfig.sitemap.json apps/web-cards/sitemap-generator.ts"
   },
   "private": true,
