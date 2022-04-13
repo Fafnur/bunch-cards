@@ -3,6 +3,7 @@
   "projects": {
     "card-common": "libs/card/common",
     "core-environments": "libs/core/environments",
+    "core-navigation": "libs/core/navigation",
     "core-platform": "libs/core/platform",
     "core-store-root": "libs/core/store/root",
     "core-testing": "libs/core/testing",
