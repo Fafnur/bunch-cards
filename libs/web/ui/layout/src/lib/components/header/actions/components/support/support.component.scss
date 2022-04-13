@@ -1,0 +1,7 @@
+@use '@angular/material' as mat;
+
+a {
+  &:hover {
+    color: mat.get-color-from-palette(mat.$indigo-palette, 700);
+  }
+}

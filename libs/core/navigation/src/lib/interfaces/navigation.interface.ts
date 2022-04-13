@@ -2,6 +2,7 @@ import { InjectionToken } from '@angular/core';
 
 export interface NavigationPaths {
   home: string;
+  support: string;
 
   // Errors
   serverError: string;
@@ -10,6 +11,7 @@ export interface NavigationPaths {
 
 export const NAVIGATION_PATHS: NavigationPaths = {
   home: '',
+  support: 'support',
 
   serverError: 'server-error',
   notFound: 'not-found',
@@ -22,6 +24,4 @@ export interface NavigationLink {
   routerLinkActiveOptions?: { exact: boolean };
 }
 
-export const PATHS = new InjectionToken<Record<string, string>>(
-  'NAVIGATION_PATHS'
-);
+export const PATHS = new InjectionToken<Record<string, string>>('NAVIGATION_PATHS');

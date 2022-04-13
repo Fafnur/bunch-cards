@@ -1,0 +1,12 @@
+@use '@angular/material' as mat;
+
+:host {
+  display: block;
+  background-color: mat.get-color-from-palette(mat.$gray-palette, 50);
+  box-shadow: 0 1px 0 0 rgba(0, 0, 0, 0.1);
+}
+
+bunch-container {
+  position: relative;
+  height: 4rem;
+}
