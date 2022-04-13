@@ -22,6 +22,7 @@
     "web-core-window": "libs/web/core/window",
     "web-localization": "libs/web/localization",
     "web-ui-container": "libs/web/ui/container",
-    "web-ui-grid": "libs/web/ui/grid"
+    "web-ui-grid": "libs/web/ui/grid",
+    "web-ui-multiplatform": "libs/web/ui/multiplatform"
   }
 }
