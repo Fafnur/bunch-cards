@@ -16,6 +16,7 @@
     "web-cards": "apps/web-cards",
     "web-cards-e2e": "apps/web-cards-e2e",
     "web-core-hammer": "libs/web/core/hammer",
+    "web-core-layout": "libs/web/core/layout",
     "web-core-meta": "libs/web/core/meta",
     "web-core-storage": "libs/web/core/storage",
     "web-core-window": "libs/web/core/window",

@@ -1,0 +1,23 @@
+{
+  "projectType": "library",
+  "root": "libs/web/core/layout",
+  "sourceRoot": "libs/web/core/layout/src",
+  "prefix": "bunch",
+  "targets": {
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/libs/web/core/layout"],
+      "options": {
+        "jestConfig": "libs/web/core/layout/jest.config.js",
+        "passWithNoTests": true
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": ["libs/web/core/layout/src/**/*.ts", "libs/web/core/layout/src/**/*.html"]
+      }
+    }
+  },
+  "tags": []
+}
