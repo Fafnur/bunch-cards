@@ -20,9 +20,6 @@ describe('NavigationService', () => {
   });
 
   it('should return service path', () => {
-    expect(service.getRoute(NAVIGATION_PATHS.support)).toEqual([
-      '/',
-      NAVIGATION_PATHS.support,
-    ]);
+    expect(service.getRoute(NAVIGATION_PATHS.serverError)).toEqual(['/', NAVIGATION_PATHS.serverError]);
   });
 });

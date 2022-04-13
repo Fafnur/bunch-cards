@@ -2,7 +2,8 @@ import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { TestBed, waitForAsync } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 
-// import { ApiService } from '@banshop/core/api/service';
+import { ApiService } from '@bunch/core/api';
+
 import { NAVIGATION_PATHS } from '../interfaces/navigation.interface';
 import { PATHS_STUB } from '../interfaces/navigation.stub';
 import { NavigationService } from '../services/navigation.service';
@@ -10,7 +11,7 @@ import { NavigationExternalPathPipe } from './navigation-external-path.pipe';
 
 describe('NavigationExternalPathPipe', () => {
   let pipe: NavigationExternalPathPipe;
-  // let apiService: ApiService;
+  let apiService: ApiService;
   let navigationService: NavigationService;
 
   beforeEach(waitForAsync(() => {
@@ -23,7 +24,7 @@ describe('NavigationExternalPathPipe', () => {
   beforeEach(() => {
     // apiService = TestBed.inject(ApiService);
     navigationService = TestBed.inject(NavigationService);
-    pipe = new NavigationExternalPathPipe(navigationService); //, apiService
+    pipe = new NavigationExternalPathPipe(navigationService, apiService);
   });
 
   it('create an instance', () => {
@@ -31,8 +32,6 @@ describe('NavigationExternalPathPipe', () => {
   });
 
   it('should return external path', () => {
-    expect(pipe.transform(NAVIGATION_PATHS.home)).toBe(
-      `/${NAVIGATION_PATHS.home}`
-    );
+    expect(pipe.transform(NAVIGATION_PATHS.home)).toBe(`/${NAVIGATION_PATHS.home}`);
   });
 });

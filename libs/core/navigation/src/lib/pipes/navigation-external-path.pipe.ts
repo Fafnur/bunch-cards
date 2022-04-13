@@ -1,17 +1,16 @@
 import { Pipe, PipeTransform } from '@angular/core';
 
-// import { ApiService } from '@banshop/core/api/service';
+import { ApiService } from '@bunch/core/api';
+
 import { NavigationService } from '../services/navigation.service';
 
 @Pipe({
   name: 'externalPath',
 })
 export class NavigationExternalPathPipe implements PipeTransform {
-  // , private readonly apiService: ApiService
-  constructor(private readonly navigationService: NavigationService) {}
+  constructor(private readonly navigationService: NavigationService, private readonly apiService: ApiService) {}
 
   transform(path: string, params?: Record<string, string | number>): string {
-    const url = this.navigationService.getRoutePath(path, params);
-    return url; //this.apiService.makeUrl(url);
+    return this.apiService.makeUrl(this.navigationService.getRoutePath(path, params));
   }
 }

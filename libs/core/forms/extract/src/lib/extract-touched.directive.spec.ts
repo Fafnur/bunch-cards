@@ -5,7 +5,7 @@ import { FormControl, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ExtractTouchedDirective } from './extract-touched.directive';
 
 @Component({
-  template: `<div bunchExtractTouched [control]="control"></div>`,
+  template: `<div extractTouched [control]="control"></div>`,
 })
 class WrapperComponent {
   control = new FormControl(null, [Validators.required]);
@@ -34,10 +34,7 @@ describe('ExtractTouchedDirective', () => {
   it('should call markForCheck after control touched', () => {
     fixture.detectChanges();
 
-    const spy = jest.spyOn(
-      (fixture.componentInstance.directive as any).changeDetectorRef,
-      'markForCheck'
-    );
+    const spy = jest.spyOn((fixture.componentInstance.directive as any).changeDetectorRef, 'markForCheck');
     fixture.componentInstance.control.markAsTouched();
 
     expect(spy).toHaveBeenCalled();
