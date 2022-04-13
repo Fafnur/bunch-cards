@@ -31,7 +31,8 @@
       "@bunch/web/core/storage": ["libs/web/core/storage/src/index.ts"],
       "@bunch/web/core/window": ["libs/web/core/window/src/index.ts"],
       "@bunch/web/localization": ["libs/web/localization/src/index.ts"],
-      "@bunch/web/ui/container": ["libs/web/ui/container/src/index.ts"]
+      "@bunch/web/ui/container": ["libs/web/ui/container/src/index.ts"],
+      "@bunch/web/ui/grid": ["libs/web/ui/grid/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]
