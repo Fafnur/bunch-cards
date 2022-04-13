@@ -2,6 +2,7 @@
   "version": 2,
   "projects": {
     "card-common": "libs/card/common",
+    "core-api": "libs/core/api",
     "core-environments": "libs/core/environments",
     "core-forms-extract": "libs/core/forms/extract",
     "core-navigation": "libs/core/navigation",

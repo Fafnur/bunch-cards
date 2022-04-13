@@ -16,6 +16,7 @@
     "baseUrl": ".",
     "paths": {
       "@bunch/card/common": ["libs/card/common/src/index.ts"],
+      "@bunch/core/api": ["libs/core/api/src/index.ts"],
       "@bunch/core/environments": ["libs/core/environments/src/index.ts"],
       "@bunch/core/forms/extract": ["libs/core/forms/extract/src/index.ts"],
       "@bunch/core/navigation": ["libs/core/navigation/src/index.ts"],
