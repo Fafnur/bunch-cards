@@ -17,6 +17,7 @@
     "paths": {
       "@bunch/card/common": ["libs/card/common/src/index.ts"],
       "@bunch/core/environments": ["libs/core/environments/src/index.ts"],
+      "@bunch/core/forms/extract": ["libs/core/forms/extract/src/index.ts"],
       "@bunch/core/navigation": ["libs/core/navigation/src/index.ts"],
       "@bunch/core/platform": ["libs/core/platform/src/index.ts"],
       "@bunch/core/store/root": ["libs/core/store/root/src/index.ts"],
