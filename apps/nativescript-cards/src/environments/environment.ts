@@ -1,3 +1,5 @@
-export const environment = {
-  production: false
+import { Environments } from '@bunch/core/environments';
+
+export const environment: Partial<Environments> = {
+  production: false,
 };

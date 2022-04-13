@@ -1,0 +1,26 @@
+{
+  "projectType": "library",
+  "root": "libs/core/navigation",
+  "sourceRoot": "libs/core/navigation/src",
+  "prefix": "bunch",
+  "targets": {
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/libs/core/navigation"],
+      "options": {
+        "jestConfig": "libs/core/navigation/jest.config.js",
+        "passWithNoTests": true
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": [
+          "libs/core/navigation/src/**/*.ts",
+          "libs/core/navigation/src/**/*.html"
+        ]
+      }
+    }
+  },
+  "tags": []
+}

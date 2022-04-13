@@ -1,0 +1,26 @@
+{
+  "projectType": "library",
+  "root": "libs/web/core/window",
+  "sourceRoot": "libs/web/core/window/src",
+  "prefix": "bunch",
+  "targets": {
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/libs/web/core/window"],
+      "options": {
+        "jestConfig": "libs/web/core/window/jest.config.js",
+        "passWithNoTests": true
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": [
+          "libs/web/core/window/src/**/*.ts",
+          "libs/web/core/window/src/**/*.html"
+        ]
+      }
+    }
+  },
+  "tags": []
+}

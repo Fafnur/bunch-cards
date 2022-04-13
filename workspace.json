@@ -2,8 +2,23 @@
   "version": 2,
   "projects": {
     "card-common": "libs/card/common",
+    "core-api": "libs/core/api",
+    "core-environments": "libs/core/environments",
+    "core-forms-extract": "libs/core/forms/extract",
+    "core-navigation": "libs/core/navigation",
+    "core-platform": "libs/core/platform",
+    "core-store-root": "libs/core/store/root",
+    "core-testing": "libs/core/testing",
+    "core-utils-destroy": "libs/core/utils/destroy",
+    "core-utils-operators": "libs/core/utils/operators",
+    "core-utils-types": "libs/core/utils/types",
     "nativescript-cards": "apps/nativescript-cards",
     "web-cards": "apps/web-cards",
-    "web-cards-e2e": "apps/web-cards-e2e"
+    "web-cards-e2e": "apps/web-cards-e2e",
+    "web-core-hammer": "libs/web/core/hammer",
+    "web-core-meta": "libs/web/core/meta",
+    "web-core-storage": "libs/web/core/storage",
+    "web-core-window": "libs/web/core/window",
+    "web-localization": "libs/web/localization"
   }
 }
