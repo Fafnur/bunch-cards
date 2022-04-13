@@ -15,10 +15,7 @@
     "lint": {
       "executor": "@nrwl/linter:eslint",
       "options": {
-        "lintFilePatterns": [
-          "libs/web/localization/src/**/*.ts",
-          "libs/web/localization/src/**/*.html"
-        ]
+        "lintFilePatterns": ["libs/web/localization/src/**/*.ts", "libs/web/localization/src/**/*.html"]
       }
     }
   },

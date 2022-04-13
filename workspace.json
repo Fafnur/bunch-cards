@@ -19,6 +19,7 @@
     "web-core-meta": "libs/web/core/meta",
     "web-core-storage": "libs/web/core/storage",
     "web-core-window": "libs/web/core/window",
-    "web-localization": "libs/web/localization"
+    "web-localization": "libs/web/localization",
+    "web-ui-container": "libs/web/ui/container"
   }
 }
