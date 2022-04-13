@@ -13,9 +13,9 @@ export class EnvironmentService {
   private readonly environments: Environments;
 
   constructor(
-    @Optional() @Inject(ENVIRONMENTS) environments: Environments | null
+    @Optional() @Inject(ENVIRONMENTS) environments: Partial<Environments> | null
   ) {
-    this.environments = environments ?? ENVIRONMENTS_DEFAULT;
+    this.environments = {...ENVIRONMENTS_DEFAULT, ...environments };
   }
 
   getEnvironments(): Environments {

@@ -4,7 +4,7 @@ import { Environments } from '@bunch/core/environments';
 // `ng build` replaces `environment.ts` with `environment.prod.ts`.
 // The list of file replacements can be found in `angular.json`.
 
-export const environment: Environments = {
+export const environment: Partial<Environments> = {
   production: false,
 };
 

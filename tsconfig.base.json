@@ -24,6 +24,7 @@
       "@bunch/core/utils/operators": ["libs/core/utils/operators/src/index.ts"],
       "@bunch/core/utils/types": ["libs/core/utils/types/src/index.ts"],
       "@bunch/web/core/hammer": ["libs/web/core/hammer/src/index.ts"],
+      "@bunch/web/core/meta": ["libs/web/core/meta/src/index.ts"],
       "@bunch/web/core/storage": ["libs/web/core/storage/src/index.ts"],
       "@bunch/web/core/window": ["libs/web/core/window/src/index.ts"],
       "@bunch/web/localization": ["libs/web/localization/src/index.ts"]
