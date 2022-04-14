@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
-import { setStatusBarColor } from '../../../utils';
+import { setStatusBarColor } from '../../utils';
 
 @Component({
   moduleId: module.id,
