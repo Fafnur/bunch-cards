@@ -1,0 +1,29 @@
+{
+  "root": "libs/nativescript-nativescript/ui/layout",
+  "sourceRoot": "libs/nativescript-nativescript/ui/layout/src",
+  "projectType": "library",
+  "targets": {
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": [
+        "{options.outputFile}"
+      ],
+      "options": {
+        "lintFilePatterns": [
+          "libs/nativescript-nativescript/ui/layout/**/*.ts"
+        ]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": [
+        "coverage/libs/nativescript-nativescript/ui/layout"
+      ],
+      "options": {
+        "jestConfig": "libs/nativescript-nativescript/ui/layout/jest.config.js",
+        "passWithNoTests": true
+      }
+    }
+  },
+  "tags": []
+}

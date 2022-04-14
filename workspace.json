@@ -25,6 +25,7 @@
     "web-ui-grid": "libs/web/ui/grid",
     "web-ui-layout": "libs/web/ui/layout",
     "web-ui-multiplatform": "libs/web/ui/multiplatform",
-    "web-ui-theming": "libs/web/ui/theming"
+    "web-ui-theming": "libs/web/ui/theming",
+    "nativescript-ui-layout": "libs/nativescript/ui/layout"
   }
 }

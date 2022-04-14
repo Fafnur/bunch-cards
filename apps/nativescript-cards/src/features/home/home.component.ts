@@ -1,14 +1,14 @@
-import { Component, OnInit } from '@angular/core';
-
-import { setStatusBarColor } from '../../utils';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { Page } from '@nativescript/core';
 
 @Component({
   moduleId: module.id,
   selector: 'app-home',
   templateUrl: './home.component.html',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class HomeComponent implements OnInit {
-  ngOnInit(): void {
-    setStatusBarColor('dark', '#97d9e9');
+export class HomeComponent {
+  constructor(private readonly page: Page) {
+    this.page.actionBarHidden = true;
   }
 }
