@@ -6,9 +6,7 @@
   "targets": {
     "test": {
       "executor": "@nrwl/jest:jest",
-      "outputs": [
-        "coverage/libs/web/ui/theming"
-      ],
+      "outputs": ["coverage/libs/web/ui/theming"],
       "options": {
         "jestConfig": "libs/web/ui/theming/jest.config.js",
         "passWithNoTests": true
@@ -17,10 +15,7 @@
     "lint": {
       "executor": "@nrwl/linter:eslint",
       "options": {
-        "lintFilePatterns": [
-          "libs/web/ui/theming/src/**/*.ts",
-          "libs/web/ui/theming/src/**/*.html"
-        ]
+        "lintFilePatterns": ["libs/web/ui/theming/src/**/*.ts", "libs/web/ui/theming/src/**/*.html"]
       }
     }
   },

@@ -1,7 +1,20 @@
-<ActionBar dock="top" title="My App 2" class="action-bar"></ActionBar>
-<DockLayout backgroundColor="white">
-  <Label dock="bottom" height="60" backgroundColor="whitesmoke" text="footer"></Label>
-  <ScrollView orientation="vertical">
-    <page-router-outlet></page-router-outlet>
-  </ScrollView>
-</DockLayout>
+<ActionBar title="Hos"> </ActionBar>
+<GridLayout rows="*, auto" backgroundColor="white">
+  <StackLayout row="0">
+    <ScrollView orientation="vertical">
+      <page-router-outlet></page-router-outlet>
+    </ScrollView>
+  </StackLayout>
+  <BottomNavigationBar
+    activeColor="red"
+    inactiveColor="yellow"
+    backgroundColor="whitesmoke"
+    (tabSelected)="onBottomNavigationTabSelected($event)"
+    (tabPressed)="onBottomNavigationTabPressed($event)"
+    row="1"
+  >
+    <BottomNavigationTab title="First" icon="res://ic_menu"></BottomNavigationTab>
+    <BottomNavigationTab title="Second" icon="res://ic_view_list"></BottomNavigationTab>
+    <BottomNavigationTab title="Third" icon="res://ic_menu"></BottomNavigationTab>
+  </BottomNavigationBar>
+</GridLayout>
