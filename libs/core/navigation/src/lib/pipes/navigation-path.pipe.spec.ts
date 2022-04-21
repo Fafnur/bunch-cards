@@ -26,6 +26,6 @@ describe('NavigationPathPipe', () => {
   });
 
   it('should return path', () => {
-    expect(pipe.transform(NAVIGATION_PATHS.home)).toEqual('/');
+    expect(pipe.transform(NAVIGATION_PATHS.dashboard)).toEqual('/');
   });
 });

@@ -32,6 +32,6 @@ describe('NavigationExternalPathPipe', () => {
   });
 
   it('should return external path', () => {
-    expect(pipe.transform(NAVIGATION_PATHS.home)).toBe(`/${NAVIGATION_PATHS.home}`);
+    expect(pipe.transform(NAVIGATION_PATHS.dashboard)).toBe(`/${NAVIGATION_PATHS.dashboard}`);
   });
 });

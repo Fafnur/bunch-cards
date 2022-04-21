@@ -1,20 +1,14 @@
-<ActionBar title="Hos"> </ActionBar>
-<GridLayout rows="*, auto" backgroundColor="white">
+<ActionBar title="Hos"></ActionBar>
+<GridLayout rows="*, auto">
   <StackLayout row="0">
     <ScrollView orientation="vertical">
       <page-router-outlet></page-router-outlet>
     </ScrollView>
   </StackLayout>
-  <BottomNavigationBar
-    activeColor="red"
-    inactiveColor="yellow"
-    backgroundColor="whitesmoke"
-    (tabSelected)="onBottomNavigationTabSelected($event)"
-    (tabPressed)="onBottomNavigationTabPressed($event)"
-    row="1"
-  >
-    <BottomNavigationTab title="First" icon="font://home" class="ico"></BottomNavigationTab>
-    <BottomNavigationTab title="Second" icon="font://reorder" class="ico"></BottomNavigationTab>
-    <BottomNavigationTab title="Third" icon="font://settings" class="ico"></BottomNavigationTab>
+  <BottomNavigationBar (tabSelected)="onBottomNavigationTabSelected($event)" row="1">
+    <BottomNavigationTab title="Dashboard" icon="font://dashboard" class="ico"></BottomNavigationTab>
+    <BottomNavigationTab title="Learning" icon="font://school" class="ico"></BottomNavigationTab>
+    <BottomNavigationTab title="Dictionary" icon="font://view_carousel" class="ico"></BottomNavigationTab>
+    <BottomNavigationTab title="Settings" icon="font://settings" class="ico"></BottomNavigationTab>
   </BottomNavigationBar>
 </GridLayout>

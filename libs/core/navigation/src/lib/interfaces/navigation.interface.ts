@@ -1,8 +1,11 @@
 import { InjectionToken } from '@angular/core';
 
 export interface NavigationPaths {
-  home: string;
-  support: string;
+  dashboard: string;
+  settings: string;
+  dictionary: string;
+  user: string;
+  learning: string;
 
   // Errors
   serverError: string;
@@ -10,8 +13,11 @@ export interface NavigationPaths {
 }
 
 export const NAVIGATION_PATHS: NavigationPaths = {
-  home: '',
-  support: 'support',
+  dashboard: '',
+  settings: 'settings',
+  dictionary: 'dictionary',
+  learning: 'learning',
+  user: 'user',
 
   serverError: 'server-error',
   notFound: 'not-found',

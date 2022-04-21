@@ -5,14 +5,14 @@ import { NavigationLink, NavigationPaths, PATHS } from '@bunch/core/navigation';
 export function getLinks(paths: NavigationPaths): NavigationLink[] {
   return [
     {
-      route: paths.home,
+      route: paths.dashboard,
       label: 'home',
       routerLinkActiveOptions: {
         exact: true,
       },
     },
     {
-      route: paths.support,
+      route: paths.settings,
       label: 'chat',
     },
   ];
