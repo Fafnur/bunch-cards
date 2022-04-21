@@ -1,13 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-
-import { setStatusBarColor } from './utils';
+import { Component } from '@angular/core';
 
 @Component({
-  selector: 'app-root',
+  selector: 'bunch-root',
   template: '<page-router-outlet></page-router-outlet>',
 })
-export class AppComponent implements OnInit {
-  ngOnInit(): void {
-    setStatusBarColor('dark', '#97d9e9');
-  }
-}
+export class AppComponent {}

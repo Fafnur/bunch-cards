@@ -5,7 +5,7 @@ import { NavigationLink, NavigationPaths, PATHS } from '@bunch/core/navigation';
 export function getLinks(paths: NavigationPaths): NavigationLink[] {
   return [
     {
-      route: paths.dashboard,
+      route: paths.home,
       label: 'home',
       routerLinkActiveOptions: {
         exact: true,

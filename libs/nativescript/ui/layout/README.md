@@ -1,4 +1,4 @@
-# nativescript-nativescript-ui-layout
+# nativescript-ui-layout
 
 This library was generated with [Nx](https://nx.dev).
 

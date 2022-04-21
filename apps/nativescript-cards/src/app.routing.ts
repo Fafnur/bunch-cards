@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { Routes } from '@angular/router';
 import { NativeScriptRouterModule } from '@nativescript/angular';
 
+import { NAVIGATION_PATHS } from '@bunch/core/navigation';
 import { LayoutComponent } from '@bunch/nativescript/ui/layout';
 
 const routes: Routes = [
@@ -11,12 +12,24 @@ const routes: Routes = [
     children: [
       {
         path: '',
-        redirectTo: '/home',
+        redirectTo: `/${NAVIGATION_PATHS.dashboard}`,
         pathMatch: 'full',
       },
       {
-        path: 'home',
-        loadChildren: () => import('./features/home/home.module').then((m) => m.HomeModule),
+        path: NAVIGATION_PATHS.dashboard,
+        loadChildren: () => import('@bunch/nativescript/dashboard/page').then((modules) => modules.DashboardPageModule),
+      },
+      {
+        path: NAVIGATION_PATHS.dictionary,
+        loadChildren: () => import('@bunch/nativescript/dictionary/page').then((modules) => modules.DictionaryPageModule),
+      },
+      {
+        path: NAVIGATION_PATHS.learning,
+        loadChildren: () => import('@bunch/nativescript/learning/page').then((modules) => modules.LearningPageModule),
+      },
+      {
+        path: NAVIGATION_PATHS.settings,
+        loadChildren: () => import('@bunch/nativescript/setting/page').then((modules) => modules.SettingPageModule),
       },
     ],
   },

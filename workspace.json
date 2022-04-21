@@ -26,6 +26,11 @@
     "web-ui-layout": "libs/web/ui/layout",
     "web-ui-multiplatform": "libs/web/ui/multiplatform",
     "web-ui-theming": "libs/web/ui/theming",
-    "nativescript-ui-layout": "libs/nativescript/ui/layout"
+    "nativescript-ui-layout": "libs/nativescript/ui/layout",
+    "nativescript-dictionary-page": "libs/nativescript/dictionary/page",
+    "nativescript-learning-page": "libs/nativescript/learning/page",
+    "nativescript-setting-page": "libs/nativescript/setting/page",
+    "nativescript-dashboard-page": "libs/nativescript/dashboard/page",
+    "nativescript-ui-nav": "libs/nativescript/ui/nav"
   }
 }

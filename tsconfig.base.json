@@ -37,7 +37,12 @@
       "@bunch/web/ui/layout": ["libs/web/ui/layout/src/index.ts"],
       "@bunch/web/ui/multiplatform": ["libs/web/ui/multiplatform/src/index.ts"],
       "@bunch/web/ui/theming": ["libs/web/ui/theming/src/index.ts"],
-      "@bunch/nativescript/ui/layout": ["libs/nativescript/ui/layout/src/index.ts"]
+      "@bunch/nativescript/ui/layout": ["libs/nativescript/ui/layout/src/index.ts"],
+      "@bunch/nativescript/dictionary/page": ["libs/nativescript/dictionary/page/src/index.ts"],
+      "@bunch/nativescript/learning/page": ["libs/nativescript/learning/page/src/index.ts"],
+      "@bunch/nativescript/setting/page": ["libs/nativescript/setting/page/src/index.ts"],
+      "@bunch/nativescript/dashboard/page": ["libs/nativescript/dashboard/page/src/index.ts"],
+      "@bunch/nativescript/ui/nav": ["libs/nativescript/ui/nav/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

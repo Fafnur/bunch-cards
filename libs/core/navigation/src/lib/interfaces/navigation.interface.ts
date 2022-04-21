@@ -1,6 +1,7 @@
 import { InjectionToken } from '@angular/core';
 
 export interface NavigationPaths {
+  home: string;
   dashboard: string;
   settings: string;
   dictionary: string;
@@ -13,7 +14,8 @@ export interface NavigationPaths {
 }
 
 export const NAVIGATION_PATHS: NavigationPaths = {
-  dashboard: '',
+  home: '',
+  dashboard: 'dashboard',
   settings: 'settings',
   dictionary: 'dictionary',
   learning: 'learning',

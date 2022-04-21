@@ -1,11 +1,11 @@
 import { NgModule, NO_ERRORS_SCHEMA } from '@angular/core';
 import { NativeScriptCommonModule, NativeScriptRouterModule } from '@nativescript/angular';
-import { NativeScriptMaterialBottomNavigationBarModule } from '@nativescript-community/ui-material-bottomnavigationbar/angular';
 
 import { LayoutComponent } from './layout.component';
+import { NavModule } from '@bunch/nativescript/ui/nav';
 
 @NgModule({
-  imports: [NativeScriptRouterModule, NativeScriptCommonModule, NativeScriptMaterialBottomNavigationBarModule],
+  imports: [NativeScriptRouterModule, NativeScriptCommonModule, NavModule],
   declarations: [LayoutComponent],
   exports: [LayoutComponent],
   schemas: [NO_ERRORS_SCHEMA],

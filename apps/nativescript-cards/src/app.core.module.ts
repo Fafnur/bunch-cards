@@ -3,6 +3,7 @@ import { NativeScriptHttpClientModule, NativeScriptModule } from '@nativescript/
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 
 import { ENVIRONMENTS } from '@bunch/core/environments';
+import { NAVIGATION_PATHS, PATHS } from '@bunch/core/navigation';
 import { RootStoreModule } from '@bunch/core/store/root';
 import { LayoutModule } from '@bunch/nativescript/ui/layout';
 
@@ -20,6 +21,10 @@ import { environment } from './environments/environment';
     {
       provide: ENVIRONMENTS,
       useValue: environment,
+    },
+    {
+      provide: PATHS,
+      useValue: NAVIGATION_PATHS,
     },
   ],
 })

@@ -1,0 +1,29 @@
+{
+  "root": "libs/nativescript/dashboard/page",
+  "sourceRoot": "libs/nativescript/dashboard/page/src",
+  "projectType": "library",
+  "targets": {
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": [
+        "{options.outputFile}"
+      ],
+      "options": {
+        "lintFilePatterns": [
+          "libs/nativescript/dashboard/page/**/*.ts"
+        ]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": [
+        "coverage/libs/nativescript/dashboard/page"
+      ],
+      "options": {
+        "jestConfig": "libs/nativescript/dashboard/page/jest.config.js",
+        "passWithNoTests": true
+      }
+    }
+  },
+  "tags": []
+}

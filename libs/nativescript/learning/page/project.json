@@ -1,0 +1,29 @@
+{
+  "root": "libs/nativescript/learning/page",
+  "sourceRoot": "libs/nativescript/learning/page/src",
+  "projectType": "library",
+  "targets": {
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": [
+        "{options.outputFile}"
+      ],
+      "options": {
+        "lintFilePatterns": [
+          "libs/nativescript/learning/page/**/*.ts"
+        ]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": [
+        "coverage/libs/nativescript/learning/page"
+      ],
+      "options": {
+        "jestConfig": "libs/nativescript/learning/page/jest.config.js",
+        "passWithNoTests": true
+      }
+    }
+  },
+  "tags": []
+}
