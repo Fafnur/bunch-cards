@@ -6,21 +6,16 @@
   "targets": {
     "test": {
       "executor": "@nrwl/jest:jest",
-      "outputs": [
-        "coverage/libs/core/forms/extract"
-      ],
+      "outputs": ["coverage/libs/core/forms/extract"],
       "options": {
-        "jestConfig": "libs/core/forms/extract/jest.config.js",
+        "jestConfig": "libs/core/forms/extract/jest.config.ts",
         "passWithNoTests": true
       }
     },
     "lint": {
       "executor": "@nrwl/linter:eslint",
       "options": {
-        "lintFilePatterns": [
-          "libs/core/forms/extract/src/**/*.ts",
-          "libs/core/forms/extract/src/**/*.html"
-        ]
+        "lintFilePatterns": ["libs/core/forms/extract/src/**/*.ts", "libs/core/forms/extract/src/**/*.html"]
       }
     }
   },

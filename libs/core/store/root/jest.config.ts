@@ -1,6 +1,6 @@
 module.exports = {
-  displayName: 'web-cards',
-  preset: '../../jest.preset.js',
+  displayName: 'core-store-root',
+
   setupFilesAfterEnv: ['<rootDir>/src/test-setup.ts'],
   globals: {
     'ts-jest': {
@@ -8,7 +8,7 @@ module.exports = {
       stringifyContentPathRegex: '\\.(html|svg)$',
     },
   },
-  coverageDirectory: '../../coverage/apps/web-cards',
+  coverageDirectory: '../../../../coverage/libs/core/store/root',
   transform: {
     '^.+\\.(ts|mjs|js|html)$': 'jest-preset-angular',
   },
@@ -18,4 +18,5 @@ module.exports = {
     'jest-preset-angular/build/serializers/ng-snapshot',
     'jest-preset-angular/build/serializers/html-comment',
   ],
+  preset: '../../../../jest.preset.ts',
 };

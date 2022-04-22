@@ -1,6 +1,6 @@
 module.exports = {
-  displayName: 'core-environments',
-  preset: '../../../jest.preset.js',
+  displayName: 'web-cards',
+  preset: '../../jest.preset.ts',
   setupFilesAfterEnv: ['<rootDir>/src/test-setup.ts'],
   globals: {
     'ts-jest': {
@@ -8,7 +8,7 @@ module.exports = {
       stringifyContentPathRegex: '\\.(html|svg)$',
     },
   },
-  coverageDirectory: '../../../coverage/libs/core/environments',
+  coverageDirectory: '../../coverage/apps/web-cards',
   transform: {
     '^.+\\.(ts|mjs|js|html)$': 'jest-preset-angular',
   },

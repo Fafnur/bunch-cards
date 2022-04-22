@@ -14,7 +14,7 @@
       "executor": "@nrwl/jest:jest",
       "outputs": ["coverage/libs/nativescript/ui/nav"],
       "options": {
-        "jestConfig": "libs/nativescript/ui/nav/jest.config.js",
+        "jestConfig": "libs/nativescript/ui/nav/jest.config.ts",
         "passWithNoTests": true
       }
     }

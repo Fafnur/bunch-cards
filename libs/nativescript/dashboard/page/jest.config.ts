@@ -1,6 +1,6 @@
 module.exports = {
-  displayName: 'nativescript-dictionary-page',
-  preset: '../../../../jest.preset.js',
+  displayName: 'nativescript-dashboard-page',
+
   globals: {
     'ts-jest': {
       tsconfig: '<rootDir>/tsconfig.spec.json',
@@ -10,5 +10,6 @@ module.exports = {
     '^.+\\.[tj]sx?$': 'ts-jest',
   },
   moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx'],
-  coverageDirectory: '../../../../coverage/libs/nativescript/dictionary/page',
+  coverageDirectory: '../../../../coverage/libs/nativescript/dashboard/page',
+  preset: '../../../../jest.preset.ts',
 };

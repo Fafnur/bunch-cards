@@ -5,22 +5,16 @@
   "targets": {
     "lint": {
       "executor": "@nrwl/linter:eslint",
-      "outputs": [
-        "{options.outputFile}"
-      ],
+      "outputs": ["{options.outputFile}"],
       "options": {
-        "lintFilePatterns": [
-          "libs/nativescript/dictionary/page/**/*.ts"
-        ]
+        "lintFilePatterns": ["libs/nativescript/dictionary/page/**/*.ts"]
       }
     },
     "test": {
       "executor": "@nrwl/jest:jest",
-      "outputs": [
-        "coverage/libs/nativescript/dictionary/page"
-      ],
+      "outputs": ["coverage/libs/nativescript/dictionary/page"],
       "options": {
-        "jestConfig": "libs/nativescript/dictionary/page/jest.config.js",
+        "jestConfig": "libs/nativescript/dictionary/page/jest.config.ts",
         "passWithNoTests": true
       }
     }

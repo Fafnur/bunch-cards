@@ -13,6 +13,12 @@
     "core-utils-operators": "libs/core/utils/operators",
     "core-utils-types": "libs/core/utils/types",
     "nativescript-cards": "apps/nativescript-cards",
+    "nativescript-dashboard-page": "libs/nativescript/dashboard/page",
+    "nativescript-dictionary-page": "libs/nativescript/dictionary/page",
+    "nativescript-learning-page": "libs/nativescript/learning/page",
+    "nativescript-setting-page": "libs/nativescript/setting/page",
+    "nativescript-ui-layout": "libs/nativescript/ui/layout",
+    "nativescript-ui-nav": "libs/nativescript/ui/nav",
     "web-cards": "apps/web-cards",
     "web-cards-e2e": "apps/web-cards-e2e",
     "web-core-hammer": "libs/web/core/hammer",
@@ -25,12 +31,6 @@
     "web-ui-grid": "libs/web/ui/grid",
     "web-ui-layout": "libs/web/ui/layout",
     "web-ui-multiplatform": "libs/web/ui/multiplatform",
-    "web-ui-theming": "libs/web/ui/theming",
-    "nativescript-ui-layout": "libs/nativescript/ui/layout",
-    "nativescript-dictionary-page": "libs/nativescript/dictionary/page",
-    "nativescript-learning-page": "libs/nativescript/learning/page",
-    "nativescript-setting-page": "libs/nativescript/setting/page",
-    "nativescript-dashboard-page": "libs/nativescript/dashboard/page",
-    "nativescript-ui-nav": "libs/nativescript/ui/nav"
+    "web-ui-theming": "libs/web/ui/theming"
   }
 }

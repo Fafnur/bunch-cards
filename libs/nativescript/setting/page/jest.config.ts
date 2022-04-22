@@ -1,6 +1,6 @@
 module.exports = {
-  displayName: 'card-common',
-  preset: '../../../jest.preset.js',
+  displayName: 'nativescript-setting-page',
+
   globals: {
     'ts-jest': {
       tsconfig: '<rootDir>/tsconfig.spec.json',
@@ -10,5 +10,6 @@ module.exports = {
     '^.+\\.[tj]sx?$': 'ts-jest',
   },
   moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx'],
-  coverageDirectory: '../../../coverage/libs/card/common',
+  coverageDirectory: '../../../../coverage/libs/nativescript/setting/page',
+  preset: '../../../../jest.preset.ts',
 };

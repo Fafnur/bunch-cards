@@ -6,21 +6,16 @@
   "targets": {
     "test": {
       "executor": "@nrwl/jest:jest",
-      "outputs": [
-        "coverage/libs/core/navigation"
-      ],
+      "outputs": ["coverage/libs/core/navigation"],
       "options": {
-        "jestConfig": "libs/core/navigation/jest.config.js",
+        "jestConfig": "libs/core/navigation/jest.config.ts",
         "passWithNoTests": true
       }
     },
     "lint": {
       "executor": "@nrwl/linter:eslint",
       "options": {
-        "lintFilePatterns": [
-          "libs/core/navigation/src/**/*.ts",
-          "libs/core/navigation/src/**/*.html"
-        ]
+        "lintFilePatterns": ["libs/core/navigation/src/**/*.ts", "libs/core/navigation/src/**/*.html"]
       }
     }
   },

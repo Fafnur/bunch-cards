@@ -1,6 +1,6 @@
 module.exports = {
-  displayName: 'core-platform',
-  preset: '../../../jest.preset.js',
+  displayName: 'web-core-layout',
+
   setupFilesAfterEnv: ['<rootDir>/src/test-setup.ts'],
   globals: {
     'ts-jest': {
@@ -8,7 +8,7 @@ module.exports = {
       stringifyContentPathRegex: '\\.(html|svg)$',
     },
   },
-  coverageDirectory: '../../../coverage/libs/core/platform',
+  coverageDirectory: '../../../../coverage/libs/web/core/layout',
   transform: {
     '^.+\\.(ts|mjs|js|html)$': 'jest-preset-angular',
   },
@@ -18,4 +18,5 @@ module.exports = {
     'jest-preset-angular/build/serializers/ng-snapshot',
     'jest-preset-angular/build/serializers/html-comment',
   ],
+  preset: '../../../../jest.preset.ts',
 };
