@@ -15,9 +15,22 @@
 bunch-nav-link {
   a {
     display: block;
-    padding: 0.8rem 0;
+    padding: 0.6rem 0;
     width: 100%;
     border-radius: 0;
+
+    div {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      line-height: 1;
+    }
+
+    span {
+      margin-top: 0.2rem;
+      font-size: 0.8rem;
+      font-weight: 400;
+    }
 
     &:hover {
       color: mat.get-color-from-palette(mat.$indigo-palette, 700);
@@ -44,13 +57,5 @@ bunch-nav-link {
       width: 1.75rem;
       height: 1.75rem;
     }
-  }
-}
-
-.phone {
-  display: none;
-
-  @include mixins.media-tablet() {
-    display: block;
   }
 }

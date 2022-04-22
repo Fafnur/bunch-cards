@@ -8,6 +8,9 @@
     [routerLinkActiveOptions]="link.routerLinkActiveOptions || { exact: false }"
     [routerLink]="link.route | path"
   >
-    <mat-icon>{{ link.label }}</mat-icon>
+    <div>
+      <mat-icon *ngIf="link.icon">{{ link.icon }}</mat-icon>
+      <span>{{ link.label }}</span>
+    </div>
   </a>
 </bunch-nav-link>

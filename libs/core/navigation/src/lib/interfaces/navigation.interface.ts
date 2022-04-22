@@ -28,6 +28,7 @@ export const NAVIGATION_PATHS: NavigationPaths = {
 export interface NavigationLink {
   route: string;
   label: string;
+  icon?: string;
   params?: Record<string, string>;
   routerLinkActiveOptions?: { exact: boolean };
 }

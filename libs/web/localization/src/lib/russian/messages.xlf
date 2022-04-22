@@ -12,6 +12,42 @@
         <note priority="1" from="description">Chat link</note>
         <note priority="1" from="meaning">Layout</note>
       </trans-unit>
+      <trans-unit id="1827103049169187094" datatype="html">
+        <source>Dashboard</source>
+        <target state="translated">Главная</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">libs/web/ui/layout/src/lib/components/nav/nav.component.ts</context>
+          <context context-type="linenumber">9</context>
+        </context-group>
+        <note priority="1" from="meaning">Nav link</note>
+      </trans-unit>
+      <trans-unit id="6351064392268967474" datatype="html">
+        <source>Learning</source>
+        <target state="translated">Обучение</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">libs/web/ui/layout/src/lib/components/nav/nav.component.ts</context>
+          <context context-type="linenumber">14</context>
+        </context-group>
+        <note priority="1" from="meaning">Nav link</note>
+      </trans-unit>
+      <trans-unit id="4548626388604319133" datatype="html">
+        <source>Dictionary</source>
+        <target state="translated">Словать</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">libs/web/ui/layout/src/lib/components/nav/nav.component.ts</context>
+          <context context-type="linenumber">19</context>
+        </context-group>
+        <note priority="1" from="meaning">Nav link</note>
+      </trans-unit>
+      <trans-unit id="7770761828986407283" datatype="html">
+        <source>Settings</source>
+        <target state="translated">Настройки</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">libs/web/ui/layout/src/lib/components/nav/nav.component.ts</context>
+          <context context-type="linenumber">24</context>
+        </context-group>
+        <note priority="1" from="meaning">Nav link</note>
+      </trans-unit>
     </body>
   </file>
 </xliff>

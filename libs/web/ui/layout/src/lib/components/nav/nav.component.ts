@@ -5,15 +5,24 @@ import { NavigationLink, NavigationPaths, PATHS } from '@bunch/core/navigation';
 export function getLinks(paths: NavigationPaths): NavigationLink[] {
   return [
     {
-      route: paths.home,
-      label: 'home',
-      routerLinkActiveOptions: {
-        exact: true,
-      },
+      route: paths.dashboard,
+      label: $localize`:Nav link|:Dashboard`,
+      icon: 'dashboard'
+    },
+    {
+      route: paths.learning,
+      label: $localize`:Nav link|:Learning`,
+      icon: 'school',
+    },
+    {
+      route: paths.dictionary,
+      label: $localize`:Nav link|:Dictionary`,
+      icon: 'view_carousel',
     },
     {
       route: paths.settings,
-      label: 'chat',
+      label: $localize`:Nav link|:Settings`,
+      icon: 'settings',
     },
   ];
 }
@@ -27,7 +36,7 @@ export function getLinks(paths: NavigationPaths): NavigationLink[] {
 export class NavComponent implements OnInit {
   links!: NavigationLink[];
 
-  constructor(@Inject(PATHS) public readonly paths: NavigationPaths) {}
+  constructor(@Inject(PATHS) private readonly paths: NavigationPaths) {}
 
   ngOnInit(): void {
     this.links = getLinks(this.paths);
