@@ -1,6 +1,6 @@
 module.exports = {
-  displayName: 'core-api',
-  preset: '../../../jest.preset.ts',
+  displayName: 'web-dashboard-page',
+  preset: '../../../../jest.preset.ts',
   setupFilesAfterEnv: ['<rootDir>/src/test-setup.ts'],
   globals: {
     'ts-jest': {
@@ -8,7 +8,7 @@ module.exports = {
       stringifyContentPathRegex: '\\.(html|svg)$',
     },
   },
-  coverageDirectory: '../../../coverage/libs/core/api',
+  coverageDirectory: '../../../../coverage/libs/web/dashboard/page',
   transform: {
     '^.+\\.(ts|mjs|js|html)$': 'jest-preset-angular',
   },
