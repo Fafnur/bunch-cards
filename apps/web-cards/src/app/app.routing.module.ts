@@ -14,6 +14,10 @@ const routes: Routes = [
         loadChildren: () => import('@bunch/web/dashboard/page').then((modules) => modules.DashboardPageModule),
       },
       {
+        path: NAVIGATION_PATHS.dictionary,
+        loadChildren: () => import('@bunch/web/dictionary/page').then((modules) => modules.DictionaryPageModule),
+      },
+      {
         path: NAVIGATION_PATHS.settings,
         loadChildren: () => import('@bunch/web/settings/page').then((modules) => modules.SettingsPageModule),
       },
