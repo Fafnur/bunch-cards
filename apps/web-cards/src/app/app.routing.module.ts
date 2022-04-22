@@ -18,6 +18,10 @@ const routes: Routes = [
         loadChildren: () => import('@bunch/web/dictionary/page').then((modules) => modules.DictionaryPageModule),
       },
       {
+        path: NAVIGATION_PATHS.learning,
+        loadChildren: () => import('@bunch/web/learning/page').then((modules) => modules.LearningPageModule),
+      },
+      {
         path: NAVIGATION_PATHS.settings,
         loadChildren: () => import('@bunch/web/settings/page').then((modules) => modules.SettingsPageModule),
       },
