@@ -1,0 +1,23 @@
+{
+  "projectType": "library",
+  "root": "libs/web/settings/page",
+  "sourceRoot": "libs/web/settings/page/src",
+  "prefix": "bunch",
+  "targets": {
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/libs/web/settings/page"],
+      "options": {
+        "jestConfig": "libs/web/settings/page/jest.config.ts",
+        "passWithNoTests": true
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": ["libs/web/settings/page/**/*.ts", "libs/web/settings/page/**/*.html"]
+      }
+    }
+  },
+  "tags": []
+}
