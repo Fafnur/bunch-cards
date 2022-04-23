@@ -58,4 +58,14 @@ bunch-nav-link {
       height: 1.75rem;
     }
   }
+
+  @include mixins.media-web() {
+    a {
+      padding: 0.8rem 1rem;
+    }
+
+    mat-icon {
+      //display: none;
+    }
+  }
 }

@@ -5,7 +5,7 @@ import { MockModule } from 'ng-mocks';
 import { ContainerModule } from '@bunch/web/ui/container';
 
 import { LogoModule } from '../logo/logo.module';
-import { ActionsModule } from './actions/actions.module';
+import { NavModule } from '../nav/nav.module';
 import { HeaderComponent } from './header.component';
 import { HeaderComponentPo } from './header.component.po';
 
@@ -15,7 +15,7 @@ describe('HeaderComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [CommonModule, MockModule(ContainerModule), MockModule(LogoModule), MockModule(ActionsModule)],
+      imports: [CommonModule, MockModule(ContainerModule), MockModule(LogoModule), MockModule(NavModule)],
       declarations: [HeaderComponent],
     }).compileComponents();
   });
@@ -36,6 +36,6 @@ describe('HeaderComponent', () => {
 
     expect(pageObject.container).toBeTruthy();
     expect(pageObject.logo).toBeTruthy();
-    expect(pageObject.actions).toBeTruthy();
+    expect(pageObject.nav).toBeTruthy();
   });
 });

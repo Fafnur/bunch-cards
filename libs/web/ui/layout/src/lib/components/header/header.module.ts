@@ -4,11 +4,11 @@ import { NgModule } from '@angular/core';
 import { ContainerModule } from '@bunch/web/ui/container';
 
 import { LogoModule } from '../logo/logo.module';
-import { ActionsModule } from './actions/actions.module';
+import { NavModule } from '../nav/nav.module';
 import { HeaderComponent } from './header.component';
 
 @NgModule({
-  imports: [CommonModule, ContainerModule, LogoModule, ActionsModule],
+  imports: [CommonModule, ContainerModule, LogoModule, NavModule],
   declarations: [HeaderComponent],
   exports: [HeaderComponent],
 })

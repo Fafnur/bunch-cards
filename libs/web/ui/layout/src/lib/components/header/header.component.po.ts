@@ -5,7 +5,7 @@ import { PageObject } from '@bunch/core/testing';
 enum Automation {
   Container = 'container',
   Logo = 'logo',
-  Actions = 'actions',
+  Nav = 'nav',
 }
 
 export class HeaderComponentPo extends PageObject {
@@ -17,7 +17,7 @@ export class HeaderComponentPo extends PageObject {
     return this.getByAutomationId(Automation.Logo);
   }
 
-  get actions(): DebugElement | null {
-    return this.getByAutomationId(Automation.Actions);
+  get nav(): DebugElement | null {
+    return this.getByAutomationId(Automation.Nav);
   }
 }
