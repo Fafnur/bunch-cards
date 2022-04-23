@@ -1,0 +1,11 @@
+@use '@angular/material' as mat;
+@use 'libs/web/ui/stylesheets/variables' as variables;
+
+[bunch-link],
+[bunchLink] {
+  color: variables.$color-primary;
+
+  &:hover {
+    color: mat.get-color-from-palette(mat.$indigo-palette, 700);
+  }
+}

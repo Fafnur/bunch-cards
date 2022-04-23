@@ -1,0 +1,45 @@
+@use '../../../../../../../../node_modules/@angular/material/index' as mat;
+@use '../../../../../stylesheets/mixins' as mixins;
+
+a {
+  display: flex;
+  flex-direction: row;
+  text-decoration: none;
+  align-items: center;
+  user-select: none;
+  padding: 1rem 0;
+
+  @include mixins.media-tablet() {
+    padding: 1rem 1rem 0.5rem 1rem;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  @include mixins.media-web() {
+    flex-direction: row;
+    padding: 1rem 0;
+  }
+}
+
+svg {
+  max-width: 3rem;
+  width: 100%;
+}
+
+span {
+  padding-left: 0.5rem;
+  color: #d01931;
+  text-transform: uppercase;
+  font-size: 1.5rem;
+
+  @include mixins.media-tablet() {
+    font-size: 0.9rem;
+    padding-top: 0.5rem;
+    padding-left: 0;
+  }
+
+  @include mixins.media-web() {
+    padding-left: 0.5rem;
+    font-size: 2rem;
+  }
+}

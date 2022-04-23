@@ -1,0 +1,71 @@
+@use '@angular/material' as mat;
+@use 'libs/web/ui/stylesheets/variables' as variables;
+@use 'libs/web/ui/stylesheets/mixins' as mixins;
+
+:host {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+
+  @include mixins.media-tablet() {
+    flex-direction: column;
+  }
+}
+
+bunch-nav-link {
+  a {
+    display: block;
+    padding: 0.6rem 0;
+    width: 100%;
+    border-radius: 0;
+
+    div {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      line-height: 1;
+    }
+
+    span {
+      margin-top: 0.2rem;
+      font-size: 0.8rem;
+      font-weight: 400;
+    }
+
+    &:hover {
+      color: mat.get-color-from-palette(mat.$indigo-palette, 700);
+    }
+
+    &.is-active {
+      color: variables.$color-primary;
+    }
+  }
+
+  mat-icon {
+    font-size: 1.5rem;
+    width: 1.5rem;
+    height: 1.5rem;
+  }
+
+  @include mixins.media-tablet() {
+    a {
+      padding: 1rem 0;
+    }
+
+    mat-icon {
+      font-size: 1.75rem;
+      width: 1.75rem;
+      height: 1.75rem;
+    }
+  }
+
+  @include mixins.media-web() {
+    a {
+      padding: 0.8rem 1rem;
+    }
+
+    mat-icon {
+      //display: none;
+    }
+  }
+}

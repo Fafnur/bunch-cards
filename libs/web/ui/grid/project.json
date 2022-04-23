@@ -1,0 +1,23 @@
+{
+  "projectType": "library",
+  "root": "libs/web/ui/grid",
+  "sourceRoot": "libs/web/ui/grid/src",
+  "prefix": "bunch",
+  "targets": {
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/libs/web/ui/grid"],
+      "options": {
+        "jestConfig": "libs/web/ui/grid/jest.config.ts",
+        "passWithNoTests": true
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": ["libs/web/ui/grid/src/**/*.ts", "libs/web/ui/grid/src/**/*.html"]
+      }
+    }
+  },
+  "tags": []
+}

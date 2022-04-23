@@ -53,6 +53,9 @@
     "@schematics/angular:component": {
       "style": "scss",
       "changeDetection": "OnPush"
+    },
+    "@nativescript/nx:lib": {
+      "groupByName": true
     }
   },
   "defaultProject": "nativescript-cards"

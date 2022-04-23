@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
+  selector: 'bunch-root',
+  template: '<page-router-outlet></page-router-outlet>',
 })
 export class AppComponent {}

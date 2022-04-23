@@ -14,7 +14,7 @@
       "executor": "@nrwl/jest:jest",
       "outputs": ["coverage/libs/card/common"],
       "options": {
-        "jestConfig": "libs/card/common/jest.config.js",
+        "jestConfig": "libs/card/common/jest.config.ts",
         "passWithNoTests": true
       }
     }

@@ -1,0 +1,53 @@
+@use '@angular/material' as mat;
+@use 'libs/web/ui/stylesheets/mixins' as mixins;
+
+:host {
+  display: flex;
+  min-height: 100%;
+  flex-direction: column;
+  width: 100%;
+
+  @include mixins.media-tablet() {
+    flex-direction: row;
+  }
+
+  @include mixins.media-web() {
+    flex-direction: column;
+  }
+}
+
+main {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+
+  & > * {
+    width: 100%;
+  }
+
+  @include mixins.media-handset() {
+    height: calc(100vh - 8rem);
+    overflow-y: auto;
+  }
+
+  @include mixins.media-tablet() {
+    height: 100vh;
+    overflow-y: auto;
+  }
+}
+
+bunch-container {
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+bunch-header,
+bunch-footer,
+bunch-sidebar {
+  flex-shrink: 0;
+}

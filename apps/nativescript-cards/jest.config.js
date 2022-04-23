@@ -1,5 +1,5 @@
 module.exports = {
-  preset: '../../jest.preset.js',
+  preset: '../../jest.preset.ts',
   setupFilesAfterEnv: ['<rootDir>/src/test-setup.ts'],
   globals: {
     'ts-jest': {
@@ -11,5 +11,9 @@ module.exports = {
   coverageDirectory: '../../coverage/apps/nativescript-cards',
 
   displayName: 'nativescript-safety',
-  snapshotSerializers: ['jest-preset-angular/build/serializers/no-ng-attributes', 'jest-preset-angular/build/serializers/ng-snapshot', 'jest-preset-angular/build/serializers/html-comment'],
+  snapshotSerializers: [
+    'jest-preset-angular/build/serializers/no-ng-attributes',
+    'jest-preset-angular/build/serializers/ng-snapshot',
+    'jest-preset-angular/build/serializers/html-comment',
+  ],
 };

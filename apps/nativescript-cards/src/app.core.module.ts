@@ -1,12 +1,11 @@
 import { NgModule } from '@angular/core';
-import {
-  NativeScriptHttpClientModule,
-  NativeScriptModule,
-} from '@nativescript/angular';
+import { NativeScriptHttpClientModule, NativeScriptModule } from '@nativescript/angular';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 
 import { ENVIRONMENTS } from '@bunch/core/environments';
+import { NAVIGATION_PATHS, PATHS } from '@bunch/core/navigation';
 import { RootStoreModule } from '@bunch/core/store/root';
+import { LayoutModule } from '@bunch/nativescript/ui/layout';
 
 import { environment } from './environments/environment';
 
@@ -15,14 +14,17 @@ import { environment } from './environments/environment';
     NativeScriptModule,
     NativeScriptHttpClientModule,
     RootStoreModule,
-    !environment.production
-      ? StoreDevtoolsModule.instrument({ logOnly: environment.production })
-      : [],
+    LayoutModule,
+    !environment.production ? StoreDevtoolsModule.instrument({ logOnly: environment.production }) : [],
   ],
   providers: [
     {
       provide: ENVIRONMENTS,
       useValue: environment,
+    },
+    {
+      provide: PATHS,
+      useValue: NAVIGATION_PATHS,
     },
   ],
 })

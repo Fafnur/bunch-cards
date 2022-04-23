@@ -8,17 +8,14 @@
       "executor": "@nrwl/jest:jest",
       "outputs": ["coverage/libs/core/platform"],
       "options": {
-        "jestConfig": "libs/core/platform/jest.config.js",
+        "jestConfig": "libs/core/platform/jest.config.ts",
         "passWithNoTests": true
       }
     },
     "lint": {
       "executor": "@nrwl/linter:eslint",
       "options": {
-        "lintFilePatterns": [
-          "libs/core/platform/src/**/*.ts",
-          "libs/core/platform/src/**/*.html"
-        ]
+        "lintFilePatterns": ["libs/core/platform/src/**/*.ts", "libs/core/platform/src/**/*.html"]
       }
     }
   },

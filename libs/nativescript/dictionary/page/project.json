@@ -1,0 +1,23 @@
+{
+  "root": "libs/nativescript/dictionary/page",
+  "sourceRoot": "libs/nativescript/dictionary/page/src",
+  "projectType": "library",
+  "targets": {
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["libs/nativescript/dictionary/page/**/*.ts"]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/libs/nativescript/dictionary/page"],
+      "options": {
+        "jestConfig": "libs/nativescript/dictionary/page/jest.config.ts",
+        "passWithNoTests": true
+      }
+    }
+  },
+  "tags": []
+}

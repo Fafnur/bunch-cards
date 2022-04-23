@@ -1,0 +1,23 @@
+{
+  "projectType": "library",
+  "root": "libs/web/dictionary/page",
+  "sourceRoot": "libs/web/dictionary/page/src",
+  "prefix": "bunch",
+  "targets": {
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/libs/web/dictionary/page"],
+      "options": {
+        "jestConfig": "libs/web/dictionary/page/jest.config.ts",
+        "passWithNoTests": true
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": ["libs/web/dictionary/page/**/*.ts", "libs/web/dictionary/page/**/*.html"]
+      }
+    }
+  },
+  "tags": []
+}

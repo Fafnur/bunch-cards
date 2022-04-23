@@ -1,0 +1,24 @@
+@use '../../../../../../../../../node_modules/@angular/material/index' as mat;
+@use '../../../../../../stylesheets/mixins' as mixins;
+
+:host {
+  @include mixins.media-web() {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin: 0 -0.5rem;
+
+    & > * {
+      margin: 0 0.5rem;
+    }
+  }
+}
+
+bunch-cart,
+bunch-support {
+  display: none;
+
+  @include mixins.media-web() {
+    display: block;
+  }
+}

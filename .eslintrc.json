@@ -1,16 +1,7 @@
 {
   "root": true,
   "ignorePatterns": ["**/*"],
-  "plugins": [
-    "@typescript-eslint",
-    "prettier",
-    "simple-import-sort",
-    "import",
-    "jsdoc",
-    "ngrx",
-    "@nrwl/nx",
-    "@nativescript"
-  ],
+  "plugins": ["@typescript-eslint", "prettier", "simple-import-sort", "import", "jsdoc", "ngrx", "@nrwl/nx", "@nativescript"],
   "overrides": [
     {
       "files": ["*.ts", "*.tsx", "*.js", "*.jsx"],
@@ -46,7 +37,11 @@
             "selector": "default",
             "format": ["camelCase"],
             "leadingUnderscore": "allow",
-            "trailingUnderscore": "allow"
+            "trailingUnderscore": "allow",
+            "filter": {
+              "regex": "^(ts-jest|.{6,}ts\\|mjs\\|js\\|html\\).*)$",
+              "match": false
+            }
           },
           {
             "selector": "variable",
@@ -77,14 +72,7 @@
         "simple-import-sort/imports": [
           "error",
           {
-            "groups": [
-              ["^\\u0000"],
-              ["^@?(?!bunch)\\w"],
-              ["^@bunch?\\w"],
-              ["^\\w"],
-              ["^[^.]"],
-              ["^\\."]
-            ]
+            "groups": [["^\\u0000"], ["^@?(?!bunch)\\w"], ["^@bunch?\\w"], ["^\\w"], ["^[^.]"], ["^\\."]]
           }
         ],
         "sort-imports": "off",
@@ -106,10 +94,7 @@
     },
     {
       "files": ["*.html"],
-      "extends": [
-        "plugin:@nrwl/nx/angular-template",
-        "plugin:@nativescript/recommended"
-      ],
+      "extends": ["plugin:@nrwl/nx/angular-template", "plugin:@nativescript/recommended"],
       "rules": {
         "max-len": [
           "error",

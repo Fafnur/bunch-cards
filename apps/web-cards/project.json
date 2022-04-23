@@ -26,10 +26,7 @@
         "polyfills": "apps/web-cards/src/polyfills.ts",
         "tsConfig": "apps/web-cards/tsconfig.app.json",
         "inlineStyleLanguage": "scss",
-        "assets": [
-          "apps/web-cards/src/favicon.ico",
-          "apps/web-cards/src/assets"
-        ],
+        "assets": ["apps/web-cards/src/favicon.ico", "apps/web-cards/src/assets"],
         "styles": ["apps/web-cards/src/styles.scss"],
         "scripts": [],
         "localize": ["ru-RU"]
@@ -93,17 +90,14 @@
     "lint": {
       "executor": "@nrwl/linter:eslint",
       "options": {
-        "lintFilePatterns": [
-          "apps/web-cards/src/**/*.ts",
-          "apps/web-cards/src/**/*.html"
-        ]
+        "lintFilePatterns": ["apps/web-cards/src/**/*.ts", "apps/web-cards/src/**/*.html"]
       }
     },
     "test": {
       "executor": "@nrwl/jest:jest",
       "outputs": ["coverage/apps/web-cards"],
       "options": {
-        "jestConfig": "apps/web-cards/jest.config.js",
+        "jestConfig": "apps/web-cards/jest.config.ts",
         "passWithNoTests": true
       }
     },

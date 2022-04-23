@@ -1,0 +1,23 @@
+{
+  "root": "libs/nativescript/ui/nav",
+  "sourceRoot": "libs/nativescript/ui/nav/src",
+  "projectType": "library",
+  "targets": {
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["libs/nativescript/ui/nav/**/*.ts"]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/libs/nativescript/ui/nav"],
+      "options": {
+        "jestConfig": "libs/nativescript/ui/nav/jest.config.ts",
+        "passWithNoTests": true
+      }
+    }
+  },
+  "tags": []
+}
