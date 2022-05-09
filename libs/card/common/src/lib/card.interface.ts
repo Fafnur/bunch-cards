@@ -15,5 +15,3 @@ export interface CardGroup {
   created: string;
   updated: string;
 }
-
-// export interface Language {}
