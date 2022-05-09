@@ -1,6 +1,5 @@
 {
   "projectType": "library",
-  "root": "libs/core/environments",
   "sourceRoot": "libs/core/environments/src",
   "prefix": "bunch",
   "targets": {

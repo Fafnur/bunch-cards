@@ -1,6 +1,5 @@
 {
   "projectType": "library",
-  "root": "libs/web/core/meta",
   "sourceRoot": "libs/web/core/meta/src",
   "prefix": "bunch",
   "targets": {

@@ -1,5 +1,4 @@
 {
-  "root": "libs/nativescript/dictionary/page",
   "sourceRoot": "libs/nativescript/dictionary/page/src",
   "projectType": "library",
   "targets": {

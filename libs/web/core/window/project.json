@@ -1,6 +1,5 @@
 {
   "projectType": "library",
-  "root": "libs/web/core/window",
   "sourceRoot": "libs/web/core/window/src",
   "prefix": "bunch",
   "targets": {

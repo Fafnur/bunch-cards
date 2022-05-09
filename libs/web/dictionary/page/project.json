@@ -1,6 +1,5 @@
 {
   "projectType": "library",
-  "root": "libs/web/dictionary/page",
   "sourceRoot": "libs/web/dictionary/page/src",
   "prefix": "bunch",
   "targets": {

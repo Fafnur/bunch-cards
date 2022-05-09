@@ -1,6 +1,5 @@
 {
   "projectType": "library",
-  "root": "libs/web/ui/grid",
   "sourceRoot": "libs/web/ui/grid/src",
   "prefix": "bunch",
   "targets": {

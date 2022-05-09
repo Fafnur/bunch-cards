@@ -1,6 +1,5 @@
 {
   "projectType": "library",
-  "root": "libs/web/ui/theming",
   "sourceRoot": "libs/web/ui/theming/src",
   "prefix": "bunch",
   "targets": {

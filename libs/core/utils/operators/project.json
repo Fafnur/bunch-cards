@@ -1,6 +1,5 @@
 {
   "projectType": "library",
-  "root": "libs/core/utils/operators",
   "sourceRoot": "libs/core/utils/operators/src",
   "prefix": "bunch",
   "targets": {

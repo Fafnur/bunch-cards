@@ -1,5 +1,4 @@
 {
-  "root": "libs/nativescript/learning/page",
   "sourceRoot": "libs/nativescript/learning/page/src",
   "projectType": "library",
   "targets": {

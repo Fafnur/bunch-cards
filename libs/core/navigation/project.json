@@ -1,6 +1,5 @@
 {
   "projectType": "library",
-  "root": "libs/core/navigation",
   "sourceRoot": "libs/core/navigation/src",
   "prefix": "bunch",
   "targets": {

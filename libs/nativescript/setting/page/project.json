@@ -1,5 +1,4 @@
 {
-  "root": "libs/nativescript/setting/page",
   "sourceRoot": "libs/nativescript/setting/page/src",
   "projectType": "library",
   "targets": {

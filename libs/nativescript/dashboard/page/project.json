@@ -1,5 +1,4 @@
 {
-  "root": "libs/nativescript/dashboard/page",
   "sourceRoot": "libs/nativescript/dashboard/page/src",
   "projectType": "library",
   "targets": {

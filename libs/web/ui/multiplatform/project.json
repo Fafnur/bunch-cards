@@ -1,6 +1,5 @@
 {
   "projectType": "library",
-  "root": "libs/web/ui/multiplatform",
   "sourceRoot": "libs/web/ui/multiplatform/src",
   "prefix": "bunch",
   "targets": {

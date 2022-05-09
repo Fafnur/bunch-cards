@@ -1,6 +1,5 @@
 {
   "projectType": "library",
-  "root": "libs/web/dashboard/page",
   "sourceRoot": "libs/web/dashboard/page/src",
   "prefix": "bunch",
   "targets": {

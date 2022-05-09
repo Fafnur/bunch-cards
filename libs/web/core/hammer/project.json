@@ -1,6 +1,5 @@
 {
   "projectType": "library",
-  "root": "libs/web/core/hammer",
   "sourceRoot": "libs/web/core/hammer/src",
   "prefix": "bunch",
   "targets": {

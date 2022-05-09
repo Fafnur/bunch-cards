@@ -1,6 +1,5 @@
 {
   "projectType": "application",
-  "root": "apps/web-cards",
   "sourceRoot": "apps/web-cards/src",
   "prefix": "bunch",
   "i18n": {

@@ -1,6 +1,5 @@
 {
   "projectType": "library",
-  "root": "libs/web/core/layout",
   "sourceRoot": "libs/web/core/layout/src",
   "prefix": "bunch",
   "targets": {

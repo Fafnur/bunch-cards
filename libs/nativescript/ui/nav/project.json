@@ -1,5 +1,4 @@
 {
-  "root": "libs/nativescript/ui/nav",
   "sourceRoot": "libs/nativescript/ui/nav/src",
   "projectType": "library",
   "targets": {

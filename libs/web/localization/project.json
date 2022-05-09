@@ -1,6 +1,5 @@
 {
   "projectType": "library",
-  "root": "libs/web/localization",
   "sourceRoot": "libs/web/localization/src",
   "prefix": "bunch",
   "targets": {

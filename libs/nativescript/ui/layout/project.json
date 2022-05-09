@@ -1,5 +1,4 @@
 {
-  "root": "libs/nativescript/ui/layout",
   "sourceRoot": "libs/nativescript/ui/layout/src",
   "projectType": "library",
   "targets": {

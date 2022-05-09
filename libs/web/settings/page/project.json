@@ -1,6 +1,5 @@
 {
   "projectType": "library",
-  "root": "libs/web/settings/page",
   "sourceRoot": "libs/web/settings/page/src",
   "prefix": "bunch",
   "targets": {

@@ -1,6 +1,5 @@
 {
   "projectType": "library",
-  "root": "libs/web/learning/page",
   "sourceRoot": "libs/web/learning/page/src",
   "prefix": "bunch",
   "targets": {

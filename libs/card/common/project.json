@@ -1,5 +1,4 @@
 {
-  "root": "libs/card/common",
   "sourceRoot": "libs/card/common/src",
   "projectType": "library",
   "targets": {

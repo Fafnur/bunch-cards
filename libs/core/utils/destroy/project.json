@@ -1,6 +1,5 @@
 {
   "projectType": "library",
-  "root": "libs/core/utils/destroy",
   "sourceRoot": "libs/core/utils/destroy/src",
   "prefix": "bunch",
   "targets": {

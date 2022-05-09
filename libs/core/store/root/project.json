@@ -1,6 +1,5 @@
 {
   "projectType": "library",
-  "root": "libs/core/store/root",
   "sourceRoot": "libs/core/store/root/src",
   "prefix": "bunch",
   "targets": {

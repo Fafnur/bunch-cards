@@ -1,6 +1,5 @@
 {
   "projectType": "library",
-  "root": "libs/web/core/storage",
   "sourceRoot": "libs/web/core/storage/src",
   "prefix": "bunch",
   "targets": {

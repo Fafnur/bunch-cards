@@ -1,6 +1,5 @@
 {
   "projectType": "library",
-  "root": "libs/core/api",
   "sourceRoot": "libs/core/api/src",
   "prefix": "bunch",
   "targets": {
