@@ -4,6 +4,8 @@
   "license": "MIT",
   "scripts": {
     "start": "nx serve web-cards",
+    "start:api": "docker-compose -f ./apps/api-cards/docker-compose.yml up -d && nx serve api-cards",
+    "stop:api": "docker-compose -f ./apps/api-cards/docker-compose.yml stop",
     "build": "nx build",
     "test": "nx test",
     "postinstall": "ngcc --properties es2015 browser module main",
@@ -12,7 +14,12 @@
     "build:ssr": "nx build web-cards && ng run web-cards:server",
     "prerender": "nx run web-cards:prerender",
     "extract-i18n": "nx extract-i18n web-cards --out-file=libs/web/localization/src/lib/russian/source.xlf",
-    "generate-sitemap": "ts-node --project=apps/web-cards/tsconfig.sitemap.json apps/web-cards/sitemap-generator.ts"
+    "generate-sitemap": "ts-node --project=apps/web-cards/tsconfig.sitemap.json apps/web-cards/sitemap-generator.ts",
+    "typeorm": "ts-node -P apps/api-cards/tsconfig.app.json  -r tsconfig-paths/register ./node_modules/typeorm/cli.js --config apps/api-cards/src/app/config/ormconfig.ts",
+    "typeorm:migrate": "yarn run typeorm migration:generate -n",
+    "typeorm:create": "yarn run typeorm migration:create -n",
+    "typeorm:run": "yarn run typeorm migration:run",
+    "typeorm:revert": "yarn run typeorm migration:revert"
   },
   "private": true,
   "dependencies": {
@@ -61,8 +68,10 @@
     "@nativescript/nx": "^3.0.17",
     "@nativescript/types": "^8.2.0",
     "@nativescript/webpack": "^5.0.6",
+    "@nestjs/config": "^2.0.0",
     "@nestjs/schematics": "^8.0.0",
     "@nestjs/testing": "^8.0.0",
+    "@nestjs/typeorm": "^8.0.3",
     "@ngrx/schematics": "^13.2.0",
     "@ngrx/store-devtools": "^13.2.0",
     "@ngtools/webpack": "^13.3.5",
@@ -96,6 +105,7 @@
     "jasmine-marbles": "^0.9.2",
     "jest": "28.1.0",
     "jest-preset-angular": "^11.1.2",
+    "mysql2": "^2.3.3",
     "ng-mocks": "^13.5.1",
     "nx": "14.1.4",
     "prettier": "^2.6.2",
@@ -104,6 +114,8 @@
     "ts-jest": "28.0.2",
     "ts-mockito": "^2.6.1",
     "ts-node": "9.1.1",
+    "tsconfig-paths": "^4.0.0",
+    "typeorm": "^0.3.6",
     "typescript": "4.6.4"
   },
   "nativescript-nx": {
