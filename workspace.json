@@ -20,6 +20,7 @@
     "nativescript-setting-page": "libs/nativescript/setting/page",
     "nativescript-ui-layout": "libs/nativescript/ui/layout",
     "nativescript-ui-nav": "libs/nativescript/ui/nav",
+    "users-common": "libs/users/common",
     "web-cards": "apps/web-cards",
     "web-cards-e2e": "apps/web-cards-e2e",
     "web-core-hammer": "libs/web/core/hammer",
