@@ -2,7 +2,7 @@ import { CorsOptions } from '@nestjs/common/interfaces/external/cors-options.int
 import { ConfigService } from '@nestjs/config';
 import { TypeOrmModuleOptions } from '@nestjs/typeorm';
 
-export interface Config<T extends TypeOrmModuleOptions = any> {
+export interface Config<T extends TypeOrmModuleOptions = TypeOrmModuleOptions> {
   port: number;
   prefix: string;
   typeOrm: T;
@@ -42,5 +42,5 @@ export function configurationFactory(): Config {
 }
 
 export async function typeOrmFactory(configService: ConfigService): Promise<TypeOrmModuleOptions> {
-  return await configService.get<any>('typeOrm');
+  return await configService.get('typeOrm');
 }

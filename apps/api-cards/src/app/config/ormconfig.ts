@@ -8,6 +8,6 @@ export = {
   entities: [`${join(__dirname, '../')}**/*.entity.{ts,js}`],
   migrations: [`${join(__dirname, '../../../../../../')}apps/backend/api/migrations/**/*{.ts,.js}`],
   cli: {
-    migrationsDir: `apps/backend/api/migrations`,
+    migrationsDir: `apps/api-cards/migrations`,
   },
 };
