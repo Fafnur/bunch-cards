@@ -9,9 +9,9 @@ export interface User {
   id: number;
   username: string;
   email: string;
-  photo?: string | null;
-  firstName: string;
-  lastName: string;
+  photo: string | null;
+  firstname: string;
+  lastname: string;
   createdAt: string;
   updatedAt: string;
   status: UserStatus;

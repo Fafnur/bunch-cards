@@ -1,6 +1,7 @@
 import { CorsOptions } from '@nestjs/common/interfaces/external/cors-options.interface';
 import { ConfigService } from '@nestjs/config';
 import { TypeOrmModuleOptions } from '@nestjs/typeorm';
+import { join } from 'path';
 
 export interface Config<T extends TypeOrmModuleOptions = TypeOrmModuleOptions> {
   port: number;
@@ -11,15 +12,15 @@ export interface Config<T extends TypeOrmModuleOptions = TypeOrmModuleOptions> {
 
 export function getTypeOrmConfig(): TypeOrmModuleOptions {
   return {
-    type: (process.env.DATABASE_TYPE as any) ?? 'mariadb',
+    type: (process.env.DATABASE_TYPE as never) ?? 'mariadb',
     host: process.env.DATABASE_HOST ?? 'localhost',
-    port: process.env.DATABASE_PORT ? parseInt(process.env.DATABASE_PORT, 10) : 3306,
-    username: process.env.DATABASE_USER ?? 'banx',
+    port: process.env.DATABASE_PORT ? Number(process.env.DATABASE_PORT) : 3306,
+    username: process.env.DATABASE_USER ?? 'bunch',
     password: process.env.DATABASE_PASSWORD ?? '123456',
-    database: process.env.DATABASE_NAME ?? 'banx',
+    database: process.env.DATABASE_NAME ?? 'bunch',
     synchronize: process.env.DATABASE_SYNCHRONIZE ? process.env.DATABASE_SYNCHRONIZE === 'true' : true,
     autoLoadEntities: process.env.DATABASE_AUTO_LOAD_ENTITIES ? process.env.DATABASE_AUTO_LOAD_ENTITIES === 'true' : true,
-    entities: [`${__dirname}/**/*.entity.{ts,js}`],
+    entities: [`${__dirname}/**/*.entity.{ts,js}`, `${join(__dirname, '../../../../../')}libs/api/**/*.entity.{ts,js}`],
   };
 }
 

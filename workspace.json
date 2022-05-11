@@ -2,6 +2,7 @@
   "version": 2,
   "projects": {
     "api-cards": "apps/api-cards",
+    "api-users": "libs/api/users",
     "card-common": "libs/card/common",
     "core-api": "libs/core/api",
     "core-environments": "libs/core/environments",
