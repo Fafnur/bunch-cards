@@ -5,6 +5,7 @@ export const USER_STUB: User = {
   status: UserStatus.Verified,
   username: 'alex',
   email: 'alex@alex.ru',
+  photo: 'ig.jpg',
   firstname: 'Ivan',
   lastname: 'Doorin',
   createdAt: '2021-09-02T23:58:19.100Z',

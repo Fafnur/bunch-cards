@@ -15,6 +15,7 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
+      "@bunch/api/auth": ["libs/api/auth/src/index.ts"],
       "@bunch/api/users": ["libs/api/users/src/index.ts"],
       "@bunch/card/common": ["libs/card/common/src/index.ts"],
       "@bunch/core/api": ["libs/core/api/src/index.ts"],

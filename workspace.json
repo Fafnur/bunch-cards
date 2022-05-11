@@ -1,6 +1,7 @@
 {
   "version": 2,
   "projects": {
+    "api-auth": "libs/api/auth",
     "api-cards": "apps/api-cards",
     "api-users": "libs/api/users",
     "card-common": "libs/card/common",
