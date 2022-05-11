@@ -1,0 +1,44 @@
+export enum UserStatus {
+  Created = 'created',
+  Verified = 'verified',
+  Rejected = 'rejected',
+  Removed = 'removed',
+}
+
+export interface User {
+  id: number;
+  username: string;
+  email: string;
+  photo?: string | null;
+  firstName: string;
+  lastName: string;
+  createdAt: string;
+  updatedAt: string;
+  status: UserStatus;
+}
+
+export enum UserField {
+  Username = 'username',
+  Password = 'password',
+  LastName = 'lastName',
+  FirstName = 'firstName',
+  Email = 'email',
+  Photo = 'photo',
+}
+
+export interface UserAuth {
+  accessToken: string;
+  id: number;
+  username: string;
+}
+
+export interface UserJwtCredentials {
+  userId: number;
+  username: string;
+}
+
+export enum UserStorageKeys {
+  AuthToken = 'authToken',
+  Id = 'userId',
+  Username = 'username',
+}
