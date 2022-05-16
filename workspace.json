@@ -3,6 +3,8 @@
   "projects": {
     "api-auth": "libs/api/auth",
     "api-cards": "apps/api-cards",
+    "api-mail": "libs/api/mail",
+    "api-passwords": "libs/api/passwords",
     "api-users": "libs/api/users",
     "card-common": "libs/card/common",
     "core-api": "libs/core/api",

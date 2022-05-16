@@ -22,6 +22,18 @@ export class UserService {
     return users.length === 1 ? users[0] : null;
   }
 
+  async findOneByEmail(email: string): Promise<UserEntity | null> {
+    const users = await this.userRepository.findBy({ email });
+
+    return users.length === 1 ? users[0] : null;
+  }
+
+  async findOneByReset(reset: string): Promise<UserEntity | null> {
+    const users = await this.userRepository.findBy({ reset });
+
+    return users.length === 1 ? users[0] : null;
+  }
+
   async createUser(user: Partial<UserEntity>): Promise<UserEntity> {
     const newUser = await this.userRepository.create(user);
 

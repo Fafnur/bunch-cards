@@ -1,0 +1,34 @@
+### Login
+POST http://localhost:3000/auth/login
+Content-Type: application/json
+Accept: application/json
+
+{
+  "username": "admin",
+  "password": "123456"
+}
+
+### Wrong login
+POST http://localhost:3000/auth/login
+Content-Type: application/json
+Accept: application/json
+
+{
+  "username": "guest",
+  "password": "123456"
+}
+
+### Reset
+POST http://localhost:3000/auth/reset?backUrl=http://localhost:4200
+Content-Type: application/json
+Accept: application/json
+
+{
+  "email": "fafnur@yandex.ru"
+}
+
+### Recovery
+GET http://localhost:3000
+Content-Type: application/json
+Accept: application/json
+

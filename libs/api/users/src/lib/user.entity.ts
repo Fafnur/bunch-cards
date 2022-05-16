@@ -28,8 +28,17 @@ export class UserEntity implements User {
   @Column({ nullable: true })
   photo!: string;
 
-  @Column()
+  @Column({ nullable: true })
   password!: string;
+
+  @Column({ nullable: true })
+  reset!: string;
+
+  @Column({ nullable: true })
+  oauth!: string;
+
+  @Column({ nullable: true })
+  resetAt!: string;
 
   @Column({ length: 60, unique: true })
   username!: string;

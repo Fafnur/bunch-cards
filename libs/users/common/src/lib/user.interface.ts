@@ -29,7 +29,20 @@ export enum UserField {
 export interface UserAuth {
   accessToken: string;
   id: number;
+}
+
+export interface UserCredentials {
   username: string;
+  password: string;
+}
+
+export interface UserSecrets {
+  email: string;
+}
+
+export interface UserPasswordChange {
+  password: string;
+  token: string;
 }
 
 export interface UserJwtCredentials {
