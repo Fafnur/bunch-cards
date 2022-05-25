@@ -7,6 +7,8 @@ import { PasswordService } from '@bunch/api/passwords';
 import { UserService } from '@bunch/api/users';
 import { User, UserAuth, UserCredentials, UserPasswordChange, UserSecrets, UserStatus } from '@bunch/users/common';
 
+import { GoogleUser } from './google.strategy';
+
 @Injectable()
 export class AuthService {
   private readonly frontUrl: string;
@@ -21,28 +23,25 @@ export class AuthService {
     this.frontUrl = this.configService.get<string>('FRONT_HOST') ?? 'http://localhost:4200';
   }
 
-  async loginWithGoogle(req: any): Promise<{ url: string }> {
-    if (!req.user) {
+  async loginWithGoogle(googleUser?: GoogleUser): Promise<{ url: string }> {
+    if (!googleUser) {
       throw new BadRequestException('No user from google');
     }
 
-    let user = (await this.userService.findOneByEmail(req.user.email)) ?? null;
-    const token = this.passwordService.generatePassword();
+    const user =
+      (await this.userService.findOneByEmail(googleUser.email)) ??
+      (await this.userService.createUser({
+        email: googleUser.email,
+        photo: googleUser.photo,
+        firstname: googleUser.firstname,
+        lastname: googleUser.lastname,
+        username: `${googleUser.firstname} ${googleUser.lastname}`,
+        status: UserStatus.Verified,
+      }));
 
-    if (!user) {
-      user = await this.userService.createUser({
-        email: req.user.email,
-        photo: req.user.photo,
-        firstname: req.user.firstname,
-        lastname: req.user.lastname,
-        username: `${req.user.firstname} ${req.user.lastname}`,
-        oauth: token,
-      });
-    } else {
-      await this.userService.update(user.id, { oauth: token });
-    }
+    const token = this.jwtService.sign({ userId: user.id });
 
-    return { url: `${this.frontUrl}/auth/social?token=${token}` };
+    return { url: `${this.frontUrl}/auth/oauth?token=${token}&id=${user.id}` };
   }
 
   async validateUserCredentials(credentials: UserCredentials): Promise<Omit<User, 'password'> | null> {
@@ -82,16 +81,14 @@ export class AuthService {
     const resetToken = this.passwordService.generatePassword();
 
     if (this.frontUrl.indexOf('localhost') < 0) {
-      await this.mailerService
-        .sendMail({
-          to: secrets.email,
-          subject: 'Reset password',
-          template: 'reset',
-          context: {
-            link: `${this.frontUrl}/auth/reset?token=${resetToken}`,
-          },
-        })
-        .catch(console.log);
+      await this.mailerService.sendMail({
+        to: secrets.email,
+        subject: 'Reset password',
+        template: 'reset',
+        context: {
+          link: `${this.frontUrl}/auth/reset?token=${resetToken}`,
+        },
+      });
     }
 
     return await this.userService.update(user.id, { reset: resetToken, resetAt: new Date().toISOString() }).then(() => undefined);

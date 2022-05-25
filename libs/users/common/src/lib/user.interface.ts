@@ -32,6 +32,9 @@ export interface UserAuth {
 }
 
 export interface UserCredentials {
+  /**
+   * email
+   */
   username: string;
   password: string;
 }

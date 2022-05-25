@@ -35,9 +35,6 @@ export class UserEntity implements User {
   reset!: string;
 
   @Column({ nullable: true })
-  oauth!: string;
-
-  @Column({ nullable: true })
   resetAt!: string;
 
   @Column({ length: 60, unique: true })
