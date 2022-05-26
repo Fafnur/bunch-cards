@@ -34,6 +34,12 @@ export class UserService {
     return users.length === 1 ? users[0] : null;
   }
 
+  async findOneByConfirmToken(confirm: string): Promise<UserEntity | null> {
+    const users = await this.userRepository.findBy({ confirm });
+
+    return users.length === 1 ? users[0] : null;
+  }
+
   async createUser(user: Partial<UserEntity>): Promise<UserEntity> {
     const newUser = await this.userRepository.create(user);
 

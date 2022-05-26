@@ -39,6 +39,13 @@ export interface UserCredentials {
   password: string;
 }
 
+export interface UserCreate {
+  email: string;
+  password: string;
+  firstname: string;
+  lastname: string;
+}
+
 export interface UserSecrets {
   email: string;
 }

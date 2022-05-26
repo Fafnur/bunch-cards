@@ -1,6 +1,8 @@
-import { Body, Controller, Get, Post, Redirect, Req, Request, UseGuards } from '@nestjs/common';
+import { Body, Controller, Get, Param, Post, Redirect, Req, Request, UseGuards, UsePipes, ValidationPipe } from '@nestjs/common';
 import { AuthGuard } from '@nestjs/passport';
 
+import { formExceptionFactory } from '@bunch/api/forms';
+import { UserCreateForm } from '@bunch/api/users';
 import { UserCredentials, UserPasswordChange, UserSecrets } from '@bunch/users/common';
 
 import { AppleUser } from './apple.strategy';
@@ -26,10 +28,21 @@ export class AuthController {
     return this.authService.changePassword(body);
   }
 
-  // @Post('auth/register')
-  // async register(@Body() secrets: UserSecrets): Promise<void> {
-  //   return this.authService.register(secrets);
-  // }
+  @Post('auth/register')
+  @UsePipes(
+    new ValidationPipe({
+      transform: true,
+      exceptionFactory: (validationErrors) => formExceptionFactory(validationErrors),
+    })
+  )
+  async register(@Body() payload: UserCreateForm) {
+    return this.authService.register(payload);
+  }
+
+  @Get('auth/confirm/:token')
+  async confirmEmail(@Param() params: { token: string }) {
+    return this.authService.confirmEmail(params);
+  }
 
   @Get('web/google')
   @UseGuards(AuthGuard('google'))

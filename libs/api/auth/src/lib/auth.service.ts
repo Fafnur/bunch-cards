@@ -5,7 +5,7 @@ import { MailerService } from '@nestjs-modules/mailer';
 
 import { PasswordService } from '@bunch/api/passwords';
 import { UserService } from '@bunch/api/users';
-import { User, UserAuth, UserCredentials, UserPasswordChange, UserSecrets, UserStatus } from '@bunch/users/common';
+import { User, UserAuth, UserCreate, UserCredentials, UserPasswordChange, UserSecrets, UserStatus } from '@bunch/users/common';
 
 import { AppleUser } from './apple.strategy';
 import { GoogleUser } from './google.strategy';
@@ -69,7 +69,7 @@ export class AuthService {
   async validateUserCredentials(credentials: UserCredentials): Promise<Omit<User, 'password'> | null> {
     const user = await this.userService.findOneByEmail(credentials.username);
 
-    const valid = user ? await this.passwordService.compareHash(credentials.password, user.password) : false;
+    const valid = user && user.password ? await this.passwordService.compareHash(credentials.password, user.password) : false;
 
     if (user && valid) {
       // eslint-disable-next-line @typescript-eslint/no-unused-vars
@@ -113,32 +113,79 @@ export class AuthService {
       });
     }
 
-    return await this.userService.update(user.id, { reset: resetToken, resetAt: new Date().toISOString() }).then(() => undefined);
+    const resetAt = new Date();
+    resetAt.setDate(resetAt.getDate() + 1);
+
+    return await this.userService.update(user.id, { reset: resetToken, resetAt: resetAt.toISOString() }).then(() => undefined);
   }
 
   async changePassword(payload: UserPasswordChange): Promise<void> {
     const user = (await this.userService.findOneByReset(payload.token)) ?? null;
 
     if (!user) {
-      throw new BadRequestException();
+      throw new BadRequestException({ token: { invalid: 'Invalid token' } });
     }
+    if (!user.resetAt || new Date(user.resetAt).getTime() < new Date().getTime()) {
+      throw new BadRequestException({ token: { invalid: 'Token expired' } });
+    }
+
     const password = await this.passwordService.getHash(payload.password);
 
     return await this.userService.update(user.id, { password }).then(() => undefined);
   }
 
-  // async register(secrets: UserSecrets): Promise<void> {
-  //   const user = await this.validateUserSecrets(secrets);
-  //
-  //   if (!user) {
-  //     throw new BadRequestException();
-  //   }
-  //   const password = this.passwordService.generatePassword();
-  //   // NOTE: DON'T USE IT ON PRODUCTION.
-  //   console.log(password);
-  //
-  //   const hash = await this.passwordService.getHash(password);
-  //
-  //   return await this.userService.updatePassword(user, hash).then(() => undefined);
-  // }
+  async register(payload: UserCreate): Promise<UserAuth> {
+    const user = await this.userService.findOneByEmail(payload.email);
+
+    if (user) {
+      throw new BadRequestException({
+        email: {
+          invalid: 'User with email address already exists',
+        },
+      });
+    }
+    const token = this.passwordService.generatePassword();
+    const confirmAt = new Date();
+    confirmAt.setDate(confirmAt.getDate() + 1);
+
+    const hash = await this.passwordService.getHash(payload.password);
+    const userCreated = await this.userService.createUser({
+      ...payload,
+      password: hash,
+      status: UserStatus.Created,
+      username: `${payload.firstname} ${payload.lastname}`,
+      confirm: token,
+      confirmAt: confirmAt.toISOString(),
+    });
+
+    if (this.frontUrl.indexOf('localhost') < 0) {
+      await this.mailerService.sendMail({
+        to: payload.email,
+        subject: 'Confirm email',
+        template: 'confirm',
+        context: {
+          link: `${this.frontUrl}/auth/confirm/${token}`,
+        },
+      });
+    }
+
+    return {
+      accessToken: this.jwtService.sign({ userId: userCreated.id }),
+      id: userCreated.id,
+    };
+  }
+
+  async confirmEmail(payload: { token: string }): Promise<void> {
+    const user = (await this.userService.findOneByConfirmToken(payload.token)) ?? null;
+
+    if (!user) {
+      throw new BadRequestException({ token: { invalid: 'Invalid token' } });
+    }
+
+    if (!user.confirmAt || new Date(user.confirmAt).getTime() < new Date().getTime()) {
+      throw new BadRequestException({ token: { invalid: 'Token expired' } });
+    }
+
+    return await this.userService.update(user.id, { confirm: null, confirmAt: null, status: UserStatus.Verified }).then(() => undefined);
+  }
 }

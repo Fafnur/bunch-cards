@@ -16,7 +16,7 @@ export class UserEntity implements User {
   })
   status!: UserStatus;
 
-  @Column()
+  @Column({ unique: true })
   email!: string;
 
   @Column()
@@ -26,18 +26,24 @@ export class UserEntity implements User {
   lastname!: string;
 
   @Column({ nullable: true })
-  photo!: string;
+  photo!: string | null;
 
   @Column({ nullable: true })
-  password!: string;
+  password!: string | null;
 
   @Column({ nullable: true })
-  reset!: string;
+  reset!: string | null;
 
   @Column({ nullable: true })
-  resetAt!: string;
+  resetAt!: string | null;
 
-  @Column({ length: 60, unique: true })
+  @Column({ nullable: true })
+  confirm!: string | null;
+
+  @Column({ nullable: true })
+  confirmAt!: string | null;
+
+  @Column({ length: 60 })
   username!: string;
 
   @CreateDateColumn({ name: 'created_at' })
