@@ -50,8 +50,6 @@ export class AuthService {
       throw new BadRequestException('No user from apple');
     }
 
-    console.log(appleUser);
-
     const user =
       (await this.userService.findOneByEmail(appleUser.email)) ??
       (await this.userService.createUser({
