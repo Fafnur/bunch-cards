@@ -7,6 +7,7 @@ import { PasswordService } from '@bunch/api/passwords';
 import { UserService } from '@bunch/api/users';
 import { User, UserAuth, UserCredentials, UserPasswordChange, UserSecrets, UserStatus } from '@bunch/users/common';
 
+import { AppleUser } from './apple.strategy';
 import { GoogleUser } from './google.strategy';
 
 @Injectable()
@@ -36,6 +37,29 @@ export class AuthService {
         firstname: googleUser.firstname,
         lastname: googleUser.lastname,
         username: `${googleUser.firstname} ${googleUser.lastname}`,
+        status: UserStatus.Verified,
+      }));
+
+    const token = this.jwtService.sign({ userId: user.id });
+
+    return { url: `${this.frontUrl}/auth/oauth?token=${token}&id=${user.id}` };
+  }
+
+  async loginWithApple(appleUser?: AppleUser): Promise<{ url: string }> {
+    if (!appleUser) {
+      throw new BadRequestException('No user from apple');
+    }
+
+    console.log(appleUser);
+
+    const user =
+      (await this.userService.findOneByEmail(appleUser.email)) ??
+      (await this.userService.createUser({
+        email: appleUser.email,
+        photo: appleUser.photo,
+        firstname: appleUser.firstname,
+        lastname: appleUser.lastname,
+        username: `${appleUser.firstname} ${appleUser.lastname}`,
         status: UserStatus.Verified,
       }));
 

@@ -5,6 +5,7 @@ import { PassportModule } from '@nestjs/passport';
 import { PasswordsModule } from '@bunch/api/passwords';
 import { UserModule } from '@bunch/api/users';
 
+import { ApplePassportStrategy } from './apple.strategy';
 import { AuthController } from './auth.controller';
 import { AuthService } from './auth.service';
 import { GoogleStrategy } from './google.strategy';
@@ -20,7 +21,7 @@ import { JwtStrategy } from './jwt.strategy';
       signOptions: { expiresIn: process.env?.['JWT_EXPIRES_IN'] ?? '60m' },
     }),
   ],
-  providers: [AuthService, JwtStrategy, GoogleStrategy],
+  providers: [AuthService, JwtStrategy, GoogleStrategy, ApplePassportStrategy],
   controllers: [AuthController],
   exports: [AuthService],
 })

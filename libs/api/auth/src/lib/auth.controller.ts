@@ -3,6 +3,7 @@ import { AuthGuard } from '@nestjs/passport';
 
 import { UserCredentials, UserPasswordChange, UserSecrets } from '@bunch/users/common';
 
+import { AppleUser } from './apple.strategy';
 import { AuthService } from './auth.service';
 import { GoogleUser } from './google.strategy';
 
@@ -12,11 +13,6 @@ export class AuthController {
 
   @Post('auth/login')
   async login(@Body() credentials: UserCredentials) {
-    return this.authService.loginWithEmail(credentials);
-  }
-
-  @Post('auth/login-with-token')
-  async loginByToken(@Body() credentials: UserCredentials) {
     return this.authService.loginWithEmail(credentials);
   }
 
@@ -37,14 +33,27 @@ export class AuthController {
 
   @Get('web/google')
   @UseGuards(AuthGuard('google'))
-  async googleAuth() {
+  async authWithGoogle() {
     // google redirect
   }
 
   @Get('web/google/redirect')
   @Redirect()
   @UseGuards(AuthGuard('google'))
-  async googleAuthRedirect(@Req() request: { user?: GoogleUser }) {
+  async authWithGoogleRedirect(@Req() request: { user?: GoogleUser }) {
     return await this.authService.loginWithGoogle(request.user);
+  }
+
+  @Get('web/apple')
+  @UseGuards(AuthGuard('apple'))
+  async authWithApple() {
+    // apple redirect
+  }
+
+  @Post('web/apple/redirect')
+  @Redirect()
+  @UseGuards(AuthGuard('apple'))
+  async authWithAppleRedirect(@Req() request: { user?: AppleUser }) {
+    return await this.authService.loginWithApple(request.user);
   }
 }
