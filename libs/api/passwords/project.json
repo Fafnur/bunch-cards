@@ -1,0 +1,22 @@
+{
+  "projectType": "library",
+  "sourceRoot": "libs/api/passwords/src",
+  "prefix": "bunch",
+  "targets": {
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/libs/api/passwords"],
+      "options": {
+        "jestConfig": "libs/api/passwords/jest.config.ts",
+        "passWithNoTests": true
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": ["libs/api/passwords/**/*.ts", "libs/api/passwords/**/*.html"]
+      }
+    }
+  },
+  "tags": []
+}

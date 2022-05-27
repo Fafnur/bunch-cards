@@ -49,4 +49,5 @@ package-lock.json
 /apps/**/.env
 /apps/**/routes.txt
 /apps/**/sitemap.xml
+/apps/api-cards/src/assets/keys
 /libs/**/source.xlf

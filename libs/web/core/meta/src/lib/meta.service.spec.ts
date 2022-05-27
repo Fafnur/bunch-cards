@@ -4,18 +4,10 @@ import { TestBed } from '@angular/core/testing';
 import { Router } from '@angular/router';
 import { mock, when } from 'ts-mockito';
 
-import {
-  ENVIRONMENTS_DEFAULT,
-  EnvironmentService,
-} from '@bunch/core/environments';
+import { ENVIRONMENTS_DEFAULT, EnvironmentService } from '@bunch/core/environments';
 import { providerOf } from '@bunch/core/testing';
 
-import {
-  META_CONFIG,
-  META_CONFIG_DEFAULT,
-  META_CONFIG_OG,
-  META_CONFIG_OG_DEFAULT,
-} from './meta.interface';
+import { META_CONFIG, META_CONFIG_DEFAULT, META_CONFIG_OG, META_CONFIG_OG_DEFAULT } from './meta.interface';
 import { MetaService } from './meta.service';
 
 describe('MetaService', () => {
@@ -54,16 +46,13 @@ describe('MetaService', () => {
   });
 
   beforeEach(() => {
-    when(environmentServiceMock.getEnvironments()).thenReturn(
-      ENVIRONMENTS_DEFAULT
-    );
+    when(environmentServiceMock.getEnvironments()).thenReturn(ENVIRONMENTS_DEFAULT);
     when(routerMock.url).thenReturn('/');
 
     service = TestBed.inject(MetaService);
     document = TestBed.inject(DOCUMENT);
 
-    getProp = <T = HTMLMetaElement>(prop: string) =>
-      document.getElementById(prop) as T | null;
+    getProp = <T = HTMLMetaElement>(prop: string) => document.getElementById(prop) as T | null;
   });
 
   it('should create', () => {
@@ -73,40 +62,18 @@ describe('MetaService', () => {
   it('should set meta', () => {
     service.update();
 
-    expect(document.title).toBe(
-      `${META_CONFIG_DEFAULT.title} | ${ENVIRONMENTS_DEFAULT.brand}`
-    );
-    expect(getProp<HTMLLinkElement>('canonical')?.href).toBe(
-      `${ENVIRONMENTS_DEFAULT.appHost}/`
-    );
-    expect(getProp('meta-description')?.content).toBe(
-      META_CONFIG_DEFAULT.description
-    );
-    expect(getProp('meta-keywords')?.content).toBe(
-      META_CONFIG_DEFAULT.keywords
-    );
-    expect(getProp('meta-og:title')?.content).toBe(
-      `${META_CONFIG_OG_DEFAULT.title} | ${ENVIRONMENTS_DEFAULT.brand}`
-    );
-    expect(getProp('meta-og:description')?.content).toBe(
-      META_CONFIG_OG_DEFAULT.description
-    );
+    expect(document.title).toBe(`${META_CONFIG_DEFAULT.title} | ${ENVIRONMENTS_DEFAULT.brand}`);
+    expect(getProp<HTMLLinkElement>('canonical')?.href).toBe(`${ENVIRONMENTS_DEFAULT.appHost}/`);
+    expect(getProp('meta-description')?.content).toBe(META_CONFIG_DEFAULT.description);
+    expect(getProp('meta-keywords')?.content).toBe(META_CONFIG_DEFAULT.keywords);
+    expect(getProp('meta-og:title')?.content).toBe(`${META_CONFIG_OG_DEFAULT.title} | ${ENVIRONMENTS_DEFAULT.brand}`);
+    expect(getProp('meta-og:description')?.content).toBe(META_CONFIG_OG_DEFAULT.description);
     expect(getProp('meta-og:type')?.content).toBe(META_CONFIG_OG_DEFAULT.type);
     expect(getProp('meta-og:locale')?.content).toBe('ru-RU');
-    expect(getProp('meta-og:site_name')?.content).toBe(
-      ENVIRONMENTS_DEFAULT.brand
-    );
-    expect(getProp('meta-og:image')?.content).toBe(
-      `${ENVIRONMENTS_DEFAULT.appHost}${META_CONFIG_OG_DEFAULT.image}`
-    );
-    expect(getProp('meta-og:image:type')?.content).toBe(
-      META_CONFIG_OG_DEFAULT.imageType
-    );
-    expect(getProp('meta-og:image:width')?.content).toBe(
-      META_CONFIG_OG_DEFAULT.imageWidth
-    );
-    expect(getProp('meta-og:image:height')?.content).toBe(
-      META_CONFIG_OG_DEFAULT.imageHeight
-    );
+    expect(getProp('meta-og:site_name')?.content).toBe(ENVIRONMENTS_DEFAULT.brand);
+    expect(getProp('meta-og:image')?.content).toBe(`${ENVIRONMENTS_DEFAULT.appHost}${META_CONFIG_OG_DEFAULT.image}`);
+    expect(getProp('meta-og:image:type')?.content).toBe(META_CONFIG_OG_DEFAULT.imageType);
+    expect(getProp('meta-og:image:width')?.content).toBe(META_CONFIG_OG_DEFAULT.imageWidth);
+    expect(getProp('meta-og:image:height')?.content).toBe(META_CONFIG_OG_DEFAULT.imageHeight);
   });
 });
