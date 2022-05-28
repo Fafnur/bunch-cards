@@ -1,4 +1,4 @@
-module.exports = {
+export default {
   displayName: 'card-common',
   globals: {
     'ts-jest': {
@@ -10,5 +10,5 @@ module.exports = {
   },
   moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx'],
   coverageDirectory: '../../../coverage/libs/card/common',
-  preset: '../../../jest.preset.ts',
+  preset: '../../../jest.preset.js',
 };

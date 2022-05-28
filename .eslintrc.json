@@ -39,7 +39,7 @@
             "leadingUnderscore": "allow",
             "trailingUnderscore": "allow",
             "filter": {
-              "regex": "^(ts-jest|.{6,}ts\\|mjs\\|js\\|html\\).*)$",
+              "regex": "^(ts-jest|\\^.*)$",
               "match": false
             }
           },
