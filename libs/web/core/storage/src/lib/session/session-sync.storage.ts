@@ -9,10 +9,6 @@ import { storageAvailable } from '../utils/storage.util';
 })
 export class SessionSyncStorage extends AbstractSyncStorage {
   constructor() {
-    super(
-      storageAvailable('sessionStorage')
-        ? window.sessionStorage
-        : new MemoryStorage()
-    );
+    super(storageAvailable('sessionStorage') ? window.sessionStorage : new MemoryStorage());
   }
 }

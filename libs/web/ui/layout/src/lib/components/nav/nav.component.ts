@@ -7,7 +7,7 @@ export function getLinks(paths: NavigationPaths): NavigationLink[] {
     {
       route: paths.dashboard,
       label: $localize`:Nav link|:Dashboard`,
-      icon: 'dashboard'
+      icon: 'dashboard',
     },
     {
       route: paths.learning,

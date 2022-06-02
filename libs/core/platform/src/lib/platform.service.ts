@@ -1,9 +1,4 @@
-import {
-  isPlatformBrowser,
-  isPlatformServer,
-  isPlatformWorkerApp,
-  isPlatformWorkerUi,
-} from '@angular/common';
+import { isPlatformBrowser, isPlatformServer, isPlatformWorkerApp, isPlatformWorkerUi } from '@angular/common';
 import { Inject, Injectable, PLATFORM_ID } from '@angular/core';
 
 @Injectable({

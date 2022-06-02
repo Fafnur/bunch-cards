@@ -8,6 +8,8 @@ export interface NavigationPaths {
   user: string;
   learning: string;
 
+  auth: string;
+
   // Errors
   serverError: string;
   notFound: string;
@@ -20,6 +22,8 @@ export const NAVIGATION_PATHS: NavigationPaths = {
   dictionary: 'dictionary',
   learning: 'learning',
   user: 'user',
+
+  auth: 'auth',
 
   serverError: 'server-error',
   notFound: 'not-found',

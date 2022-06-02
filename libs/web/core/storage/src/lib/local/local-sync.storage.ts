@@ -9,10 +9,6 @@ import { storageAvailable } from '../utils/storage.util';
 })
 export class LocalSyncStorage extends AbstractSyncStorage {
   constructor() {
-    super(
-      storageAvailable('localStorage')
-        ? window.localStorage
-        : new MemoryStorage()
-    );
+    super(storageAvailable('localStorage') ? window.localStorage : new MemoryStorage());
   }
 }

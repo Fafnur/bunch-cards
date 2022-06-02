@@ -36,8 +36,5 @@ export class MetaEffects {
     );
   });
 
-  constructor(
-    private readonly actions$: Actions,
-    private readonly metaService: MetaService
-  ) {}
+  constructor(private readonly actions$: Actions, private readonly metaService: MetaService) {}
 }
