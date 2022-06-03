@@ -150,5 +150,8 @@
   },
   "resolutions": {
     "rxjs": "~7.5.0"
+  },
+  "nativescript": {
+    "id": "com.bunchcards.app"
   }
 }
