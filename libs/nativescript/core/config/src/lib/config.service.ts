@@ -1,16 +1,11 @@
 import { Injectable } from '@angular/core';
+import { isAndroid, isIOS } from '@nativescript/core';
 
 export interface Config {
   googleClientId: string;
   googleUrlScheme: string;
   googleCallback: string;
 }
-
-export const CONFIG_DEFAULT: Config = {
-  googleClientId: '',
-  googleUrlScheme: '',
-  googleCallback: '',
-};
 
 @Injectable({
   providedIn: 'root',
@@ -19,10 +14,16 @@ export class ConfigService {
   readonly config: Config;
 
   constructor() {
+    let googleKey = isAndroid ? process.env['GOOGLE_KEY_ANDROID'] : isIOS ? process.env['GOOGLE_KEY_APPLE'] : '';
+
+    if (!googleKey) {
+      console.warn('Google OAUTH key is not found.');
+      googleKey = '';
+    }
     this.config = {
-      googleClientId: process.env['GOOGLE_CLIENT_ID'] ?? CONFIG_DEFAULT.googleClientId,
-      googleUrlScheme: process.env['GOOGLE_URL_SCHEME'] ?? CONFIG_DEFAULT.googleUrlScheme,
-      googleCallback: process.env['GOOGLE_CALLBACK_URL'] ?? CONFIG_DEFAULT.googleCallback,
+      googleClientId: `${googleKey}.apps.googleusercontent.com`,
+      googleUrlScheme: `com.googleusercontent.apps.${googleKey}`,
+      googleCallback: `com.googleusercontent.apps.${googleKey}:/auth`,
     };
   }
 

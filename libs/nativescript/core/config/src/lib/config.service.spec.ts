@@ -1,12 +1,12 @@
-import { Config } from './config.interface';
-import { ConfigService } from './config.service';
+import { Config, ConfigService } from './config.service';
 
 describe('ConfigService', () => {
   let service: ConfigService;
 
-  const configStub: Config = {
-    apiHost: '',
-    version: 'local',
+  const CONFIG_STUB: Config = {
+    googleClientId: `.apps.googleusercontent.com`,
+    googleUrlScheme: `com.googleusercontent.apps.`,
+    googleCallback: `com.googleusercontent.apps.:/auth`,
   };
 
   beforeEach(() => {
@@ -18,6 +18,6 @@ describe('ConfigService', () => {
   });
 
   it('should return config', () => {
-    expect(service.config).toEqual(configStub);
+    expect(service.config).toEqual(CONFIG_STUB);
   });
 });

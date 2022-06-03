@@ -51,3 +51,4 @@ package-lock.json
 /apps/**/sitemap.xml
 /apps/api-cards/src/assets/keys
 /libs/**/source.xlf
+/keys

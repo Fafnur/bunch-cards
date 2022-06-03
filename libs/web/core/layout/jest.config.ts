@@ -1,6 +1,5 @@
 export default {
   displayName: 'web-core-layout',
-
   setupFilesAfterEnv: ['<rootDir>/src/test-setup.ts'],
   globals: {
     'ts-jest': {
