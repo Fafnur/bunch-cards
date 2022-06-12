@@ -52,3 +52,4 @@ package-lock.json
 /apps/api-cards/src/assets/keys
 /libs/**/source.xlf
 /keys
+/platforms
