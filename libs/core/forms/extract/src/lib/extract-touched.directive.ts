@@ -13,10 +13,7 @@ export class ExtractTouchedDirective implements OnInit {
   @Input() control?: FormControl;
   @Input() children?: FormControl | FormControl[];
 
-  constructor(
-    private readonly changeDetectorRef: ChangeDetectorRef,
-    private readonly destroy$: DestroyService
-  ) {}
+  constructor(private readonly changeDetectorRef: ChangeDetectorRef, private readonly destroy$: DestroyService) {}
 
   ngOnInit(): void {
     if (this.control) {

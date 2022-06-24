@@ -12,10 +12,7 @@ export class NavigationService {
     return this.paths;
   }
 
-  getRoute(
-    navigationPath: string,
-    params: Record<string, string | number> = {}
-  ): (string | number)[] {
+  getRoute(navigationPath: string, params: Record<string, string | number> = {}): (string | number)[] {
     const segments = navigationPath.split('/').filter((value) => value?.length);
     const routeWithParams: (string | number)[] = ['/'];
 
@@ -35,10 +32,7 @@ export class NavigationService {
     return routeWithParams;
   }
 
-  getRoutePath(
-    navigationPath: string,
-    params?: Record<string, string | number>
-  ): string {
+  getRoutePath(navigationPath: string, params?: Record<string, string | number>): string {
     const route = this.getRoute(navigationPath, params);
 
     return route.length > 1 ? `/${route.slice(1).join('/')}` : `${route[0]}`;

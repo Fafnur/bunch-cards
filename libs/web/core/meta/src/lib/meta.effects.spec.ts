@@ -18,11 +18,7 @@ describe('MetaEffects', () => {
     metaServiceMock = mock(MetaService);
 
     TestBed.configureTestingModule({
-      providers: [
-        MetaEffects,
-        provideMockActions(() => actions$),
-        providerOf(MetaService, metaServiceMock),
-      ],
+      providers: [MetaEffects, provideMockActions(() => actions$), providerOf(MetaService, metaServiceMock)],
     });
 
     effects = TestBed.inject(MetaEffects);

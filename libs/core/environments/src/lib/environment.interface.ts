@@ -6,9 +6,7 @@ export interface Environments {
   appHost: string;
 }
 
-export const ENVIRONMENTS = new InjectionToken<Partial<Environments>>(
-  'ENVIRONMENTS'
-);
+export const ENVIRONMENTS = new InjectionToken<Partial<Environments>>('ENVIRONMENTS');
 
 export const ENVIRONMENTS_DEFAULT: Environments = {
   production: false,

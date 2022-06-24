@@ -33,6 +33,10 @@ const routes: Routes = [
       },
     ],
   },
+  {
+    path: NAVIGATION_PATHS.auth,
+    loadChildren: () => import('@bunch/nativescript/auth/page').then((modules) => modules.AuthPageModule),
+  },
 ];
 
 @NgModule({

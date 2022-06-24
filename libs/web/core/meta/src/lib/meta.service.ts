@@ -5,14 +5,7 @@ import { Router } from '@angular/router';
 
 import { EnvironmentService } from '@bunch/core/environments';
 
-import {
-  META_CONFIG,
-  META_CONFIG_DEFAULT,
-  META_CONFIG_OG,
-  META_CONFIG_OG_DEFAULT,
-  MetaConfig,
-  MetaConfigOg,
-} from './meta.interface';
+import { META_CONFIG, META_CONFIG_DEFAULT, META_CONFIG_OG, META_CONFIG_OG_DEFAULT, MetaConfig, MetaConfigOg } from './meta.interface';
 
 @Injectable({
   providedIn: 'root',
@@ -35,10 +28,7 @@ export class MetaService {
     this.metaConfigOg = metaConfigOg ?? META_CONFIG_OG_DEFAULT;
   }
 
-  update(
-    metaConfig?: Partial<MetaConfig>,
-    metaConfigOg?: Partial<MetaConfigOg>
-  ): void {
+  update(metaConfig?: Partial<MetaConfig>, metaConfigOg?: Partial<MetaConfigOg>): void {
     const environments = this.environmentService.getEnvironments();
     const config: MetaConfig = { ...this.metaConfig, ...metaConfig };
     const configOg: MetaConfigOg = { ...this.metaConfigOg, ...metaConfigOg };
@@ -46,32 +36,19 @@ export class MetaService {
     this.titleService.setTitle(`${config.title} | ${environments.brand}`);
     this.setMetaProperty('description', config.description);
     this.setMetaProperty('keywords', config.keywords);
-    this.setMetaProperty(
-      'og:title',
-      `${configOg.title ?? config.title} | ${environments.brand}`
-    );
-    this.setMetaProperty(
-      'og:description',
-      configOg.description ?? config.description
-    );
+    this.setMetaProperty('og:title', `${configOg.title ?? config.title} | ${environments.brand}`);
+    this.setMetaProperty('og:description', configOg.description ?? config.description);
     this.setMetaProperty('og:type', configOg.type);
     this.setMetaProperty('og:locale', configOg.locale ?? this.localeId);
-    this.setMetaProperty(
-      'og:site_name',
-      configOg.siteName ?? environments.brand
-    );
-    this.setMetaProperty(
-      'og:image',
-      `${environments.appHost}${configOg.image}`
-    );
+    this.setMetaProperty('og:site_name', configOg.siteName ?? environments.brand);
+    this.setMetaProperty('og:image', `${environments.appHost}${configOg.image}`);
     this.setMetaProperty('og:image:type', configOg.imageType);
     this.setMetaProperty('og:image:width', configOg.imageWidth);
     this.setMetaProperty('og:image:height', configOg.imageHeight);
   }
 
   private setCanonicalUrl(url?: string): void {
-    const link = (this.document.getElementById('canonical') ??
-      this.document.createElement('link')) as HTMLLinkElement;
+    const link = (this.document.getElementById('canonical') ?? this.document.createElement('link')) as HTMLLinkElement;
     link.setAttribute('rel', 'canonical');
     link.setAttribute('id', 'canonical');
     link.setAttribute('href', this.getCanonicalURL(url));
@@ -81,9 +58,7 @@ export class MetaService {
   }
 
   private getCanonicalURL(url?: string): string {
-    return `${this.environmentService.getEnvironments().appHost}${
-      url ?? this.router.url
-    }`;
+    return `${this.environmentService.getEnvironments().appHost}${url ?? this.router.url}`;
   }
 
   private setMetaProperty(name: string, content: string): void {
