@@ -53,3 +53,4 @@ package-lock.json
 /libs/**/source.xlf
 /keys
 /platforms
+/migrations.json
