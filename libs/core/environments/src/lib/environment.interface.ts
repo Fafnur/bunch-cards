@@ -10,6 +10,6 @@ export const ENVIRONMENTS = new InjectionToken<Partial<Environments>>('ENVIRONME
 
 export const ENVIRONMENTS_DEFAULT: Environments = {
   production: false,
-  brand: 'Bunch',
+  brand: 'Bunch Cards',
   appHost: 'http://localhost:4200',
 };

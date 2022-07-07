@@ -1,5 +1,5 @@
-@use '../../../../../../../../../node_modules/@angular/material/index' as mat;
-@use '../../../../../../stylesheets/mixins' as mixins;
+@use '@angular/material' as mat;
+@use 'libs/web/ui/stylesheets/mixins' as mixins;
 
 :host {
   @include mixins.media-web() {
