@@ -7,7 +7,6 @@
     "api-mail": "libs/api/mail",
     "api-passwords": "libs/api/passwords",
     "api-users": "libs/api/users",
-    "card-common": "libs/card/common",
     "core-api": "libs/core/api",
     "core-environments": "libs/core/environments",
     "core-forms-extract": "libs/core/forms/extract",
