@@ -45,7 +45,7 @@
       "groupByName": true
     }
   },
-  "defaultProject": "nativescript-cards",
+  "defaultProject": "web-cards",
   "$schema": "./node_modules/nx/schemas/nx-schema.json",
   "targetDefaults": {
     "build": {

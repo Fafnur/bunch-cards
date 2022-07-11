@@ -1,5 +1,6 @@
-@use '../../../../../../../../node_modules/@angular/material/index' as mat;
-@use '../../../../../stylesheets/mixins' as mixins;
+@use '@angular/material' as mat;
+@use 'libs/web/ui/stylesheets/mixins' as mixins;
+@use 'libs/web/ui/stylesheets/variables' as variables;
 
 a {
   display: flex;
@@ -24,22 +25,33 @@ a {
 svg {
   max-width: 3rem;
   width: 100%;
+
+  @include mixins.media-tablet() {
+    max-width: 4rem;
+  }
+
+  @include mixins.media-web() {
+    max-width: 3rem;
+  }
 }
 
 span {
-  padding-left: 0.5rem;
-  color: #d01931;
-  text-transform: uppercase;
-  font-size: 1.5rem;
+  padding-left: 1rem;
+  color: variables.$color-primary;
+  font-size: 1rem;
+  font-weight: 700;
+  font-family: Montserrat, 'Helvetica Neue', Helvetica, Arial, Lucida Grande, sans-serif;
 
   @include mixins.media-tablet() {
-    font-size: 0.9rem;
+    font-size: 1rem;
     padding-top: 0.5rem;
     padding-left: 0;
+    width: 60px;
+    text-align: center;
   }
 
   @include mixins.media-web() {
     padding-left: 0.5rem;
-    font-size: 2rem;
+    font-size: 1.5rem;
   }
 }
