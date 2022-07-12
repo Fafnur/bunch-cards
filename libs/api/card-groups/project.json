@@ -1,0 +1,22 @@
+{
+  "projectType": "library",
+  "sourceRoot": "libs/api/card-groups/src",
+  "prefix": "bunch",
+  "targets": {
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/libs/api/card-groups"],
+      "options": {
+        "jestConfig": "libs/api/card-groups/jest.config.ts",
+        "passWithNoTests": true
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": ["libs/api/card-groups/**/*.ts", "libs/api/card-groups/**/*.html"]
+      }
+    }
+  },
+  "tags": []
+}

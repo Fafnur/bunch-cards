@@ -3,6 +3,8 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
 
 import { AuthModule } from '@bunch/api/auth';
+import { CardModule } from '@bunch/api/card';
+import { CardGroupModule } from '@bunch/api/card-groups';
 import { MailModule } from '@bunch/api/mail';
 import { UserModule } from '@bunch/api/users';
 
@@ -23,6 +25,8 @@ import { configurationFactory, typeOrmFactory } from './config/config';
     MailModule,
     UserModule,
     AuthModule,
+    CardModule,
+    CardGroupModule,
   ],
   controllers: [AppController],
   providers: [],
