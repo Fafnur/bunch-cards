@@ -2,6 +2,7 @@
   "version": 2,
   "projects": {
     "api-auth": "libs/api/auth",
+    "api-card": "libs/api/card",
     "api-cards": "apps/api-cards",
     "api-forms": "libs/api/forms",
     "api-mail": "libs/api/mail",
