@@ -6,6 +6,7 @@
     "api-card-groups": "libs/api/card-groups",
     "api-cards": "apps/api-cards",
     "api-forms": "libs/api/forms",
+    "api-jwt-guards": "libs/api/jwt/guards",
     "api-mail": "libs/api/mail",
     "api-passwords": "libs/api/passwords",
     "api-users": "libs/api/users",

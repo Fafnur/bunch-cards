@@ -27,7 +27,7 @@ export class CardGroupEntity implements CardGroup {
   })
   cards!: Card[];
 
-  @Column({ nullable: true })
+  @Column({ nullable: true, length: 256 })
   cover!: string | null;
 
   @Column()

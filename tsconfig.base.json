@@ -19,6 +19,7 @@
       "@bunch/api/card": ["libs/api/card/src/index.ts"],
       "@bunch/api/card-groups": ["libs/api/card-groups/src/index.ts"],
       "@bunch/api/forms": ["libs/api/forms/src/index.ts"],
+      "@bunch/api/jwt/guards": ["libs/api/jwt/guards/src/index.ts"],
       "@bunch/api/mail": ["libs/api/mail/src/index.ts"],
       "@bunch/api/passwords": ["libs/api/passwords/src/index.ts"],
       "@bunch/api/users": ["libs/api/users/src/index.ts"],

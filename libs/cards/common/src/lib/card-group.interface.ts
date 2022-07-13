@@ -9,3 +9,8 @@ export interface CardGroup {
   updatedAt: string;
   owner: number;
 }
+
+export interface CardGroupCreate {
+  name: string;
+  cover?: string | null;
+}

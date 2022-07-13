@@ -15,9 +15,6 @@ export class CardEntity implements Card {
   @Column({ length: 60 })
   translation!: string;
 
-  // @Column({ nullable: true, type: 'array' })
-  // images!: string[];
-
   @Column({ nullable: true, length: 256 })
   cover!: string | null;
 

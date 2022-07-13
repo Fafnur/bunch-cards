@@ -1,0 +1,22 @@
+{
+  "projectType": "library",
+  "sourceRoot": "libs/api/jwt/guards/src",
+  "prefix": "bunch",
+  "targets": {
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/libs/api/jwt/guards"],
+      "options": {
+        "jestConfig": "libs/api/jwt/guards/jest.config.ts",
+        "passWithNoTests": true
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": ["libs/api/jwt/guards/**/*.ts", "libs/api/jwt/guards/**/*.html"]
+      }
+    }
+  },
+  "tags": []
+}
