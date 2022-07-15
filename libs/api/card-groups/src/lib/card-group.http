@@ -2,9 +2,22 @@
 POST http://localhost:3000/card-groups
 Content-Type: application/json
 Accept: application/json
-Authorization: BEARER eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjIsImlhdCI6MTY1NzY3MzY4MCwiZXhwIjoxNjU3Njc3MjgwfQ.C63aEiZDPDEyAC6oAPvbFosRgDVWDYzMDRNJNNVyrpc
+Authorization: BEARER eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjIsImlhdCI6MTY1Nzg0NjIyNywiZXhwIjoxNjU3ODQ5ODI3fQ.eM3noNQY27YqHdOJuJkCr8WSfyhQe4LtjhYU7m3_Azw
 
 {
   "name": "Simple Group",
   "cover": null
+}
+
+### Create Group Card
+POST http://localhost:3000/cards
+Content-Type: application/json
+Accept: application/json
+Authorization: BEARER eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjIsImlhdCI6MTY1Nzg0NjIyNywiZXhwIjoxNjU3ODQ5ODI3fQ.eM3noNQY27YqHdOJuJkCr8WSfyhQe4LtjhYU7m3_Azw
+
+{
+  "original": "Simple2",
+  "translation": "Пример2",
+  "cover": null,
+  "group": 1
 }

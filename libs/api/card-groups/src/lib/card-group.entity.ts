@@ -13,7 +13,11 @@ export class CardGroupEntity implements CardGroup {
   @Column()
   name!: string;
 
-  @ManyToMany(() => CardEntity)
+  @ManyToMany(() => CardEntity, {
+    cascade: true,
+    onUpdate: 'CASCADE',
+    onDelete: 'CASCADE',
+  })
   @JoinTable({
     name: 'cards_groups_cards',
     joinColumn: {

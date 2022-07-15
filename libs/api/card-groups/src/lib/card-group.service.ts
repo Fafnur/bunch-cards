@@ -17,6 +17,10 @@ export class CardGroupService {
     return await this.cardGroupRepository.findOneBy({ id });
   }
 
+  async findOneWithCards(id: number): Promise<CardGroupEntity | null> {
+    return await this.cardGroupRepository.findOne({ where: { id }, relations: ['cards'] });
+  }
+
   async create(cardGroup: CardGroupCreateForm): Promise<CardGroupEntity> {
     const newCardGroup = await this.cardGroupRepository.create(cardGroup);
 
@@ -25,5 +29,9 @@ export class CardGroupService {
 
   async update(id: number, data: Partial<CardGroupEntity>): Promise<void> {
     return await this.cardGroupRepository.update({ id }, data).then();
+  }
+
+  async save(cardGroup: CardGroupEntity): Promise<void> {
+    return await this.cardGroupRepository.save(cardGroup).then();
   }
 }
