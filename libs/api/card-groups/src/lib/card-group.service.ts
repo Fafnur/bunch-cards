@@ -9,16 +9,16 @@ import { CardGroupCreateForm } from './card-group-create.form';
 export class CardGroupService {
   constructor(@InjectRepository(CardGroupEntity) private readonly cardGroupRepository: Repository<CardGroupEntity>) {}
 
-  async find(): Promise<CardGroupEntity[]> {
-    return await this.cardGroupRepository.find();
+  async find(owner?: number): Promise<CardGroupEntity[]> {
+    return await this.cardGroupRepository.find({ where: { owner }, relations: ['cards'] });
   }
 
   async findOne(id: number): Promise<CardGroupEntity | null> {
     return await this.cardGroupRepository.findOneBy({ id });
   }
 
-  async findOneWithCards(id: number): Promise<CardGroupEntity | null> {
-    return await this.cardGroupRepository.findOne({ where: { id }, relations: ['cards'] });
+  async findOneWithCards(id: number, owner?: number): Promise<CardGroupEntity | null> {
+    return await this.cardGroupRepository.findOne({ where: { id, owner }, relations: ['cards'] });
   }
 
   async create(cardGroup: CardGroupCreateForm): Promise<CardGroupEntity> {

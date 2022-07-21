@@ -11,8 +11,8 @@ import { CardCreateForm } from './card-create.form';
 export class CardService {
   constructor(@InjectRepository(CardEntity) private readonly cardRepository: Repository<CardEntity>) {}
 
-  async find(): Promise<CardEntity[]> {
-    return await this.cardRepository.find();
+  async find(owner?: number): Promise<CardEntity[]> {
+    return await this.cardRepository.find({ where: { owner }});
   }
 
   async findOne(id: number): Promise<CardEntity | null> {

@@ -1,8 +1,9 @@
-import { Body, Controller, Get, Post, Request, UseGuards, UsePipes, ValidationPipe } from '@nestjs/common';
+import { Body, Controller, Get, Param, Post, Request, UseGuards, UsePipes, ValidationPipe } from '@nestjs/common';
 
 import { CardCreateForm, CardEntity, CardService } from '@bunch/api/card';
 import { formExceptionFactory } from '@bunch/api/forms';
 import { JwtAuthGuard } from '@bunch/api/jwt/guards';
+import { Card, CardGroup } from '@bunch/cards/common';
 import { UserJwtCredentials } from '@bunch/users/common';
 
 import { CardGroupEntity } from './card-group.entity';
@@ -44,5 +45,20 @@ export class CardGroupController {
     }
 
     return card;
+  }
+
+  @Get('cards')
+  async loadCards(@Request() req: { user: UserJwtCredentials }): Promise<Card[]> {
+    return await this.cardService.find(req.user.userId);
+  }
+
+  @Get('groups')
+  async loadGroups(@Request() req: { user: UserJwtCredentials }): Promise<CardGroup[]> {
+    return await this.cardGroupService.find(req.user.userId);
+  }
+
+  @Get('groups/:id')
+  async loadGroup(@Request() req: { user: UserJwtCredentials }, @Param() params: { id: string }): Promise<CardGroup | null> {
+    return await this.cardGroupService.findOneWithCards(+params.id, req.user.userId);
   }
 }
