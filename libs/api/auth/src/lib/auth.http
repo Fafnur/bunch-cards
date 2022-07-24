@@ -4,7 +4,7 @@ Content-Type: application/json
 Accept: application/json
 
 {
-  "username": "admin",
+  "username": "fafnur@yandex.ru",
   "password": "123456"
 }
 

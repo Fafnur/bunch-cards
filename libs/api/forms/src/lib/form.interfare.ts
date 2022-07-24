@@ -12,6 +12,8 @@ export enum FormErrorType {
   IsMin = 'isMin',
   IsMax = 'isMax',
   IsInt = 'isInt',
+  IsString = 'isString',
+  IsArray = 'IsArray',
 
   // Server unknown
   IsServer = 'isServer',

@@ -34,13 +34,13 @@ export class UserEntity implements User {
   @Column({ nullable: true })
   reset!: string | null;
 
-  @Column({ nullable: true })
+  @Column({ nullable: true, name: 'reset_at' })
   resetAt!: string | null;
 
   @Column({ nullable: true })
   confirm!: string | null;
 
-  @Column({ nullable: true })
+  @Column({ nullable: true, name: 'confirm_at' })
   confirmAt!: string | null;
 
   @Column({ length: 60 })
