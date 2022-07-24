@@ -1,0 +1,22 @@
+{
+  "projectType": "library",
+  "sourceRoot": "libs/groups/common/src",
+  "prefix": "bunch",
+  "targets": {
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/libs/groups/common"],
+      "options": {
+        "jestConfig": "libs/groups/common/jest.config.ts",
+        "passWithNoTests": true
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": ["libs/groups/common/**/*.ts", "libs/groups/common/**/*.html"]
+      }
+    }
+  },
+  "tags": []
+}

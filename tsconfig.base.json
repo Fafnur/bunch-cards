@@ -34,6 +34,7 @@
       "@bunch/core/utils/destroy": ["libs/core/utils/destroy/src/index.ts"],
       "@bunch/core/utils/operators": ["libs/core/utils/operators/src/index.ts"],
       "@bunch/core/utils/types": ["libs/core/utils/types/src/index.ts"],
+      "@bunch/groups/common": ["libs/groups/common/src/index.ts"],
       "@bunch/nativescript/auth/page": ["libs/nativescript/auth/page/src/index.ts"],
       "@bunch/nativescript/auth/providers": ["libs/nativescript/auth/providers/src/index.ts"],
       "@bunch/nativescript/auth/service": ["libs/nativescript/auth/service/src/index.ts"],

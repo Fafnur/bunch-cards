@@ -1,12 +1,13 @@
 import { Column, CreateDateColumn, Entity, JoinTable, ManyToMany, PrimaryGeneratedColumn, UpdateDateColumn } from 'typeorm';
 
 import { CardEntity } from '@bunch/api/card';
-import { Card, CardGroup } from '@bunch/cards/common';
+import { Card } from '@bunch/cards/common';
+import { Group } from '@bunch/groups/common';
 
 @Entity({
   name: 'groups',
 })
-export class CardGroupEntity implements CardGroup {
+export class GroupEntity implements Group {
   @PrimaryGeneratedColumn()
   id!: number;
 

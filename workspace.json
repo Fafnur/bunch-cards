@@ -21,6 +21,7 @@
     "core-utils-destroy": "libs/core/utils/destroy",
     "core-utils-operators": "libs/core/utils/operators",
     "core-utils-types": "libs/core/utils/types",
+    "groups-common": "libs/groups/common",
     "nativescript-auth-page": "libs/nativescript/auth/page",
     "nativescript-auth-providers": "libs/nativescript/auth/providers",
     "nativescript-auth-service": "libs/nativescript/auth/service",

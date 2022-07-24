@@ -1,6 +1,6 @@
-import { Card } from './card.interface';
+import { Card } from '@bunch/cards/common';
 
-export interface CardGroup {
+export interface Group {
   id: number;
   name: string;
   cards: Card[];
@@ -10,7 +10,9 @@ export interface CardGroup {
   owner: number;
 }
 
-export interface CardGroupCreate {
+export interface GroupCreate {
   name: string;
   cover?: string | null;
 }
+
+export type GroupChange = Partial<GroupCreate>;

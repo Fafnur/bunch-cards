@@ -1,2 +1,2 @@
-export * from './lib/card-group.entity';
-export * from './lib/card-group.module';
+export * from './lib/group.entity';
+export * from './lib/group.module';

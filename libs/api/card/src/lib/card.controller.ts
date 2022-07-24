@@ -28,7 +28,7 @@ import { CardService } from './card.service';
 @UseGuards(JwtAuthGuard)
 @Controller()
 export class CardController {
-  constructor(private readonly cardService: CardService, private readonly eventEmitter: EventEmitter2) {}
+  constructor(private readonly service: CardService, private readonly eventEmitter: EventEmitter2) {}
 
   @Post()
   @UsePipes(
@@ -37,8 +37,8 @@ export class CardController {
       exceptionFactory: (validationErrors) => formExceptionFactory(validationErrors),
     })
   )
-  async createCard(@Request() req: { user: UserJwtCredentials }, @Body() form: CardCreateForm): Promise<CardEntity> {
-    const card = await this.cardService.create({ ...form, owner: req.user.userId });
+  async create(@Request() req: { user: UserJwtCredentials }, @Body() form: CardCreateForm): Promise<CardEntity> {
+    const card = await this.service.create({ ...form, owner: req.user.userId });
 
     this.eventEmitter.emit(CardEvents.Created, { card, payload: form });
 
@@ -52,34 +52,34 @@ export class CardController {
       exceptionFactory: (validationErrors) => formExceptionFactory(validationErrors),
     })
   )
-  async changeCard(
+  async change(
     @Request() req: { user: UserJwtCredentials },
     @Param() params: { id: number },
     @Body() form: CardChangeForm
   ): Promise<CardEntity> {
-    let card = await this.cardService.findOne(+params.id);
+    let card = await this.service.findOne(+params.id);
     if (!card) {
-      throw new BadRequestException(`Card #{params.id} not found`);
+      throw new BadRequestException(`Card #${params.id} not found`);
     }
 
-    await this.cardService.update(+params.id, form);
-    card = (await this.cardService.findOne(+params.id)) as CardEntity;
+    await this.service.update(+params.id, form);
+    card = (await this.service.findOne(+params.id)) as CardEntity;
 
     return card;
   }
 
   @Delete(':id')
-  async deleteCard(@Request() req: { user: UserJwtCredentials }, @Param() params: { id: number }): Promise<void> {
-    const card = await this.cardService.findOne(+params.id);
+  async delete(@Request() req: { user: UserJwtCredentials }, @Param() params: { id: number }): Promise<void> {
+    const card = await this.service.findOne(+params.id);
     if (!card) {
-      throw new BadRequestException(`Card #{params.id} not found`);
+      throw new BadRequestException(`Card #${params.id} not found`);
     }
 
-    return await this.cardService.delete(+params.id);
+    return await this.service.delete(+params.id);
   }
 
   @Get()
-  async loadCards(@Request() req: { user: UserJwtCredentials }): Promise<Card[]> {
-    return await this.cardService.find(req.user.userId);
+  async load(@Request() req: { user: UserJwtCredentials }): Promise<Card[]> {
+    return await this.service.find(req.user.userId);
   }
 }

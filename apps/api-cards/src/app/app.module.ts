@@ -7,7 +7,7 @@ import { AuthModule } from '@bunch/api/auth';
 import { CardModule } from '@bunch/api/card';
 import { MailModule } from '@bunch/api/mail';
 import { UserModule } from '@bunch/api/users';
-import { CardGroupModule } from '@bunch/api-groups';
+import { GroupModule } from '@bunch/api-groups';
 
 import { AppController } from './app.controller';
 import { configurationFactory, typeOrmFactory } from './config/config';
@@ -23,12 +23,12 @@ import { configurationFactory, typeOrmFactory } from './config/config';
       useFactory: typeOrmFactory,
       inject: [ConfigService],
     }),
+    EventEmitterModule.forRoot(),
     MailModule,
     UserModule,
     AuthModule,
     CardModule,
-    CardGroupModule,
-    EventEmitterModule.forRoot(),
+    GroupModule,
   ],
   controllers: [AppController],
   providers: [],

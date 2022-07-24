@@ -1,9 +1,9 @@
 import { IsInt, IsNotEmpty, IsOptional, IsString, Length } from 'class-validator';
 
 import { FormErrorType } from '@bunch/api/forms';
-import { CardGroupCreate } from '@bunch/cards/common';
+import { GroupChange, GroupCreate } from '@bunch/groups/common';
 
-export class CardGroupCreateForm implements CardGroupCreate {
+export class GroupCreateForm implements GroupCreate {
   @IsNotEmpty({
     context: { errorCode: FormErrorType.IsNotEmpty },
   })
@@ -26,4 +26,21 @@ export class CardGroupCreateForm implements CardGroupCreate {
   })
   @IsOptional()
   owner?: number;
+}
+
+export class GroupChangeForm implements GroupChange {
+  @Length(1, 60, {
+    context: { errorCode: 'isLength' },
+  })
+  @IsOptional()
+  name!: string;
+
+  @IsString({
+    context: { errorCode: FormErrorType.IsString },
+  })
+  @Length(1, 256, {
+    context: { errorCode: FormErrorType.IsLength },
+  })
+  @IsOptional()
+  cover!: string;
 }
