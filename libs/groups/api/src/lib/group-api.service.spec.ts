@@ -47,10 +47,10 @@ describe('GroupApiService', () => {
     expect(service.change(GROUP_STUB.id, GROUP_CHANGE_STUB)).toBeObservable(result);
   });
 
-  it('should call delete()', () => {
+  it('should call remove()', () => {
     const result = hot('a', { a: null });
     when(apiServiceMock.delete(GROUP_API_ROUTES.change(GROUP_STUB.id))).thenReturn(result);
 
-    expect(service.delete(GROUP_STUB.id)).toBeObservable(result);
+    expect(service.remove(GROUP_STUB.id)).toBeObservable(result);
   });
 });

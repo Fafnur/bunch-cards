@@ -1,6 +1,6 @@
-import { Group, GroupCreate } from './group.interface';
+import { GroupCreate, GroupDto } from './group.interface';
 
-export const GROUP_STUB: Group = {
+export const GROUP_STUB: GroupDto = {
   id: 1,
   name: 'Simple Group',
   cards: [],
@@ -10,7 +10,7 @@ export const GROUP_STUB: Group = {
   owner: 1,
 };
 
-export const GROUPS_STUB: Group[] = [GROUP_STUB];
+export const GROUPS_STUB: GroupDto[] = [GROUP_STUB];
 
 export const GROUP_CREATE_STUB: GroupCreate = {
   name: 'Simple Group New',

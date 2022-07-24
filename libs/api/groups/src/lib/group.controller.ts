@@ -15,10 +15,9 @@ import {
 
 import { formExceptionFactory } from '@bunch/api/forms';
 import { JwtAuthGuard } from '@bunch/api/jwt/guards';
-import { Group } from '@bunch/groups/common';
+import { GroupDto } from '@bunch/groups/common';
 import { UserJwtCredentials } from '@bunch/users/common';
 
-import { GroupEntity } from './group.entity';
 import { GroupChangeForm, GroupCreateForm } from './group.form';
 import { GroupService } from './group.service';
 
@@ -34,7 +33,7 @@ export class GroupController {
       exceptionFactory: (validationErrors) => formExceptionFactory(validationErrors),
     })
   )
-  async create(@Request() req: { user: UserJwtCredentials }, @Body() form: GroupCreateForm): Promise<GroupEntity> {
+  async create(@Request() req: { user: UserJwtCredentials }, @Body() form: GroupCreateForm): Promise<GroupDto> {
     return this.service.create({ ...form, owner: req.user.userId });
   }
 
@@ -49,25 +48,25 @@ export class GroupController {
     @Request() req: { user: UserJwtCredentials },
     @Param() params: { id: number },
     @Body() form: GroupChangeForm
-  ): Promise<GroupEntity> {
+  ): Promise<GroupDto> {
     let group = await this.service.findOne(+params.id);
     if (!group) {
       throw new BadRequestException(`Group #${params.id} not found`);
     }
 
     await this.service.update(+params.id, form);
-    group = (await this.service.findOne(+params.id)) as GroupEntity;
+    group = (await this.service.findOne(+params.id)) as GroupDto;
 
     return group;
   }
 
   @Get()
-  async load(@Request() req: { user: UserJwtCredentials }): Promise<Group[]> {
+  async load(@Request() req: { user: UserJwtCredentials }): Promise<GroupDto[]> {
     return await this.service.find(req.user.userId);
   }
 
   @Get(':id')
-  async loadGroup(@Request() req: { user: UserJwtCredentials }, @Param() params: { id: number }): Promise<Group | null> {
+  async loadGroup(@Request() req: { user: UserJwtCredentials }, @Param() params: { id: number }): Promise<GroupDto | null> {
     return await this.service.findOneWithCards(+params.id, req.user.userId);
   }
 

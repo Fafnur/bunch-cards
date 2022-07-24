@@ -2,12 +2,12 @@ import { Column, CreateDateColumn, Entity, JoinTable, ManyToMany, PrimaryGenerat
 
 import { CardEntity } from '@bunch/api/card';
 import { Card } from '@bunch/cards/common';
-import { Group } from '@bunch/groups/common';
+import { GroupDto } from '@bunch/groups/common';
 
 @Entity({
   name: 'groups',
 })
-export class GroupEntity implements Group {
+export class GroupEntity implements GroupDto {
   @PrimaryGeneratedColumn()
   id!: number;
 
