@@ -1,23 +1,10 @@
 ### Create Group
-POST http://localhost:3000/card-groups
+POST http://localhost:3000/groups
 Content-Type: application/json
 Accept: application/json
-Authorization: BEARER eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjIsImlhdCI6MTY1Nzg0NjIyNywiZXhwIjoxNjU3ODQ5ODI3fQ.eM3noNQY27YqHdOJuJkCr8WSfyhQe4LtjhYU7m3_Azw
+Authorization: BEARER eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjIsImlhdCI6MTY1ODY0MTU5OCwiZXhwIjoxNjU4NjQ1MTk4fQ.n8lrB0AQx1Rwz7t51OBQ1ehavJrOkNYYgq9148FV6FE
 
 {
-  "name": "Simple Group",
+  "name": "Noob",
   "cover": null
-}
-
-### Create Group Card
-POST http://localhost:3000/cards
-Content-Type: application/json
-Accept: application/json
-Authorization: BEARER eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjIsImlhdCI6MTY1Nzg0NjIyNywiZXhwIjoxNjU3ODQ5ODI3fQ.eM3noNQY27YqHdOJuJkCr8WSfyhQe4LtjhYU7m3_Azw
-
-{
-  "original": "Simple2",
-  "translation": "Пример2",
-  "cover": null,
-  "group": 1
 }

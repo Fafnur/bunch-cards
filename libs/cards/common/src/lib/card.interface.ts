@@ -14,4 +14,7 @@ export interface CardCreate {
   translation: string;
   images?: string[];
   cover?: string | null;
+  group?: number;
 }
+
+export type CardChange = Partial<CardCreate>;

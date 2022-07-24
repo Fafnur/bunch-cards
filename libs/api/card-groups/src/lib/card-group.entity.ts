@@ -4,7 +4,7 @@ import { CardEntity } from '@bunch/api/card';
 import { Card, CardGroup } from '@bunch/cards/common';
 
 @Entity({
-  name: 'cards_groups',
+  name: 'groups',
 })
 export class CardGroupEntity implements CardGroup {
   @PrimaryGeneratedColumn()
@@ -19,9 +19,9 @@ export class CardGroupEntity implements CardGroup {
     onDelete: 'CASCADE',
   })
   @JoinTable({
-    name: 'cards_groups_cards',
+    name: 'cards_groups',
     joinColumn: {
-      name: 'card_group_id',
+      name: 'group_id',
       referencedColumnName: 'id',
     },
     inverseJoinColumn: {

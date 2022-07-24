@@ -1,15 +1,11 @@
-### Login
-POST http://localhost:3000/auth/login
+### Create card with group
+POST http://localhost:3000/cards
 Content-Type: application/json
 Accept: application/json
+Authorization: BEARER eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjIsImlhdCI6MTY1ODY0MTU5OCwiZXhwIjoxNjU4NjQ1MTk4fQ.n8lrB0AQx1Rwz7t51OBQ1ehavJrOkNYYgq9148FV6FE
 
 {
-  "username": "admin",
-  "password": "123456"
+  "original": "Monkey",
+  "translation": "Обезьяна",
+  "group": 2
 }
-
-### Get user profile
-GET http://localhost:3000/user/profile
-Content-Type: application/json
-Accept: application/json
-Authorization: BEARER eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwidXNlcklkIjozLCJpYXQiOjE2MzA1NDk2MzYsImV4cCI6MTYzMDU1MzIzNn0.a8k4iBQ6p5VJ-ICFVWEiFin49qZoGGrKaAR1MGc9MyQ

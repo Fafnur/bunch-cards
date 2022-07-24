@@ -1,5 +1,6 @@
 import { Module } from '@nestjs/common';
 import { ConfigModule, ConfigService } from '@nestjs/config';
+import { EventEmitterModule } from '@nestjs/event-emitter';
 import { TypeOrmModule } from '@nestjs/typeorm';
 
 import { AuthModule } from '@bunch/api/auth';
@@ -27,6 +28,7 @@ import { configurationFactory, typeOrmFactory } from './config/config';
     AuthModule,
     CardModule,
     CardGroupModule,
+    EventEmitterModule.forRoot(),
   ],
   controllers: [AppController],
   providers: [],

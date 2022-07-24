@@ -5,12 +5,13 @@ import { CardModule } from '@bunch/api/card';
 
 import { CardGroupController } from './card-group.controller';
 import { CardGroupEntity } from './card-group.entity';
+import { CardGroupListener } from './card-group.listener';
 import { CardGroupService } from './card-group.service';
 
 @Module({
   controllers: [CardGroupController],
   imports: [TypeOrmModule.forFeature([CardGroupEntity]), CardModule],
-  providers: [CardGroupService],
+  providers: [CardGroupService, CardGroupListener],
   exports: [CardGroupService],
 })
 export class CardGroupModule {}
