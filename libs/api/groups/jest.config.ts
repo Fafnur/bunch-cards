@@ -1,6 +1,6 @@
 /* eslint-disable */
 export default {
-  displayName: 'api-card-groups',
+  displayName: 'api-groups',
   preset: '../../../jest.preset.js',
   setupFilesAfterEnv: ['<rootDir>/src/test-setup.ts'],
   globals: {
@@ -9,7 +9,7 @@ export default {
       stringifyContentPathRegex: '\\.(html|svg)$',
     },
   },
-  coverageDirectory: '../../../coverage/libs/api/card-groups',
+  coverageDirectory: '../../../coverage/libs/api/groups',
   transform: {
     '^.+\\.(ts|mjs|js|html)$': 'jest-preset-angular',
   },

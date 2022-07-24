@@ -1,7 +1,7 @@
-# api-card-groups
+# api-groups
 
 This library was generated with [Nx](https://nx.dev).
 
 ## Running unit tests
 
-Run `nx test api-card-groups` to execute the unit tests.
+Run `nx test api-groups` to execute the unit tests.

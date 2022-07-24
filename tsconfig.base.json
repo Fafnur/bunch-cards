@@ -15,9 +15,9 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
+      "@bunch/api-groups": ["libs/api/groups/src/index.ts"],
       "@bunch/api/auth": ["libs/api/auth/src/index.ts"],
       "@bunch/api/card": ["libs/api/card/src/index.ts"],
-      "@bunch/api/card-groups": ["libs/api/card-groups/src/index.ts"],
       "@bunch/api/forms": ["libs/api/forms/src/index.ts"],
       "@bunch/api/jwt/guards": ["libs/api/jwt/guards/src/index.ts"],
       "@bunch/api/mail": ["libs/api/mail/src/index.ts"],

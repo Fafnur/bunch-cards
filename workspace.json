@@ -3,9 +3,9 @@
   "projects": {
     "api-auth": "libs/api/auth",
     "api-card": "libs/api/card",
-    "api-card-groups": "libs/api/card-groups",
     "api-cards": "apps/api-cards",
     "api-forms": "libs/api/forms",
+    "api-groups": "libs/api/groups",
     "api-jwt-guards": "libs/api/jwt/guards",
     "api-mail": "libs/api/mail",
     "api-passwords": "libs/api/passwords",
