@@ -33,7 +33,7 @@ export const createFailure = createAction('[Group] Create Failure', props<{ erro
 
 // Change
 
-export const change = createAction('[Group] Change', props<{ id: number; groupCreate: GroupChange }>());
+export const change = createAction('[Group] Change', props<{ id: number; groupChange: GroupChange }>());
 
 export const changeSuccess = createAction('[Group] Change Success', props<{ group: Group }>());
 

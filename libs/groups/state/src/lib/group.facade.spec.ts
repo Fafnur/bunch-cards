@@ -46,7 +46,7 @@ describe('GroupFacade', () => {
      * The initially generated facade::loadAll() returns empty array
      */
     it('loadAll() should return empty list with loaded == true', async () => {
-      let list = await readFirst(facade.allGroup$);
+      let list = await readFirst(facade.groups$);
       let isLoaded = await readFirst(facade.loaded$);
 
       expect(list.length).toBe(0);
@@ -54,7 +54,7 @@ describe('GroupFacade', () => {
 
       facade.init();
 
-      list = await readFirst(facade.allGroup$);
+      list = await readFirst(facade.groups$);
       isLoaded = await readFirst(facade.loaded$);
 
       expect(list.length).toBe(0);
@@ -65,7 +65,7 @@ describe('GroupFacade', () => {
      * Use `loadGroupSuccess` to manually update list
      */
     it('allGroup$ should return the loaded list; and loaded flag == true', async () => {
-      let list = await readFirst(facade.allGroup$);
+      let list = await readFirst(facade.groups$);
       let isLoaded = await readFirst(facade.loaded$);
 
       expect(list.length).toBe(0);
@@ -77,7 +77,7 @@ describe('GroupFacade', () => {
         })
       );
 
-      list = await readFirst(facade.allGroup$);
+      list = await readFirst(facade.groups$);
       isLoaded = await readFirst(facade.loaded$);
 
       expect(list.length).toBe(2);

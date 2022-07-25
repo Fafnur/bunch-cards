@@ -26,7 +26,7 @@ describe('Group Selectors', () => {
 
   describe('Group Selectors', () => {
     it('getAllGroup() should return the list of Group', () => {
-      const results = GroupSelectors.getAllGroup(state);
+      const results = GroupSelectors.selectGroups(state);
       const selId = getGroupId(results[1]);
 
       expect(results.length).toBe(3);
@@ -34,14 +34,14 @@ describe('Group Selectors', () => {
     });
 
     it('getSelected() should return the selected Entity', () => {
-      const result = GroupSelectors.getSelected(state) as GroupEntity;
+      const result = GroupSelectors.selectSelected(state) as GroupEntity;
       const selId = getGroupId(result);
 
       expect(selId).toBe('PRODUCT-BBB');
     });
 
     it('getGroupLoaded() should return the current "loaded" status', () => {
-      const result = GroupSelectors.getGroupLoaded(state);
+      const result = GroupSelectors.selectLoaded(state);
 
       expect(result).toBe(true);
     });

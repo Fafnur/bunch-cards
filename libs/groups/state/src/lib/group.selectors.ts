@@ -2,20 +2,18 @@ import { createFeatureSelector, createSelector } from '@ngrx/store';
 
 import { GROUP_FEATURE_KEY, groupAdapter, GroupState } from './group.reducer';
 
-export const getGroupState = createFeatureSelector<GroupState>(GROUP_FEATURE_KEY);
+const selectGroupState = createFeatureSelector<GroupState>(GROUP_FEATURE_KEY);
 
 const { selectAll, selectEntities } = groupAdapter.getSelectors();
 
-export const getGroupLoaded = createSelector(getGroupState, (state: GroupState) => state.loaded);
+export const selectLoaded = createSelector(selectGroupState, (state) => state.loaded);
 
-export const getGroupError = createSelector(getGroupState, (state: GroupState) => state.error);
+export const selectGroups = createSelector(selectGroupState, (state) => selectAll(state));
 
-export const getAllGroup = createSelector(getGroupState, (state: GroupState) => selectAll(state));
+export const selectGroupEntities = createSelector(selectGroupState, (state) => selectEntities(state));
 
-export const getGroupEntities = createSelector(getGroupState, (state: GroupState) => selectEntities(state));
+export const selectSelectedId = createSelector(selectGroupState, (state) => state.selectedId);
 
-export const getSelectedId = createSelector(getGroupState, (state: GroupState) => state.selectedId);
-
-export const getSelected = createSelector(getGroupEntities, getSelectedId, (entities, selectedId) =>
-  selectedId ? entities[selectedId] : undefined
+export const selectSelected = createSelector(selectGroupEntities, selectSelectedId, (entities, selectedId) =>
+  selectedId ? entities[selectedId] : null
 );

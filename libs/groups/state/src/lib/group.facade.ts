@@ -6,9 +6,11 @@ import * as GroupSelectors from './group.selectors';
 
 @Injectable()
 export class GroupFacade {
-  loaded$ = this.store.select(GroupSelectors.getGroupLoaded);
-  allGroup$ = this.store.select(GroupSelectors.getAllGroup);
-  selectedGroup$ = this.store.select(GroupSelectors.getSelected);
+  loaded$ = this.store.select(GroupSelectors.selectLoaded);
+
+  groups$ = this.store.select(GroupSelectors.selectGroups);
+
+  selectedGroup$ = this.store.select(GroupSelectors.selectSelected);
 
   constructor(private readonly store: Store) {}
 
