@@ -11,8 +11,8 @@ export class GroupListener {
 
   @OnEvent(CardEvents.Created)
   async handleCardCreatedEvent(event: CardCreatedEvent) {
-    if (event.payload.group) {
-      const group = await this.groupService.findOneWithCards(event.payload.group);
+    if (event.payload.groupUuid) {
+      const group = await this.groupService.findOneWithCards(event.payload.groupUuid);
       if (group) {
         group.cards = [...(group.cards ?? []), event.card];
         await this.groupService.save(group);

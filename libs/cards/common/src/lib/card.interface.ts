@@ -2,7 +2,6 @@ export interface Card {
   id: number;
   original: string;
   translation: string;
-  // images: string[];
   cover: string | null;
   createdAt: string;
   updatedAt: string;
@@ -14,7 +13,7 @@ export interface CardCreate {
   translation: string;
   images?: string[];
   cover?: string | null;
-  group?: number;
+  groupUuid?: string;
 }
 
 export type CardChange = Partial<CardCreate>;

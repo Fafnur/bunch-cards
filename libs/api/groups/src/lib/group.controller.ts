@@ -37,7 +37,7 @@ export class GroupController {
     return this.service.create({ ...form, owner: req.user.userId });
   }
 
-  @Patch(':id')
+  @Patch(':uuid')
   @UsePipes(
     new ValidationPipe({
       transform: true,
@@ -46,16 +46,16 @@ export class GroupController {
   )
   async change(
     @Request() req: { user: UserJwtCredentials },
-    @Param() params: { id: number },
+    @Param() params: { uuid: string },
     @Body() form: GroupChangeForm
   ): Promise<GroupDto> {
-    let group = await this.service.findOne(+params.id);
+    let group = (await this.service.findOne(params.uuid)) as GroupDto;
     if (!group) {
-      throw new BadRequestException(`Group #${params.id} not found`);
+      throw new BadRequestException(`Group #${params.uuid} not found`);
     }
 
-    await this.service.update(+params.id, form);
-    group = (await this.service.findOne(+params.id)) as GroupDto;
+    await this.service.update(params.uuid, form);
+    group = (await this.service.findOne(params.uuid)) as GroupDto;
 
     return group;
   }
@@ -65,18 +65,18 @@ export class GroupController {
     return await this.service.find(req.user.userId);
   }
 
-  @Get(':id')
-  async loadGroup(@Request() req: { user: UserJwtCredentials }, @Param() params: { id: number }): Promise<GroupDto | null> {
-    return await this.service.findOneWithCards(+params.id, req.user.userId);
+  @Get(':uuid')
+  async loadGroup(@Request() req: { user: UserJwtCredentials }, @Param() params: { uuid: string }): Promise<GroupDto | null> {
+    return await this.service.findOneWithCards(params.uuid, req.user.userId);
   }
 
-  @Delete(':id')
-  async delete(@Request() req: { user: UserJwtCredentials }, @Param() params: { id: number }): Promise<void> {
-    const group = await this.service.findOne(+params.id);
+  @Delete(':uuid')
+  async delete(@Request() req: { user: UserJwtCredentials }, @Param() params: { uuid: string }): Promise<void> {
+    const group = await this.service.findOne(params.uuid);
     if (!group) {
-      throw new BadRequestException(`Group #${params.id} not found`);
+      throw new BadRequestException(`Group #${params.uuid} not found`);
     }
 
-    return await this.service.delete(+params.id);
+    return await this.service.delete(params.uuid);
   }
 }

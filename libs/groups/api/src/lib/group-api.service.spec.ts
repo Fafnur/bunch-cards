@@ -28,9 +28,9 @@ describe('GroupApiService', () => {
 
   it('should call loadOne()', () => {
     const result = hot('a', { a: GROUP_STUB });
-    when(apiServiceMock.get(GROUP_API_ROUTES.loadOne(GROUP_STUB.id))).thenReturn(result);
+    when(apiServiceMock.get(GROUP_API_ROUTES.loadOne(GROUP_STUB.uuid))).thenReturn(result);
 
-    expect(service.loadOne(GROUP_STUB.id)).toBeObservable(result);
+    expect(service.loadOne(GROUP_STUB.uuid)).toBeObservable(result);
   });
 
   it('should call create()', () => {
@@ -42,15 +42,15 @@ describe('GroupApiService', () => {
 
   it('should call change()', () => {
     const result = hot('a', { a: GROUP_STUB });
-    when(apiServiceMock.patch(GROUP_API_ROUTES.change(GROUP_STUB.id), deepEqual(GROUP_CHANGE_STUB))).thenReturn(result);
+    when(apiServiceMock.patch(GROUP_API_ROUTES.change(GROUP_STUB.uuid), deepEqual(GROUP_CHANGE_STUB))).thenReturn(result);
 
-    expect(service.change(GROUP_STUB.id, GROUP_CHANGE_STUB)).toBeObservable(result);
+    expect(service.change(GROUP_STUB.uuid, GROUP_CHANGE_STUB)).toBeObservable(result);
   });
 
   it('should call remove()', () => {
     const result = hot('a', { a: null });
-    when(apiServiceMock.delete(GROUP_API_ROUTES.change(GROUP_STUB.id))).thenReturn(result);
+    when(apiServiceMock.delete(GROUP_API_ROUTES.change(GROUP_STUB.uuid))).thenReturn(result);
 
-    expect(service.remove(GROUP_STUB.id)).toBeObservable(result);
+    expect(service.remove(GROUP_STUB.uuid)).toBeObservable(result);
   });
 });

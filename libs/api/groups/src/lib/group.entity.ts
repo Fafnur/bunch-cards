@@ -12,6 +12,9 @@ export class GroupEntity implements GroupDto {
   id!: number;
 
   @Column()
+  uuid!: string;
+
+  @Column()
   name!: string;
 
   @ManyToMany(() => CardEntity, {
@@ -37,6 +40,9 @@ export class GroupEntity implements GroupDto {
 
   @Column()
   owner!: number;
+
+  @Column()
+  order!: number;
 
   @CreateDateColumn({ name: 'created_at' })
   createdAt!: string;

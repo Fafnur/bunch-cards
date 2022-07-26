@@ -12,7 +12,7 @@ export const selectGroups = createSelector(selectGroupState, (state) => selectAl
 
 export const selectGroupEntities = createSelector(selectGroupState, (state) => selectEntities(state));
 
-export const selectSelectedId = createSelector(selectGroupState, (state) => state.selectedId);
+export const selectSelectedId = createSelector(selectGroupState, (state) => state.selectedUuid);
 
 export const selectSelected = createSelector(selectGroupEntities, selectSelectedId, (entities, selectedId) =>
   selectedId ? entities[selectedId] : null

@@ -7,6 +7,14 @@ export class GroupCreateForm implements GroupCreate {
   @IsNotEmpty({
     context: { errorCode: FormErrorType.IsNotEmpty },
   })
+  @IsInt({
+    context: { errorCode: FormErrorType.IsInt },
+  })
+  uuid!: string;
+
+  @IsNotEmpty({
+    context: { errorCode: FormErrorType.IsNotEmpty },
+  })
   @Length(1, 60, {
     context: { errorCode: 'isLength' },
   })
@@ -26,6 +34,12 @@ export class GroupCreateForm implements GroupCreate {
   })
   @IsOptional()
   owner?: number;
+
+  @IsInt({
+    context: { errorCode: FormErrorType.IsInt },
+  })
+  @IsOptional()
+  order?: number;
 }
 
 export class GroupChangeForm implements GroupChange {
@@ -43,4 +57,10 @@ export class GroupChangeForm implements GroupChange {
   })
   @IsOptional()
   cover!: string;
+
+  @IsInt({
+    context: { errorCode: FormErrorType.IsInt },
+  })
+  @IsOptional()
+  order?: number;
 }

@@ -8,7 +8,7 @@ import * as GroupActions from './group.actions';
 export const GROUP_FEATURE_KEY = 'groups';
 
 export interface GroupState extends EntityState<GroupEntity> {
-  readonly selectedId?: string | number;
+  readonly selectedUuid: string | null;
   readonly loaded: boolean;
 }
 
@@ -16,10 +16,13 @@ export interface GroupPartialState {
   readonly [GROUP_FEATURE_KEY]: GroupState;
 }
 
-export const groupAdapter = createEntityAdapter<GroupEntity>();
+export const groupAdapter = createEntityAdapter<GroupEntity>({
+  selectId: (entity) => entity.uuid,
+});
 
 export const initialGroupState: GroupState = groupAdapter.getInitialState({
   loaded: false,
+  selectedUuid: null,
 });
 
 const reducer = createReducer(
@@ -61,13 +64,13 @@ const reducer = createReducer(
     (state, { group }): GroupState =>
       groupAdapter.updateOne(
         {
-          id: group.id,
+          id: group.uuid,
           changes: group,
         },
         state
       )
   ),
-  on(GroupActions.removeSuccess, (state, { id }): GroupState => groupAdapter.removeOne(id, state))
+  on(GroupActions.removeSuccess, (state, { uuid }): GroupState => groupAdapter.removeOne(uuid, state))
 );
 
 export function groupReducer(state: GroupState | undefined, action: Action): GroupState {

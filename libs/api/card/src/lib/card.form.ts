@@ -33,7 +33,7 @@ export class CardCreateForm implements CardCreate {
     context: { errorCode: FormErrorType.IsInt },
   })
   @IsOptional()
-  group?: number;
+  groupUuid?: number;
 
   @IsInt({
     context: { errorCode: FormErrorType.IsInt },

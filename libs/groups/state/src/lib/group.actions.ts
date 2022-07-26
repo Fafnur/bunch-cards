@@ -17,7 +17,7 @@ export const loadFailure = createAction('[Group] Load Failure', props<{ error: H
 
 // Loan One
 
-export const loadOne = createAction('[Group] Load One', props<{ id: number }>());
+export const loadOne = createAction('[Group] Load One', props<{ uuid: string }>());
 
 export const loadOneSuccess = createAction('[Group] Load One Success', props<{ group: Group | null }>());
 
@@ -33,7 +33,7 @@ export const createFailure = createAction('[Group] Create Failure', props<{ erro
 
 // Change
 
-export const change = createAction('[Group] Change', props<{ id: number; groupChange: GroupChange }>());
+export const change = createAction('[Group] Change', props<{ uuid: string; groupChange: GroupChange }>());
 
 export const changeSuccess = createAction('[Group] Change Success', props<{ group: Group }>());
 
@@ -41,8 +41,8 @@ export const changeFailure = createAction('[Group] Change Failure', props<{ erro
 
 // Remove
 
-export const remove = createAction('[Group] Remove', props<{ id: number }>());
+export const remove = createAction('[Group] Remove', props<{ uuid: string }>());
 
-export const removeSuccess = createAction('[Group] Remove Success', props<{ id: number }>());
+export const removeSuccess = createAction('[Group] Remove Success', props<{ uuid: string }>());
 
 export const removeFailure = createAction('[Group] Remove Failure', props<{ error: HttpErrorResponse }>());
