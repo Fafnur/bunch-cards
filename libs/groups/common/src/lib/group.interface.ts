@@ -10,6 +10,7 @@ export interface GroupDto {
   readonly updatedAt: string;
   readonly owner: number;
   readonly order: number;
+  readonly orderCards: Record<string, number>;
 }
 
 export interface GroupEntity {
@@ -22,6 +23,7 @@ export interface GroupEntity {
   readonly updatedAt: string;
   readonly owner: number;
   readonly order: number;
+  readonly orderCards: Record<string, number>;
 }
 
 export type Group = GroupEntity;
@@ -31,6 +33,7 @@ export interface GroupCreate {
   readonly name: string;
   readonly cover?: string | null;
   readonly order?: number;
+  readonly orderCards?: Record<string, number>;
 }
 
 export type GroupChange = Partial<Omit<GroupCreate, 'uuid'>>;

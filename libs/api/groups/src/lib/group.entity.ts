@@ -17,6 +17,9 @@ export class GroupEntity implements GroupDto {
   @Column()
   name!: string;
 
+  @Column({ name: 'order_cards', nullable: true, type: 'json' })
+  orderCards!: Record<string, number>;
+
   @ManyToMany(() => CardEntity, {
     cascade: true,
     onUpdate: 'CASCADE',

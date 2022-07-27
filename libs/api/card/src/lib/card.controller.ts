@@ -26,9 +26,13 @@ import { CardService } from './card.service';
 
 @Controller('cards')
 @UseGuards(JwtAuthGuard)
-@Controller()
 export class CardController {
   constructor(private readonly service: CardService, private readonly eventEmitter: EventEmitter2) {}
+
+  @Get()
+  async load(@Request() req: { user: UserJwtCredentials }): Promise<Card[]> {
+    return await this.service.find(req.user.userId);
+  }
 
   @Post()
   @UsePipes(
@@ -45,7 +49,7 @@ export class CardController {
     return card;
   }
 
-  @Patch(':id')
+  @Patch(':uuid')
   @UsePipes(
     new ValidationPipe({
       transform: true,
@@ -54,32 +58,26 @@ export class CardController {
   )
   async change(
     @Request() req: { user: UserJwtCredentials },
-    @Param() params: { id: number },
+    @Param() params: { uuid: string },
     @Body() form: CardChangeForm
   ): Promise<CardEntity> {
-    let card = await this.service.findOne(+params.id);
+    const card = await this.service.findOne(params.uuid);
     if (!card) {
-      throw new BadRequestException(`Card #${params.id} not found`);
+      throw new BadRequestException(`Card #${params.uuid} not found`);
     }
 
-    await this.service.update(+params.id, form);
-    card = (await this.service.findOne(+params.id)) as CardEntity;
+    await this.service.update(params.uuid, form);
 
-    return card;
+    return (await this.service.findOne(params.uuid)) as CardEntity;
   }
 
-  @Delete(':id')
-  async delete(@Request() req: { user: UserJwtCredentials }, @Param() params: { id: number }): Promise<void> {
-    const card = await this.service.findOne(+params.id);
+  @Delete(':uuid')
+  async delete(@Request() req: { user: UserJwtCredentials }, @Param() params: { uuid: string }): Promise<void> {
+    const card = await this.service.findOne(params.uuid);
     if (!card) {
-      throw new BadRequestException(`Card #${params.id} not found`);
+      throw new BadRequestException(`Card #${params.uuid} not found`);
     }
 
-    return await this.service.delete(+params.id);
-  }
-
-  @Get()
-  async load(@Request() req: { user: UserJwtCredentials }): Promise<Card[]> {
-    return await this.service.find(req.user.userId);
+    return await this.service.delete(params.uuid);
   }
 }

@@ -9,6 +9,9 @@ export class CardEntity implements Card {
   @PrimaryGeneratedColumn()
   id!: number;
 
+  @Column()
+  uuid!: string;
+
   @Column({ length: 60 })
   original!: string;
 

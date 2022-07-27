@@ -7,6 +7,14 @@ export class CardCreateForm implements CardCreate {
   @IsNotEmpty({
     context: { errorCode: FormErrorType.IsNotEmpty },
   })
+  @IsInt({
+    context: { errorCode: FormErrorType.IsInt },
+  })
+  uuid!: string;
+
+  @IsNotEmpty({
+    context: { errorCode: FormErrorType.IsNotEmpty },
+  })
   @Length(1, 60, {
     context: { errorCode: 'isLength' },
   })
@@ -33,7 +41,7 @@ export class CardCreateForm implements CardCreate {
     context: { errorCode: FormErrorType.IsInt },
   })
   @IsOptional()
-  groupUuid?: number;
+  groupUuid?: string;
 
   @IsInt({
     context: { errorCode: FormErrorType.IsInt },
@@ -63,10 +71,4 @@ export class CardChangeForm implements CardChange {
   })
   @IsOptional()
   cover?: string;
-
-  @IsInt({
-    context: { errorCode: FormErrorType.IsInt },
-  })
-  @IsOptional()
-  group?: number;
 }

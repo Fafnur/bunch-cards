@@ -9,6 +9,10 @@ import { GroupCreateForm } from './group.form';
 export class GroupService {
   constructor(@InjectRepository(GroupEntity) private readonly repository: Repository<GroupEntity>) {}
 
+  async count(owner?: number): Promise<number> {
+    return await this.repository.count({ where: { owner } });
+  }
+
   async find(owner?: number): Promise<GroupEntity[]> {
     return await this.repository.find({ where: { owner }, relations: ['cards'] });
   }
@@ -22,8 +26,8 @@ export class GroupService {
   }
 
   async create(cardGroup: GroupCreateForm): Promise<GroupEntity> {
-    const groups = await this.find(cardGroup.owner);
-    const newCardGroup = await this.repository.create({ ...cardGroup, order: groups.length });
+    const count = await this.count(cardGroup.owner);
+    const newCardGroup = await this.repository.create({ ...cardGroup, order: count });
 
     return this.repository.save(newCardGroup);
   }
