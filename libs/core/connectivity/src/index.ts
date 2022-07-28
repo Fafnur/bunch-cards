@@ -1,1 +1,1 @@
-export * from './lib/core-connectivity.module';
+export * from './lib/connectivity.interface';
