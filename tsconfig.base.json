@@ -49,6 +49,7 @@
       "@bunch/nativescript/ui/layout": ["libs/nativescript/ui/layout/src/index.ts"],
       "@bunch/nativescript/ui/nav": ["libs/nativescript/ui/nav/src/index.ts"],
       "@bunch/users/common": ["libs/users/common/src/index.ts"],
+      "@bunch/web/core/connectivity": ["libs/web/core/connectivity/src/index.ts"],
       "@bunch/web/core/hammer": ["libs/web/core/hammer/src/index.ts"],
       "@bunch/web/core/layout": ["libs/web/core/layout/src/index.ts"],
       "@bunch/web/core/meta": ["libs/web/core/meta/src/index.ts"],
