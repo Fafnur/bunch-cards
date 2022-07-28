@@ -15,6 +15,7 @@
     "core-connectivity": "libs/core/connectivity",
     "core-environments": "libs/core/environments",
     "core-forms-extract": "libs/core/forms/extract",
+    "core-localdb": "libs/core/localdb",
     "core-navigation": "libs/core/navigation",
     "core-platform": "libs/core/platform",
     "core-store-root": "libs/core/store/root",
