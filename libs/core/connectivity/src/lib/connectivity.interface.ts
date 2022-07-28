@@ -9,5 +9,6 @@ export enum ConnectivityStatus {
  * Abstract interface for ConnectivityService. Web and nativescript platforms have different implementations.
  */
 export abstract class ConnectivityService {
+  abstract disconnecting(): Observable<void>;
   abstract getStatus(): Observable<ConnectivityStatus>;
 }

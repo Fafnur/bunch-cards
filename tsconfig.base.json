@@ -42,6 +42,7 @@
       "@bunch/nativescript/auth/providers": ["libs/nativescript/auth/providers/src/index.ts"],
       "@bunch/nativescript/auth/service": ["libs/nativescript/auth/service/src/index.ts"],
       "@bunch/nativescript/core/config": ["libs/nativescript/core/config/src/index.ts"],
+      "@bunch/nativescript/core/connectivity": ["libs/nativescript/core/connectivity/src/index.ts"],
       "@bunch/nativescript/dashboard/page": ["libs/nativescript/dashboard/page/src/index.ts"],
       "@bunch/nativescript/dictionary/page": ["libs/nativescript/dictionary/page/src/index.ts"],
       "@bunch/nativescript/learning/page": ["libs/nativescript/learning/page/src/index.ts"],
