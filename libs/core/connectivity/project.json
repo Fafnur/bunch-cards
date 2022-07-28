@@ -1,0 +1,22 @@
+{
+  "projectType": "library",
+  "sourceRoot": "libs/core/connectivity/src",
+  "prefix": "bunch",
+  "targets": {
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/libs/core/connectivity"],
+      "options": {
+        "jestConfig": "libs/core/connectivity/jest.config.ts",
+        "passWithNoTests": true
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": ["libs/core/connectivity/**/*.ts", "libs/core/connectivity/**/*.html"]
+      }
+    }
+  },
+  "tags": []
+}

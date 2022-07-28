@@ -12,6 +12,7 @@
     "api-users": "libs/api/users",
     "cards-common": "libs/cards/common",
     "core-api": "libs/core/api",
+    "core-connectivity": "libs/core/connectivity",
     "core-environments": "libs/core/environments",
     "core-forms-extract": "libs/core/forms/extract",
     "core-navigation": "libs/core/navigation",
