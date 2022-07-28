@@ -1,1 +1,1 @@
-export * from './lib/web-core-connectivity.module';
+export * from './lib/connectivity.module';
