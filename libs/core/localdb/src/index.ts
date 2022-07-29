@@ -1,1 +1,1 @@
-export * from './lib/core-localdb.module';
+export * from './lib/localdb.service';

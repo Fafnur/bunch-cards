@@ -7,6 +7,7 @@ import { NAVIGATION_PATHS, PATHS } from '@bunch/core/navigation';
 import { RootStoreModule } from '@bunch/core/store/root';
 import { ConnectivityModule } from '@bunch/web/core/connectivity';
 import { HammerModule } from '@bunch/web/core/hammer';
+import { LocaldbModule } from '@bunch/web/core/localdb';
 
 import { environment } from '../environments/environment';
 
@@ -14,6 +15,7 @@ import { environment } from '../environments/environment';
   imports: [
     HttpClientModule,
     ConnectivityModule,
+    LocaldbModule,
     HammerModule,
     RootStoreModule,
     !environment.production ? StoreDevtoolsModule.instrument({ logOnly: environment.production }) : [],

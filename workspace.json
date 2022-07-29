@@ -44,6 +44,7 @@
     "web-core-connectivity": "libs/web/core/connectivity",
     "web-core-hammer": "libs/web/core/hammer",
     "web-core-layout": "libs/web/core/layout",
+    "web-core-localdb": "libs/web/core/localdb",
     "web-core-meta": "libs/web/core/meta",
     "web-core-storage": "libs/web/core/storage",
     "web-core-window": "libs/web/core/window",
