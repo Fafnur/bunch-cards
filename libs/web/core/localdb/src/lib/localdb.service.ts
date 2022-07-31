@@ -1,15 +1,16 @@
 import { Injectable, OnDestroy } from '@angular/core';
-import { filter, Observable, Observer, of, ReplaySubject, switchMap, take } from 'rxjs';
+import { first, Observable, ReplaySubject } from 'rxjs';
 
+import { LocalDBService } from '@bunch/core/localdb';
 import { PlatformService } from '@bunch/core/platform';
 import { WindowService } from '@bunch/web/core/window';
 
 @Injectable()
-export class WebLocalDBService implements OnDestroy {
-  static version = 1;
+export class WebLocalDBService implements LocalDBService, OnDestroy {
+  static version = 2;
   static dbname = 'bunchcards';
 
-  private database$ = new ReplaySubject<IDBDatabase>(1);
+  private readonly database$ = new ReplaySubject<IDBDatabase>(1);
 
   constructor(private readonly windowService: WindowService, private readonly platformService: PlatformService) {
     if (this.platformService.isBrowser) {
@@ -26,6 +27,14 @@ export class WebLocalDBService implements OnDestroy {
         openRequest.onerror = () => onError(openRequest.error);
         openRequest.onsuccess = () => this.database$.next(openRequest.result);
         // TODO: Add update DB
+        openRequest.onupgradeneeded = () => {
+          try {
+            const database: IDBDatabase = openRequest.result;
+            database.createObjectStore('groups', { keyPath: 'uuid' });
+          } catch (error) {
+            onError(error);
+          }
+        };
       }
     }
   }
@@ -34,120 +43,114 @@ export class WebLocalDBService implements OnDestroy {
     this.database$.complete();
   }
 
-  getDatabase(): Observable<IDBDatabase> {
-    return this.database$.asObservable();
+  getAll<T = Record<string, unknown>>(storeName: string): Observable<T[] | null> {
+    return new Observable((observer) => {
+      const onError = (error: unknown) => {
+        console.log(error);
+        observer.complete();
+      };
+      this.getDatabase().subscribe((database) => {
+        try {
+          const transaction = database.transaction([storeName], 'readonly');
+          const store = transaction.objectStore(storeName);
+          const getRequest: IDBRequest<T[]> = store.getAll();
+
+          getRequest.onerror = () => onError(getRequest.error);
+          getRequest.onsuccess = () => {
+            observer.next(getRequest.result);
+            observer.complete();
+          };
+        } catch (err) {
+          onError(err);
+        }
+      });
+    });
   }
 
-  get<T = Record<string, unknown>>(storeName: string): Observable<T[]> {
-    return this.getDatabase().pipe(
-      switchMap((database) => {
-        const transaction = database.transaction([storeName], 'readonly');
-        const store = transaction.objectStore(storeName);
-        const getRequest: IDBRequest<T[]> = store.getAll();
+  get<T = Record<string, unknown>>(storeName: string, key: string): Observable<T | null> {
+    return new Observable((observer) => {
+      const onError = (error: unknown) => {
+        console.log(error);
+        observer.complete();
+      };
+      this.getDatabase().subscribe((database) => {
+        try {
+          const transaction = database.transaction([storeName], 'readonly');
+          const store = transaction.objectStore(storeName);
+          const getRequest: IDBRequest<T> = store.get(key);
 
-        return of([]);
-      })
-    );
+          getRequest.onerror = () => onError(getRequest.error);
+          getRequest.onsuccess = () => {
+            observer.next(getRequest.result ?? null);
+            observer.complete();
+          };
+        } catch (err) {
+          onError(err);
+        }
+      });
+    });
   }
 
-  // db = new ReplaySubject<IDBDatabase>(1);
-  //
-  // $db = this.db.pipe(
-  //   take(1),
-  //   filter((db) => !!db)
-  // );
-  //
-  // constructor(private readonly windowService: WindowService, private readonly platformService: PlatformService) {
-  //   if (this.platformService.isBrowser) {
-  //     const onError = (error: unknown) => {
-  //       console.error(error);
-  //       this.db.complete();
-  //     };
-  //
-  //     if (!this.windowService.window?.indexedDB) {
-  //       onError('IndexedDB not available');
-  //     } else {
-  //       const openRequest = indexedDB.open(WebLocalDBService.dbname, WebLocalDBService.version);
-  //       openRequest.onerror = () => onError(openRequest.error);
-  //       openRequest.onsuccess = () => this.db.next(openRequest.result);
-  //       openRequest.onupgradeneeded = () => {
-  //         try {
-  //           const db: IDBDatabase = openRequest.result;
-  //           const cacheStore = db.createObjectStore('store', { keyPath: 'key' });
-  //           cacheStore.createIndex('value', 'value');
-  //           cacheStore.createIndex('timestamp', 'timestamp');
-  //           cacheStore.createIndex('ttl', 'ttl');
-  //         } catch (error) {
-  //           onError(error);
-  //         }
-  //       };
-  //     }
-  //   }
-  // }
-  //
-  // get<T = Record<string, unknown>>(storeName: string, key: string): Observable<T | null> {
-  //   return new Observable((observer) => {
-  //     const onError = (error: unknown) => {
-  //       console.log(error);
-  //       observer.complete();
-  //     };
-  //     this.$db.subscribe((db) => {
-  //       try {
-  //         const txn = db.transaction([storeName], 'readonly');
-  //         const store = txn.objectStore(storeName);
-  //         const getRequest: IDBRequest<Record> = store.get(key);
-  //         getRequest.onerror = () => onError(getRequest.error);
-  //         getRequest.onsuccess = () => {
-  //           const record = getRequest.result;
-  //           if (!record || new Date(Date.now() - record.timestamp).getSeconds() > record.ttl) {
-  //             observer.next(null);
-  //           } else {
-  //             observer.next(getRequest.result);
-  //           }
-  //           observer.complete();
-  //         };
-  //       } catch (err) {
-  //         onError(err);
-  //       }
-  //     });
-  //   });
-  // }
-  //
-  // put<T = Record<string, unknown>>(storeName: string, value: T): Observable<void> {
-  //   return new Observable((observer) => {
-  //     const onError = (error: unknown) => {
-  //       console.error(error);
-  //       observer.complete();
-  //     };
-  //     this.$db.subscribe((db) => {
-  //       try {
-  //         const txn = db.transaction([storeName], 'readwrite');
-  //         const store = txn.objectStore(storeName);
-  //         const record = { ...value, timestamp: Date.now() };
-  //         const putRequest = store.put(record);
-  //         putRequest.onerror = () => onError(putRequest.error);
-  //         putRequest.onsuccess = () => {
-  //           // putRequest.result
-  //           observer.next();
-  //           observer.complete();
-  //         };
-  //       } catch (err) {
-  //         onError(err);
-  //       }
-  //     });
-  //   });
-  // }
-  //
-  // clear(storeName: string): Observable<void> {
-  //   return new Observable((observer: Observer<void>) => {
-  //     this.$db.subscribe((db) => {
-  //       try {
-  //         db.transaction([storeName], 'readwrite').objectStore(storeName).clear();
-  //       } catch (error) {
-  //         console.log(error);
-  //       }
-  //       observer.complete();
-  //     });
-  //   });
-  // }
+  put<T = Record<string, unknown>>(storeName: string, record: T): Observable<void> {
+    return new Observable((observer) => {
+      const onError = (error: unknown) => {
+        console.error(error);
+        observer.complete();
+      };
+      this.getDatabase().subscribe((database) => {
+        try {
+          const transaction = database.transaction([storeName], 'readwrite');
+          const store = transaction.objectStore(storeName);
+          const putRequest = store.put(record);
+          putRequest.onerror = () => onError(putRequest.error);
+          putRequest.onsuccess = () => {
+            observer.next();
+            observer.complete();
+          };
+        } catch (err) {
+          onError(err);
+        }
+      });
+    });
+  }
+
+  remove(storeName: string, key: string): Observable<void> {
+    return new Observable((observer) => {
+      const onError = (error: unknown) => {
+        console.error(error);
+        observer.complete();
+      };
+      this.getDatabase().subscribe((database) => {
+        try {
+          const transaction = database.transaction([storeName], 'readwrite');
+          const store = transaction.objectStore(storeName);
+          const putRequest = store.delete(key);
+          putRequest.onerror = () => onError(putRequest.error);
+          putRequest.onsuccess = () => {
+            observer.next();
+            observer.complete();
+          };
+        } catch (err) {
+          onError(err);
+        }
+      });
+    });
+  }
+
+  clear(storeName: string): Observable<void> {
+    return new Observable((observer) => {
+      this.getDatabase().subscribe((database) => {
+        try {
+          database.transaction([storeName], 'readwrite').objectStore(storeName).clear();
+        } catch (error) {
+          console.error(error);
+        }
+        observer.complete();
+      });
+    });
+  }
+
+  private getDatabase(): Observable<IDBDatabase> {
+    return this.database$.pipe(first());
+  }
 }

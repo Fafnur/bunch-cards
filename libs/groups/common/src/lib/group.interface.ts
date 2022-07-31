@@ -23,7 +23,7 @@ export interface GroupEntity {
   readonly updatedAt: string;
   readonly owner: number;
   readonly order: number;
-  readonly orderCards: Record<string, number>;
+  readonly orderCards?: Record<string, number>;
 }
 
 export type Group = GroupEntity;
