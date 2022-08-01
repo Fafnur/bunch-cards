@@ -7,6 +7,7 @@ import { NAVIGATION_PATHS, PATHS } from '@bunch/core/navigation';
 import { RootStoreModule } from '@bunch/core/store/root';
 import { AuthProvidersModule } from '@bunch/nativescript/auth/providers';
 import { ConnectivityModule } from '@bunch/nativescript/core/connectivity';
+import { LocaldbModule } from '@bunch/nativescript/core/localdb';
 import { LayoutModule } from '@bunch/nativescript/ui/layout';
 
 import { environment } from './environments/environment';
@@ -19,6 +20,7 @@ import { environment } from './environments/environment';
     RootStoreModule,
     LayoutModule,
     AuthProvidersModule,
+    LocaldbModule,
     !environment.production ? StoreDevtoolsModule.instrument({ logOnly: environment.production }) : [],
   ],
   providers: [

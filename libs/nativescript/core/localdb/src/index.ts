@@ -1,1 +1,2 @@
-export * from './lib/nativescript-core-localdb-nativescript';
+export * from './lib/localdb.module';
+export * from './lib/localdb.service';

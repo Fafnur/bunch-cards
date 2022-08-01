@@ -1,11 +1,7 @@
 {
   "extends": "../../../../tsconfig.base.json",
-  "files": [
-    "./references.d.ts"
-  ],
-  "include": [
-    "**/*.ts"
-  ],
+  "files": ["./references.d.ts"],
+  "include": ["**/*.ts"],
   "references": [
     {
       "path": "./tsconfig.lib.json"
@@ -13,5 +9,18 @@
     {
       "path": "./tsconfig.spec.json"
     }
-  ]
+  ],
+  "compilerOptions": {
+    "forceConsistentCasingInFileNames": true,
+    "strict": true,
+    "noImplicitReturns": true,
+    "noFallthroughCasesInSwitch": true,
+    "target": "es2020"
+  },
+  "angularCompilerOptions": {
+    "enableI18nLegacyMessageIdFormat": false,
+    "strictInjectionParameters": true,
+    "strictInputAccessModifiers": true,
+    "strictTemplates": true
+  }
 }

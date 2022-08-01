@@ -1,7 +1,7 @@
 import { Injectable, OnDestroy } from '@angular/core';
 import { first, Observable, ReplaySubject } from 'rxjs';
 
-import { LocalDBService } from '@bunch/core/localdb';
+import { LocalDBRecord, LocalDBService } from '@bunch/core/localdb';
 import { PlatformService } from '@bunch/core/platform';
 import { WindowService } from '@bunch/web/core/window';
 
@@ -43,7 +43,7 @@ export class WebLocalDBService implements LocalDBService, OnDestroy {
     this.database$.complete();
   }
 
-  getAll<T = Record<string, unknown>>(storeName: string): Observable<T[] | null> {
+  getAll<T = LocalDBRecord>(storeName: string): Observable<T[] | null> {
     return new Observable((observer) => {
       const onError = (error: unknown) => {
         console.log(error);
@@ -67,7 +67,7 @@ export class WebLocalDBService implements LocalDBService, OnDestroy {
     });
   }
 
-  get<T = Record<string, unknown>>(storeName: string, key: string): Observable<T | null> {
+  get<T = LocalDBRecord>(storeName: string, key: string): Observable<T | null> {
     return new Observable((observer) => {
       const onError = (error: unknown) => {
         console.log(error);
@@ -91,7 +91,8 @@ export class WebLocalDBService implements LocalDBService, OnDestroy {
     });
   }
 
-  put<T = Record<string, unknown>>(storeName: string, record: T): Observable<void> {
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  put<T = LocalDBRecord>(storeName: string, record: T, key: string): Observable<void> {
     return new Observable((observer) => {
       const onError = (error: unknown) => {
         console.error(error);
