@@ -32,6 +32,7 @@
     "nativescript-cards": "apps/nativescript-cards",
     "nativescript-core-config": "libs/nativescript/core/config",
     "nativescript-core-connectivity": "libs/nativescript/core/connectivity",
+    "nativescript-core-localdb": "libs/nativescript/core/localdb",
     "nativescript-dashboard-page": "libs/nativescript/dashboard/page",
     "nativescript-dictionary-page": "libs/nativescript/dictionary/page",
     "nativescript-learning-page": "libs/nativescript/learning/page",
