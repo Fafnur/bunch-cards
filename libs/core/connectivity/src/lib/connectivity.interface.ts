@@ -11,4 +11,5 @@ export enum ConnectivityStatus {
 export abstract class ConnectivityService {
   abstract disconnecting(): Observable<void>;
   abstract getStatus(): Observable<ConnectivityStatus>;
+  abstract online(): Observable<boolean>;
 }

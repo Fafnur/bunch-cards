@@ -1,6 +1,6 @@
 import { Injectable, NgZone, OnDestroy } from '@angular/core';
 import { Connectivity } from '@nativescript/core';
-import { Observable, ReplaySubject, Subject } from 'rxjs';
+import { map, Observable, ReplaySubject, Subject } from 'rxjs';
 
 import { ConnectivityService, ConnectivityStatus } from '@bunch/core/connectivity';
 
@@ -40,6 +40,10 @@ export class NativescriptConnectivityService implements ConnectivityService, OnD
 
   getStatus(): Observable<ConnectivityStatus> {
     return this.status$.asObservable();
+  }
+
+  online(): Observable<boolean> {
+    return this.status$.pipe(map((status) => status === ConnectivityStatus.Online));
   }
 
   disconnecting(): Observable<void> {

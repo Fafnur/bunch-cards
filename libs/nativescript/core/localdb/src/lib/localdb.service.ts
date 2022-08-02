@@ -8,12 +8,12 @@ import { LocalDBRecord, LocalDBService } from '@bunch/core/localdb';
 export class NativescriptLocalDBService implements LocalDBService {
   static version = 1;
 
-  getAll<T = LocalDBRecord>(storeName: string): Observable<T[] | null> {
+  getAll<T = LocalDBRecord>(storeName: string): Observable<T[]> {
     return new Observable((observer) => {
       try {
         const database = new CouchBase(storeName);
         const records = database.query({ select: [] });
-        observer.next(records ?? null);
+        observer.next(records ?? []);
         observer.complete();
         database.close();
       } catch (err) {

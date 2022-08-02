@@ -25,6 +25,7 @@
     "core-utils-types": "libs/core/utils/types",
     "groups-api": "libs/groups/api",
     "groups-common": "libs/groups/common",
+    "groups-manager": "libs/groups/manager",
     "groups-state": "libs/groups/state",
     "nativescript-auth-page": "libs/nativescript/auth/page",
     "nativescript-auth-providers": "libs/nativescript/auth/providers",

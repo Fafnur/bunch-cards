@@ -45,6 +45,10 @@ export class WebConnectivityService implements ConnectivityService, OnDestroy {
     return this.status$.asObservable();
   }
 
+  online(): Observable<boolean> {
+    return this.status$.pipe(map((status) => status === ConnectivityStatus.Online));
+  }
+
   disconnecting(): Observable<void> {
     return this.disconnecting$.asObservable();
   }

@@ -38,6 +38,7 @@
       "@bunch/core/utils/types": ["libs/core/utils/types/src/index.ts"],
       "@bunch/groups/api": ["libs/groups/api/src/index.ts"],
       "@bunch/groups/common": ["libs/groups/common/src/index.ts"],
+      "@bunch/groups/manager": ["libs/groups/manager/src/index.ts"],
       "@bunch/groups/state": ["libs/groups/state/src/index.ts"],
       "@bunch/nativescript/auth/page": ["libs/nativescript/auth/page/src/index.ts"],
       "@bunch/nativescript/auth/providers": ["libs/nativescript/auth/providers/src/index.ts"],

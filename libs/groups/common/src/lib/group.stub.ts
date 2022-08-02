@@ -1,8 +1,8 @@
 import { GroupCreate, GroupDto } from './group.interface';
 
 export const GROUP_STUB: GroupDto = {
-  id: 1,
-  uuid: 'random-uuid',
+  id: null,
+  uuid: 'simple-uuid',
   name: 'Simple Group',
   cards: [],
   cover: null,
@@ -16,7 +16,7 @@ export const GROUP_STUB: GroupDto = {
 export const GROUPS_STUB: GroupDto[] = [GROUP_STUB];
 
 export const GROUP_CREATE_STUB: GroupCreate = {
-  name: 'Simple Group New',
+  name: 'Simple Group',
   uuid: 'simple-uuid',
 };
 

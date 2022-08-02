@@ -4,7 +4,7 @@ import { Action } from '@ngrx/store';
 import { fetch } from '@nrwl/angular';
 import { map } from 'rxjs';
 
-import { GroupApiService } from '@bunch/groups/api';
+import { GroupManager } from '@bunch/groups/manager';
 
 import * as GroupActions from './group.actions';
 
@@ -27,7 +27,7 @@ export class GroupEffects implements OnInitEffects {
       ofType(GroupActions.load),
       fetch({
         id: () => 'load',
-        run: () => this.groupApiService.load().pipe(map((groups) => GroupActions.loadSuccess({ groups }))),
+        run: () => this.groupManager.load().pipe(map((groups) => GroupActions.loadSuccess({ groups }))),
         onError: (action, error) => GroupActions.loadFailure({ error }),
       })
     );
@@ -38,7 +38,7 @@ export class GroupEffects implements OnInitEffects {
       ofType(GroupActions.loadOne),
       fetch({
         id: ({ uuid }) => `load-${uuid}`,
-        run: ({ uuid }) => this.groupApiService.loadOne(uuid).pipe(map((group) => GroupActions.loadOneSuccess({ group }))),
+        run: ({ uuid }) => this.groupManager.loadOne(uuid).pipe(map((group) => GroupActions.loadOneSuccess({ group }))),
         onError: (action, error) => GroupActions.loadOneFailure({ error }),
       })
     );
@@ -49,7 +49,7 @@ export class GroupEffects implements OnInitEffects {
       ofType(GroupActions.create),
       fetch({
         id: () => 'create',
-        run: ({ groupCreate }) => this.groupApiService.create(groupCreate).pipe(map((group) => GroupActions.createSuccess({ group }))),
+        run: ({ groupCreate }) => this.groupManager.create(groupCreate).pipe(map((group) => GroupActions.createSuccess({ group }))),
         onError: (action, error) => GroupActions.createFailure({ error }),
       })
     );
@@ -61,7 +61,7 @@ export class GroupEffects implements OnInitEffects {
       fetch({
         id: ({ uuid }) => `change-${uuid}`,
         run: ({ uuid, groupChange }) =>
-          this.groupApiService.change(uuid, groupChange).pipe(map((group) => GroupActions.changeSuccess({ group }))),
+          this.groupManager.change(uuid, groupChange).pipe(map((group) => GroupActions.changeSuccess({ group }))),
         onError: (action, error) => GroupActions.changeFailure({ error }),
       })
     );
@@ -72,13 +72,13 @@ export class GroupEffects implements OnInitEffects {
       ofType(GroupActions.remove),
       fetch({
         id: ({ uuid }) => `remove-${uuid}`,
-        run: ({ uuid }) => this.groupApiService.remove(uuid).pipe(map(() => GroupActions.removeSuccess({ uuid }))),
+        run: ({ uuid }) => this.groupManager.remove(uuid).pipe(map(() => GroupActions.removeSuccess({ uuid }))),
         onError: (action, error) => GroupActions.removeFailure({ error }),
       })
     );
   });
 
-  constructor(private readonly actions$: Actions, private readonly groupApiService: GroupApiService) {}
+  constructor(private readonly actions$: Actions, private readonly groupManager: GroupManager) {}
 
   ngrxOnInitEffects(): Action {
     return GroupActions.init();

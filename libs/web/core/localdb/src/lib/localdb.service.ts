@@ -43,7 +43,7 @@ export class WebLocalDBService implements LocalDBService, OnDestroy {
     this.database$.complete();
   }
 
-  getAll<T = LocalDBRecord>(storeName: string): Observable<T[] | null> {
+  getAll<T = LocalDBRecord>(storeName: string): Observable<T[]> {
     return new Observable((observer) => {
       const onError = (error: unknown) => {
         console.log(error);
@@ -57,7 +57,7 @@ export class WebLocalDBService implements LocalDBService, OnDestroy {
 
           getRequest.onerror = () => onError(getRequest.error);
           getRequest.onsuccess = () => {
-            observer.next(getRequest.result);
+            observer.next(getRequest.result ?? []);
             observer.complete();
           };
         } catch (err) {
