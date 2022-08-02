@@ -37,8 +37,8 @@ export class GroupEffects implements OnInitEffects {
     return this.actions$.pipe(
       ofType(GroupActions.loadOne),
       fetch({
-        id: ({ id }) => `load-${id}`,
-        run: ({ id }) => this.groupApiService.loadOne(id).pipe(map((group) => GroupActions.loadOneSuccess({ group }))),
+        id: ({ uuid }) => `load-${uuid}`,
+        run: ({ uuid }) => this.groupApiService.loadOne(uuid).pipe(map((group) => GroupActions.loadOneSuccess({ group }))),
         onError: (action, error) => GroupActions.loadOneFailure({ error }),
       })
     );
@@ -59,9 +59,9 @@ export class GroupEffects implements OnInitEffects {
     return this.actions$.pipe(
       ofType(GroupActions.change),
       fetch({
-        id: ({ id }) => `change-${id}`,
-        run: ({ id, groupChange }) =>
-          this.groupApiService.change(id, groupChange).pipe(map((group) => GroupActions.changeSuccess({ group }))),
+        id: ({ uuid }) => `change-${uuid}`,
+        run: ({ uuid, groupChange }) =>
+          this.groupApiService.change(uuid, groupChange).pipe(map((group) => GroupActions.changeSuccess({ group }))),
         onError: (action, error) => GroupActions.changeFailure({ error }),
       })
     );
@@ -71,8 +71,8 @@ export class GroupEffects implements OnInitEffects {
     return this.actions$.pipe(
       ofType(GroupActions.remove),
       fetch({
-        id: ({ id }) => `remove-${id}`,
-        run: ({ id }) => this.groupApiService.remove(id).pipe(map(() => GroupActions.removeSuccess({ id }))),
+        id: ({ uuid }) => `remove-${uuid}`,
+        run: ({ uuid }) => this.groupApiService.remove(uuid).pipe(map(() => GroupActions.removeSuccess({ uuid }))),
         onError: (action, error) => GroupActions.removeFailure({ error }),
       })
     );
