@@ -49,6 +49,12 @@ export class GroupCreateForm implements GroupCreate {
   })
   @IsOptional()
   orderCards?: string[];
+
+  @IsArray({
+    context: { errorCode: FormErrorType.IsArray },
+  })
+  @IsOptional()
+  cards?: string[];
 }
 
 export class GroupChangeForm implements GroupChange {
@@ -78,4 +84,10 @@ export class GroupChangeForm implements GroupChange {
   })
   @IsOptional()
   orderCards?: string[];
+
+  @IsArray({
+    context: { errorCode: FormErrorType.IsArray },
+  })
+  @IsOptional()
+  cards?: string[];
 }

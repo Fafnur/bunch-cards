@@ -33,6 +33,7 @@ export interface GroupCreate {
   readonly cover?: string | null;
   readonly order?: number;
   readonly orderCards?: string[];
+  readonly cards?: string[];
 }
 
-export type GroupChange = Partial<GroupCreate>;
+export type GroupChange = Partial<GroupEntity>;

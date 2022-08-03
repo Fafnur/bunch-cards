@@ -7,6 +7,7 @@ import {
   Param,
   Patch,
   Post,
+  Put,
   Request,
   UseGuards,
   UsePipes,
@@ -49,15 +50,14 @@ export class GroupController {
     @Param() params: { uuid: string },
     @Body() form: GroupChangeForm
   ): Promise<GroupDto> {
-    let group = (await this.service.findOne(params.uuid)) as GroupDto;
+    const group = (await this.service.findOne(params.uuid)) as GroupDto;
     if (!group) {
       throw new BadRequestException(`Group #${params.uuid} not found`);
     }
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    const { cards, ...other } = form;
 
-    await this.service.update(params.uuid, { ...form, cards: undefined });
-    group = (await this.service.findOne(params.uuid)) as GroupDto;
-
-    return group;
+    return await this.service.save({ ...group, ...other });
   }
 
   @Get()
@@ -78,5 +78,10 @@ export class GroupController {
     }
 
     return await this.service.delete(params.uuid);
+  }
+
+  @Put()
+  async sync(@Request() req: { user: UserJwtCredentials }, @Body() groups: GroupDto[]): Promise<GroupDto[]> {
+    return await this.service.sync(req.user.userId, groups);
   }
 }

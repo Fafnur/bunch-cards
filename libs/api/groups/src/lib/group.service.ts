@@ -27,9 +27,9 @@ export class GroupService {
     return await this.repository.findOne({ where: { uuid, owner }, relations: ['cards'] });
   }
 
-  async create(cardGroup: GroupCreateForm): Promise<GroupDto> {
-    const count = await this.count(cardGroup.owner);
-    const newCardGroup = await this.repository.create({ ...cardGroup, order: count });
+  async create(group: GroupCreateForm): Promise<GroupDto> {
+    const count = await this.count(group.owner);
+    const newCardGroup = await this.repository.create({ ...group, order: count, cards: undefined });
 
     return this.repository.save(newCardGroup);
   }
@@ -42,7 +42,13 @@ export class GroupService {
     return await this.repository.delete({ uuid }).then();
   }
 
-  async save(cardGroup: GroupEntity): Promise<void> {
-    return await this.repository.save(cardGroup).then();
+  async save(group: GroupEntity): Promise<GroupDto> {
+    return await this.repository.save(group);
+  }
+
+  async sync(owner: number, groups: GroupDto[]): Promise<GroupDto[]> {
+    await this.repository.save(groups.map((group) => ({ ...group, cards: undefined })));
+
+    return await this.find(owner);
   }
 }
