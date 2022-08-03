@@ -33,7 +33,7 @@ export class GroupService {
   }
 
   async update(uuid: string, data: Partial<GroupEntity>): Promise<void> {
-    return await this.repository.update({ uuid }, data).then();
+    return await this.repository.update({ uuid }, { ...data }).then();
   }
 
   async delete(uuid: string): Promise<void> {

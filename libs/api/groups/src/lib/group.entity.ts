@@ -1,5 +1,6 @@
-import { Column, CreateDateColumn, Entity, JoinTable, ManyToMany, PrimaryGeneratedColumn, UpdateDateColumn } from 'typeorm';
+import { Column, CreateDateColumn, Entity, OneToMany, PrimaryGeneratedColumn, UpdateDateColumn } from 'typeorm';
 
+// eslint-disable-next-line @nrwl/nx/enforce-module-boundaries
 import { CardEntity } from '@bunch/api/card';
 import { Card } from '@bunch/cards/common';
 import { GroupDto } from '@bunch/groups/common';
@@ -11,31 +12,16 @@ export class GroupEntity implements GroupDto {
   @PrimaryGeneratedColumn()
   id!: number;
 
-  @Column()
+  @Column({ unique: true, length: 36 })
   uuid!: string;
 
   @Column()
   name!: string;
 
   @Column({ name: 'order_cards', nullable: true, type: 'json' })
-  orderCards!: Record<string, number>;
+  orderCards!: string[];
 
-  @ManyToMany(() => CardEntity, {
-    cascade: true,
-    onUpdate: 'CASCADE',
-    onDelete: 'CASCADE',
-  })
-  @JoinTable({
-    name: 'cards_groups',
-    joinColumn: {
-      name: 'group_id',
-      referencedColumnName: 'id',
-    },
-    inverseJoinColumn: {
-      name: 'card_id',
-      referencedColumnName: 'id',
-    },
-  })
+  @OneToMany(() => CardEntity, (card) => card.group)
   cards!: Card[];
 
   @Column({ nullable: true, length: 256 })

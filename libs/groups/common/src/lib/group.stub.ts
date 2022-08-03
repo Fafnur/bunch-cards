@@ -10,7 +10,7 @@ export const GROUP_STUB: GroupDto = {
   updatedAt: '2022-07-24T15:18:35.183Z',
   owner: 1,
   order: 1,
-  orderCards: {},
+  orderCards: [],
 };
 
 export const GROUPS_STUB: GroupDto[] = [GROUP_STUB];

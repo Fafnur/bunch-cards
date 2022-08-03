@@ -1,4 +1,4 @@
-import { IsInt, IsNotEmpty, IsObject, IsOptional, IsString, Length } from 'class-validator';
+import { IsArray, IsInt, IsNotEmpty, IsOptional, IsString, Length } from 'class-validator';
 
 import { FormErrorType } from '@bunch/api/forms';
 import { GroupChange, GroupCreate } from '@bunch/groups/common';
@@ -7,8 +7,11 @@ export class GroupCreateForm implements GroupCreate {
   @IsNotEmpty({
     context: { errorCode: FormErrorType.IsNotEmpty },
   })
-  @IsInt({
-    context: { errorCode: FormErrorType.IsInt },
+  @IsString({
+    context: { errorCode: FormErrorType.IsString },
+  })
+  @Length(36, 36, {
+    context: { errorCode: 'isLength' },
   })
   uuid!: string;
 
@@ -41,11 +44,11 @@ export class GroupCreateForm implements GroupCreate {
   @IsOptional()
   order?: number;
 
-  @IsObject({
-    context: { errorCode: FormErrorType.IsObject },
+  @IsArray({
+    context: { errorCode: FormErrorType.IsArray },
   })
   @IsOptional()
-  orderCards?: Record<string, number>;
+  orderCards?: string[];
 }
 
 export class GroupChangeForm implements GroupChange {
@@ -70,9 +73,9 @@ export class GroupChangeForm implements GroupChange {
   @IsOptional()
   order?: number;
 
-  @IsObject({
-    context: { errorCode: FormErrorType.IsObject },
+  @IsArray({
+    context: { errorCode: FormErrorType.IsArray },
   })
   @IsOptional()
-  orderCards?: Record<string, number>;
+  orderCards?: string[];
 }

@@ -1,10 +1,27 @@
+### GET Groups
+GET http://localhost:3000/groups
+Content-Type: application/json
+Accept: application/json
+Authorization: BEARER eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjIsImlhdCI6MTY1OTQ5MDYxMCwiZXhwIjoxNjU5NDk0MjEwfQ.D4hHgXewShhTNVSnPfzjiU8B_03Kl0nuoVXc3Zqahlk
+
 ### Create Group
 POST http://localhost:3000/groups
 Content-Type: application/json
 Accept: application/json
-Authorization: BEARER eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjIsImlhdCI6MTY1ODY1MDQwMiwiZXhwIjoxNjU4NjU0MDAyfQ.73GZW_qSMJx2xE_M-yPzWqMvuVjfMBom-r0ElNsKk9s
+Authorization: BEARER eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjIsImlhdCI6MTY1OTQ5MDYxMCwiZXhwIjoxNjU5NDk0MjEwfQ.D4hHgXewShhTNVSnPfzjiU8B_03Kl0nuoVXc3Zqahlk
 
 {
   "name": "Noob",
-  "cover": null
+  "cover": null,
+  "uuid": "123e4567-e89b-12d3-a456-426614174000"
+}
+
+### Change Group
+PATCH http://localhost:3000/groups/123e4567-e89b-12d3-a456-426614174000
+Content-Type: application/json
+Accept: application/json
+Authorization: BEARER eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjIsImlhdCI6MTY1OTQ5MDYxMCwiZXhwIjoxNjU5NDk0MjEwfQ.D4hHgXewShhTNVSnPfzjiU8B_03Kl0nuoVXc3Zqahlk
+
+{
+  "orderCards": ["123e4567-e89b-12d3-a456-426614174002", "123e4567-e89b-12d3-a456-426614174001"]
 }

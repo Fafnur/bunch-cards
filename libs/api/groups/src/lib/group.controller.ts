@@ -54,7 +54,7 @@ export class GroupController {
       throw new BadRequestException(`Group #${params.uuid} not found`);
     }
 
-    await this.service.update(params.uuid, form);
+    await this.service.update(params.uuid, { ...form, cards: undefined });
     group = (await this.service.findOne(params.uuid)) as GroupDto;
 
     return group;

@@ -22,6 +22,7 @@ export class CardService {
   }
 
   async create(card: CardCreateForm): Promise<CardEntity> {
+    console.log(card);
     const newCard = await this.repository.create(card);
 
     return await this.repository.save(newCard);

@@ -12,7 +12,6 @@ import {
   UsePipes,
   ValidationPipe,
 } from '@nestjs/common';
-import { EventEmitter2 } from '@nestjs/event-emitter';
 
 import { formExceptionFactory } from '@bunch/api/forms';
 import { JwtAuthGuard } from '@bunch/api/jwt/guards';
@@ -20,14 +19,13 @@ import { Card } from '@bunch/cards/common';
 import { UserJwtCredentials } from '@bunch/users/common';
 
 import { CardEntity } from './card.entity';
-import { CardEvents } from './card.event';
 import { CardChangeForm, CardCreateForm } from './card.form';
 import { CardService } from './card.service';
 
 @Controller('cards')
 @UseGuards(JwtAuthGuard)
 export class CardController {
-  constructor(private readonly service: CardService, private readonly eventEmitter: EventEmitter2) {}
+  constructor(private readonly service: CardService) {}
 
   @Get()
   async load(@Request() req: { user: UserJwtCredentials }): Promise<Card[]> {
@@ -42,11 +40,7 @@ export class CardController {
     })
   )
   async create(@Request() req: { user: UserJwtCredentials }, @Body() form: CardCreateForm): Promise<CardEntity> {
-    const card = await this.service.create({ ...form, owner: req.user.userId });
-
-    this.eventEmitter.emit(CardEvents.Created, { card, payload: form });
-
-    return card;
+    return await this.service.create({ ...form, owner: req.user.userId });
   }
 
   @Patch(':uuid')
