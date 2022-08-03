@@ -1,5 +1,6 @@
 export interface CardDto {
   readonly uuid: string;
+  readonly groupUuid: string;
   readonly original: string;
   readonly translation: string;
   readonly cover: string | null;
@@ -10,6 +11,7 @@ export interface CardDto {
 
 export interface CardEntity {
   readonly uuid: string;
+  readonly groupUuid: string;
   readonly original: string;
   readonly translation: string;
   readonly cover: string | null;
@@ -18,15 +20,16 @@ export interface CardEntity {
   readonly owner: number;
 }
 
-export type Card = CardEntity;
+// eslint-disable-next-line @typescript-eslint/no-empty-interface
+export interface Card extends CardEntity {}
 
 export interface CardCreate {
   readonly uuid: string;
+  readonly groupUuid: string;
   readonly original: string;
   readonly translation: string;
   readonly images?: string[];
   readonly cover?: string | null;
-  readonly groupUuid?: string;
 }
 
-export type CardChange = Partial<Omit<CardCreate, 'uuid'>>;
+export type CardChange = Partial<CardEntity>;

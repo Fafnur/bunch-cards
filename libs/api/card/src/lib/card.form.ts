@@ -59,6 +59,15 @@ export class CardCreateForm implements CardCreate {
 }
 
 export class CardChangeForm implements CardChange {
+  @IsString({
+    context: { errorCode: FormErrorType.IsString },
+  })
+  @Length(36, 36, {
+    context: { errorCode: 'isLength' },
+  })
+  @IsOptional()
+  uuid?: string;
+
   @Length(1, 60, {
     context: { errorCode: 'isLength' },
   })
