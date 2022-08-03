@@ -1,4 +1,4 @@
-import { Column, CreateDateColumn, Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn, UpdateDateColumn } from 'typeorm';
+import { Column, CreateDateColumn, Entity, JoinColumn, ManyToOne, PrimaryColumn, UpdateDateColumn } from 'typeorm';
 
 // eslint-disable-next-line @nrwl/nx/enforce-module-boundaries
 import { GroupEntity } from '@bunch/api-groups';
@@ -9,10 +9,7 @@ import { Group } from '@bunch/groups/common';
   name: 'cards',
 })
 export class CardEntity implements Card {
-  @PrimaryGeneratedColumn()
-  id!: number;
-
-  @Column({ unique: true, length: 36 })
+  @PrimaryColumn({ length: 36 })
   uuid!: string;
 
   @Column({ length: 60 })

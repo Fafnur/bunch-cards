@@ -1,7 +1,6 @@
 import { CardCreate, CardDto } from './card.interface';
 
 export const CARD_STUB: CardDto = {
-  id: 1,
   uuid: 'random-uuid',
   cover: null,
   translation: 'Пример',

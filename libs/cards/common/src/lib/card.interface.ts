@@ -1,5 +1,4 @@
 export interface CardDto {
-  readonly id: number;
   readonly uuid: string;
   readonly original: string;
   readonly translation: string;
@@ -10,7 +9,6 @@ export interface CardDto {
 }
 
 export interface CardEntity {
-  readonly id: number;
   readonly uuid: string;
   readonly original: string;
   readonly translation: string;

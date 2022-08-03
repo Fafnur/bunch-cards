@@ -1,7 +1,6 @@
 import { Card } from '@bunch/cards/common';
 
 export interface GroupDto {
-  readonly id: number | null;
   readonly uuid: string;
   readonly name: string;
   readonly cards: Card[];
@@ -14,7 +13,6 @@ export interface GroupDto {
 }
 
 export interface GroupEntity {
-  readonly id: number | null;
   readonly uuid: string;
   readonly name: string;
   readonly cards: string[];
@@ -26,7 +24,8 @@ export interface GroupEntity {
   readonly orderCards?: string[];
 }
 
-export type Group = GroupEntity;
+// eslint-disable-next-line @typescript-eslint/no-empty-interface
+export interface Group extends GroupEntity {}
 
 export interface GroupCreate {
   readonly uuid: string;
@@ -36,4 +35,4 @@ export interface GroupCreate {
   readonly orderCards?: string[];
 }
 
-export type GroupChange = Partial<Omit<GroupCreate, 'uuid'>>;
+export type GroupChange = Partial<GroupCreate>;

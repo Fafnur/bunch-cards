@@ -1,4 +1,4 @@
-import { Column, CreateDateColumn, Entity, OneToMany, PrimaryGeneratedColumn, UpdateDateColumn } from 'typeorm';
+import { Column, CreateDateColumn, Entity, OneToMany, PrimaryColumn, UpdateDateColumn } from 'typeorm';
 
 // eslint-disable-next-line @nrwl/nx/enforce-module-boundaries
 import { CardEntity } from '@bunch/api/card';
@@ -9,10 +9,7 @@ import { GroupDto } from '@bunch/groups/common';
   name: 'groups',
 })
 export class GroupEntity implements GroupDto {
-  @PrimaryGeneratedColumn()
-  id!: number;
-
-  @Column({ unique: true, length: 36 })
+  @PrimaryColumn({ length: 36 })
   uuid!: string;
 
   @Column()
