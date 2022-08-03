@@ -26,9 +26,8 @@ export class GroupManager {
       createdAt: currentDate,
       updatedAt: currentDate,
       owner: 1, // TODO: Add userId
-      id: null,
       cards: [],
-      orderCards: payload.orderCards ?? {},
+      orderCards: payload.orderCards ?? [],
       order: 1,
     };
 

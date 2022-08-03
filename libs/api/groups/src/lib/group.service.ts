@@ -12,43 +12,42 @@ export class GroupService {
   constructor(@InjectRepository(GroupEntity) private readonly repository: Repository<GroupEntity>) {}
 
   async count(owner?: number): Promise<number> {
-    return await this.repository.count({ where: { owner } });
+    return this.repository.count({ where: { owner } });
   }
 
-  async find(owner?: number): Promise<GroupDto[]> {
-    return await this.repository.find({ where: { owner }, relations: ['cards'] });
+  async find(owner?: number): Promise<GroupEntity[]> {
+    return this.repository.find({ where: { owner }, relations: ['cards'] });
   }
 
-  async findOne(uuid: string): Promise<GroupDto | null> {
-    return await this.repository.findOneBy({ uuid });
+  async findOne(uuid: string): Promise<GroupEntity | null> {
+    return this.repository.findOneBy({ uuid });
   }
 
-  async findOneWithCards(uuid: string, owner?: number): Promise<GroupDto | null> {
-    return await this.repository.findOne({ where: { uuid, owner }, relations: ['cards'] });
+  async findOneWithCards(uuid: string, owner?: number): Promise<GroupEntity | null> {
+    return this.repository.findOne({ where: { uuid, owner }, relations: ['cards'] });
   }
 
-  async create(group: GroupCreateForm): Promise<GroupDto> {
-    const count = await this.count(group.owner);
-    const newCardGroup = await this.repository.create({ ...group, order: count, cards: undefined });
+  async create(group: GroupCreateForm): Promise<GroupEntity> {
+    const order = await this.count(group.owner);
 
-    return this.repository.save(newCardGroup);
+    return this.repository.save({ ...group, order, cards: undefined });
   }
 
-  async update(uuid: string, data: Partial<GroupDto>): Promise<void> {
-    return await this.repository.update({ uuid }, data).then();
+  async update(uuid: string, data: Partial<GroupEntity>): Promise<void> {
+    return this.repository.update({ uuid }, data).then();
   }
 
   async delete(uuid: string): Promise<void> {
-    return await this.repository.delete({ uuid }).then();
+    return this.repository.delete({ uuid }).then();
   }
 
-  async save(group: GroupEntity): Promise<GroupDto> {
-    return await this.repository.save(group);
+  async save(group: GroupEntity): Promise<GroupEntity> {
+    return this.repository.save(group);
   }
 
-  async sync(owner: number, groups: GroupDto[]): Promise<GroupDto[]> {
+  async sync(owner: number, groups: GroupDto[]): Promise<GroupEntity[]> {
     await this.repository.save(groups.map((group) => ({ ...group, cards: undefined })));
 
-    return await this.find(owner);
+    return this.find(owner);
   }
 }

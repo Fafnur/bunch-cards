@@ -57,17 +57,17 @@ export class GroupController {
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const { cards, ...other } = form;
 
-    return await this.service.save({ ...group, ...other });
+    return this.service.save({ ...group, ...other });
   }
 
   @Get()
   async load(@Request() req: { user: UserJwtCredentials }): Promise<GroupDto[]> {
-    return await this.service.find(req.user.userId);
+    return this.service.find(req.user.userId);
   }
 
   @Get(':uuid')
   async loadGroup(@Request() req: { user: UserJwtCredentials }, @Param() params: { uuid: string }): Promise<GroupDto | null> {
-    return await this.service.findOneWithCards(params.uuid, req.user.userId);
+    return this.service.findOneWithCards(params.uuid, req.user.userId);
   }
 
   @Delete(':uuid')
@@ -77,11 +77,11 @@ export class GroupController {
       throw new BadRequestException(`Group #${params.uuid} not found`);
     }
 
-    return await this.service.delete(params.uuid);
+    return this.service.delete(params.uuid);
   }
 
   @Put()
   async sync(@Request() req: { user: UserJwtCredentials }, @Body() groups: GroupDto[]): Promise<GroupDto[]> {
-    return await this.service.sync(req.user.userId, groups);
+    return this.service.sync(req.user.userId, groups);
   }
 }
