@@ -10,12 +10,16 @@ export class UserManager {
 
   constructor(private readonly localDBService: LocalDBService) {}
 
+  load(): Observable<User | null> {
+    return this.localDBService.getAll<User>(UserManager.storeName).pipe(map((users) => (users.length > 0 ? users[0] : null)));
+  }
+
   loadOne(uuid: string): Observable<User | null> {
     return this.localDBService.get(UserManager.storeName, uuid);
   }
 
-  change(uuid: string, payload: UserChange): Observable<User> {
-    return this.localDBService.get<User>(UserManager.storeName, uuid).pipe(
+  change(payload: UserChange): Observable<User> {
+    return this.localDBService.get<User>(UserManager.storeName, payload.uuid).pipe(
       switchMap((record) => {
         if (!record) {
           return throwError(() => of(`User not found`));

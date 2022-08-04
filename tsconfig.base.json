@@ -55,6 +55,7 @@
       "@bunch/users/api": ["libs/users/api/src/index.ts"],
       "@bunch/users/common": ["libs/users/common/src/index.ts"],
       "@bunch/users/manager": ["libs/users/manager/src/index.ts"],
+      "@bunch/users/state": ["libs/users/state/src/index.ts"],
       "@bunch/web/core/connectivity": ["libs/web/core/connectivity/src/index.ts"],
       "@bunch/web/core/hammer": ["libs/web/core/hammer/src/index.ts"],
       "@bunch/web/core/layout": ["libs/web/core/layout/src/index.ts"],

@@ -31,7 +31,7 @@ describe('UserManager', () => {
     when(localDBServiceMock.get(UserManager.storeName, USER_CHANGE_STUB.uuid)).thenReturn(hot('a', { a: USER_STUB }));
     when(localDBServiceMock.put(UserManager.storeName, deepEqual(USER_STUB))).thenReturn(result);
 
-    expect(service.change(USER_CHANGE_STUB.uuid, USER_CHANGE_STUB)).toBeObservable(result);
+    expect(service.change(USER_CHANGE_STUB)).toBeObservable(result);
   });
 
   it('should call sync()', () => {
