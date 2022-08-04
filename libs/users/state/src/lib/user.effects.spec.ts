@@ -2,33 +2,106 @@ import { TestBed } from '@angular/core/testing';
 import { provideMockActions } from '@ngrx/effects/testing';
 import { Action } from '@ngrx/store';
 import { provideMockStore } from '@ngrx/store/testing';
-import { NxModule } from '@nrwl/angular';
 import { hot } from 'jasmine-marbles';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
+import { deepEqual, mock, when } from 'ts-mockito';
+
+import { HTTP_ERROR_STUB } from '@bunch/core/api';
+import { providerOf } from '@bunch/core/testing';
+import { USER_CHANGE_STUB, USER_STUB } from '@bunch/users/common';
+import { UserManager } from '@bunch/users/manager';
 
 import * as UserActions from './user.actions';
 import { UserEffects } from './user.effects';
+import { initialUserState, USER_FEATURE_KEY } from './user.reducer';
 
 describe('UserEffects', () => {
   let actions: Observable<Action>;
   let effects: UserEffects;
+  let userManagerMock: UserManager;
 
   beforeEach(() => {
-    TestBed.configureTestingModule({
-      imports: [NxModule.forRoot()],
-      providers: [UserEffects, provideMockActions(() => actions), provideMockStore()],
-    });
+    userManagerMock = mock(UserManager);
+  });
 
+  beforeEach(async () => {
+    await TestBed.configureTestingModule({
+      providers: [
+        UserEffects,
+        provideMockActions(() => actions),
+        provideMockStore({
+          initialState: { [USER_FEATURE_KEY]: initialUserState },
+        }),
+        providerOf(UserManager, userManagerMock),
+      ],
+    });
+  });
+
+  beforeEach(() => {
     effects = TestBed.inject(UserEffects);
   });
 
   describe('init$', () => {
     it('should work', () => {
-      actions = hot('-a-|', { a: UserActions.init() });
+      actions = hot('a', { a: UserActions.init() });
 
-      const expected = hot('-a-|', { a: UserActions.loadSuccess({ user: null }) });
+      // TODO: Fix
+      when(userManagerMock.load()).thenReturn(of(USER_STUB));
+      const expected = hot('a', { a: UserActions.restore({ user: USER_STUB }) });
 
       expect(effects.init$).toBeObservable(expected);
+    });
+  });
+
+  describe('load$', () => {
+    it('should return loadSuccess', () => {
+      const action = UserActions.load();
+      const completion = UserActions.loadSuccess({ user: USER_STUB });
+
+      actions = hot('a', { a: action });
+      const response = hot('a', { a: USER_STUB });
+      const expected = hot('a', { a: completion });
+      when(userManagerMock.load()).thenReturn(response);
+
+      expect(effects.load$).toBeObservable(expected);
+    });
+
+    it('should return loadFailure', () => {
+      const action = UserActions.load();
+      const completion = UserActions.loadFailure({ error: HTTP_ERROR_STUB });
+
+      actions = hot('a', { a: action });
+      const response = hot('#', null, HTTP_ERROR_STUB);
+      const expected = hot('a', { a: completion });
+      when(userManagerMock.load()).thenReturn(response);
+
+      expect(effects.load$).toBeObservable(expected);
+    });
+  });
+
+  describe('change$', () => {
+    it('should return changeSuccess', () => {
+      const action = UserActions.change({ userChange: USER_CHANGE_STUB });
+      const completion = UserActions.changeSuccess({ user: USER_STUB });
+
+      actions = hot('a', { a: action });
+      const response = hot('a', { a: USER_STUB });
+      const expected = hot('a', { a: completion });
+      when(userManagerMock.change(deepEqual(USER_CHANGE_STUB))).thenReturn(response);
+
+      expect(effects.change$).toBeObservable(expected);
+    });
+
+    it('should return changeFailure', () => {
+      const action = UserActions.change({ userChange: USER_CHANGE_STUB });
+      const completion = UserActions.changeFailure({ error: HTTP_ERROR_STUB });
+
+      actions = hot('a', { a: action });
+      const response = hot('#', null, HTTP_ERROR_STUB);
+      const expected = hot('a', { a: completion });
+      when(userManagerMock.change(deepEqual(USER_CHANGE_STUB))).thenReturn(response);
+
+      expect(effects.change$).toBeObservable(expected);
     });
   });
 });

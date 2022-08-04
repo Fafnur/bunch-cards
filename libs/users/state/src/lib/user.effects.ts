@@ -38,7 +38,7 @@ export class UserEffects implements OnInitEffects {
     return this.actions$.pipe(
       ofType(UserActions.change),
       fetch({
-        id: () => 'load',
+        id: () => 'change',
         run: ({ userChange }) => this.userManager.change(userChange).pipe(map((user) => UserActions.changeSuccess({ user }))),
         onError: (action, error) => UserActions.changeFailure({ error }),
       })

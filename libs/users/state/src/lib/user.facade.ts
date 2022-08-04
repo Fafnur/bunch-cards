@@ -3,6 +3,7 @@ import { Actions, ofType } from '@ngrx/effects';
 import { Store } from '@ngrx/store';
 import { map } from 'rxjs';
 
+import { isNotNullOrUndefined } from '@bunch/core/utils/operators';
 import { UserChange } from '@bunch/users/common';
 
 import * as UserActions from './user.actions';
@@ -10,7 +11,7 @@ import * as UserSelectors from './user.selectors';
 
 @Injectable()
 export class UserFacade {
-  user$ = this.store.select(UserSelectors.selectUser);
+  user$ = this.store.select(UserSelectors.selectUser).pipe(isNotNullOrUndefined());
 
   loadSuccess$ = this.actions$.pipe(
     ofType(UserActions.loadSuccess),
