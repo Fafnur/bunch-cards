@@ -1,4 +1,4 @@
-import { User, UserAuth, UserStatus } from './user.interface';
+import { User, UserAuth, UserChange, UserStatus } from './user.interface';
 
 export const USER_STUB: User = {
   id: 1,
@@ -15,5 +15,12 @@ export const USER_STUB: User = {
 export const USER_AUTH_STUB: UserAuth = {
   accessToken: 'accessTokenRand1',
   id: USER_STUB.id,
-  username: USER_STUB.username,
+};
+
+export const USER_CHANGE_STUB: UserChange = {
+  username: 'alex',
+  email: 'alex@alex.ru',
+  photo: 'ig.jpg',
+  firstname: 'Ivan',
+  lastname: 'Doorin',
 };

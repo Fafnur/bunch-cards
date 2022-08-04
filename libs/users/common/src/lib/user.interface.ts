@@ -17,6 +17,14 @@ export interface User {
   status: UserStatus;
 }
 
+export interface UserChange {
+  username: string;
+  email: string;
+  photo: string | null;
+  firstname: string;
+  lastname: string;
+}
+
 export enum UserField {
   Username = 'username',
   Password = 'password',

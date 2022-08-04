@@ -13,13 +13,13 @@ export function castUser(userEntity: UserEntity): User {
   return user;
 }
 
-@Controller()
+@Controller('users')
 export class UserController {
   constructor(private readonly userService: UserService) {}
 
   @UseGuards(JwtAuthGuard)
-  @Get('user/profile')
-  async getProfile(@Request() req: { user: UserJwtCredentials }): Promise<User> {
+  @Get()
+  async load(@Request() req: { user: UserJwtCredentials }): Promise<User> {
     const user = await this.userService.findOne(req.user.userId);
 
     if (!user) {
