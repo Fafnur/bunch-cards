@@ -40,7 +40,7 @@ describe('GroupManager', () => {
 
     const result = hot('-a', { a: GROUP_STUB });
     when(localDBServiceMock.getAll(GroupManager.storeName)).thenReturn(hot('a', { a: [{}] }));
-    when(localDBServiceMock.put(GroupManager.storeName, deepEqual(GROUP_STUB), GROUP_STUB.uuid)).thenReturn(result);
+    when(localDBServiceMock.put(GroupManager.storeName, deepEqual(GROUP_STUB))).thenReturn(result);
 
     expect(service.create(GROUP_CREATE_STUB)).toBeObservable(result);
   });
@@ -48,7 +48,7 @@ describe('GroupManager', () => {
   it('should call change()', () => {
     const result = hot('-a', { a: GROUP_STUB });
     when(localDBServiceMock.get(GroupManager.storeName, GROUP_STUB.uuid)).thenReturn(hot('a', { a: GROUP_STUB }));
-    when(localDBServiceMock.put(GroupManager.storeName, deepEqual(GROUP_STUB), GROUP_STUB.uuid)).thenReturn(result);
+    when(localDBServiceMock.put(GroupManager.storeName, deepEqual(GROUP_STUB))).thenReturn(result);
 
     expect(service.change(GROUP_STUB.uuid, GROUP_CHANGE_STUB)).toBeObservable(result);
   });
@@ -58,5 +58,12 @@ describe('GroupManager', () => {
     when(localDBServiceMock.remove(GroupManager.storeName, GROUP_STUB.uuid)).thenReturn(result);
 
     expect(service.remove(GROUP_STUB.uuid)).toBeObservable(result);
+  });
+
+  it('should call sync()', () => {
+    const result = hot('a', { a: null });
+    when(localDBServiceMock.putAll(GroupManager.storeName, deepEqual(GROUPS_STUB))).thenReturn(result);
+
+    expect(service.sync(GROUPS_STUB)).toBeObservable(result);
   });
 });

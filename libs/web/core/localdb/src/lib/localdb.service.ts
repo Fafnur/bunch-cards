@@ -91,8 +91,7 @@ export class WebLocalDBService implements LocalDBService, OnDestroy {
     });
   }
 
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  put<T = LocalDBRecord>(storeName: string, record: T, key: string): Observable<void> {
+  put<T = LocalDBRecord>(storeName: string, record: T): Observable<void> {
     return new Observable((observer) => {
       const onError = (error: unknown) => {
         console.error(error);
@@ -105,6 +104,32 @@ export class WebLocalDBService implements LocalDBService, OnDestroy {
           const putRequest = store.put(record);
           putRequest.onerror = () => onError(putRequest.error);
           putRequest.onsuccess = () => {
+            observer.next();
+            observer.complete();
+          };
+        } catch (err) {
+          onError(err);
+        }
+      });
+    });
+  }
+
+  putAll<T = LocalDBRecord>(storeName: string, records: T[]): Observable<void> {
+    return new Observable((observer) => {
+      const onError = (error: unknown) => {
+        console.error(error);
+        observer.complete();
+      };
+      this.getDatabase().subscribe((database) => {
+        try {
+          const transaction = database.transaction([storeName], 'readwrite');
+          const store = transaction.objectStore(storeName);
+          for (const record of records) {
+            store.put(record);
+          }
+
+          transaction.onerror = (error) => onError(error);
+          transaction.oncomplete = () => {
             observer.next();
             observer.complete();
           };

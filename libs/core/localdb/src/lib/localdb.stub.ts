@@ -16,7 +16,11 @@ export class LocalDBServiceStub implements LocalDBService {
     return EMPTY;
   }
 
-  put<T = LocalDBRecord>(storeName: string, record: T, key: string): Observable<void> {
+  put<T = LocalDBRecord>(storeName: string, record: T): Observable<void> {
+    return EMPTY;
+  }
+
+  putAll<T = LocalDBRecord>(storeName: string, record: T[]): Observable<void> {
     return EMPTY;
   }
 

@@ -38,14 +38,35 @@ export class NativescriptLocalDBService implements LocalDBService {
     });
   }
 
-  put<T = LocalDBRecord>(storeName: string, record: T, key: string): Observable<void> {
+  put<T = LocalDBRecord>(storeName: string, record: T): Observable<void> {
     return new Observable((observer) => {
       try {
         const database = new CouchBase(storeName);
-        database.createDocument(record, key);
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        database.createDocument(record, (record as any).uuid);
         observer.next();
         observer.complete();
         database.close();
+      } catch (err) {
+        console.error(err);
+        observer.complete();
+      }
+    });
+  }
+
+  putAll<T = LocalDBRecord>(storeName: string, records: T[]): Observable<void> {
+    return new Observable((observer) => {
+      try {
+        const database = new CouchBase(storeName);
+        database.inBatch(() => {
+          for (const record of records) {
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
+            database.createDocument(record, (record as any).uuid);
+          }
+          observer.next();
+          observer.complete();
+          database.close();
+        });
       } catch (err) {
         console.error(err);
         observer.complete();

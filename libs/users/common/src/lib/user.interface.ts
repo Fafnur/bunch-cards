@@ -6,23 +6,25 @@ export enum UserStatus {
 }
 
 export interface User {
-  id: number;
-  username: string;
-  email: string;
-  photo: string | null;
-  firstname: string;
-  lastname: string;
-  createdAt: string;
-  updatedAt: string;
-  status: UserStatus;
+  readonly id: number;
+  readonly uuid: string;
+  readonly username: string;
+  readonly email: string;
+  readonly photo: string | null;
+  readonly firstname: string;
+  readonly lastname: string;
+  readonly createdAt: string;
+  readonly updatedAt: string;
+  readonly status: UserStatus;
 }
 
 export interface UserChange {
-  username: string;
-  email: string;
-  photo: string | null;
-  firstname: string;
-  lastname: string;
+  readonly uuid: string;
+  readonly username?: string;
+  readonly email?: string;
+  readonly photo?: string | null;
+  readonly firstname?: string;
+  readonly lastname?: string;
 }
 
 export enum UserField {
@@ -35,37 +37,37 @@ export enum UserField {
 }
 
 export interface UserAuth {
-  accessToken: string;
-  id: number;
+  readonly accessToken: string;
+  readonly id: number;
 }
 
 export interface UserCredentials {
   /**
    * email
    */
-  username: string;
-  password: string;
+  readonly username: string;
+  readonly password: string;
 }
 
 export interface UserCreate {
-  email: string;
-  password: string;
-  firstname: string;
-  lastname: string;
+  readonly email: string;
+  readonly password: string;
+  readonly firstname: string;
+  readonly lastname: string;
 }
 
 export interface UserSecrets {
-  email: string;
+  readonly email: string;
 }
 
 export interface UserPasswordChange {
-  password: string;
-  token: string;
+  readonly password: string;
+  readonly token: string;
 }
 
 export interface UserJwtCredentials {
-  userId: number;
-  username: string;
+  readonly userId: number;
+  readonly username: string;
 }
 
 export enum UserStorageKeys {

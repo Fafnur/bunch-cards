@@ -4,6 +4,7 @@ export const USER_STUB: User = {
   id: 1,
   status: UserStatus.Verified,
   username: 'alex',
+  uuid: 'alex',
   email: 'alex@alex.ru',
   photo: 'ig.jpg',
   firstname: 'Ivan',
@@ -18,6 +19,7 @@ export const USER_AUTH_STUB: UserAuth = {
 };
 
 export const USER_CHANGE_STUB: UserChange = {
+  uuid: 'alex',
   username: 'alex',
   email: 'alex@alex.ru',
   photo: 'ig.jpg',

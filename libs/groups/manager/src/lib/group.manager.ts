@@ -35,7 +35,7 @@ export class GroupManager {
       switchMap((records) => {
         const record = { ...group, order: records.length };
 
-        return this.localDBService.put(GroupManager.storeName, record, payload.uuid).pipe(map(() => record));
+        return this.localDBService.put(GroupManager.storeName, record).pipe(map(() => record));
       })
     );
   }
@@ -49,12 +49,16 @@ export class GroupManager {
 
         const updatedRecord = { ...record, ...payload };
 
-        return this.localDBService.put(GroupManager.storeName, updatedRecord, uuid).pipe(map(() => updatedRecord));
+        return this.localDBService.put(GroupManager.storeName, updatedRecord).pipe(map(() => updatedRecord));
       })
     );
   }
 
   remove(uuid: string): Observable<void> {
     return this.localDBService.remove(GroupManager.storeName, uuid);
+  }
+
+  sync(groups: Group[]): Observable<void> {
+    return this.localDBService.putAll(GroupManager.storeName, groups);
   }
 }

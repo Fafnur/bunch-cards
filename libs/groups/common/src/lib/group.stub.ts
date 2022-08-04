@@ -1,6 +1,6 @@
-import { GroupCreate, GroupDto } from './group.interface';
+import { Group, GroupCreate, GroupDto } from './group.interface';
 
-export const GROUP_STUB: GroupDto = {
+export const GROUP_DTO_STUB: GroupDto = {
   uuid: 'simple-uuid',
   name: 'Simple Group',
   cards: [],
@@ -12,7 +12,13 @@ export const GROUP_STUB: GroupDto = {
   orderCards: [],
 };
 
-export const GROUPS_STUB: GroupDto[] = [GROUP_STUB];
+export const GROUP_STUB: Group = {
+  ...GROUP_DTO_STUB,
+  cards: [],
+};
+
+export const GROUPS_DTO_STUB: GroupDto[] = [GROUP_DTO_STUB];
+export const GROUPS_STUB: Group[] = [GROUP_STUB];
 
 export const GROUP_CREATE_STUB: GroupCreate = {
   name: 'Simple Group',

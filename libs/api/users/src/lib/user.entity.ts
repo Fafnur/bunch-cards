@@ -9,6 +9,9 @@ export class UserEntity implements User {
   @PrimaryGeneratedColumn()
   id!: number;
 
+  @Column({ unique: true, length: 36 })
+  uuid!: string;
+
   @Column({
     type: 'enum',
     enum: UserStatus,
