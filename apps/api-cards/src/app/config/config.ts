@@ -36,7 +36,7 @@ export function getCorsConfig(): CorsOptions {
 export function configurationFactory(): Config {
   return {
     port: process.env.PORT ? parseInt(process.env.PORT, 10) : 3000,
-    prefix: process.env.PREFIX ?? '',
+    prefix: process.env.APP_PREFIX ?? '',
     typeOrm: getTypeOrmConfig(),
     cors: getCorsConfig(),
   };
