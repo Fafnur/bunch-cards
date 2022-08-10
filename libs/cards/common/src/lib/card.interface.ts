@@ -6,7 +6,7 @@ export interface CardDto {
   readonly cover: string | null;
   readonly createdAt: string;
   readonly updatedAt: string;
-  readonly owner: number;
+  readonly owner: string;
 }
 
 export interface CardEntity {
@@ -17,7 +17,7 @@ export interface CardEntity {
   readonly cover: string | null;
   readonly createdAt: string;
   readonly updatedAt: string;
-  readonly owner: number;
+  readonly owner: string;
 }
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface

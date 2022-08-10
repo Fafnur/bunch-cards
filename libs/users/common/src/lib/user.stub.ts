@@ -15,7 +15,7 @@ export const USER_STUB: User = {
 
 export const USER_AUTH_STUB: UserAuth = {
   accessToken: 'accessTokenRand1',
-  id: USER_STUB.id,
+  uuid: USER_STUB.uuid,
 };
 
 export const USER_CHANGE_STUB: UserChange = {

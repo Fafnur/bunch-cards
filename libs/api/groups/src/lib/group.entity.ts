@@ -25,7 +25,7 @@ export class GroupEntity implements GroupDto {
   cover!: string | null;
 
   @Column()
-  owner!: number;
+  owner!: string;
 
   @Column()
   order!: number;

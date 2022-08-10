@@ -38,7 +38,7 @@ export enum UserField {
 
 export interface UserAuth {
   readonly accessToken: string;
-  readonly id: number;
+  readonly uuid: string;
 }
 
 export interface UserCredentials {
@@ -54,6 +54,7 @@ export interface UserCreate {
   readonly password: string;
   readonly firstname: string;
   readonly lastname: string;
+  readonly uuid: string;
 }
 
 export interface UserSecrets {
@@ -66,8 +67,7 @@ export interface UserPasswordChange {
 }
 
 export interface UserJwtCredentials {
-  readonly userId: number;
-  readonly username: string;
+  readonly uuid: string;
 }
 
 export enum UserStorageKeys {

@@ -20,7 +20,7 @@ export class UserController {
   @UseGuards(JwtAuthGuard)
   @Get()
   async load(@Request() req: { user: UserJwtCredentials }): Promise<User> {
-    const user = await this.userService.findOne(req.user.userId);
+    const user = await this.userService.findOne(req.user.uuid);
 
     if (!user) {
       throw new NotFoundException();

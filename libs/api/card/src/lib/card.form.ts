@@ -1,4 +1,4 @@
-import { IsInt, IsNotEmpty, IsOptional, IsString, Length } from 'class-validator';
+import { IsNotEmpty, IsOptional, IsString, Length } from 'class-validator';
 
 import { FormErrorType } from '@bunch/api/forms';
 import { CardChange, CardCreate } from '@bunch/cards/common';
@@ -51,11 +51,11 @@ export class CardCreateForm implements CardCreate {
   @IsOptional()
   cover?: string;
 
-  @IsInt({
-    context: { errorCode: FormErrorType.IsInt },
+  @IsString({
+    context: { errorCode: FormErrorType.IsString },
   })
   @IsOptional()
-  owner?: number;
+  owner?: string;
 }
 
 export class CardChangeForm implements CardChange {

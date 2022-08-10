@@ -29,7 +29,7 @@ export class CardController {
 
   @Get()
   async load(@Request() req: { user: UserJwtCredentials }): Promise<CardDto[]> {
-    return await this.service.find(req.user.userId);
+    return await this.service.find(req.user.uuid);
   }
 
   @Post()
@@ -40,7 +40,7 @@ export class CardController {
     })
   )
   async create(@Request() req: { user: UserJwtCredentials }, @Body() form: CardCreateForm): Promise<CardDto> {
-    return await this.service.create({ ...form, owner: req.user.userId });
+    return await this.service.create({ ...form, owner: req.user.uuid });
   }
 
   @Patch(':uuid')
@@ -75,6 +75,6 @@ export class CardController {
 
   @Put()
   async sync(@Request() req: { user: UserJwtCredentials }, @Body() groups: CardDto[]): Promise<CardDto[]> {
-    return await this.service.sync(req.user.userId, groups);
+    return await this.service.sync(req.user.uuid, groups);
   }
 }

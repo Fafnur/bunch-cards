@@ -29,7 +29,7 @@ export class CardEntity implements Card {
   groupUuid!: string;
 
   @Column()
-  owner!: number;
+  owner!: string;
 
   @CreateDateColumn({ name: 'created_at' })
   createdAt!: string;

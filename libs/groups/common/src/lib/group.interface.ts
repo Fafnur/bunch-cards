@@ -7,7 +7,7 @@ export interface GroupDto {
   readonly cover: string | null;
   readonly createdAt: string;
   readonly updatedAt: string;
-  readonly owner: number;
+  readonly owner: string;
   readonly order: number;
   readonly orderCards: string[];
 }
@@ -19,7 +19,7 @@ export interface GroupEntity {
   readonly cover: string | null;
   readonly createdAt: string;
   readonly updatedAt: string;
-  readonly owner: number;
+  readonly owner: string;
   readonly order: number;
   readonly orderCards?: string[];
 }

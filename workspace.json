@@ -23,6 +23,7 @@
     "core-utils-destroy": "libs/core/utils/destroy",
     "core-utils-operators": "libs/core/utils/operators",
     "core-utils-types": "libs/core/utils/types",
+    "core-utils-uuid": "libs/core/utils/uuid",
     "groups-api": "libs/groups/api",
     "groups-common": "libs/groups/common",
     "groups-manager": "libs/groups/manager",

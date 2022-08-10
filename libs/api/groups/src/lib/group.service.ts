@@ -11,11 +11,11 @@ import { GroupCreateForm } from './group.form';
 export class GroupService {
   constructor(@InjectRepository(GroupEntity) private readonly repository: Repository<GroupEntity>) {}
 
-  async count(owner?: number): Promise<number> {
+  async count(owner?: string): Promise<number> {
     return this.repository.count({ where: { owner } });
   }
 
-  async find(owner?: number): Promise<GroupEntity[]> {
+  async find(owner?: string): Promise<GroupEntity[]> {
     return this.repository.find({ where: { owner }, relations: ['cards'] });
   }
 
@@ -23,7 +23,7 @@ export class GroupService {
     return this.repository.findOneBy({ uuid });
   }
 
-  async findOneWithCards(uuid: string, owner?: number): Promise<GroupEntity | null> {
+  async findOneWithCards(uuid: string, owner?: string): Promise<GroupEntity | null> {
     return this.repository.findOne({ where: { uuid, owner }, relations: ['cards'] });
   }
 
@@ -45,7 +45,7 @@ export class GroupService {
     return this.repository.save(group);
   }
 
-  async sync(owner: number, groups: GroupDto[]): Promise<GroupEntity[]> {
+  async sync(owner: string, groups: GroupDto[]): Promise<GroupEntity[]> {
     await this.repository.save(groups.map((group) => ({ ...group, cards: undefined })));
 
     return this.find(owner);

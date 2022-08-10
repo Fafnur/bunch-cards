@@ -35,7 +35,7 @@ export class GroupController {
     })
   )
   async create(@Request() req: { user: UserJwtCredentials }, @Body() form: GroupCreateForm): Promise<GroupDto> {
-    return this.service.create({ ...form, owner: req.user.userId });
+    return this.service.create({ ...form, owner: req.user.uuid });
   }
 
   @Patch(':uuid')
@@ -62,12 +62,12 @@ export class GroupController {
 
   @Get()
   async load(@Request() req: { user: UserJwtCredentials }): Promise<GroupDto[]> {
-    return this.service.find(req.user.userId);
+    return this.service.find(req.user.uuid);
   }
 
   @Get(':uuid')
   async loadGroup(@Request() req: { user: UserJwtCredentials }, @Param() params: { uuid: string }): Promise<GroupDto | null> {
-    return this.service.findOneWithCards(params.uuid, req.user.userId);
+    return this.service.findOneWithCards(params.uuid, req.user.uuid);
   }
 
   @Delete(':uuid')
@@ -82,6 +82,6 @@ export class GroupController {
 
   @Put()
   async sync(@Request() req: { user: UserJwtCredentials }, @Body() groups: GroupDto[]): Promise<GroupDto[]> {
-    return this.service.sync(req.user.userId, groups);
+    return this.service.sync(req.user.uuid, groups);
   }
 }

@@ -32,11 +32,11 @@ export class GroupCreateForm implements GroupCreate {
   @IsOptional()
   cover!: string;
 
-  @IsInt({
-    context: { errorCode: FormErrorType.IsInt },
+  @IsString({
+    context: { errorCode: FormErrorType.IsString },
   })
   @IsOptional()
-  owner?: number;
+  owner?: string;
 
   @IsInt({
     context: { errorCode: FormErrorType.IsInt },

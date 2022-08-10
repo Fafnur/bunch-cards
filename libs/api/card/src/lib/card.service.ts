@@ -11,11 +11,11 @@ import { CardCreateForm } from './card.form';
 export class CardService {
   constructor(@InjectRepository(CardEntity) private readonly repository: Repository<CardEntity>) {}
 
-  async count(owner?: number): Promise<number> {
+  async count(owner?: string): Promise<number> {
     return this.repository.count({ where: { owner } });
   }
 
-  async find(owner?: number): Promise<CardEntity[]> {
+  async find(owner?: string): Promise<CardEntity[]> {
     return this.repository.find({ where: { owner } });
   }
 
@@ -39,7 +39,7 @@ export class CardService {
     return this.repository.save(card);
   }
 
-  async sync(owner: number, cards: CardDto[]): Promise<CardEntity[]> {
+  async sync(owner: string, cards: CardDto[]): Promise<CardEntity[]> {
     await this.repository.save(cards);
 
     return this.find(owner);

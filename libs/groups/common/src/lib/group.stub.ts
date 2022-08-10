@@ -7,7 +7,7 @@ export const GROUP_DTO_STUB: GroupDto = {
   cover: null,
   createdAt: '2022-07-24T15:18:35.183Z',
   updatedAt: '2022-07-24T15:18:35.183Z',
-  owner: 1,
+  owner: 'user-uuid',
   order: 1,
   orderCards: [],
 };

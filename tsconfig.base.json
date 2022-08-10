@@ -36,6 +36,7 @@
       "@bunch/core/utils/destroy": ["libs/core/utils/destroy/src/index.ts"],
       "@bunch/core/utils/operators": ["libs/core/utils/operators/src/index.ts"],
       "@bunch/core/utils/types": ["libs/core/utils/types/src/index.ts"],
+      "@bunch/core/utils/uuid": ["libs/core/utils/uuid/src/index.ts"],
       "@bunch/groups/api": ["libs/groups/api/src/index.ts"],
       "@bunch/groups/common": ["libs/groups/common/src/index.ts"],
       "@bunch/groups/manager": ["libs/groups/manager/src/index.ts"],

@@ -8,7 +8,7 @@ export const CARD_STUB: CardDto = {
   original: 'Simple',
   createdAt: '2022-07-24T15:18:35.183Z',
   updatedAt: '2022-07-24T15:18:35.183Z',
-  owner: 1,
+  owner: 'user-uuid',
 };
 
 export const CARDS_STUB: CardDto[] = [CARD_STUB];
