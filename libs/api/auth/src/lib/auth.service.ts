@@ -5,6 +5,7 @@ import { MailerService } from '@nestjs-modules/mailer';
 
 import { PasswordService } from '@bunch/api/passwords';
 import { UserService } from '@bunch/api/users';
+import { uuidv4 } from '@bunch/core/utils/uuid';
 import { User, UserAuth, UserCreate, UserCredentials, UserPasswordChange, UserSecrets, UserStatus } from '@bunch/users/common';
 
 import { AppleUser } from './apple.strategy';
@@ -38,11 +39,12 @@ export class AuthService {
         lastname: googleUser.lastname,
         username: `${googleUser.firstname} ${googleUser.lastname}`,
         status: UserStatus.Verified,
+        uuid: uuidv4(),
       }));
 
-    const token = this.jwtService.sign({ userId: user.id });
+    const token = this.jwtService.sign({ uuid: user.uuid });
 
-    return { url: `${this.frontUrl}/auth/oauth?token=${token}&id=${user.id}` };
+    return { url: `${this.frontUrl}/auth/oauth?token=${token}&uuid=${user.uuid}` };
   }
 
   async loginWithApple(appleUser?: AppleUser): Promise<{ url: string }> {
@@ -59,11 +61,12 @@ export class AuthService {
         lastname: appleUser.lastname,
         username: `${appleUser.firstname} ${appleUser.lastname}`,
         status: UserStatus.Verified,
+        uuid: uuidv4(),
       }));
 
-    const token = this.jwtService.sign({ userId: user.id });
+    const token = this.jwtService.sign({ uuid: user.uuid });
 
-    return { url: `${this.frontUrl}/auth/oauth?token=${token}&id=${user.id}` };
+    return { url: `${this.frontUrl}/auth/oauth?token=${token}&uuid=${user.uuid}` };
   }
 
   async validateUserCredentials(credentials: UserCredentials): Promise<Omit<User, 'password'> | null> {
@@ -89,8 +92,8 @@ export class AuthService {
     }
 
     return {
-      accessToken: this.jwtService.sign({ userId: user.id }),
-      id: user.id,
+      accessToken: this.jwtService.sign({ uuid: user.uuid }),
+      uuid: user.uuid,
     };
   }
 
@@ -116,7 +119,7 @@ export class AuthService {
     const resetAt = new Date();
     resetAt.setDate(resetAt.getDate() + 1);
 
-    return await this.userService.update(user.id, { reset: resetToken, resetAt: resetAt.toISOString() }).then(() => undefined);
+    return await this.userService.update(user.uuid, { reset: resetToken, resetAt: resetAt.toISOString() }).then(() => undefined);
   }
 
   async changePassword(payload: UserPasswordChange): Promise<void> {
@@ -131,7 +134,7 @@ export class AuthService {
 
     const password = await this.passwordService.getHash(payload.password);
 
-    return await this.userService.update(user.id, { password }).then(() => undefined);
+    return await this.userService.update(user.uuid, { password }).then(() => undefined);
   }
 
   async register(payload: UserCreate): Promise<UserAuth> {
@@ -171,7 +174,7 @@ export class AuthService {
 
     return {
       accessToken: this.jwtService.sign({ userId: userCreated.id }),
-      id: userCreated.id,
+      uuid: userCreated.uuid,
     };
   }
 
@@ -186,6 +189,6 @@ export class AuthService {
       throw new BadRequestException({ token: { invalid: 'Token expired' } });
     }
 
-    return await this.userService.update(user.id, { confirm: null, confirmAt: null, status: UserStatus.Verified }).then(() => undefined);
+    return await this.userService.update(user.uuid, { confirm: null, confirmAt: null, status: UserStatus.Verified }).then(() => undefined);
   }
 }

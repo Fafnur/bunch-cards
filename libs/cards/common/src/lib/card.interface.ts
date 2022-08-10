@@ -1,20 +1,35 @@
-export interface Card {
-  id: number;
-  original: string;
-  translation: string;
-  // images: string[];
-  cover: string | null;
-  createdAt: string;
-  updatedAt: string;
-  owner: number;
+export interface CardDto {
+  readonly uuid: string;
+  readonly groupUuid: string;
+  readonly original: string;
+  readonly translation: string;
+  readonly cover: string | null;
+  readonly createdAt: string;
+  readonly updatedAt: string;
+  readonly owner: string;
 }
+
+export interface CardEntity {
+  readonly uuid: string;
+  readonly groupUuid: string;
+  readonly original: string;
+  readonly translation: string;
+  readonly cover: string | null;
+  readonly createdAt: string;
+  readonly updatedAt: string;
+  readonly owner: string;
+}
+
+// eslint-disable-next-line @typescript-eslint/no-empty-interface
+export interface Card extends CardEntity {}
 
 export interface CardCreate {
-  original: string;
-  translation: string;
-  images?: string[];
-  cover?: string | null;
-  group?: number;
+  readonly uuid: string;
+  readonly groupUuid: string;
+  readonly original: string;
+  readonly translation: string;
+  readonly images?: string[];
+  readonly cover?: string | null;
 }
 
-export type CardChange = Partial<CardCreate>;
+export type CardChange = Partial<CardEntity>;

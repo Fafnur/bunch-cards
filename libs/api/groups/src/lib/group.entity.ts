@@ -1,42 +1,34 @@
-import { Column, CreateDateColumn, Entity, JoinTable, ManyToMany, PrimaryGeneratedColumn, UpdateDateColumn } from 'typeorm';
+import { Column, CreateDateColumn, Entity, OneToMany, PrimaryColumn, UpdateDateColumn } from 'typeorm';
 
+// eslint-disable-next-line @nrwl/nx/enforce-module-boundaries
 import { CardEntity } from '@bunch/api/card';
 import { Card } from '@bunch/cards/common';
-import { Group } from '@bunch/groups/common';
+import { GroupDto } from '@bunch/groups/common';
 
 @Entity({
   name: 'groups',
 })
-export class GroupEntity implements Group {
-  @PrimaryGeneratedColumn()
-  id!: number;
+export class GroupEntity implements GroupDto {
+  @PrimaryColumn({ length: 36 })
+  uuid!: string;
 
   @Column()
   name!: string;
 
-  @ManyToMany(() => CardEntity, {
-    cascade: true,
-    onUpdate: 'CASCADE',
-    onDelete: 'CASCADE',
-  })
-  @JoinTable({
-    name: 'cards_groups',
-    joinColumn: {
-      name: 'group_id',
-      referencedColumnName: 'id',
-    },
-    inverseJoinColumn: {
-      name: 'card_id',
-      referencedColumnName: 'id',
-    },
-  })
+  @Column({ name: 'order_cards', nullable: true, type: 'json' })
+  orderCards!: string[];
+
+  @OneToMany(() => CardEntity, (card) => card.group)
   cards!: Card[];
 
   @Column({ nullable: true, length: 256 })
   cover!: string | null;
 
   @Column()
-  owner!: number;
+  owner!: string;
+
+  @Column()
+  order!: number;
 
   @CreateDateColumn({ name: 'created_at' })
   createdAt!: string;

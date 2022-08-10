@@ -7,28 +7,30 @@ import {
   Param,
   Patch,
   Post,
+  Put,
   Request,
   UseGuards,
   UsePipes,
   ValidationPipe,
 } from '@nestjs/common';
-import { EventEmitter2 } from '@nestjs/event-emitter';
 
 import { formExceptionFactory } from '@bunch/api/forms';
 import { JwtAuthGuard } from '@bunch/api/jwt/guards';
-import { Card } from '@bunch/cards/common';
+import { CardDto } from '@bunch/cards/common';
 import { UserJwtCredentials } from '@bunch/users/common';
 
-import { CardEntity } from './card.entity';
-import { CardEvents } from './card.event';
 import { CardChangeForm, CardCreateForm } from './card.form';
 import { CardService } from './card.service';
 
 @Controller('cards')
 @UseGuards(JwtAuthGuard)
-@Controller()
 export class CardController {
-  constructor(private readonly service: CardService, private readonly eventEmitter: EventEmitter2) {}
+  constructor(private readonly service: CardService) {}
+
+  @Get()
+  async load(@Request() req: { user: UserJwtCredentials }): Promise<CardDto[]> {
+    return await this.service.find(req.user.uuid);
+  }
 
   @Post()
   @UsePipes(
@@ -37,15 +39,11 @@ export class CardController {
       exceptionFactory: (validationErrors) => formExceptionFactory(validationErrors),
     })
   )
-  async create(@Request() req: { user: UserJwtCredentials }, @Body() form: CardCreateForm): Promise<CardEntity> {
-    const card = await this.service.create({ ...form, owner: req.user.userId });
-
-    this.eventEmitter.emit(CardEvents.Created, { card, payload: form });
-
-    return card;
+  async create(@Request() req: { user: UserJwtCredentials }, @Body() form: CardCreateForm): Promise<CardDto> {
+    return await this.service.create({ ...form, owner: req.user.uuid });
   }
 
-  @Patch(':id')
+  @Patch(':uuid')
   @UsePipes(
     new ValidationPipe({
       transform: true,
@@ -54,32 +52,29 @@ export class CardController {
   )
   async change(
     @Request() req: { user: UserJwtCredentials },
-    @Param() params: { id: number },
+    @Param() params: { uuid: string },
     @Body() form: CardChangeForm
-  ): Promise<CardEntity> {
-    let card = await this.service.findOne(+params.id);
+  ): Promise<CardDto> {
+    const card = await this.service.findOne(params.uuid);
     if (!card) {
-      throw new BadRequestException(`Card #${params.id} not found`);
+      throw new BadRequestException(`Card #${params.uuid} not found`);
     }
 
-    await this.service.update(+params.id, form);
-    card = (await this.service.findOne(+params.id)) as CardEntity;
-
-    return card;
+    return await this.service.save({ ...card, ...form });
   }
 
-  @Delete(':id')
-  async delete(@Request() req: { user: UserJwtCredentials }, @Param() params: { id: number }): Promise<void> {
-    const card = await this.service.findOne(+params.id);
+  @Delete(':uuid')
+  async delete(@Request() req: { user: UserJwtCredentials }, @Param() params: { uuid: string }): Promise<void> {
+    const card = await this.service.findOne(params.uuid);
     if (!card) {
-      throw new BadRequestException(`Card #${params.id} not found`);
+      throw new BadRequestException(`Card #${params.uuid} not found`);
     }
 
-    return await this.service.delete(+params.id);
+    return await this.service.delete(params.uuid);
   }
 
-  @Get()
-  async load(@Request() req: { user: UserJwtCredentials }): Promise<Card[]> {
-    return await this.service.find(req.user.userId);
+  @Put()
+  async sync(@Request() req: { user: UserJwtCredentials }, @Body() groups: CardDto[]): Promise<CardDto[]> {
+    return await this.service.sync(req.user.uuid, groups);
   }
 }

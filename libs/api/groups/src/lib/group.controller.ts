@@ -7,6 +7,7 @@ import {
   Param,
   Patch,
   Post,
+  Put,
   Request,
   UseGuards,
   UsePipes,
@@ -15,10 +16,9 @@ import {
 
 import { formExceptionFactory } from '@bunch/api/forms';
 import { JwtAuthGuard } from '@bunch/api/jwt/guards';
-import { Group } from '@bunch/groups/common';
+import { GroupDto } from '@bunch/groups/common';
 import { UserJwtCredentials } from '@bunch/users/common';
 
-import { GroupEntity } from './group.entity';
 import { GroupChangeForm, GroupCreateForm } from './group.form';
 import { GroupService } from './group.service';
 
@@ -34,11 +34,11 @@ export class GroupController {
       exceptionFactory: (validationErrors) => formExceptionFactory(validationErrors),
     })
   )
-  async create(@Request() req: { user: UserJwtCredentials }, @Body() form: GroupCreateForm): Promise<GroupEntity> {
-    return this.service.create({ ...form, owner: req.user.userId });
+  async create(@Request() req: { user: UserJwtCredentials }, @Body() form: GroupCreateForm): Promise<GroupDto> {
+    return this.service.create({ ...form, owner: req.user.uuid });
   }
 
-  @Patch(':id')
+  @Patch(':uuid')
   @UsePipes(
     new ValidationPipe({
       transform: true,
@@ -47,37 +47,41 @@ export class GroupController {
   )
   async change(
     @Request() req: { user: UserJwtCredentials },
-    @Param() params: { id: number },
+    @Param() params: { uuid: string },
     @Body() form: GroupChangeForm
-  ): Promise<GroupEntity> {
-    let group = await this.service.findOne(+params.id);
+  ): Promise<GroupDto> {
+    const group = (await this.service.findOne(params.uuid)) as GroupDto;
     if (!group) {
-      throw new BadRequestException(`Group #${params.id} not found`);
+      throw new BadRequestException(`Group #${params.uuid} not found`);
     }
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    const { cards, ...other } = form;
 
-    await this.service.update(+params.id, form);
-    group = (await this.service.findOne(+params.id)) as GroupEntity;
-
-    return group;
+    return this.service.save({ ...group, ...other });
   }
 
   @Get()
-  async load(@Request() req: { user: UserJwtCredentials }): Promise<Group[]> {
-    return await this.service.find(req.user.userId);
+  async load(@Request() req: { user: UserJwtCredentials }): Promise<GroupDto[]> {
+    return this.service.find(req.user.uuid);
   }
 
-  @Get(':id')
-  async loadGroup(@Request() req: { user: UserJwtCredentials }, @Param() params: { id: number }): Promise<Group | null> {
-    return await this.service.findOneWithCards(+params.id, req.user.userId);
+  @Get(':uuid')
+  async loadGroup(@Request() req: { user: UserJwtCredentials }, @Param() params: { uuid: string }): Promise<GroupDto | null> {
+    return this.service.findOneWithCards(params.uuid, req.user.uuid);
   }
 
-  @Delete(':id')
-  async delete(@Request() req: { user: UserJwtCredentials }, @Param() params: { id: number }): Promise<void> {
-    const group = await this.service.findOne(+params.id);
+  @Delete(':uuid')
+  async delete(@Request() req: { user: UserJwtCredentials }, @Param() params: { uuid: string }): Promise<void> {
+    const group = await this.service.findOne(params.uuid);
     if (!group) {
-      throw new BadRequestException(`Group #${params.id} not found`);
+      throw new BadRequestException(`Group #${params.uuid} not found`);
     }
 
-    return await this.service.delete(+params.id);
+    return this.service.delete(params.uuid);
+  }
+
+  @Put()
+  async sync(@Request() req: { user: UserJwtCredentials }, @Body() groups: GroupDto[]): Promise<GroupDto[]> {
+    return this.service.sync(req.user.uuid, groups);
   }
 }

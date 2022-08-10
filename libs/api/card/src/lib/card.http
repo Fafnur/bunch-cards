@@ -2,10 +2,11 @@
 POST http://localhost:3000/cards
 Content-Type: application/json
 Accept: application/json
-Authorization: BEARER eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjIsImlhdCI6MTY1ODY1MDQwMiwiZXhwIjoxNjU4NjU0MDAyfQ.73GZW_qSMJx2xE_M-yPzWqMvuVjfMBom-r0ElNsKk9s
+Authorization: BEARER eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjIsImlhdCI6MTY1OTQ5MDYxMCwiZXhwIjoxNjU5NDk0MjEwfQ.D4hHgXewShhTNVSnPfzjiU8B_03Kl0nuoVXc3Zqahlk
 
 {
-  "original": "Monkey",
-  "translation": "Обезьяна",
-  "group": 1
+  "original": "Monkey2",
+  "translation": "Обезьяна2",
+  "groupUuid": "123e4567-e89b-12d3-a456-426614174000",
+  "uuid": "123e4567-e89b-12d3-a456-426614174002"
 }

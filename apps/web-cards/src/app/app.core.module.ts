@@ -5,7 +5,10 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { ENVIRONMENTS } from '@bunch/core/environments';
 import { NAVIGATION_PATHS, PATHS } from '@bunch/core/navigation';
 import { RootStoreModule } from '@bunch/core/store/root';
+import { UserStateModule } from '@bunch/users/state';
+import { ConnectivityModule } from '@bunch/web/core/connectivity';
 import { HammerModule } from '@bunch/web/core/hammer';
+import { LocaldbModule } from '@bunch/web/core/localdb';
 
 import { environment } from '../environments/environment';
 
@@ -13,7 +16,10 @@ import { environment } from '../environments/environment';
   imports: [
     HttpClientModule,
     HammerModule,
+    ConnectivityModule,
     RootStoreModule,
+    UserStateModule,
+    LocaldbModule,
     !environment.production ? StoreDevtoolsModule.instrument({ logOnly: environment.production }) : [],
   ],
   providers: [

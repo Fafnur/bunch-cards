@@ -12,8 +12,8 @@ export class UserService {
     return await this.userRepository.find();
   }
 
-  async findOne(id: number): Promise<UserEntity | null> {
-    return (await this.userRepository.findOneBy({ id })) ?? null;
+  async findOne(uuid: string): Promise<UserEntity | null> {
+    return (await this.userRepository.findOneBy({ uuid })) ?? null;
   }
 
   async findOneByUsername(username: string): Promise<UserEntity | null> {
@@ -46,7 +46,7 @@ export class UserService {
     return this.userRepository.save(newUser);
   }
 
-  async update(id: number, data: Partial<UserEntity>): Promise<void> {
-    return await this.userRepository.update({ id }, data).then();
+  async update(uuid: string, data: Partial<UserEntity>): Promise<void> {
+    return await this.userRepository.update({ uuid }, data).then();
   }
 }

@@ -6,7 +6,10 @@ import { ENVIRONMENTS } from '@bunch/core/environments';
 import { NAVIGATION_PATHS, PATHS } from '@bunch/core/navigation';
 import { RootStoreModule } from '@bunch/core/store/root';
 import { AuthProvidersModule } from '@bunch/nativescript/auth/providers';
+import { ConnectivityModule } from '@bunch/nativescript/core/connectivity';
+import { LocaldbModule } from '@bunch/nativescript/core/localdb';
 import { LayoutModule } from '@bunch/nativescript/ui/layout';
+import { UserStateModule } from '@bunch/users/state';
 
 import { environment } from './environments/environment';
 
@@ -14,9 +17,12 @@ import { environment } from './environments/environment';
   imports: [
     NativeScriptModule,
     NativeScriptHttpClientModule,
-    RootStoreModule,
     LayoutModule,
     AuthProvidersModule,
+    ConnectivityModule,
+    RootStoreModule,
+    UserStateModule,
+    LocaldbModule,
     !environment.production ? StoreDevtoolsModule.instrument({ logOnly: environment.production }) : [],
   ],
   providers: [
