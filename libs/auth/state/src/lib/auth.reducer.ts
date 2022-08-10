@@ -5,7 +5,7 @@ import * as AuthActions from './auth.actions';
 export const AUTH_FEATURE_KEY = 'auth';
 
 export interface AuthState {
-  logged: boolean;
+  logged: boolean | null;
   token: string | null;
 }
 
@@ -14,7 +14,7 @@ export interface AuthPartialState {
 }
 
 export const initialAuthState: AuthState = {
-  logged: false,
+  logged: null,
   token: null,
 };
 

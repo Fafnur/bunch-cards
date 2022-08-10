@@ -9,6 +9,10 @@ export interface NavigationPaths {
   learning: string;
 
   auth: string;
+  authLogin: string;
+  authReset: string;
+  authRegister: string;
+  authPasswordChange: string;
 
   // Errors
   serverError: string;
@@ -24,6 +28,10 @@ export const NAVIGATION_PATHS: NavigationPaths = {
   user: 'user',
 
   auth: 'auth',
+  authLogin: 'auth/login',
+  authReset: 'auth/reset',
+  authRegister: 'auth/register',
+  authPasswordChange: 'auth/password-change',
 
   serverError: 'server-error',
   notFound: 'not-found',
