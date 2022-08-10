@@ -78,7 +78,8 @@
       "@bunch/web/ui/grid": ["libs/web/ui/grid/src/index.ts"],
       "@bunch/web/ui/layout": ["libs/web/ui/layout/src/index.ts"],
       "@bunch/web/ui/multiplatform": ["libs/web/ui/multiplatform/src/index.ts"],
-      "@bunch/web/ui/theming": ["libs/web/ui/theming/src/index.ts"]
+      "@bunch/web/ui/theming": ["libs/web/ui/theming/src/index.ts"],
+      "@bunch/nativescript/auth/guards": ["libs/nativescript/auth/guards/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

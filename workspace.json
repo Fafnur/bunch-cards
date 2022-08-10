@@ -68,7 +68,8 @@
     "web-ui-grid": "libs/web/ui/grid",
     "web-ui-layout": "libs/web/ui/layout",
     "web-ui-multiplatform": "libs/web/ui/multiplatform",
-    "web-ui-theming": "libs/web/ui/theming"
+    "web-ui-theming": "libs/web/ui/theming",
+    "nativescript-auth-guards": "libs/nativescript/auth/guards"
   },
   "$schema": "./node_modules/nx/schemas/workspace-schema.json"
 }
