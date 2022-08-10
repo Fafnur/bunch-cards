@@ -25,6 +25,8 @@
       "@bunch/api/users": ["libs/api/users/src/index.ts"],
       "@bunch/auth/api": ["libs/auth/api/src/index.ts"],
       "@bunch/auth/common": ["libs/auth/common/src/index.ts"],
+      "@bunch/auth/guards": ["libs/auth/guards/src/index.ts"],
+      "@bunch/auth/manager": ["libs/auth/manager/src/index.ts"],
       "@bunch/auth/state": ["libs/auth/state/src/index.ts"],
       "@bunch/cards/common": ["libs/cards/common/src/index.ts"],
       "@bunch/core/api": ["libs/core/api/src/index.ts"],

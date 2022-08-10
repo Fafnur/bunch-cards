@@ -12,6 +12,8 @@
     "api-users": "libs/api/users",
     "auth-api": "libs/auth/api",
     "auth-common": "libs/auth/common",
+    "auth-guards": "libs/auth/guards",
+    "auth-manager": "libs/auth/manager",
     "auth-state": "libs/auth/state",
     "cards-common": "libs/cards/common",
     "core-api": "libs/core/api",
