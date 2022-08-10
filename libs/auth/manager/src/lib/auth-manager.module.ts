@@ -1,7 +1,8 @@
-import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 
+import { AuthManager } from './auth.manager';
+
 @NgModule({
-  imports: [CommonModule],
+  providers: [AuthManager],
 })
 export class AuthManagerModule {}
