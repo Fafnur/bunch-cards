@@ -23,3 +23,11 @@ export interface AuthPasswordChange {
 export interface AuthJwtCredentials {
   readonly uuid: string;
 }
+
+export interface AuthRegister {
+  readonly email: string;
+  readonly password: string;
+  readonly firstname: string;
+  readonly lastname: string;
+  readonly uuid: string;
+}

@@ -1,4 +1,4 @@
-import { AuthCredentials, AuthJwtCredentials, AuthPasswordChange, AuthResponse, AuthSecrets } from './auth.interface';
+import { AuthCredentials, AuthJwtCredentials, AuthPasswordChange, AuthRegister, AuthResponse, AuthSecrets } from './auth.interface';
 
 export const AUTH_RESPONSE_STUB: AuthResponse = {
   accessToken: 'accessTokenRand1',
@@ -21,4 +21,12 @@ export const AUTH_PASSWORD_CHANGE_STUB: AuthPasswordChange = {
 
 export const AUTH_JWT_CREDENTIALS_STUB: AuthJwtCredentials = {
   uuid: AUTH_RESPONSE_STUB.uuid,
+};
+
+export const AUTH_REGISTER_STUB: AuthRegister = {
+  uuid: AUTH_RESPONSE_STUB.uuid,
+  email: 'alex@alex.ru',
+  firstname: 'Ivan',
+  lastname: 'Doorin',
+  password: 'strong',
 };

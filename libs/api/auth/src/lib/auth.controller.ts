@@ -2,10 +2,10 @@ import { Body, Controller, Get, Param, Post, Redirect, Req, Request, UseGuards, 
 import { AuthGuard } from '@nestjs/passport';
 
 import { formExceptionFactory } from '@bunch/api/forms';
-import { UserCreateForm } from '@bunch/api/users';
 import { AuthCredentials, AuthPasswordChange, AuthSecrets } from '@bunch/auth/common';
 
 import { AppleUser } from './apple.strategy';
+import { AuthRegisterForm } from './auth.form';
 import { AuthService } from './auth.service';
 import { GoogleUser } from './google.strategy';
 
@@ -35,7 +35,7 @@ export class AuthController {
       exceptionFactory: (validationErrors) => formExceptionFactory(validationErrors),
     })
   )
-  async register(@Body() payload: UserCreateForm) {
+  async register(@Body() payload: AuthRegisterForm) {
     return this.authService.register(payload);
   }
 

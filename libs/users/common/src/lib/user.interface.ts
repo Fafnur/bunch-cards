@@ -27,14 +27,6 @@ export interface UserChange {
   readonly lastname?: string;
 }
 
-export interface UserCreate {
-  readonly email: string;
-  readonly password: string;
-  readonly firstname: string;
-  readonly lastname: string;
-  readonly uuid: string;
-}
-
 export enum UserField {
   Username = 'username',
   Password = 'password',

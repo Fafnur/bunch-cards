@@ -5,9 +5,9 @@ import { MailerService } from '@nestjs-modules/mailer';
 
 import { PasswordService } from '@bunch/api/passwords';
 import { UserService } from '@bunch/api/users';
-import { AuthCredentials, AuthPasswordChange, AuthResponse, AuthSecrets } from '@bunch/auth/common';
+import { AuthCredentials, AuthPasswordChange, AuthRegister, AuthResponse, AuthSecrets } from '@bunch/auth/common';
 import { uuidv4 } from '@bunch/core/utils/uuid';
-import { User, UserCreate, UserStatus } from '@bunch/users/common';
+import { User, UserStatus } from '@bunch/users/common';
 
 import { AppleUser } from './apple.strategy';
 import { GoogleUser } from './google.strategy';
@@ -70,16 +70,13 @@ export class AuthService {
     return { url: `${this.frontUrl}/auth/oauth?token=${token}&uuid=${user.uuid}` };
   }
 
-  async validateUserCredentials(credentials: AuthCredentials): Promise<Omit<User, 'password'> | null> {
+  async validateUserCredentials(credentials: AuthCredentials): Promise<User | null> {
     const user = await this.userService.findOneByEmail(credentials.username);
 
     const valid = user && user.password ? await this.passwordService.compareHash(credentials.password, user.password) : false;
 
     if (user && valid) {
-      // eslint-disable-next-line @typescript-eslint/no-unused-vars
-      const { password, ...result } = user;
-
-      return result;
+      return user;
     }
 
     return null;
@@ -138,7 +135,7 @@ export class AuthService {
     return await this.userService.update(user.uuid, { password }).then(() => undefined);
   }
 
-  async register(payload: UserCreate): Promise<AuthResponse> {
+  async register(payload: AuthRegister): Promise<AuthResponse> {
     const user = await this.userService.findOneByEmail(payload.email);
 
     if (user) {
