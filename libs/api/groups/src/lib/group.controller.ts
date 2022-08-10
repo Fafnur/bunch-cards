@@ -16,8 +16,8 @@ import {
 
 import { formExceptionFactory } from '@bunch/api/forms';
 import { JwtAuthGuard } from '@bunch/api/jwt/guards';
+import { AuthJwtCredentials } from '@bunch/auth/common';
 import { GroupDto } from '@bunch/groups/common';
-import { UserJwtCredentials } from '@bunch/users/common';
 
 import { GroupChangeForm, GroupCreateForm } from './group.form';
 import { GroupService } from './group.service';
@@ -34,7 +34,7 @@ export class GroupController {
       exceptionFactory: (validationErrors) => formExceptionFactory(validationErrors),
     })
   )
-  async create(@Request() req: { user: UserJwtCredentials }, @Body() form: GroupCreateForm): Promise<GroupDto> {
+  async create(@Request() req: { user: AuthJwtCredentials }, @Body() form: GroupCreateForm): Promise<GroupDto> {
     return this.service.create({ ...form, owner: req.user.uuid });
   }
 
@@ -46,7 +46,7 @@ export class GroupController {
     })
   )
   async change(
-    @Request() req: { user: UserJwtCredentials },
+    @Request() req: { user: AuthJwtCredentials },
     @Param() params: { uuid: string },
     @Body() form: GroupChangeForm
   ): Promise<GroupDto> {
@@ -61,17 +61,17 @@ export class GroupController {
   }
 
   @Get()
-  async load(@Request() req: { user: UserJwtCredentials }): Promise<GroupDto[]> {
+  async load(@Request() req: { user: AuthJwtCredentials }): Promise<GroupDto[]> {
     return this.service.find(req.user.uuid);
   }
 
   @Get(':uuid')
-  async loadGroup(@Request() req: { user: UserJwtCredentials }, @Param() params: { uuid: string }): Promise<GroupDto | null> {
+  async loadGroup(@Request() req: { user: AuthJwtCredentials }, @Param() params: { uuid: string }): Promise<GroupDto | null> {
     return this.service.findOneWithCards(params.uuid, req.user.uuid);
   }
 
   @Delete(':uuid')
-  async delete(@Request() req: { user: UserJwtCredentials }, @Param() params: { uuid: string }): Promise<void> {
+  async delete(@Request() req: { user: AuthJwtCredentials }, @Param() params: { uuid: string }): Promise<void> {
     const group = await this.service.findOne(params.uuid);
     if (!group) {
       throw new BadRequestException(`Group #${params.uuid} not found`);
@@ -81,7 +81,7 @@ export class GroupController {
   }
 
   @Put()
-  async sync(@Request() req: { user: UserJwtCredentials }, @Body() groups: GroupDto[]): Promise<GroupDto[]> {
+  async sync(@Request() req: { user: AuthJwtCredentials }, @Body() groups: GroupDto[]): Promise<GroupDto[]> {
     return this.service.sync(req.user.uuid, groups);
   }
 }

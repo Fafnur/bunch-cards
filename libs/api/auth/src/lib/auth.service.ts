@@ -5,8 +5,9 @@ import { MailerService } from '@nestjs-modules/mailer';
 
 import { PasswordService } from '@bunch/api/passwords';
 import { UserService } from '@bunch/api/users';
+import { AuthCredentials, AuthPasswordChange, AuthResponse, AuthSecrets } from '@bunch/auth/common';
 import { uuidv4 } from '@bunch/core/utils/uuid';
-import { User, UserAuth, UserCreate, UserCredentials, UserPasswordChange, UserSecrets, UserStatus } from '@bunch/users/common';
+import { User, UserCreate, UserStatus } from '@bunch/users/common';
 
 import { AppleUser } from './apple.strategy';
 import { GoogleUser } from './google.strategy';
@@ -69,7 +70,7 @@ export class AuthService {
     return { url: `${this.frontUrl}/auth/oauth?token=${token}&uuid=${user.uuid}` };
   }
 
-  async validateUserCredentials(credentials: UserCredentials): Promise<Omit<User, 'password'> | null> {
+  async validateUserCredentials(credentials: AuthCredentials): Promise<Omit<User, 'password'> | null> {
     const user = await this.userService.findOneByEmail(credentials.username);
 
     const valid = user && user.password ? await this.passwordService.compareHash(credentials.password, user.password) : false;
@@ -84,7 +85,7 @@ export class AuthService {
     return null;
   }
 
-  async loginWithEmail(credentials: UserCredentials): Promise<UserAuth> {
+  async loginWithEmail(credentials: AuthCredentials): Promise<AuthResponse> {
     const user = await this.validateUserCredentials(credentials);
 
     if (!user || user.status === UserStatus.Created) {
@@ -97,7 +98,7 @@ export class AuthService {
     };
   }
 
-  async reset(secrets: UserSecrets): Promise<void> {
+  async reset(secrets: AuthSecrets): Promise<void> {
     const user = (await this.userService.findOneByEmail(secrets.email)) ?? null;
 
     if (!user) {
@@ -122,7 +123,7 @@ export class AuthService {
     return await this.userService.update(user.uuid, { reset: resetToken, resetAt: resetAt.toISOString() }).then(() => undefined);
   }
 
-  async changePassword(payload: UserPasswordChange): Promise<void> {
+  async changePassword(payload: AuthPasswordChange): Promise<void> {
     const user = (await this.userService.findOneByReset(payload.token)) ?? null;
 
     if (!user) {
@@ -137,7 +138,7 @@ export class AuthService {
     return await this.userService.update(user.uuid, { password }).then(() => undefined);
   }
 
-  async register(payload: UserCreate): Promise<UserAuth> {
+  async register(payload: UserCreate): Promise<AuthResponse> {
     const user = await this.userService.findOneByEmail(payload.email);
 
     if (user) {
