@@ -1,27 +1,74 @@
 import { Injectable } from '@angular/core';
-import { select, Store, Action } from '@ngrx/store';
+import { Actions, ofType } from '@ngrx/effects';
+import { Store } from '@ngrx/store';
+import { map, Observable } from 'rxjs';
+
+import { AuthCredentials, AuthPasswordChange, AuthRegister, AuthSecrets } from '@bunch/auth/common';
 
 import * as AuthActions from './auth.actions';
-import * as AuthFeature from './auth.reducer';
 import * as AuthSelectors from './auth.selectors';
 
 @Injectable()
 export class AuthFacade {
-  /**
-   * Combine pieces of state using createSelector,
-   * and expose them as observables through the facade.
-   */
-  loaded$ = this.store.pipe(select(AuthSelectors.selectLogged));
-  allAuth$ = this.store.pipe(select(AuthSelectors.getAllAuth));
-  selectedAuth$ = this.store.pipe(select(AuthSelectors.getSelected));
+  logged$ = this.store.select(AuthSelectors.selectLogged);
 
-  constructor(private readonly store: Store) {}
+  token$ = this.store.select(AuthSelectors.selectToken);
 
-  /**
-   * Use the initialization action to perform one
-   * or more tasks in your Effects.
-   */
-  init() {
-    this.store.dispatch(AuthActions.login());
+  loginSuccess$ = this.actions.pipe(
+    ofType(AuthActions.loginSuccess),
+    map(({ response }) => response)
+  );
+
+  loginFailure$ = this.actions.pipe(
+    ofType(AuthActions.loginFailure),
+    map(({ error }) => error)
+  );
+
+  registerSuccess$ = this.actions.pipe(
+    ofType(AuthActions.registerSuccess),
+    map(({ response }) => response)
+  );
+
+  registerFailure$ = this.actions.pipe(
+    ofType(AuthActions.registerFailure),
+    map(({ error }) => error)
+  );
+
+  resetSuccess$: Observable<void> = this.actions.pipe(
+    ofType(AuthActions.resetSuccess),
+    map(() => undefined)
+  );
+
+  resetFailure$ = this.actions.pipe(
+    ofType(AuthActions.resetFailure),
+    map(({ error }) => error)
+  );
+
+  changePasswordSuccess$: Observable<void> = this.actions.pipe(
+    ofType(AuthActions.changePasswordSuccess),
+    map(() => undefined)
+  );
+
+  changePasswordFailure$ = this.actions.pipe(
+    ofType(AuthActions.changePasswordFailure),
+    map(({ error }) => error)
+  );
+
+  constructor(private readonly actions: Actions, private readonly store: Store) {}
+
+  login(credentials: AuthCredentials): void {
+    this.store.dispatch(AuthActions.login({ credentials }));
+  }
+
+  register(register: AuthRegister): void {
+    this.store.dispatch(AuthActions.register({ register }));
+  }
+
+  reset(secrets: AuthSecrets): void {
+    this.store.dispatch(AuthActions.reset({ secrets }));
+  }
+
+  changePassword(passwordChange: AuthPasswordChange): void {
+    this.store.dispatch(AuthActions.changePassword({ passwordChange }));
   }
 }

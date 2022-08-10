@@ -1,87 +1,157 @@
-import { NgModule } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
-import { EffectsModule } from '@ngrx/effects';
-import { StoreModule, Store } from '@ngrx/store';
-import { NxModule } from '@nrwl/angular';
-import { readFirst } from '@nrwl/angular/testing';
+import { provideMockActions } from '@ngrx/effects/testing';
+import { MockStore, provideMockStore } from '@ngrx/store/testing';
+import { hot } from 'jasmine-marbles';
+import { Observable } from 'rxjs';
+
+import {
+  AUTH_CREDENTIALS_STUB,
+  AUTH_PASSWORD_CHANGE_STUB,
+  AUTH_REGISTER_STUB,
+  AUTH_RESPONSE_STUB,
+  AUTH_SECRETS_STUB,
+} from '@bunch/auth/common';
+import { HTTP_ERROR_STUB } from '@bunch/core/api';
 
 import * as AuthActions from './auth.actions';
-import { AuthEffects } from './auth.effects';
 import { AuthFacade } from './auth.facade';
-import { AuthEntity } from './auth.models';
-import { AUTH_FEATURE_KEY, AuthState, initialAuthState, authReducer } from './auth.reducer';
-import * as AuthSelectors from './auth.selectors';
+import { AUTH_FEATURE_KEY, initialAuthState } from './auth.reducer';
+import { selectLogged, selectToken } from './auth.selectors';
 
-interface TestSchema {
-  auth: AuthState;
-}
-
-describe('AuthFacade', () => {
+describe('Auth Facade', () => {
   let facade: AuthFacade;
-  let store: Store<TestSchema>;
-  const createAuthEntity = (id: string, name = ''): AuthEntity => ({
-    id,
-    name: name || `name-${id}`,
+  let actions: Observable<unknown>;
+  let store: MockStore;
+  let dispatchSpy: jest.SpyInstance;
+
+  beforeEach(async () => {
+    await TestBed.configureTestingModule({
+      providers: [
+        AuthFacade,
+        provideMockActions(() => actions),
+        provideMockStore({
+          initialState: { [AUTH_FEATURE_KEY]: initialAuthState },
+          selectors: [
+            { selector: selectToken, value: AUTH_RESPONSE_STUB.accessToken },
+            { selector: selectLogged, value: true },
+          ],
+        }),
+      ],
+    });
   });
 
-  describe('used in NgModule', () => {
-    beforeEach(() => {
-      @NgModule({
-        imports: [StoreModule.forFeature(AUTH_FEATURE_KEY, authReducer), EffectsModule.forFeature([AuthEffects])],
-        providers: [AuthFacade],
-      })
-      class CustomFeatureModule {}
+  beforeEach(() => {
+    store = TestBed.inject(MockStore);
+    facade = TestBed.inject(AuthFacade);
 
-      @NgModule({
-        imports: [NxModule.forRoot(), StoreModule.forRoot({}), EffectsModule.forRoot([]), CustomFeatureModule],
-      })
-      class RootModule {}
-      TestBed.configureTestingModule({ imports: [RootModule] });
+    dispatchSpy = jest.spyOn(store, 'dispatch');
+  });
 
-      store = TestBed.inject(Store);
-      facade = TestBed.inject(AuthFacade);
-    });
+  it('should return logged$', () => {
+    const expected = hot('a', { a: true });
 
-    /**
-     * The initially generated facade::loadAll() returns empty array
-     */
-    it('loadAll() should return empty list with loaded == true', async () => {
-      let list = await readFirst(facade.allAuth$);
-      let isLoaded = await readFirst(facade.loaded$);
+    expect(facade.logged$).toBeObservable(expected);
+  });
 
-      expect(list.length).toBe(0);
-      expect(isLoaded).toBe(false);
+  it('should return token$', () => {
+    const expected = hot('a', { a: AUTH_RESPONSE_STUB.accessToken });
 
-      facade.init();
+    expect(facade.token$).toBeObservable(expected);
+  });
 
-      list = await readFirst(facade.allAuth$);
-      isLoaded = await readFirst(facade.loaded$);
+  it('login() should dispatch action', () => {
+    facade.login(AUTH_CREDENTIALS_STUB);
 
-      expect(list.length).toBe(0);
-      expect(isLoaded).toBe(true);
-    });
+    expect(dispatchSpy).toHaveBeenCalledWith(AuthActions.login({ credentials: AUTH_CREDENTIALS_STUB }));
+  });
 
-    /**
-     * Use `loadAuthSuccess` to manually update list
-     */
-    it('allAuth$ should return the loaded list; and loaded flag == true', async () => {
-      let list = await readFirst(facade.allAuth$);
-      let isLoaded = await readFirst(facade.loaded$);
+  it('register() should dispatch action', () => {
+    facade.register(AUTH_REGISTER_STUB);
 
-      expect(list.length).toBe(0);
-      expect(isLoaded).toBe(false);
+    expect(dispatchSpy).toHaveBeenCalledWith(AuthActions.register({ register: AUTH_REGISTER_STUB }));
+  });
 
-      store.dispatch(
-        AuthActions.loginSuccess({
-          auth: [createAuthEntity('AAA'), createAuthEntity('BBB')],
-        })
-      );
+  it('reset() should dispatch action', () => {
+    facade.reset(AUTH_SECRETS_STUB);
 
-      list = await readFirst(facade.allAuth$);
-      isLoaded = await readFirst(facade.loaded$);
+    expect(dispatchSpy).toHaveBeenCalledWith(AuthActions.reset({ secrets: AUTH_SECRETS_STUB }));
+  });
 
-      expect(list.length).toBe(2);
-      expect(isLoaded).toBe(true);
-    });
+  it('changePassword() should dispatch action', () => {
+    facade.changePassword(AUTH_PASSWORD_CHANGE_STUB);
+
+    expect(dispatchSpy).toHaveBeenCalledWith(AuthActions.changePassword({ passwordChange: AUTH_PASSWORD_CHANGE_STUB }));
+  });
+
+  it('should emit loginSuccess$', () => {
+    const action = AuthActions.loginSuccess({ response: AUTH_RESPONSE_STUB });
+
+    actions = hot('a', { a: action });
+    const expected = hot('a', { a: AUTH_RESPONSE_STUB });
+
+    expect(facade.loginSuccess$).toBeObservable(expected);
+  });
+
+  it('should emit loginFailure$', () => {
+    const action = AuthActions.loginFailure({ error: HTTP_ERROR_STUB });
+
+    actions = hot('a', { a: action });
+    const expected = hot('a', { a: HTTP_ERROR_STUB });
+
+    expect(facade.loginFailure$).toBeObservable(expected);
+  });
+
+  it('should emit registerSuccess$', () => {
+    const action = AuthActions.registerSuccess({ response: AUTH_RESPONSE_STUB });
+
+    actions = hot('a', { a: action });
+    const expected = hot('a', { a: AUTH_RESPONSE_STUB });
+
+    expect(facade.registerSuccess$).toBeObservable(expected);
+  });
+
+  it('should emit registerFailure$', () => {
+    const action = AuthActions.registerFailure({ error: HTTP_ERROR_STUB });
+
+    actions = hot('a', { a: action });
+    const expected = hot('a', { a: HTTP_ERROR_STUB });
+
+    expect(facade.registerFailure$).toBeObservable(expected);
+  });
+
+  it('should emit resetSuccess$', () => {
+    const action = AuthActions.resetSuccess();
+
+    actions = hot('a', { a: action });
+    const expected = hot('a', { a: undefined });
+
+    expect(facade.resetSuccess$).toBeObservable(expected);
+  });
+
+  it('should emit resetFailure$', () => {
+    const action = AuthActions.resetFailure({ error: HTTP_ERROR_STUB });
+
+    actions = hot('a', { a: action });
+    const expected = hot('a', { a: HTTP_ERROR_STUB });
+
+    expect(facade.resetFailure$).toBeObservable(expected);
+  });
+
+  it('should emit changePasswordSuccess$', () => {
+    const action = AuthActions.changePasswordSuccess();
+
+    actions = hot('a', { a: action });
+    const expected = hot('a', { a: undefined });
+
+    expect(facade.changePasswordSuccess$).toBeObservable(expected);
+  });
+
+  it('should emit changePasswordFailure$', () => {
+    const action = AuthActions.changePasswordFailure({ error: HTTP_ERROR_STUB });
+
+    actions = hot('a', { a: action });
+    const expected = hot('a', { a: HTTP_ERROR_STUB });
+
+    expect(facade.changePasswordFailure$).toBeObservable(expected);
   });
 });
