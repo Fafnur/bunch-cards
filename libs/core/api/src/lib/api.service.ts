@@ -2,16 +2,24 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
+import { EnvironmentService } from '@bunch/core/environments';
+
 import { ApiRequestOptions, getApiRequestOptions } from './api.util';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ApiService {
-  constructor(private readonly httpClient: HttpClient) {}
+  constructor(private readonly httpClient: HttpClient, private readonly environmentService: EnvironmentService) {}
 
   makeUrl(url: string): string {
-    return url.indexOf('http') === 0 ? url : url;
+    let apiHost = url.indexOf('http') === 0 ? '' : `${this.environmentService.getEnvironments().apiHost}`;
+    // Remove last slash
+    if (apiHost.length > 0 && apiHost[apiHost.length - 1] === '/') {
+      apiHost = apiHost.slice(0, -1);
+    }
+
+    return `${apiHost}${url}`;
   }
 
   get<T = void>(url: string, options?: Partial<ApiRequestOptions>): Observable<T> {

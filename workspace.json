@@ -19,6 +19,7 @@
     "core-connectivity": "libs/core/connectivity",
     "core-environments": "libs/core/environments",
     "core-forms-extract": "libs/core/forms/extract",
+    "core-interceptors": "libs/core/interceptors",
     "core-localdb": "libs/core/localdb",
     "core-navigation": "libs/core/navigation",
     "core-platform": "libs/core/platform",
