@@ -17,6 +17,7 @@ export class LoginFormComponent implements OnInit {
   readonly fields = AuthField;
 
   submitted = false;
+  error = false;
 
   form = new UntypedFormGroup({
     username: new UntypedFormControl(null, [Validators.required, Validators.email]),
@@ -30,6 +31,26 @@ export class LoginFormComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    this.form.valueChanges
+      .pipe(
+        tap(() => {
+          this.error = false;
+          this.changeDetectorRef.markForCheck();
+        }),
+        takeUntil(this.destroy$)
+      )
+      .subscribe();
+
+    this.authFacade.loginFailure$
+      .pipe(
+        tap(() => {
+          this.error = true;
+          this.changeDetectorRef.markForCheck();
+        }),
+        takeUntil(this.destroy$)
+      )
+      .subscribe();
+
     this.authFacade.loginSuccess$
       .pipe(
         tap(() => {
