@@ -8,7 +8,7 @@ import { NavigationService } from '@bunch/core/navigation';
 import { isNotNullOrUndefined } from '@bunch/core/utils/operators';
 
 @Injectable()
-export class AuthGuard implements CanActivate {
+export class LoggedGuard implements CanActivate {
   constructor(
     private readonly router: Router,
     private readonly navigationService: NavigationService,
@@ -19,7 +19,7 @@ export class AuthGuard implements CanActivate {
     return this.authFacade.logged$.pipe(
       isNotNullOrUndefined(),
       take(1),
-      map((logged) => !logged || this.router.createUrlTree(this.navigationService.getRoute(this.navigationService.getPaths().dashboard)))
+      map((logged) => logged || this.router.createUrlTree(this.navigationService.getRoute(this.navigationService.getPaths().authLogin)))
     );
   }
 }

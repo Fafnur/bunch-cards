@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType, OnInitEffects } from '@ngrx/effects';
 import { Action } from '@ngrx/store';
 import { fetch } from '@nrwl/angular';
-import { map, take, tap } from 'rxjs';
+import { map, switchMap, take } from 'rxjs';
 
 import { AuthApiService } from '@bunch/auth/api';
 import { AuthManager } from '@bunch/auth/manager';
@@ -30,10 +30,9 @@ export class AuthEffects implements OnInitEffects {
       ofType(AuthActions.login),
       fetch({
         run: ({ credentials }) =>
-          this.authApiService.login(credentials).pipe(
-            tap((response) => this.authManager.put(response)),
-            map((response) => AuthActions.loginSuccess({ response }))
-          ),
+          this.authApiService
+            .login(credentials)
+            .pipe(switchMap((response) => this.authManager.put(response).pipe(map(() => AuthActions.loginSuccess({ response }))))),
         onError: (action, error) => AuthActions.loginFailure({ error }),
       })
     );
@@ -44,10 +43,9 @@ export class AuthEffects implements OnInitEffects {
       ofType(AuthActions.register),
       fetch({
         run: ({ register }) =>
-          this.authApiService.register(register).pipe(
-            tap((response) => this.authManager.put(response)),
-            map((response) => AuthActions.registerSuccess({ response }))
-          ),
+          this.authApiService
+            .register(register)
+            .pipe(switchMap((response) => this.authManager.put(response).pipe(map(() => AuthActions.registerSuccess({ response }))))),
         onError: (action, error) => AuthActions.registerFailure({ error }),
       })
     );
