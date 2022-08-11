@@ -1,1 +1,2 @@
-export * from './lib/web-auth-ui-layout.module';
+export * from './lib/auth-layout.component';
+export * from './lib/auth-layout.module';

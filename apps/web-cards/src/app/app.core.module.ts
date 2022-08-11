@@ -2,6 +2,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 
+import { AuthStateModule } from '@bunch/auth/state';
 import { ENVIRONMENTS } from '@bunch/core/environments';
 import { NAVIGATION_PATHS, PATHS } from '@bunch/core/navigation';
 import { RootStoreModule } from '@bunch/core/store/root';
@@ -19,6 +20,7 @@ import { environment } from '../environments/environment';
     ConnectivityModule,
     RootStoreModule,
     UserStateModule,
+    AuthStateModule,
     LocaldbModule,
     !environment.production ? StoreDevtoolsModule.instrument({ logOnly: environment.production }) : [],
   ],

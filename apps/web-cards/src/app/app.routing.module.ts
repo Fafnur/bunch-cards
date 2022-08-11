@@ -2,12 +2,14 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 import { NAVIGATION_PATHS } from '@bunch/core/navigation';
+import { AuthGuard, AuthGuardsModule } from '@bunch/web/auth/guards';
 import { LayoutComponent } from '@bunch/web/ui/layout';
 
 const routes: Routes = [
   {
     path: '',
     component: LayoutComponent,
+    canActivate: [AuthGuard],
     children: [
       {
         path: NAVIGATION_PATHS.dashboard,
@@ -27,10 +29,15 @@ const routes: Routes = [
       },
     ],
   },
+  {
+    path: '',
+    loadChildren: () => import('@bunch/web/auth/pages').then((modules) => modules.AuthPagesModule),
+  },
 ];
 
 @NgModule({
   imports: [
+    AuthGuardsModule,
     RouterModule.forRoot(routes, {
       anchorScrolling: 'enabled',
       initialNavigation: 'enabledBlocking',

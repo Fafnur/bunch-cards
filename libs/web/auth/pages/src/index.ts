@@ -1,1 +1,1 @@
-export * from './lib/web-auth-pages.module';
+export * from './lib/auth-pages.module';
