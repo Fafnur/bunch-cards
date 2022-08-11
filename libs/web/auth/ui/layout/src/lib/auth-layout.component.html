@@ -1,2 +1,10 @@
-<p>auth-layout works!</p>
-<router-outlet></router-outlet>
+<bunch-container automation-id="container">
+  <bunch-row tablet>
+    <bunch-column tablet="6">
+      <bunch-auth-promo automation-id="promo"></bunch-auth-promo>
+    </bunch-column>
+    <bunch-column tablet="6">
+      <router-outlet automation-id="outlet"></router-outlet>
+    </bunch-column>
+  </bunch-row>
+</bunch-container>

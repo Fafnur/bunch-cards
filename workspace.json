@@ -58,6 +58,7 @@
     "web-auth-register-page": "libs/web/auth/register/page",
     "web-auth-reset-page": "libs/web/auth/reset/page",
     "web-auth-ui-layout": "libs/web/auth/ui/layout",
+    "web-auth-ui-promo": "libs/web/auth/ui/promo",
     "web-cards": "apps/web-cards",
     "web-cards-e2e": "apps/web-cards-e2e",
     "web-core-connectivity": "libs/web/core/connectivity",

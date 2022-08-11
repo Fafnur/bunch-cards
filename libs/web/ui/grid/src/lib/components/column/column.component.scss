@@ -11,7 +11,7 @@
     flex: 0 0 auto;
   }
 
-  :host-context(banshop-row.no-padding) &[#{$mode}] {
+  :host-context(bunch-row.no-padding) &[#{$mode}] {
     padding: 0;
   }
 
