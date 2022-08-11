@@ -32,6 +32,7 @@
     "groups-common": "libs/groups/common",
     "groups-manager": "libs/groups/manager",
     "groups-state": "libs/groups/state",
+    "nativescript-auth-guards": "libs/nativescript/auth/guards",
     "nativescript-auth-page": "libs/nativescript/auth/page",
     "nativescript-auth-providers": "libs/nativescript/auth/providers",
     "nativescript-auth-service": "libs/nativescript/auth/service",
@@ -49,7 +50,14 @@
     "users-common": "libs/users/common",
     "users-manager": "libs/users/manager",
     "users-state": "libs/users/state",
+    "web-auth-email-confirm-page": "libs/web/auth/email-confirm/page",
     "web-auth-guards": "libs/web/auth/guards",
+    "web-auth-login-page": "libs/web/auth/login/page",
+    "web-auth-pages": "libs/web/auth/pages",
+    "web-auth-password-change-page": "libs/web/auth/password-change/page",
+    "web-auth-register-page": "libs/web/auth/register/page",
+    "web-auth-reset-page": "libs/web/auth/reset/page",
+    "web-auth-ui-layout": "libs/web/auth/ui/layout",
     "web-cards": "apps/web-cards",
     "web-cards-e2e": "apps/web-cards-e2e",
     "web-core-connectivity": "libs/web/core/connectivity",
@@ -68,8 +76,7 @@
     "web-ui-grid": "libs/web/ui/grid",
     "web-ui-layout": "libs/web/ui/layout",
     "web-ui-multiplatform": "libs/web/ui/multiplatform",
-    "web-ui-theming": "libs/web/ui/theming",
-    "nativescript-auth-guards": "libs/nativescript/auth/guards"
+    "web-ui-theming": "libs/web/ui/theming"
   },
   "$schema": "./node_modules/nx/schemas/workspace-schema.json"
 }

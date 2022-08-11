@@ -45,6 +45,7 @@
       "@bunch/groups/common": ["libs/groups/common/src/index.ts"],
       "@bunch/groups/manager": ["libs/groups/manager/src/index.ts"],
       "@bunch/groups/state": ["libs/groups/state/src/index.ts"],
+      "@bunch/nativescript/auth/guards": ["libs/nativescript/auth/guards/src/index.ts"],
       "@bunch/nativescript/auth/page": ["libs/nativescript/auth/page/src/index.ts"],
       "@bunch/nativescript/auth/providers": ["libs/nativescript/auth/providers/src/index.ts"],
       "@bunch/nativescript/auth/service": ["libs/nativescript/auth/service/src/index.ts"],
@@ -61,7 +62,14 @@
       "@bunch/users/common": ["libs/users/common/src/index.ts"],
       "@bunch/users/manager": ["libs/users/manager/src/index.ts"],
       "@bunch/users/state": ["libs/users/state/src/index.ts"],
+      "@bunch/web/auth/email-confirm/page": ["libs/web/auth/email-confirm/page/src/index.ts"],
       "@bunch/web/auth/guards": ["libs/web/auth/guards/src/index.ts"],
+      "@bunch/web/auth/login/page": ["libs/web/auth/login/page/src/index.ts"],
+      "@bunch/web/auth/pages": ["libs/web/auth/pages/src/index.ts"],
+      "@bunch/web/auth/password-change/page": ["libs/web/auth/password-change/page/src/index.ts"],
+      "@bunch/web/auth/register/page": ["libs/web/auth/register/page/src/index.ts"],
+      "@bunch/web/auth/reset/page": ["libs/web/auth/reset/page/src/index.ts"],
+      "@bunch/web/auth/ui/layout": ["libs/web/auth/ui/layout/src/index.ts"],
       "@bunch/web/core/connectivity": ["libs/web/core/connectivity/src/index.ts"],
       "@bunch/web/core/hammer": ["libs/web/core/hammer/src/index.ts"],
       "@bunch/web/core/layout": ["libs/web/core/layout/src/index.ts"],
@@ -78,8 +86,7 @@
       "@bunch/web/ui/grid": ["libs/web/ui/grid/src/index.ts"],
       "@bunch/web/ui/layout": ["libs/web/ui/layout/src/index.ts"],
       "@bunch/web/ui/multiplatform": ["libs/web/ui/multiplatform/src/index.ts"],
-      "@bunch/web/ui/theming": ["libs/web/ui/theming/src/index.ts"],
-      "@bunch/nativescript/auth/guards": ["libs/nativescript/auth/guards/src/index.ts"]
+      "@bunch/web/ui/theming": ["libs/web/ui/theming/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]
