@@ -1,0 +1,8 @@
+<ng-content></ng-content>
+<form [formGroup]="form" (ngSubmit)="(form)">
+  <bunch-login-username [control]="form | extractFormControl: fields.Username"></bunch-login-username>
+  <bunch-login-password [control]="form | extractFormControl: fields.Password"></bunch-login-password>
+  <div>
+    <button mat-raised-button color="primary" i18n="Login Form|Sign in button">Sign in</button>
+  </div>
+</form>

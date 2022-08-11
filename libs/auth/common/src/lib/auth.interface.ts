@@ -1,3 +1,10 @@
+export enum AuthField {
+  Username = 'username',
+  Password = 'password',
+  Email = 'email',
+  Token = 'token',
+}
+
 export interface AuthResponse {
   readonly accessToken: string;
   readonly uuid: string;
