@@ -174,6 +174,7 @@ export class WebLocalDBService implements LocalDBService, OnDestroy {
         } catch (error) {
           console.error(error);
         }
+        observer.next();
         observer.complete();
       });
     });
