@@ -1,10 +1,13 @@
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit } from '@angular/core';
-import { UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { takeUntil, tap } from 'rxjs';
 
-import { AuthField } from '@bunch/auth/common';
+import { AuthCredentials, AuthField } from '@bunch/auth/common';
 import { AuthFacade } from '@bunch/auth/state';
+import { NavigationService } from '@bunch/core/navigation';
 import { DestroyService } from '@bunch/core/utils/destroy';
+import { Form } from '@bunch/core/utils/types';
 
 @Component({
   selector: 'bunch-login-form',
@@ -19,14 +22,16 @@ export class LoginFormComponent implements OnInit {
   submitted = false;
   error = false;
 
-  form = new UntypedFormGroup({
-    username: new UntypedFormControl(null, [Validators.required, Validators.email]),
-    password: new UntypedFormControl('', [Validators.required]),
+  readonly form = new FormGroup<Form<AuthCredentials>>({
+    username: new FormControl('', { nonNullable: true, validators: [Validators.required, Validators.email] }),
+    password: new FormControl('', { nonNullable: true, validators: [Validators.required, Validators.minLength(6)] }),
   });
 
   constructor(
     private readonly changeDetectorRef: ChangeDetectorRef,
     private readonly authFacade: AuthFacade,
+    private readonly router: Router,
+    private readonly navigationService: NavigationService,
     private readonly destroy$: DestroyService
   ) {}
 
@@ -44,6 +49,7 @@ export class LoginFormComponent implements OnInit {
     this.authFacade.loginFailure$
       .pipe(
         tap(() => {
+          this.submitted = false;
           this.error = true;
           this.changeDetectorRef.markForCheck();
         }),
@@ -54,6 +60,8 @@ export class LoginFormComponent implements OnInit {
     this.authFacade.loginSuccess$
       .pipe(
         tap(() => {
+          this.submitted = false;
+          void this.router.navigate(this.navigationService.getRoute(this.navigationService.getPaths().dashboard));
           this.changeDetectorRef.markForCheck();
         }),
         takeUntil(this.destroy$)
@@ -66,7 +74,7 @@ export class LoginFormComponent implements OnInit {
 
     if (this.form.valid && !this.submitted) {
       this.submitted = true;
-      this.authFacade.login(this.form.value);
+      this.authFacade.login(this.form.getRawValue());
     } else {
       // TODO: Scroll to error
     }
