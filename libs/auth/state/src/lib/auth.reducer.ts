@@ -36,6 +36,14 @@ const reducer = createReducer(
       token: response.accessToken,
       logged: true,
     })
+  ),
+  on(
+    AuthActions.logout,
+    (state): AuthState => ({
+      ...state,
+      token: null,
+      logged: false,
+    })
   )
 );
 

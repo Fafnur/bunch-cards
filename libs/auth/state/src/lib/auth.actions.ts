@@ -35,3 +35,8 @@ export const changePassword = createAction('[Auth] Change Password', props<{ pas
 export const changePasswordSuccess = createAction('[Auth] Change Password Success');
 
 export const changePasswordFailure = createAction('[Auth] Change Password Failure', props<{ error: HttpErrorResponse }>());
+
+// Logout
+export const logout = createAction('[Auth] Logout');
+
+export const logoutSuccess = createAction('[Auth] Logout Success');

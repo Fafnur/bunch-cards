@@ -54,6 +54,11 @@ export class AuthFacade {
     map(({ error }) => error)
   );
 
+  logoutSuccess$: Observable<void> = this.actions.pipe(
+    ofType(AuthActions.logoutSuccess),
+    map(() => undefined)
+  );
+
   constructor(private readonly actions: Actions, private readonly store: Store) {}
 
   login(credentials: AuthCredentials): void {
@@ -70,5 +75,9 @@ export class AuthFacade {
 
   changePassword(passwordChange: AuthPasswordChange): void {
     this.store.dispatch(AuthActions.changePassword({ passwordChange }));
+  }
+
+  logout(): void {
+    this.store.dispatch(AuthActions.logout());
   }
 }
