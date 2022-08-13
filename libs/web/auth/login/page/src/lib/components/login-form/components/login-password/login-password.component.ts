@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
-import { UntypedFormControl } from '@angular/forms';
+import { FormControl } from '@angular/forms';
 
 @Component({
   selector: 'bunch-login-password',
@@ -8,5 +8,5 @@ import { UntypedFormControl } from '@angular/forms';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class LoginPasswordComponent {
-  @Input() control!: UntypedFormControl;
+  @Input() control!: FormControl<string>;
 }
