@@ -1,0 +1,23 @@
+@use 'libs/web/ui/stylesheets/mixins' as mixins;
+
+@import 'libs/web/ui/theming/src/lib/button-medium/button-medium.directive';
+
+:host {
+  display: block;
+  background-color: white;
+  margin: 0 -1rem;
+  padding: 1rem;
+}
+
+mat-error {
+  margin-bottom: 1rem;
+}
+
+button[mat-raised-button] {
+  @include mixins.media-handset() {
+    width: 100%;
+  }
+  @include mixins.media-tablet() {
+    width: 100%;
+  }
+}
