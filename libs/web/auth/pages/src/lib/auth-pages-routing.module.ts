@@ -7,11 +7,20 @@ import { AuthLayoutComponent } from '@bunch/web/auth/ui/layout';
 const routes: Routes = [
   {
     path: '',
+    redirectTo: NAVIGATION_PATHS.authLogin,
+    pathMatch: 'full',
+  },
+  {
+    path: '',
     component: AuthLayoutComponent,
     children: [
       {
         path: NAVIGATION_PATHS.authLogin,
         loadChildren: () => import('@bunch/web/auth/login/page').then((modules) => modules.LoginPageModule),
+      },
+      {
+        path: NAVIGATION_PATHS.authRegister,
+        loadChildren: () => import('@bunch/web/auth/register/page').then((modules) => modules.RegisterPageModule),
       },
     ],
   },
