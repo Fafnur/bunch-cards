@@ -31,7 +31,7 @@ describe('LoginFormComponent', () => {
   let loginSuccess$: ReplaySubject<AuthResponse>;
   let loginFailure$: ReplaySubject<HttpErrorResponse>;
 
-  beforeEach(() => {
+  beforeEach(async () => {
     authFacadeMock = mock(AuthFacade);
     navigationServiceMock = mock(NavigationService);
     routerMock = mock(Router);
@@ -43,9 +43,7 @@ describe('LoginFormComponent', () => {
     when(authFacadeMock.loginFailure$).thenReturn(loginFailure$);
     when(navigationServiceMock.getPaths()).thenReturn(NAVIGATION_PATHS);
     when(navigationServiceMock.getRoute(NAVIGATION_PATHS.dashboard)).thenReturn(['/', NAVIGATION_PATHS.dashboard]);
-  });
 
-  beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [
         CommonModule,
@@ -65,9 +63,7 @@ describe('LoginFormComponent', () => {
         providerOf(Router, routerMock),
       ],
     }).compileComponents();
-  });
 
-  beforeEach(() => {
     fixture = TestBed.createComponent(LoginFormComponent);
     pageObject = new LoginFormComponentPo(fixture);
   });

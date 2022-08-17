@@ -37,7 +37,7 @@ describe('RegisterFormComponent', () => {
   let registerSuccess$: ReplaySubject<AuthResponse>;
   let registerFailure$: ReplaySubject<HttpErrorResponse>;
 
-  beforeEach(() => {
+  beforeEach(async () => {
     authFacadeMock = mock(AuthFacade);
     navigationServiceMock = mock(NavigationService);
     routerMock = mock(Router);
@@ -49,9 +49,7 @@ describe('RegisterFormComponent', () => {
     when(authFacadeMock.registerFailure$).thenReturn(registerFailure$);
     when(navigationServiceMock.getPaths()).thenReturn(NAVIGATION_PATHS);
     when(navigationServiceMock.getRoute(NAVIGATION_PATHS.dashboard)).thenReturn(['/', NAVIGATION_PATHS.dashboard]);
-  });
 
-  beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [
         CommonModule,
@@ -74,9 +72,7 @@ describe('RegisterFormComponent', () => {
         providerOf(Router, routerMock),
       ],
     }).compileComponents();
-  });
 
-  beforeEach(() => {
     fixture = TestBed.createComponent(RegisterFormComponent);
     pageObject = new RegisterFormComponentPo(fixture);
   });
