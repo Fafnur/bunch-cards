@@ -15,7 +15,13 @@ import { AuthFacade } from '@bunch/auth/state';
 import { FormExtractsModule } from '@bunch/core/forms/extract';
 import { NAVIGATION_PATHS, NavigationService } from '@bunch/core/navigation';
 import { providerOf } from '@bunch/core/testing';
-import { AuthPasswordModule, AuthUsernameModule } from '@bunch/web/auth/ui/fields';
+import {
+  AuthEmailModule,
+  AuthFirstnameModule,
+  AuthLastnameModule,
+  AuthPasswordModule,
+  AuthUsernameModule,
+} from '@bunch/web/auth/ui/fields';
 import { ButtonMediumModule } from '@bunch/web/ui/theming';
 
 import { RegisterFormComponent } from './register-form.component';
@@ -28,19 +34,19 @@ describe('RegisterFormComponent', () => {
   let navigationServiceMock: NavigationService;
   let routerMock: Router;
 
-  let loginSuccess$: ReplaySubject<AuthResponse>;
-  let loginFailure$: ReplaySubject<HttpErrorResponse>;
+  let registerSuccess$: ReplaySubject<AuthResponse>;
+  let registerFailure$: ReplaySubject<HttpErrorResponse>;
 
   beforeEach(() => {
     authFacadeMock = mock(AuthFacade);
     navigationServiceMock = mock(NavigationService);
     routerMock = mock(Router);
 
-    loginSuccess$ = new ReplaySubject<AuthResponse>(1);
-    loginFailure$ = new ReplaySubject<HttpErrorResponse>(1);
+    registerSuccess$ = new ReplaySubject<AuthResponse>(1);
+    registerFailure$ = new ReplaySubject<HttpErrorResponse>(1);
 
-    when(authFacadeMock.loginSuccess$).thenReturn(loginSuccess$);
-    when(authFacadeMock.loginFailure$).thenReturn(loginFailure$);
+    when(authFacadeMock.registerSuccess$).thenReturn(registerSuccess$);
+    when(authFacadeMock.registerFailure$).thenReturn(registerFailure$);
     when(navigationServiceMock.getPaths()).thenReturn(NAVIGATION_PATHS);
     when(navigationServiceMock.getRoute(NAVIGATION_PATHS.dashboard)).thenReturn(['/', NAVIGATION_PATHS.dashboard]);
   });
@@ -54,6 +60,9 @@ describe('RegisterFormComponent', () => {
         MockModule(AuthUsernameModule),
         MockModule(FormExtractsModule),
         MockModule(AuthPasswordModule),
+        MockModule(AuthEmailModule),
+        MockModule(AuthLastnameModule),
+        MockModule(AuthFirstnameModule),
         MockModule(MatButtonModule),
         MockModule(ButtonMediumModule),
         MockModule(MatFormFieldModule),
@@ -82,7 +91,9 @@ describe('RegisterFormComponent', () => {
     fixture.detectChanges();
 
     expect(pageObject.form).toBeTruthy();
-    expect(pageObject.username).toBeTruthy();
+    expect(pageObject.firstname).toBeTruthy();
+    expect(pageObject.lastname).toBeTruthy();
+    expect(pageObject.email).toBeTruthy();
     expect(pageObject.password).toBeTruthy();
     expect(pageObject.error).toBeFalsy();
     expect(pageObject.submit).toBeTruthy();

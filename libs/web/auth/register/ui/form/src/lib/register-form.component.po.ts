@@ -4,8 +4,10 @@ import { PageObject } from '@bunch/core/testing';
 
 enum Automation {
   Form = 'form',
-  Username = 'username',
+  Firstname = 'firstname',
+  Lastname = 'lastname',
   Password = 'password',
+  Email = 'email',
   Error = 'error',
   Submit = 'submit',
 }
@@ -15,12 +17,20 @@ export class RegisterFormComponentPo extends PageObject {
     return this.getByAutomationId(Automation.Form);
   }
 
-  get username(): DebugElement | null {
-    return this.getByAutomationId(Automation.Username);
+  get firstname(): DebugElement | null {
+    return this.getByAutomationId(Automation.Firstname);
+  }
+
+  get lastname(): DebugElement | null {
+    return this.getByAutomationId(Automation.Lastname);
   }
 
   get password(): DebugElement | null {
     return this.getByAutomationId(Automation.Password);
+  }
+
+  get email(): DebugElement | null {
+    return this.getByAutomationId(Automation.Email);
   }
 
   get error(): DebugElement | null {
