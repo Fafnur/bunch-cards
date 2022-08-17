@@ -6,11 +6,7 @@ import { AppCoreModule } from './app.core.module';
 import { AppRoutingModule } from './app.routing.module';
 
 @NgModule({
-  imports: [
-    BrowserModule.withServerTransition({ appId: 'bunch' }),
-    AppCoreModule,
-    AppRoutingModule,
-  ],
+  imports: [BrowserModule.withServerTransition({ appId: 'bunch' }), AppCoreModule, AppRoutingModule],
   declarations: [AppComponent],
   bootstrap: [AppComponent],
 })
