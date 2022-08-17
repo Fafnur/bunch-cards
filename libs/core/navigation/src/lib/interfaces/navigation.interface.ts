@@ -13,6 +13,8 @@ export interface NavigationPaths {
   authReset: string;
   authRegister: string;
   authPasswordChange: string;
+  authWithGoogle: string;
+  authWithApple: string;
 
   // Errors
   serverError: string;
@@ -32,6 +34,8 @@ export const NAVIGATION_PATHS: NavigationPaths = {
   authReset: 'auth/reset',
   authRegister: 'auth/register',
   authPasswordChange: 'auth/password-change',
+  authWithGoogle: 'auth/web/google',
+  authWithApple: 'auth/web/apple',
 
   serverError: 'server-error',
   notFound: 'not-found',

@@ -62,6 +62,7 @@
     "web-auth-reset-page": "libs/web/auth/reset/page",
     "web-auth-ui-fields": "libs/web/auth/ui/fields",
     "web-auth-ui-layout": "libs/web/auth/ui/layout",
+    "web-auth-ui-links": "libs/web/auth/ui/links",
     "web-auth-ui-promo": "libs/web/auth/ui/promo",
     "web-auth-ui-title": "libs/web/auth/ui/title",
     "web-cards": "apps/web-cards",

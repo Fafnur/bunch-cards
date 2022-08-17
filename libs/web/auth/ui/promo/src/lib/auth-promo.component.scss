@@ -3,6 +3,10 @@
 :host {
   display: block;
 
+  @include mixins.media-tablet() {
+    max-width: 25rem;
+  }
+
   @include mixins.media-tablet-up() {
     margin: auto 0 auto auto;
   }
@@ -13,7 +17,10 @@ h2 {
 }
 
 p {
-  font-size: 1.15rem;
-  line-height: 1.5rem;
   color: white;
+
+  @include mixins.media-tablet-up() {
+    line-height: 1.5rem;
+    font-size: 1.15rem;
+  }
 }

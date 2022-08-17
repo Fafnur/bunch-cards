@@ -1,0 +1,12 @@
+<a mat-raised-button color="primary" [routerLink]="paths.authLogin | path" *ngIf="mode === 'signin'">
+  <img src="/assets/images/logo-dark.svg" alt="" /> Sign in
+</a>
+<a mat-raised-button color="primary" [routerLink]="paths.authRegister | path" *ngIf="mode === 'signup'">
+  <img src="/assets/images/logo-dark.svg" alt="" /> Sign up
+</a>
+<a mat-raised-button color="primary" [href]="paths.authWithGoogle | externalPath">
+  <img src="/assets/images/icons/google-dark.svg" alt="" /> Sign in with Google
+</a>
+<a mat-raised-button color="primary" [href]="paths.authWithApple | externalPath">
+  <img src="/assets/images/icons/apple-dark.svg" alt="" /> Sign in with Apple
+</a>

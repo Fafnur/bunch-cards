@@ -1,0 +1,15 @@
+import { CommonModule } from '@angular/common';
+import { NgModule } from '@angular/core';
+import { MatButtonModule } from '@angular/material/button';
+import { RouterModule } from '@angular/router';
+
+import { NavigationPipesModule } from '@bunch/core/navigation';
+
+import { AuthLinksComponent } from './auth-links.component';
+
+@NgModule({
+  imports: [CommonModule, RouterModule, MatButtonModule, NavigationPipesModule],
+  declarations: [AuthLinksComponent],
+  exports: [AuthLinksComponent],
+})
+export class AuthLinksModule {}
