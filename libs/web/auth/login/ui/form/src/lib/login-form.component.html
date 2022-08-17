@@ -1,0 +1,11 @@
+<ng-content></ng-content>
+<form [formGroup]="form" automation-id="form" (ngSubmit)="onSubmit()">
+  <bunch-auth-email automation-id="username" [control]="form.controls.username"></bunch-auth-email>
+  <bunch-auth-password automation-id="password" [control]="form.controls.password"></bunch-auth-password>
+  <mat-error *ngIf="error" automation-id="error" i18n="Login Form|Wrong email">Wrong email or password.</mat-error>
+  <div>
+    <button automation-id="submit" type="submit" mat-raised-button bunch-button-medium color="primary" i18n="Login Form|Sign in button">
+      Sign in
+    </button>
+  </div>
+</form>

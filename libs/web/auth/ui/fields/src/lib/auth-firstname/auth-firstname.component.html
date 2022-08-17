@@ -1,0 +1,14 @@
+<mat-form-field automation-id="field" appearance="fill" bunch-full-width bunch-extract-touched [control]="control">
+  <mat-label automation-id="label" i18n="Auth field|Firstname label">First name</mat-label>
+  <input
+    automation-id="control"
+    type="text"
+    matInput
+    [formControl]="control"
+    i18n-placeholder="Auth field|Firstname placeholder"
+    placeholder="John"
+  />
+  <mat-error automation-id="error" i18n="Auth field|Firstname error required" *ngIf="control.hasError('required')">
+    First name is <strong>required</strong>
+  </mat-error>
+</mat-form-field>

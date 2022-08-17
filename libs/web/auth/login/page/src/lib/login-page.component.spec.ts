@@ -2,9 +2,9 @@ import { CommonModule } from '@angular/common';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { MockModule } from 'ng-mocks';
 
+import { LoginFormModule } from '@bunch/web/auth/login/ui/form';
 import { AuthTitleModule } from '@bunch/web/auth/ui/title';
 
-import { LoginFormModule } from './components/login-form/login-form.module';
 import { LoginPageComponent } from './login-page.component';
 import { LoginPageComponentPo } from './login-page.component.po';
 

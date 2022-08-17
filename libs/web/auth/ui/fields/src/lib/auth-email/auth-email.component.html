@@ -1,0 +1,17 @@
+<mat-form-field automation-id="field" appearance="fill" bunch-full-width bunch-extract-touched [control]="control">
+  <mat-label automation-id="label" i18n="Auth field|Email label">Email</mat-label>
+  <input
+    automation-id="control"
+    type="email"
+    matInput
+    [formControl]="control"
+    i18n-placeholder="Auth field|Email placeholder"
+    placeholder="sample@example.com"
+  />
+  <mat-error automation-id="error" i18n="Auth field|Email error invalid" *ngIf="control.hasError('email') && !control.hasError('required')">
+    Please enter a valid email address
+  </mat-error>
+  <mat-error automation-id="error-required" i18n="Auth field|Email error required" *ngIf="control.hasError('required')">
+    Email is <strong>required</strong>
+  </mat-error>
+</mat-form-field>

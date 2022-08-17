@@ -2,9 +2,9 @@ import { CommonModule } from '@angular/common';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { MockModule } from 'ng-mocks';
 
+import { RegisterFormModule } from '@bunch/web/auth/register/ui/form';
 import { AuthTitleModule } from '@bunch/web/auth/ui/title';
 
-import { RegisterFormModule } from './components/register-form/register-form.module';
 import { RegisterPageComponent } from './register-page.component';
 import { RegisterPageComponentPo } from './register-page.component.po';
 
@@ -17,9 +17,7 @@ describe('RegisterPageComponent', () => {
       imports: [CommonModule, MockModule(RegisterFormModule), MockModule(AuthTitleModule)],
       declarations: [RegisterPageComponent],
     }).compileComponents();
-  });
 
-  beforeEach(() => {
     fixture = TestBed.createComponent(RegisterPageComponent);
     pageObject = new RegisterPageComponentPo(fixture);
   });

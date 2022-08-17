@@ -1,9 +1,9 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 
+import { RegisterFormModule } from '@bunch/web/auth/register/ui/form';
 import { AuthTitleModule } from '@bunch/web/auth/ui/title';
 
-import { RegisterFormModule } from './components/register-form/register-form.module';
 import { RegisterPageComponent } from './register-page.component';
 import { RegisterPageRoutingModule } from './register-page-routing.module';
 
