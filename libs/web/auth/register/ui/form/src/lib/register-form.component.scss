@@ -1,6 +1,6 @@
-@use '../../../../../../ui/stylesheets/mixins' as mixins;
+@use 'libs/web/ui/stylesheets/mixins' as mixins;
 
-@import '../../../../../../ui/theming/src/lib/button-medium/button-medium.directive';
+@import 'libs/web/ui/theming/src/lib/button-medium/button-medium.directive';
 
 :host {
   display: block;

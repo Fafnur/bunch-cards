@@ -5,19 +5,20 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 
 import { FormExtractsModule } from '@bunch/core/forms/extract';
+import { AuthEmailModule, AuthFirstnameModule, AuthLastnameModule, AuthPasswordModule } from '@bunch/web/auth/ui/fields';
 import { ButtonMediumModule } from '@bunch/web/ui/theming';
 
-import { LoginPasswordModule } from '../../../../page/src/lib/components/register-form/components/auth-password/auth-password.module';
-import { LoginUsernameModule } from '../../../../page/src/lib/components/register-form/components/auth-username/auth-username.module';
 import { RegisterFormComponent } from './register-form.component';
 
 @NgModule({
   imports: [
     CommonModule,
     ReactiveFormsModule,
-    LoginUsernameModule,
     FormExtractsModule,
-    LoginPasswordModule,
+    AuthPasswordModule,
+    AuthEmailModule,
+    AuthLastnameModule,
+    AuthFirstnameModule,
     MatButtonModule,
     ButtonMediumModule,
     MatFormFieldModule,

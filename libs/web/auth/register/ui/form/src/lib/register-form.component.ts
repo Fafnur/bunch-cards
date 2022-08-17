@@ -8,6 +8,7 @@ import { AuthFacade } from '@bunch/auth/state';
 import { NavigationService } from '@bunch/core/navigation';
 import { DestroyService } from '@bunch/core/utils/destroy';
 import { Form } from '@bunch/core/utils/types';
+import { uuidv4 } from '@bunch/core/utils/uuid';
 
 @Component({
   selector: 'bunch-register-form',
@@ -23,8 +24,11 @@ export class RegisterFormComponent implements OnInit {
   error = false;
 
   readonly form = new FormGroup<Form<AuthRegister>>({
-    username: new FormControl('', { nonNullable: true, validators: [Validators.required, Validators.email] }),
     password: new FormControl('', { nonNullable: true, validators: [Validators.required, Validators.minLength(6)] }),
+    email: new FormControl('', { nonNullable: true, validators: [Validators.required, Validators.email] }),
+    firstname: new FormControl('', { nonNullable: true, validators: [Validators.required] }),
+    lastname: new FormControl('', { nonNullable: true, validators: [Validators.required] }),
+    uuid: new FormControl(uuidv4(), { nonNullable: true, validators: [Validators.required] }),
   });
 
   constructor(
@@ -46,7 +50,7 @@ export class RegisterFormComponent implements OnInit {
       )
       .subscribe();
 
-    this.authFacade.loginFailure$
+    this.authFacade.registerFailure$
       .pipe(
         tap(() => {
           this.submitted = false;
@@ -57,7 +61,7 @@ export class RegisterFormComponent implements OnInit {
       )
       .subscribe();
 
-    this.authFacade.loginSuccess$
+    this.authFacade.registerSuccess$
       .pipe(
         tap(() => {
           this.submitted = false;
@@ -74,7 +78,7 @@ export class RegisterFormComponent implements OnInit {
 
     if (this.form.valid && !this.submitted) {
       this.submitted = true;
-      this.authFacade.login(this.form.getRawValue());
+      this.authFacade.register(this.form.getRawValue());
     } else {
       // TODO: Scroll to error
     }

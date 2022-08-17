@@ -2,15 +2,231 @@
 <xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
   <file source-language="en-US" datatype="plaintext" original="ng2.template">
     <body>
-      <trans-unit id="3acf048483bbf2cff960ef71380377596a712e3a" datatype="html">
-        <source>Chat</source>
-        <target state="translated">Чат</target>
+      <trans-unit id="6d7c7bf80aecdf93bc8b06b206c0b31fcca7f639" datatype="html">
+        <source>Sign in</source>
         <context-group purpose="location">
-          <context context-type="sourcefile">libs/web/ui/layout/src/lib/components/header/actions/components/support/support.component.html</context>
+          <context context-type="sourcefile">libs/web/auth/login/page/src/lib/login-page.component.html</context>
+          <context context-type="linenumber">2</context>
+        </context-group>
+        <note priority="1" from="description">Title</note>
+        <note priority="1" from="meaning">Auth Login</note>
+      </trans-unit>
+      <trans-unit id="ac6830f78481572e5a5bb55053e4f49ffc2efc06" datatype="html">
+        <source>Wrong email or password.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">libs/web/auth/login/ui/form/src/lib/login-form.component.html</context>
+          <context context-type="linenumber">5</context>
+        </context-group>
+        <note priority="1" from="description">Wrong email</note>
+        <note priority="1" from="meaning">Login Form</note>
+      </trans-unit>
+      <trans-unit id="1af6e228d3a1eaa1e0770ac5da38674eaa131903" datatype="html">
+        <source> Sign in </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">libs/web/auth/login/ui/form/src/lib/login-form.component.html</context>
+          <context context-type="linenumber">7,9</context>
+        </context-group>
+        <note priority="1" from="description">Sign in button</note>
+        <note priority="1" from="meaning">Login Form</note>
+      </trans-unit>
+      <trans-unit id="81f28bc316cbd72fd926575de7dffb952de79e03" datatype="html">
+        <source>Sign up</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">libs/web/auth/register/page/src/lib/register-page.component.html</context>
+          <context context-type="linenumber">2</context>
+        </context-group>
+        <note priority="1" from="description">Title</note>
+        <note priority="1" from="meaning">Auth Register</note>
+      </trans-unit>
+      <trans-unit id="347dd3f4490f5c0c6463b97bb2cfe391b73ebedc" datatype="html">
+        <source>Registration error.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">libs/web/auth/register/ui/form/src/lib/register-form.component.html</context>
+          <context context-type="linenumber">7</context>
+        </context-group>
+        <note priority="1" from="description">Form error</note>
+        <note priority="1" from="meaning">Auth Register</note>
+      </trans-unit>
+      <trans-unit id="42b2a4a2f883d506551e5e3691a7db237f8efe96" datatype="html">
+        <source> Sign up </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">libs/web/auth/register/ui/form/src/lib/register-form.component.html</context>
+          <context context-type="linenumber">9,11</context>
+        </context-group>
+        <note priority="1" from="description">Sign up button</note>
+        <note priority="1" from="meaning">Auth Register</note>
+      </trans-unit>
+      <trans-unit id="5fda8a4f7eda7cf925b47e0a89e4cc8f1c77f505" datatype="html">
+        <source>Email</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">libs/web/auth/ui/fields/src/lib/auth-email/auth-email.component.html</context>
+          <context context-type="linenumber">2</context>
+        </context-group>
+        <note priority="1" from="description">Email label</note>
+        <note priority="1" from="meaning">Auth field</note>
+      </trans-unit>
+      <trans-unit id="25792f381022d01d7ac673e22420c13ce1f911d0" datatype="html">
+        <source>sample@example.com</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">libs/web/auth/ui/fields/src/lib/auth-email/auth-email.component.html</context>
+          <context context-type="linenumber">9</context>
+        </context-group>
+        <note priority="1" from="description">Email placeholder</note>
+        <note priority="1" from="meaning">Auth field</note>
+      </trans-unit>
+      <trans-unit id="6d178eb1a88d0139f820b2834e3f650df4783979" datatype="html">
+        <source> Another user uses this email </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">libs/web/auth/ui/fields/src/lib/auth-email/auth-email.component.html</context>
+          <context context-type="linenumber">11,13</context>
+        </context-group>
+        <note priority="1" from="description">Email error server</note>
+        <note priority="1" from="meaning">Auth field</note>
+      </trans-unit>
+      <trans-unit id="a33039d79ee85d99d7fea2700eac202fabe75cd9" datatype="html">
+        <source> Please enter a valid email address </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">libs/web/auth/ui/fields/src/lib/auth-email/auth-email.component.html</context>
+          <context context-type="linenumber">14,16</context>
+        </context-group>
+        <note priority="1" from="description">Email error invalid</note>
+        <note priority="1" from="meaning">Auth field</note>
+      </trans-unit>
+      <trans-unit id="48c6bb1f664a1deff6c7017ba279eaf94fd0363b" datatype="html">
+        <source> Email is <x id="START_TAG_STRONG" ctype="x-strong" equiv-text="&lt;strong&gt;"/>required<x id="CLOSE_TAG_STRONG" ctype="x-strong" equiv-text="&lt;/strong&gt;"/></source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">libs/web/auth/ui/fields/src/lib/auth-email/auth-email.component.html</context>
+          <context context-type="linenumber">17,18</context>
+        </context-group>
+        <note priority="1" from="description">Email error required</note>
+        <note priority="1" from="meaning">Auth field</note>
+      </trans-unit>
+      <trans-unit id="16a653faf6cee11424ac488c4c1480fc3ced72b5" datatype="html">
+        <source>First name</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">libs/web/auth/ui/fields/src/lib/auth-firstname/auth-firstname.component.html</context>
+          <context context-type="linenumber">2</context>
+        </context-group>
+        <note priority="1" from="description">Firstname label</note>
+        <note priority="1" from="meaning">Auth field</note>
+      </trans-unit>
+      <trans-unit id="c264f2a82b52426d24de779da4eabe8bfcc239f1" datatype="html">
+        <source>John</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">libs/web/auth/ui/fields/src/lib/auth-firstname/auth-firstname.component.html</context>
+          <context context-type="linenumber">9</context>
+        </context-group>
+        <note priority="1" from="description">Firstname placeholder</note>
+        <note priority="1" from="meaning">Auth field</note>
+      </trans-unit>
+      <trans-unit id="e38d8d32df94a00da75c4a449e59b3447a49893f" datatype="html">
+        <source> First name is <x id="START_TAG_STRONG" ctype="x-strong" equiv-text="&lt;strong&gt;"/>required<x id="CLOSE_TAG_STRONG" ctype="x-strong" equiv-text="&lt;/strong&gt;"/></source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">libs/web/auth/ui/fields/src/lib/auth-firstname/auth-firstname.component.html</context>
+          <context context-type="linenumber">11,12</context>
+        </context-group>
+        <note priority="1" from="description">Firstname error required</note>
+        <note priority="1" from="meaning">Auth field</note>
+      </trans-unit>
+      <trans-unit id="c338420ea28cba7015cd8a3db196d03c460477f8" datatype="html">
+        <source>Last name</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">libs/web/auth/ui/fields/src/lib/auth-lastname/auth-lastname.component.html</context>
+          <context context-type="linenumber">2</context>
+        </context-group>
+        <note priority="1" from="description">Lastname label</note>
+        <note priority="1" from="meaning">Auth field</note>
+      </trans-unit>
+      <trans-unit id="b5dca20f723b192bbc9f33c90daeca684d5dce37" datatype="html">
+        <source>Doe</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">libs/web/auth/ui/fields/src/lib/auth-lastname/auth-lastname.component.html</context>
+          <context context-type="linenumber">9</context>
+        </context-group>
+        <note priority="1" from="description">Lastname placeholder</note>
+        <note priority="1" from="meaning">Auth field</note>
+      </trans-unit>
+      <trans-unit id="7722d1bf7ea498a816fdfa3e284bcab15ab06e20" datatype="html">
+        <source> Last name is <x id="START_TAG_STRONG" ctype="x-strong" equiv-text="&lt;strong&gt;"/>required<x id="CLOSE_TAG_STRONG" ctype="x-strong" equiv-text="&lt;/strong&gt;"/></source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">libs/web/auth/ui/fields/src/lib/auth-lastname/auth-lastname.component.html</context>
+          <context context-type="linenumber">11,12</context>
+        </context-group>
+        <note priority="1" from="description">Lastname error required</note>
+        <note priority="1" from="meaning">Auth field</note>
+      </trans-unit>
+      <trans-unit id="fc0b7f9c2282e39d64eda872e640a39e718e5f15" datatype="html">
+        <source>Password</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">libs/web/auth/ui/fields/src/lib/auth-password/auth-password.component.html</context>
+          <context context-type="linenumber">2</context>
+        </context-group>
+        <note priority="1" from="description">Password label</note>
+        <note priority="1" from="meaning">Auth field</note>
+      </trans-unit>
+      <trans-unit id="2b91ad07bf7cfab9a990a68b4e69da14c231bd07" datatype="html">
+        <source>******</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">libs/web/auth/ui/fields/src/lib/auth-password/auth-password.component.html</context>
+          <context context-type="linenumber">9</context>
+        </context-group>
+        <note priority="1" from="description">Password placeholder</note>
+        <note priority="1" from="meaning">Auth field</note>
+      </trans-unit>
+      <trans-unit id="52716699321e4da7f1164148c87952963a87f95f" datatype="html">
+        <source> Password is <x id="START_TAG_STRONG" ctype="x-strong" equiv-text="&lt;strong&gt;"/>required<x id="CLOSE_TAG_STRONG" ctype="x-strong" equiv-text="&lt;/strong&gt;"/></source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">libs/web/auth/ui/fields/src/lib/auth-password/auth-password.component.html</context>
+          <context context-type="linenumber">11,12</context>
+        </context-group>
+        <note priority="1" from="description">Password error required</note>
+        <note priority="1" from="meaning">Auth field</note>
+      </trans-unit>
+      <trans-unit id="134a09d7ae7132155d29c0f0f2c59d5222c85d72" datatype="html">
+        <source>Username</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">libs/web/auth/ui/fields/src/lib/auth-username/auth-username.component.html</context>
+          <context context-type="linenumber">2</context>
+        </context-group>
+        <note priority="1" from="description">Username label</note>
+        <note priority="1" from="meaning">Auth field</note>
+      </trans-unit>
+      <trans-unit id="dcda4a70bdffbc39561b3e2b81347cc611f621f4" datatype="html">
+        <source>John Doe</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">libs/web/auth/ui/fields/src/lib/auth-username/auth-username.component.html</context>
+          <context context-type="linenumber">9</context>
+        </context-group>
+        <note priority="1" from="description">Username placeholder</note>
+        <note priority="1" from="meaning">Auth field</note>
+      </trans-unit>
+      <trans-unit id="065f926bb6b91a548a58418e9445dbfebf452080" datatype="html">
+        <source> Username is <x id="START_TAG_STRONG" ctype="x-strong" equiv-text="&lt;strong&gt;"/>required<x id="CLOSE_TAG_STRONG" ctype="x-strong" equiv-text="&lt;/strong&gt;"/></source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">libs/web/auth/ui/fields/src/lib/auth-username/auth-username.component.html</context>
+          <context context-type="linenumber">11,12</context>
+        </context-group>
+        <note priority="1" from="description">Username error required</note>
+        <note priority="1" from="meaning">Auth field</note>
+      </trans-unit>
+      <trans-unit id="385012caf3c594c73b6a31f6271168d2b5c1edc5" datatype="html">
+        <source>Start using the BunchCards to learn foreign languages.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">libs/web/auth/ui/promo/src/lib/auth-promo.component.html</context>
           <context context-type="linenumber">1</context>
         </context-group>
-        <note priority="1" from="description">Chat link</note>
-        <note priority="1" from="meaning">Layout</note>
+        <note priority="1" from="description">Title</note>
+        <note priority="1" from="meaning">Auth promo</note>
+      </trans-unit>
+      <trans-unit id="0b2d0329c94c60f9ef03558c5094bdff32619b23" datatype="html">
+        <source> BunchCards is an application for memorizing words with flashcards. Create your own word lists and study them anytime. Application available in the browser and as a mobile application on Android and iOS.
+</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">libs/web/auth/ui/promo/src/lib/auth-promo.component.html</context>
+          <context context-type="linenumber">2,5</context>
+        </context-group>
+        <note priority="1" from="description">Description</note>
+        <note priority="1" from="meaning">Auth promo</note>
       </trans-unit>
       <trans-unit id="1827103049169187094" datatype="html">
         <source>Dashboard</source>

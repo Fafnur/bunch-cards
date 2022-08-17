@@ -8,6 +8,9 @@
     i18n-placeholder="Auth field|Email placeholder"
     placeholder="sample@example.com"
   />
+  <mat-error automation-id="error" i18n="Auth field|Email error server" *ngIf="control.hasError('server') && !control.hasError('required')">
+    Another user uses this email
+  </mat-error>
   <mat-error automation-id="error" i18n="Auth field|Email error invalid" *ngIf="control.hasError('email') && !control.hasError('required')">
     Please enter a valid email address
   </mat-error>
