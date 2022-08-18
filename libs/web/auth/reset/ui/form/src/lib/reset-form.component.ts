@@ -3,30 +3,25 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { takeUntil, tap } from 'rxjs';
 
-import { AuthRegister } from '@bunch/auth/common';
+import { AuthSecrets } from '@bunch/auth/common';
 import { AuthFacade } from '@bunch/auth/state';
 import { NavigationService } from '@bunch/core/navigation';
 import { DestroyService } from '@bunch/core/utils/destroy';
 import { Form } from '@bunch/core/utils/types';
-import { uuidv4 } from '@bunch/core/utils/uuid';
 
 @Component({
-  selector: 'bunch-register-form',
-  templateUrl: './register-form.component.html',
-  styleUrls: ['./register-form.component.scss'],
+  selector: 'bunch-reset-form',
+  templateUrl: './reset-form.component.html',
+  styleUrls: ['./reset-form.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [DestroyService],
 })
-export class RegisterFormComponent implements OnInit {
+export class ResetFormComponent implements OnInit {
   submitted = false;
   error = false;
 
-  readonly form = new FormGroup<Form<AuthRegister>>({
-    password: new FormControl('', { nonNullable: true, validators: [Validators.required, Validators.minLength(6)] }),
+  readonly form = new FormGroup<Form<AuthSecrets>>({
     email: new FormControl('', { nonNullable: true, validators: [Validators.required, Validators.email] }),
-    firstname: new FormControl('', { nonNullable: true, validators: [Validators.required] }),
-    lastname: new FormControl('', { nonNullable: true, validators: [Validators.required] }),
-    uuid: new FormControl(uuidv4(), { nonNullable: true, validators: [Validators.required] }),
   });
 
   constructor(
@@ -48,7 +43,7 @@ export class RegisterFormComponent implements OnInit {
       )
       .subscribe();
 
-    this.authFacade.registerFailure$
+    this.authFacade.resetFailure$
       .pipe(
         tap(() => {
           this.submitted = false;
@@ -59,11 +54,12 @@ export class RegisterFormComponent implements OnInit {
       )
       .subscribe();
 
-    this.authFacade.registerSuccess$
+    this.authFacade.resetSuccess$
       .pipe(
         tap(() => {
           this.submitted = false;
-          void this.router.navigate(this.navigationService.getRoute(this.navigationService.getPaths().dashboard));
+          // TODO: Add show popup with send link
+          // void this.router.navigate(this.navigationService.getRoute(this.navigationService.getPaths().dashboard));
           this.changeDetectorRef.markForCheck();
         }),
         takeUntil(this.destroy$)
@@ -76,7 +72,7 @@ export class RegisterFormComponent implements OnInit {
 
     if (this.form.valid && !this.submitted) {
       this.submitted = true;
-      this.authFacade.register(this.form.getRawValue());
+      this.authFacade.reset(this.form.getRawValue());
     } else {
       // TODO: Scroll to error
     }

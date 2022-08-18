@@ -1,1 +1,1 @@
-export * from './lib/web-auth-reset-page.module';
+export * from './lib/reset-page.module';

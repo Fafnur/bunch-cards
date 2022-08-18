@@ -1,0 +1,13 @@
+<ng-content select="[header]"></ng-content>
+<form [formGroup]="form" automation-id="form" (ngSubmit)="onSubmit()">
+  <bunch-auth-email automation-id="email" [control]="form.controls.email"></bunch-auth-email>
+  <mat-error *ngIf="error" automation-id="error" i18n="Auth Reset|User is not found">User is not found.</mat-error>
+  <div>
+    <button automation-id="submit" type="submit" mat-raised-button bunch-button-medium color="primary" i18n="Auth Reset|Reset password">
+      Reset password
+    </button>
+  </div>
+  <ng-content select="[form]"></ng-content>
+</form>
+<ng-content select="[buttons]"></ng-content>
+<ng-content></ng-content>

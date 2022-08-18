@@ -3,7 +3,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { takeUntil, tap } from 'rxjs';
 
-import { AuthCredentials, AuthField } from '@bunch/auth/common';
+import { AuthCredentials } from '@bunch/auth/common';
 import { AuthFacade } from '@bunch/auth/state';
 import { NavigationService } from '@bunch/core/navigation';
 import { DestroyService } from '@bunch/core/utils/destroy';
@@ -17,8 +17,6 @@ import { Form } from '@bunch/core/utils/types';
   providers: [DestroyService],
 })
 export class LoginFormComponent implements OnInit {
-  readonly fields = AuthField;
-
   submitted = false;
   error = false;
 
