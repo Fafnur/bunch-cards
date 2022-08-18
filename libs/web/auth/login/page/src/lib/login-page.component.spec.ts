@@ -3,6 +3,8 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { MockModule } from 'ng-mocks';
 
 import { LoginFormModule } from '@bunch/web/auth/login/ui/form';
+import { AuthLinksModule } from '@bunch/web/auth/ui/links';
+import { AuthResetModule } from '@bunch/web/auth/ui/reset';
 import { AuthTitleModule } from '@bunch/web/auth/ui/title';
 
 import { LoginPageComponent } from './login-page.component';
@@ -14,12 +16,16 @@ describe('LoginPageComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [CommonModule, MockModule(LoginFormModule), MockModule(AuthTitleModule)],
+      imports: [
+        CommonModule,
+        MockModule(LoginFormModule),
+        MockModule(AuthTitleModule),
+        MockModule(AuthLinksModule),
+        MockModule(AuthResetModule),
+      ],
       declarations: [LoginPageComponent],
     }).compileComponents();
-  });
 
-  beforeEach(() => {
     fixture = TestBed.createComponent(LoginPageComponent);
     pageObject = new LoginPageComponentPo(fixture);
   });
@@ -35,5 +41,7 @@ describe('LoginPageComponent', () => {
 
     expect(pageObject.form).toBeTruthy();
     expect(pageObject.title).toBeTruthy();
+    expect(pageObject.reset).toBeTruthy();
+    expect(pageObject.links).toBeTruthy();
   });
 });

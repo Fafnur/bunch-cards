@@ -1,4 +1,4 @@
-<ng-content></ng-content>
+<ng-content select="[header]"></ng-content>
 <form [formGroup]="form" automation-id="form" (ngSubmit)="onSubmit()">
   <bunch-auth-email automation-id="username" [control]="form.controls.username"></bunch-auth-email>
   <bunch-auth-password automation-id="password" [control]="form.controls.password"></bunch-auth-password>
@@ -8,5 +8,7 @@
       Sign in
     </button>
   </div>
+  <ng-content select="[form]"></ng-content>
 </form>
 <ng-content select="[buttons]"></ng-content>
+<ng-content></ng-content>

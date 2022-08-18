@@ -1,0 +1,10 @@
+@use 'libs/web/ui/stylesheets/variables' as variables;
+
+:host {
+  display: block;
+  margin: 1rem 0;
+}
+
+a {
+  color: variables.$color-primary;
+}

@@ -76,6 +76,7 @@
       "@bunch/web/auth/ui/layout": ["libs/web/auth/ui/layout/src/index.ts"],
       "@bunch/web/auth/ui/links": ["libs/web/auth/ui/links/src/index.ts"],
       "@bunch/web/auth/ui/promo": ["libs/web/auth/ui/promo/src/index.ts"],
+      "@bunch/web/auth/ui/reset": ["libs/web/auth/ui/reset/src/index.ts"],
       "@bunch/web/auth/ui/title": ["libs/web/auth/ui/title/src/index.ts"],
       "@bunch/web/core/connectivity": ["libs/web/core/connectivity/src/index.ts"],
       "@bunch/web/core/hammer": ["libs/web/core/hammer/src/index.ts"],
