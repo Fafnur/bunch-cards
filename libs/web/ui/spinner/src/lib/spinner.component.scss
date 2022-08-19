@@ -1,0 +1,13 @@
+:host {
+  display: flex;
+  flex-grow: 1;
+  margin: 5rem 0;
+}
+
+mat-spinner {
+  margin: auto;
+
+  &.mat-accent ::ng-deep circle {
+    stroke: #ffffff;
+  }
+}

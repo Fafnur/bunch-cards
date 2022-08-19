@@ -26,6 +26,10 @@ const routes: Routes = [
         path: NAVIGATION_PATHS.authReset,
         loadChildren: () => import('@bunch/web/auth/reset/page').then((modules) => modules.ResetPageModule),
       },
+      {
+        path: NAVIGATION_PATHS.authOauth,
+        loadChildren: () => import('@bunch/web/auth/oauth/page').then((modules) => modules.OauthPageModule),
+      },
     ],
   },
 ];

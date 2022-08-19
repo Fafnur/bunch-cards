@@ -18,7 +18,7 @@ import { MultiplatformComponentPo } from './multiplatform.component.po';
     <div web automation-id="web">web</div>
   </bunch-multiplatform>`,
 })
-export class WrapperComponent {}
+class WrapperComponent {}
 
 describe('MultiplatformComponent', () => {
   let pageObject: MultiplatformComponentPo;

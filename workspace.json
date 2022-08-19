@@ -55,6 +55,7 @@
     "web-auth-guards": "libs/web/auth/guards",
     "web-auth-login-page": "libs/web/auth/login/page",
     "web-auth-login-ui-form": "libs/web/auth/login/ui/form",
+    "web-auth-oauth-page": "libs/web/auth/oauth/page",
     "web-auth-pages": "libs/web/auth/pages",
     "web-auth-password-change-page": "libs/web/auth/password-change/page",
     "web-auth-register-page": "libs/web/auth/register/page",
@@ -86,6 +87,7 @@
     "web-ui-grid": "libs/web/ui/grid",
     "web-ui-layout": "libs/web/ui/layout",
     "web-ui-multiplatform": "libs/web/ui/multiplatform",
+    "web-ui-spinner": "libs/web/ui/spinner",
     "web-ui-theming": "libs/web/ui/theming"
   },
   "$schema": "./node_modules/nx/schemas/workspace-schema.json"
