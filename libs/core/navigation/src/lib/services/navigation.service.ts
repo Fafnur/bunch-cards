@@ -1,14 +1,11 @@
-import { Inject, Injectable } from '@angular/core';
+import { NavigationExtras } from '@angular/router';
 
-import { NavigationPaths, PATHS } from '../interfaces/navigation.interface';
+import { NavigationPaths } from '../interfaces/navigation.interface';
 
-@Injectable({
-  providedIn: 'root',
-})
-export class NavigationService {
-  constructor(@Inject(PATHS) private readonly paths: NavigationPaths) {}
+export abstract class NavigationService<T extends NavigationPaths = NavigationPaths> {
+  protected constructor(protected readonly paths: T) {}
 
-  getPaths(): NavigationPaths {
+  getPaths(): T {
     return this.paths;
   }
 
@@ -37,4 +34,10 @@ export class NavigationService {
 
     return route.length > 1 ? `/${route.slice(1).join('/')}` : `${route[0]}`;
   }
+
+  navigateByUrl(navigationPath: string, params?: Record<string, string | number>, extras?: NavigationExtras): Promise<boolean> {
+    return this.navigate(this.getRoute(navigationPath, params), extras);
+  }
+
+  abstract navigate(navigationPath: (string | number)[], extras?: NavigationExtras): Promise<boolean>;
 }

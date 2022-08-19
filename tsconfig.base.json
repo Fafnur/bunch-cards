@@ -86,6 +86,7 @@
       "@bunch/web/core/layout": ["libs/web/core/layout/src/index.ts"],
       "@bunch/web/core/localdb": ["libs/web/core/localdb/src/index.ts"],
       "@bunch/web/core/meta": ["libs/web/core/meta/src/index.ts"],
+      "@bunch/web/core/navigation": ["libs/web/core/navigation/src/index.ts"],
       "@bunch/web/core/storage": ["libs/web/core/storage/src/index.ts"],
       "@bunch/web/core/window": ["libs/web/core/window/src/index.ts"],
       "@bunch/web/dashboard/page": ["libs/web/dashboard/page/src/index.ts"],

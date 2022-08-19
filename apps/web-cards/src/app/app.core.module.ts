@@ -11,6 +11,7 @@ import { UserStateModule } from '@bunch/users/state';
 import { ConnectivityModule } from '@bunch/web/core/connectivity';
 import { HammerModule } from '@bunch/web/core/hammer';
 import { LocaldbModule } from '@bunch/web/core/localdb';
+import { NavigationModule } from '@bunch/web/core/navigation';
 
 import { environment } from '../environments/environment';
 
@@ -24,6 +25,7 @@ import { environment } from '../environments/environment';
     UserStateModule,
     AuthStateModule,
     LocaldbModule,
+    NavigationModule,
     !environment.production ? StoreDevtoolsModule.instrument({ logOnly: environment.production }) : [],
   ],
   providers: [
