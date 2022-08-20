@@ -2,6 +2,7 @@ import { ChangeDetectionStrategy, Component, Inject, OnInit } from '@angular/cor
 
 import { EnvironmentService } from '@bunch/core/environments';
 import { NavigationPaths, PATHS } from '@bunch/core/navigation';
+import { IconService, logoIcon } from '@bunch/web/core/icons';
 
 @Component({
   selector: 'bunch-logo',
@@ -12,7 +13,13 @@ import { NavigationPaths, PATHS } from '@bunch/core/navigation';
 export class LogoComponent implements OnInit {
   brand!: string;
 
-  constructor(private readonly environmentService: EnvironmentService, @Inject(PATHS) public readonly paths: NavigationPaths) {}
+  constructor(
+    private readonly iconService: IconService,
+    private readonly environmentService: EnvironmentService,
+    @Inject(PATHS) public readonly paths: NavigationPaths
+  ) {
+    this.iconService.add('bunchLogo', logoIcon);
+  }
 
   ngOnInit(): void {
     this.brand = this.environmentService.getEnvironments().brand;

@@ -4,7 +4,7 @@ import { PageObject } from '@bunch/core/testing';
 
 enum Automation {
   Link = 'link',
-  Image = 'image',
+  Icon = 'icon',
   Brand = 'brand',
 }
 
@@ -13,8 +13,8 @@ export class LogoComponentPo extends PageObject {
     return this.getByAutomationId(Automation.Link);
   }
 
-  get image(): DebugElement | null {
-    return this.getByAutomationId(Automation.Image);
+  get icon(): DebugElement | null {
+    return this.getByAutomationId(Automation.Icon);
   }
 
   get brand(): DebugElement | null {

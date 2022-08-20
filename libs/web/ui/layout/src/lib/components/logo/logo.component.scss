@@ -22,16 +22,22 @@ a {
   }
 }
 
-svg {
-  max-width: 3rem;
-  width: 100%;
+mat-icon {
+  display: block;
+  font-size: 3rem;
+  width: 3rem;
+  height: 3rem;
 
   @include mixins.media-tablet() {
-    max-width: 4rem;
+    font-size: 4rem;
+    width: 4rem;
+    height: 4rem;
   }
 
   @include mixins.media-web() {
-    max-width: 3rem;
+    font-size: 3rem;
+    width: 3rem;
+    height: 3rem;
   }
 }
 
