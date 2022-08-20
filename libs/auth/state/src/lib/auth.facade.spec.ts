@@ -38,9 +38,7 @@ describe('Auth Facade', () => {
         }),
       ],
     });
-  });
 
-  beforeEach(() => {
     store = TestBed.inject(MockStore);
     facade = TestBed.inject(AuthFacade);
 
@@ -75,6 +73,12 @@ describe('Auth Facade', () => {
     facade.reset(AUTH_SECRETS_STUB);
 
     expect(dispatchSpy).toHaveBeenCalledWith(AuthActions.reset({ secrets: AUTH_SECRETS_STUB }));
+  });
+
+  it('oauth() should dispatch action', () => {
+    facade.oauth(AUTH_RESPONSE_STUB);
+
+    expect(dispatchSpy).toHaveBeenCalledWith(AuthActions.oauth({ response: AUTH_RESPONSE_STUB }));
   });
 
   it('changePassword() should dispatch action', () => {
@@ -153,5 +157,14 @@ describe('Auth Facade', () => {
     const expected = hot('a', { a: HTTP_ERROR_STUB });
 
     expect(facade.changePasswordFailure$).toBeObservable(expected);
+  });
+
+  it('should emit oauthSuccess$', () => {
+    const action = AuthActions.oauthSuccess({ response: AUTH_RESPONSE_STUB });
+
+    actions = hot('a', { a: action });
+    const expected = hot('a', { a: AUTH_RESPONSE_STUB });
+
+    expect(facade.oauthSuccess$).toBeObservable(expected);
   });
 });

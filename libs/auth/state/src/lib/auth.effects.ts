@@ -8,6 +8,7 @@ import { AuthApiService } from '@bunch/auth/api';
 import { AuthManager } from '@bunch/auth/manager';
 
 import * as AuthActions from './auth.actions';
+import { oauthSuccess } from './auth.actions';
 
 @Injectable()
 export class AuthEffects implements OnInitEffects {
@@ -76,11 +77,17 @@ export class AuthEffects implements OnInitEffects {
     return this.actions$.pipe(
       ofType(AuthActions.logout),
       fetch({
-        run: () =>
-          this.authManager.remove().pipe(
-            tap(() => console.log('dsdsd')),
-            map(() => AuthActions.logoutSuccess())
-          ),
+        run: () => this.authManager.remove().pipe(map(() => AuthActions.logoutSuccess())),
+        onError: (action, error) => console.error(error),
+      })
+    );
+  });
+
+  oauth$ = createEffect(() => {
+    return this.actions$.pipe(
+      ofType(AuthActions.oauth),
+      fetch({
+        run: ({ response }) => this.authManager.put(response).pipe(map(() => AuthActions.oauthSuccess({ response }))),
         onError: (action, error) => console.error(error),
       })
     );

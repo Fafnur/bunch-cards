@@ -40,3 +40,9 @@ export const changePasswordFailure = createAction('[Auth] Change Password Failur
 export const logout = createAction('[Auth] Logout');
 
 export const logoutSuccess = createAction('[Auth] Logout Success');
+
+// Oauth
+
+export const oauth = createAction('[Auth] Oauth', props<{ response: AuthResponse }>());
+
+export const oauthSuccess = createAction('[Auth] Oauth', props<{ response: AuthResponse }>());

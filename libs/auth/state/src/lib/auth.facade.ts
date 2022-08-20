@@ -3,7 +3,7 @@ import { Actions, ofType } from '@ngrx/effects';
 import { Store } from '@ngrx/store';
 import { map, Observable } from 'rxjs';
 
-import { AuthCredentials, AuthPasswordChange, AuthRegister, AuthSecrets } from '@bunch/auth/common';
+import { AuthCredentials, AuthPasswordChange, AuthRegister, AuthResponse, AuthSecrets } from '@bunch/auth/common';
 
 import * as AuthActions from './auth.actions';
 import * as AuthSelectors from './auth.selectors';
@@ -59,7 +59,16 @@ export class AuthFacade {
     map(() => undefined)
   );
 
+  oauthSuccess$ = this.actions.pipe(
+    ofType(AuthActions.oauthSuccess),
+    map(({ response }) => response)
+  );
+
   constructor(private readonly actions: Actions, private readonly store: Store) {}
+
+  oauth(response: AuthResponse): void {
+    this.store.dispatch(AuthActions.oauth({ response }));
+  }
 
   login(credentials: AuthCredentials): void {
     this.store.dispatch(AuthActions.login({ credentials }));
