@@ -74,6 +74,7 @@
     "web-cards-e2e": "apps/web-cards-e2e",
     "web-core-connectivity": "libs/web/core/connectivity",
     "web-core-hammer": "libs/web/core/hammer",
+    "web-core-icons": "libs/web/core/icons",
     "web-core-layout": "libs/web/core/layout",
     "web-core-localdb": "libs/web/core/localdb",
     "web-core-meta": "libs/web/core/meta",
