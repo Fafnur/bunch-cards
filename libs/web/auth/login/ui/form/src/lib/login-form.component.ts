@@ -1,6 +1,5 @@
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
 import { takeUntil, tap } from 'rxjs';
 
 import { AuthCredentials } from '@bunch/auth/common';
@@ -28,7 +27,6 @@ export class LoginFormComponent implements OnInit {
   constructor(
     private readonly changeDetectorRef: ChangeDetectorRef,
     private readonly authFacade: AuthFacade,
-    private readonly router: Router,
     private readonly navigationService: NavigationService,
     private readonly destroy$: DestroyService
   ) {}
@@ -59,7 +57,7 @@ export class LoginFormComponent implements OnInit {
       .pipe(
         tap(() => {
           this.submitted = false;
-          void this.router.navigate(this.navigationService.getRoute(this.navigationService.getPaths().dashboard));
+          void this.navigationService.navigateByUrl(this.navigationService.getPaths().dashboard);
           this.changeDetectorRef.markForCheck();
         }),
         takeUntil(this.destroy$)

@@ -1,6 +1,5 @@
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
 import { takeUntil, tap } from 'rxjs';
 
 import { AuthSecrets } from '@bunch/auth/common';
@@ -27,7 +26,6 @@ export class ResetFormComponent implements OnInit {
   constructor(
     private readonly changeDetectorRef: ChangeDetectorRef,
     private readonly authFacade: AuthFacade,
-    private readonly router: Router,
     private readonly navigationService: NavigationService,
     private readonly destroy$: DestroyService
   ) {}
