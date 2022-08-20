@@ -37,7 +37,7 @@ export const NAVIGATION_PATHS: NavigationPaths = {
   authPasswordChange: 'auth/password-change',
   authWithGoogle: 'auth/web/google',
   authWithApple: 'auth/web/apple',
-  authOauth: 'auth/oauth/:token',
+  authOauth: 'auth/oauth',
 
   serverError: 'server-error',
   notFound: 'not-found',
