@@ -44,9 +44,9 @@ export class AuthFacade {
     map(({ error }) => error)
   );
 
-  changePasswordSuccess$: Observable<void> = this.actions.pipe(
+  changePasswordSuccess$ = this.actions.pipe(
     ofType(AuthActions.changePasswordSuccess),
-    map(() => undefined)
+    map(({ response }) => response)
   );
 
   changePasswordFailure$ = this.actions.pipe(

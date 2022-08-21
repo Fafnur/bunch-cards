@@ -30,6 +30,10 @@ const routes: Routes = [
         path: NAVIGATION_PATHS.authOauth,
         loadChildren: () => import('@bunch/web/auth/oauth/page').then((modules) => modules.OauthPageModule),
       },
+      {
+        path: NAVIGATION_PATHS.authPasswordChange,
+        loadChildren: () => import('@bunch/web/auth/password-change/page').then((modules) => modules.PasswordChangePageModule),
+      },
     ],
   },
 ];

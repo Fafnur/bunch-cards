@@ -27,7 +27,7 @@ export class AuthApiService {
     return this.apiService.post(AUTH_API_ROUTES.register, register);
   }
 
-  changePassword(passwordChange: AuthPasswordChange): Observable<void> {
+  changePassword(passwordChange: AuthPasswordChange): Observable<AuthResponse> {
     return this.apiService.post(AUTH_API_ROUTES.changePassword, passwordChange);
   }
 }

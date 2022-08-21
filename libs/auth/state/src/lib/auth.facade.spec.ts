@@ -142,10 +142,10 @@ describe('Auth Facade', () => {
   });
 
   it('should emit changePasswordSuccess$', () => {
-    const action = AuthActions.changePasswordSuccess();
+    const action = AuthActions.changePasswordSuccess({ response: AUTH_RESPONSE_STUB });
 
     actions = hot('a', { a: action });
-    const expected = hot('a', { a: undefined });
+    const expected = hot('a', { a: AUTH_RESPONSE_STUB });
 
     expect(facade.changePasswordSuccess$).toBeObservable(expected);
   });

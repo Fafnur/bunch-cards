@@ -59,6 +59,7 @@
     "web-auth-oauth-page": "libs/web/auth/oauth/page",
     "web-auth-pages": "libs/web/auth/pages",
     "web-auth-password-change-page": "libs/web/auth/password-change/page",
+    "web-auth-password-change-ui-form": "libs/web/auth/password-change/ui/form",
     "web-auth-register-page": "libs/web/auth/register/page",
     "web-auth-register-ui-form": "libs/web/auth/register/ui/form",
     "web-auth-reset-page": "libs/web/auth/reset/page",

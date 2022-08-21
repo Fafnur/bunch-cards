@@ -32,7 +32,7 @@ export const registerFailure = createAction('[Auth] Register Failure', props<{ e
 // Change password
 export const changePassword = createAction('[Auth] Change Password', props<{ passwordChange: AuthPasswordChange }>());
 
-export const changePasswordSuccess = createAction('[Auth] Change Password Success');
+export const changePasswordSuccess = createAction('[Auth] Change Password Success', props<{ response: AuthResponse }>());
 
 export const changePasswordFailure = createAction('[Auth] Change Password Failure', props<{ error: HttpErrorResponse }>());
 

@@ -31,6 +31,8 @@ const reducer = createReducer(
   on(
     AuthActions.loginSuccess,
     AuthActions.registerSuccess,
+    AuthActions.changePasswordSuccess,
+    AuthActions.oauthSuccess,
     (state, { response }): AuthState => ({
       ...state,
       token: response.accessToken,

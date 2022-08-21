@@ -2,13 +2,12 @@ import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType, OnInitEffects } from '@ngrx/effects';
 import { Action } from '@ngrx/store';
 import { fetch } from '@nrwl/angular';
-import { map, switchMap, take, tap } from 'rxjs';
+import { map, switchMap, take } from 'rxjs';
 
 import { AuthApiService } from '@bunch/auth/api';
 import { AuthManager } from '@bunch/auth/manager';
 
 import * as AuthActions from './auth.actions';
-import { oauthSuccess } from './auth.actions';
 
 @Injectable()
 export class AuthEffects implements OnInitEffects {
@@ -67,7 +66,7 @@ export class AuthEffects implements OnInitEffects {
       ofType(AuthActions.changePassword),
       fetch({
         run: ({ passwordChange }) =>
-          this.authApiService.changePassword(passwordChange).pipe(map(() => AuthActions.changePasswordSuccess())),
+          this.authApiService.changePassword(passwordChange).pipe(map((response) => AuthActions.changePasswordSuccess({ response }))),
         onError: (action, error) => AuthActions.changePasswordFailure({ error }),
       })
     );

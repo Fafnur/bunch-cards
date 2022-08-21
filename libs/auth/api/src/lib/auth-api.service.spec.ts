@@ -47,7 +47,7 @@ describe('AuthApiService', () => {
   });
 
   it('should call changePassword()', () => {
-    const result = hot('a', { a: null });
+    const result = hot('a', { a: AUTH_REGISTER_STUB });
     when(apiServiceMock.post(AUTH_API_ROUTES.changePassword, deepEqual(AUTH_PASSWORD_CHANGE_STUB))).thenReturn(result);
 
     expect(service.changePassword(AUTH_PASSWORD_CHANGE_STUB)).toBeObservable(result);
