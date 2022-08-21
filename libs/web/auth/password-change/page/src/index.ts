@@ -1,1 +1,1 @@
-export * from './lib/web-auth-password-change-page.module';
+export * from './lib/password-change-page.module';
