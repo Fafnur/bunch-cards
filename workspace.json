@@ -65,6 +65,7 @@
     "web-auth-register-ui-notify": "libs/web/auth/register/ui/notify",
     "web-auth-reset-page": "libs/web/auth/reset/page",
     "web-auth-reset-ui-form": "libs/web/auth/reset/ui/form",
+    "web-auth-reset-ui-notify": "libs/web/auth/reset/ui/notify",
     "web-auth-ui-fields": "libs/web/auth/ui/fields",
     "web-auth-ui-layout": "libs/web/auth/ui/layout",
     "web-auth-ui-links": "libs/web/auth/ui/links",

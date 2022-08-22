@@ -1,12 +1,13 @@
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { takeUntil, tap } from 'rxjs';
+import { switchMap, takeUntil, tap } from 'rxjs';
 
 import { AuthSecrets } from '@bunch/auth/common';
 import { AuthFacade } from '@bunch/auth/state';
 import { NavigationService } from '@bunch/core/navigation';
 import { DestroyService } from '@bunch/core/utils/destroy';
 import { Form } from '@bunch/core/utils/types';
+import { ResetNotifyService } from '@bunch/web/auth/reset/ui/notify';
 
 @Component({
   selector: 'bunch-reset-form',
@@ -27,6 +28,7 @@ export class ResetFormComponent implements OnInit {
     private readonly changeDetectorRef: ChangeDetectorRef,
     private readonly authFacade: AuthFacade,
     private readonly navigationService: NavigationService,
+    private readonly resetNotifyService: ResetNotifyService,
     private readonly destroy$: DestroyService
   ) {}
 
@@ -56,9 +58,11 @@ export class ResetFormComponent implements OnInit {
       .pipe(
         tap(() => {
           this.submitted = false;
-          // TODO: Add show popup with send link
-          // void this.router.navigate(this.navigationService.getRoute(this.navigationService.getPaths().dashboard));
           this.changeDetectorRef.markForCheck();
+        }),
+        switchMap(() => this.resetNotifyService.open(this.form.getRawValue())),
+        tap(() => {
+          void this.navigationService.navigateByUrl(this.navigationService.getPaths().authLogin);
         }),
         takeUntil(this.destroy$)
       )

@@ -77,6 +77,7 @@
       "@bunch/web/auth/register/ui/notify": ["libs/web/auth/register/ui/notify/src/index.ts"],
       "@bunch/web/auth/reset/page": ["libs/web/auth/reset/page/src/index.ts"],
       "@bunch/web/auth/reset/ui/form": ["libs/web/auth/reset/ui/form/src/index.ts"],
+      "@bunch/web/auth/reset/ui/notify": ["libs/web/auth/reset/ui/notify/src/index.ts"],
       "@bunch/web/auth/ui/fields": ["libs/web/auth/ui/fields/src/index.ts"],
       "@bunch/web/auth/ui/layout": ["libs/web/auth/ui/layout/src/index.ts"],
       "@bunch/web/auth/ui/links": ["libs/web/auth/ui/links/src/index.ts"],

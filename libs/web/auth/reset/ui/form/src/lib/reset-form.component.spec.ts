@@ -8,12 +8,13 @@ import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { Router } from '@angular/router';
 import { MockModule } from 'ng-mocks';
 import { ReplaySubject } from 'rxjs';
-import { mock, when } from 'ts-mockito';
+import { anything, mock, when } from 'ts-mockito';
 
 import { AuthFacade } from '@bunch/auth/state';
 import { FormExtractsModule } from '@bunch/core/forms/extract';
 import { NAVIGATION_PATHS, NavigationService } from '@bunch/core/navigation';
 import { providerOf } from '@bunch/core/testing';
+import { ResetNotifyModule, ResetNotifyService } from '@bunch/web/auth/reset/ui/notify';
 import { AuthEmailModule, AuthPasswordModule } from '@bunch/web/auth/ui/fields';
 import { ButtonMediumModule } from '@bunch/web/ui/theming';
 
@@ -26,18 +27,23 @@ describe('ResetFormComponent', () => {
   let authFacadeMock: AuthFacade;
   let navigationServiceMock: NavigationService;
   let routerMock: Router;
+  let resetNotifyServiceMock: ResetNotifyService;
 
   let resetSuccess$: ReplaySubject<void>;
   let resetFailure$: ReplaySubject<HttpErrorResponse>;
+  let open$: ReplaySubject<boolean>;
 
   beforeEach(async () => {
     authFacadeMock = mock(AuthFacade);
     navigationServiceMock = mock(NavigationService);
     routerMock = mock(Router);
+    resetNotifyServiceMock = mock(ResetNotifyService);
 
     resetSuccess$ = new ReplaySubject<void>(1);
     resetFailure$ = new ReplaySubject<HttpErrorResponse>(1);
+    open$ = new ReplaySubject<boolean>(1);
 
+    when(resetNotifyServiceMock.open(anything())).thenReturn(open$);
     when(authFacadeMock.resetSuccess$).thenReturn(resetSuccess$);
     when(authFacadeMock.resetFailure$).thenReturn(resetFailure$);
     when(navigationServiceMock.getPaths()).thenReturn(NAVIGATION_PATHS);
@@ -54,12 +60,14 @@ describe('ResetFormComponent', () => {
         MockModule(MatFormFieldModule),
         MockModule(AuthPasswordModule),
         MockModule(AuthEmailModule),
+        MockModule(ResetNotifyModule),
       ],
       declarations: [ResetFormComponent],
       providers: [
         providerOf(AuthFacade, authFacadeMock),
         providerOf(NavigationService, navigationServiceMock),
         providerOf(Router, routerMock),
+        providerOf(ResetNotifyService, resetNotifyServiceMock),
       ],
     }).compileComponents();
 

@@ -5,6 +5,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 
 import { FormExtractsModule } from '@bunch/core/forms/extract';
+import { ResetNotifyModule } from '@bunch/web/auth/reset/ui/notify';
 import { AuthEmailModule, AuthPasswordModule } from '@bunch/web/auth/ui/fields';
 import { ButtonMediumModule } from '@bunch/web/ui/theming';
 
@@ -20,6 +21,7 @@ import { ResetFormComponent } from './reset-form.component';
     MatFormFieldModule,
     AuthEmailModule,
     AuthPasswordModule,
+    ResetNotifyModule,
   ],
   declarations: [ResetFormComponent],
   exports: [ResetFormComponent],
