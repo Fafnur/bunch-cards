@@ -1,0 +1,26 @@
+<a
+  automation-id="signin"
+  mat-raised-button
+  color="primary"
+  i18n="Auth Links|Signin link"
+  [routerLink]="paths.authLogin | path"
+  *ngIf="mode === 'signin'"
+>
+  <mat-icon svgIcon="logoDark"></mat-icon> Sign in
+</a>
+<a
+  automation-id="signup"
+  i18n="Auth Links|Signup link"
+  mat-raised-button
+  color="primary"
+  [routerLink]="paths.authRegister | path"
+  *ngIf="mode === 'signup'"
+>
+  <mat-icon svgIcon="logoDark"></mat-icon> Sign up
+</a>
+<a automation-id="google" i18n="Auth Links|Signin google" mat-raised-button color="primary" [href]="paths.authWithGoogle | externalPath">
+  <mat-icon svgIcon="googleDarkIcon"></mat-icon> Sign in with Google
+</a>
+<a automation-id="apple" i18n="Auth Links|Signin apple" mat-raised-button color="primary" [href]="paths.authWithApple | externalPath">
+  <mat-icon svgIcon="appleDarkIcon"></mat-icon> Sign in with Apple
+</a>

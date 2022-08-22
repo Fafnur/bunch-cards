@@ -1,4 +1,4 @@
-import { User, UserAuth, UserChange, UserStatus } from './user.interface';
+import { User, UserChange, UserStatus } from './user.interface';
 
 export const USER_STUB: User = {
   id: 1,
@@ -11,11 +11,6 @@ export const USER_STUB: User = {
   lastname: 'Doorin',
   createdAt: '2021-09-02T23:58:19.100Z',
   updatedAt: '2021-09-02T23:58:19.100Z',
-};
-
-export const USER_AUTH_STUB: UserAuth = {
-  accessToken: 'accessTokenRand1',
-  uuid: USER_STUB.uuid,
 };
 
 export const USER_CHANGE_STUB: UserChange = {

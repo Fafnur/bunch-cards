@@ -1,0 +1,9 @@
+@use 'libs/web/ui/stylesheets/mixins' as mixins;
+
+h1 {
+  text-align: center;
+
+  @include mixins.media-tablet-up() {
+    text-align: left;
+  }
+}

@@ -2,12 +2,19 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 import { NAVIGATION_PATHS } from '@bunch/core/navigation';
+import { AuthGuard, AuthGuardsModule, LoggedGuard } from '@bunch/web/auth/guards';
 import { LayoutComponent } from '@bunch/web/ui/layout';
 
 const routes: Routes = [
   {
     path: '',
+    redirectTo: NAVIGATION_PATHS.dashboard,
+    pathMatch: 'full',
+  },
+  {
+    path: '',
     component: LayoutComponent,
+    canActivate: [LoggedGuard],
     children: [
       {
         path: NAVIGATION_PATHS.dashboard,
@@ -27,10 +34,16 @@ const routes: Routes = [
       },
     ],
   },
+  {
+    path: '',
+    canActivate: [AuthGuard],
+    loadChildren: () => import('@bunch/web/auth/pages').then((modules) => modules.AuthPagesModule),
+  },
 ];
 
 @NgModule({
   imports: [
+    AuthGuardsModule,
     RouterModule.forRoot(routes, {
       anchorScrolling: 'enabled',
       initialNavigation: 'enabledBlocking',

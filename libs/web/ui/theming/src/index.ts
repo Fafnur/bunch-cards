@@ -1,3 +1,5 @@
+export * from './lib/button-medium/button-medium.directive';
+export * from './lib/button-medium/button-medium.module';
 export * from './lib/image/background-image.pipe';
 export * from './lib/image/image.module';
 export * from './lib/link/link.directive';

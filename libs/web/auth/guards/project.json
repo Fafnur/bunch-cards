@@ -1,0 +1,22 @@
+{
+  "projectType": "library",
+  "sourceRoot": "libs/web/auth/guards/src",
+  "prefix": "bunch",
+  "targets": {
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/libs/web/auth/guards"],
+      "options": {
+        "jestConfig": "libs/web/auth/guards/jest.config.ts",
+        "passWithNoTests": true
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": ["libs/web/auth/guards/**/*.ts", "libs/web/auth/guards/**/*.html"]
+      }
+    }
+  },
+  "tags": []
+}

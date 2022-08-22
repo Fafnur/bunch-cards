@@ -6,7 +6,7 @@ import { DestroyService } from '@bunch/core/utils/destroy';
 import { extractTouchedChanges } from '@bunch/core/utils/operators';
 
 @Directive({
-  selector: '[bunchExtractTouched]',
+  selector: '[bunchExtractTouched],[bunch-extract-touched]',
   providers: [DestroyService],
 })
 export class ExtractTouchedDirective implements OnInit {

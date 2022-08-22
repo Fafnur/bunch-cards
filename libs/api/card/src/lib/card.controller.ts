@@ -16,8 +16,8 @@ import {
 
 import { formExceptionFactory } from '@bunch/api/forms';
 import { JwtAuthGuard } from '@bunch/api/jwt/guards';
+import { AuthJwtCredentials } from '@bunch/auth/common';
 import { CardDto } from '@bunch/cards/common';
-import { UserJwtCredentials } from '@bunch/users/common';
 
 import { CardChangeForm, CardCreateForm } from './card.form';
 import { CardService } from './card.service';
@@ -28,7 +28,7 @@ export class CardController {
   constructor(private readonly service: CardService) {}
 
   @Get()
-  async load(@Request() req: { user: UserJwtCredentials }): Promise<CardDto[]> {
+  async load(@Request() req: { user: AuthJwtCredentials }): Promise<CardDto[]> {
     return await this.service.find(req.user.uuid);
   }
 
@@ -39,7 +39,7 @@ export class CardController {
       exceptionFactory: (validationErrors) => formExceptionFactory(validationErrors),
     })
   )
-  async create(@Request() req: { user: UserJwtCredentials }, @Body() form: CardCreateForm): Promise<CardDto> {
+  async create(@Request() req: { user: AuthJwtCredentials }, @Body() form: CardCreateForm): Promise<CardDto> {
     return await this.service.create({ ...form, owner: req.user.uuid });
   }
 
@@ -51,7 +51,7 @@ export class CardController {
     })
   )
   async change(
-    @Request() req: { user: UserJwtCredentials },
+    @Request() req: { user: AuthJwtCredentials },
     @Param() params: { uuid: string },
     @Body() form: CardChangeForm
   ): Promise<CardDto> {
@@ -64,7 +64,7 @@ export class CardController {
   }
 
   @Delete(':uuid')
-  async delete(@Request() req: { user: UserJwtCredentials }, @Param() params: { uuid: string }): Promise<void> {
+  async delete(@Request() req: { user: AuthJwtCredentials }, @Param() params: { uuid: string }): Promise<void> {
     const card = await this.service.findOne(params.uuid);
     if (!card) {
       throw new BadRequestException(`Card #${params.uuid} not found`);
@@ -74,7 +74,7 @@ export class CardController {
   }
 
   @Put()
-  async sync(@Request() req: { user: UserJwtCredentials }, @Body() groups: CardDto[]): Promise<CardDto[]> {
+  async sync(@Request() req: { user: AuthJwtCredentials }, @Body() groups: CardDto[]): Promise<CardDto[]> {
     return await this.service.sync(req.user.uuid, groups);
   }
 }

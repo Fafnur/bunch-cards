@@ -1,0 +1,44 @@
+@use 'libs/web/ui/stylesheets/variables' as variables;
+@use 'libs/web/ui/stylesheets/mixins' as mixins;
+
+:host {
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+  background-color: variables.$color-primary;
+
+  @include mixins.media-tablet-up() {
+    position: relative;
+    background-color: transparent;
+
+    &:before {
+      content: '';
+      display: block;
+      position: absolute;
+      width: 50%;
+      left: 0;
+      top: 0;
+      background-color: variables.$color-primary;
+      height: 100%;
+    }
+  }
+}
+
+bunch-container {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+
+  @include mixins.media-tablet() {
+    max-width: 100%;
+  }
+}
+
+bunch-row {
+  flex-grow: 1;
+}
+
+bunch-column {
+  margin: auto 0;
+  z-index: 1;
+}

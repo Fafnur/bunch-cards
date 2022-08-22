@@ -2,10 +2,10 @@ import { Body, Controller, Get, Param, Post, Redirect, Req, Request, UseGuards, 
 import { AuthGuard } from '@nestjs/passport';
 
 import { formExceptionFactory } from '@bunch/api/forms';
-import { UserCreateForm } from '@bunch/api/users';
-import { UserCredentials, UserPasswordChange, UserSecrets } from '@bunch/users/common';
+import { AuthCredentials, AuthPasswordChange, AuthSecrets } from '@bunch/auth/common';
 
 import { AppleUser } from './apple.strategy';
+import { AuthRegisterForm } from './auth.form';
 import { AuthService } from './auth.service';
 import { GoogleUser } from './google.strategy';
 
@@ -14,17 +14,17 @@ export class AuthController {
   constructor(private readonly authService: AuthService) {}
 
   @Post('auth/login')
-  async login(@Body() credentials: UserCredentials) {
+  async login(@Body() credentials: AuthCredentials) {
     return this.authService.loginWithEmail(credentials);
   }
 
   @Post('auth/reset')
-  async reset(@Req() req: Request, @Body() secrets: UserSecrets) {
+  async reset(@Req() req: Request, @Body() secrets: AuthSecrets) {
     return this.authService.reset(secrets);
   }
 
   @Post('auth/change-password')
-  async changePassword(@Body() body: UserPasswordChange) {
+  async changePassword(@Body() body: AuthPasswordChange) {
     return this.authService.changePassword(body);
   }
 
@@ -35,35 +35,35 @@ export class AuthController {
       exceptionFactory: (validationErrors) => formExceptionFactory(validationErrors),
     })
   )
-  async register(@Body() payload: UserCreateForm) {
+  async register(@Body() payload: AuthRegisterForm) {
     return this.authService.register(payload);
   }
 
-  @Get('auth/confirm/:token')
+  @Post('auth/confirm/:token')
   async confirmEmail(@Param() params: { token: string }) {
     return this.authService.confirmEmail(params);
   }
 
-  @Get('web/google')
+  @Get('auth/web/google')
   @UseGuards(AuthGuard('google'))
   async authWithGoogle() {
     // google redirect
   }
 
-  @Get('web/google/redirect')
+  @Get('auth/web/google/redirect')
   @Redirect()
   @UseGuards(AuthGuard('google'))
   async authWithGoogleRedirect(@Req() request: { user?: GoogleUser }) {
     return await this.authService.loginWithGoogle(request.user);
   }
 
-  @Get('web/apple')
+  @Get('auth/web/apple')
   @UseGuards(AuthGuard('apple'))
   async authWithApple() {
     // apple redirect
   }
 
-  @Post('web/apple/redirect')
+  @Post('auth/web/apple/redirect')
   @Redirect()
   @UseGuards(AuthGuard('apple'))
   async authWithAppleRedirect(@Req() request: { user?: AppleUser }) {

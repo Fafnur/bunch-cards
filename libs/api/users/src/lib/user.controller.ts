@@ -1,7 +1,8 @@
 import { Controller, Get, NotFoundException, Request, UseGuards } from '@nestjs/common';
 
 import { JwtAuthGuard } from '@bunch/api/jwt/guards';
-import { User, UserJwtCredentials } from '@bunch/users/common';
+import { AuthJwtCredentials } from '@bunch/auth/common';
+import { User } from '@bunch/users/common';
 
 import { UserEntity } from './user.entity';
 import { UserService } from './user.service';
@@ -19,7 +20,7 @@ export class UserController {
 
   @UseGuards(JwtAuthGuard)
   @Get()
-  async load(@Request() req: { user: UserJwtCredentials }): Promise<User> {
+  async load(@Request() req: { user: AuthJwtCredentials }): Promise<User> {
     const user = await this.userService.findOne(req.user.uuid);
 
     if (!user) {

@@ -1,9 +1,9 @@
 import { IsEmail, IsNotEmpty, IsString, Length } from 'class-validator';
 
 import { FormErrorType } from '@bunch/api/forms';
-import { UserCreate } from '@bunch/users/common';
+import { AuthRegister } from '@bunch/auth/common';
 
-export class UserCreateForm implements UserCreate {
+export class AuthRegisterForm implements AuthRegister {
   @IsNotEmpty({
     context: { errorCode: FormErrorType.IsNotEmpty },
   })

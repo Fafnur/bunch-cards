@@ -1,0 +1,22 @@
+{
+  "projectType": "library",
+  "sourceRoot": "libs/web/auth/register/page/src",
+  "prefix": "bunch",
+  "targets": {
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/libs/web/auth/register/page"],
+      "options": {
+        "jestConfig": "libs/web/auth/register/page/jest.config.ts",
+        "passWithNoTests": true
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": ["libs/web/auth/register/page/**/*.ts", "libs/web/auth/register/page/**/*.html"]
+      }
+    }
+  },
+  "tags": []
+}
