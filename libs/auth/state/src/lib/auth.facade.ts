@@ -24,9 +24,9 @@ export class AuthFacade {
     map(({ error }) => error)
   );
 
-  registerSuccess$ = this.actions.pipe(
+  registerSuccess$: Observable<void> = this.actions.pipe(
     ofType(AuthActions.registerSuccess),
-    map(({ response }) => response)
+    map(() => undefined)
   );
 
   registerFailure$ = this.actions.pipe(
@@ -64,10 +64,29 @@ export class AuthFacade {
     map(({ response }) => response)
   );
 
+  oauthFailure$ = this.actions.pipe(
+    ofType(AuthActions.oauthFailure),
+    map(({ error }) => error)
+  );
+
+  confirmEmailSuccess$ = this.actions.pipe(
+    ofType(AuthActions.confirmEmailSuccess),
+    map(({ response }) => response)
+  );
+
+  confirmEmailFailure$ = this.actions.pipe(
+    ofType(AuthActions.confirmEmailFailure),
+    map(({ error }) => error)
+  );
+
   constructor(private readonly actions: Actions, private readonly store: Store) {}
 
   oauth(response: AuthResponse): void {
     this.store.dispatch(AuthActions.oauth({ response }));
+  }
+
+  confirmEmail(token: string): void {
+    this.store.dispatch(AuthActions.confirmEmail({ token }));
   }
 
   login(credentials: AuthCredentials): void {

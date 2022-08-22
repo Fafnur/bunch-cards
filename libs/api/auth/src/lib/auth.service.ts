@@ -165,7 +165,7 @@ export class AuthService {
         subject: 'Confirm email',
         template: 'confirm',
         context: {
-          link: `${this.frontUrl}/auth/confirm/${token}`,
+          link: `${this.frontUrl}/auth/email/confirm?token=${token}`,
         },
       });
     }

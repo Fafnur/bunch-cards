@@ -34,6 +34,10 @@ const routes: Routes = [
         path: NAVIGATION_PATHS.authPasswordChange,
         loadChildren: () => import('@bunch/web/auth/password-change/page').then((modules) => modules.PasswordChangePageModule),
       },
+      {
+        path: NAVIGATION_PATHS.authEmailConfirm,
+        loadChildren: () => import('@bunch/web/auth/email-confirm/page').then((modules) => modules.EmailConfirmPageModule),
+      },
     ],
   },
 ];

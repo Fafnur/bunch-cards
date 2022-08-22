@@ -40,7 +40,7 @@ describe('AuthApiService', () => {
   });
 
   it('should call register()', () => {
-    const result = hot('a', { a: AUTH_RESPONSE_STUB });
+    const result = hot('a', { a: undefined });
     when(apiServiceMock.post(AUTH_API_ROUTES.register, deepEqual(AUTH_REGISTER_STUB))).thenReturn(result);
 
     expect(service.register(AUTH_REGISTER_STUB)).toBeObservable(result);
@@ -51,5 +51,13 @@ describe('AuthApiService', () => {
     when(apiServiceMock.post(AUTH_API_ROUTES.changePassword, deepEqual(AUTH_PASSWORD_CHANGE_STUB))).thenReturn(result);
 
     expect(service.changePassword(AUTH_PASSWORD_CHANGE_STUB)).toBeObservable(result);
+  });
+
+  it('should call confirmEmail()', () => {
+    const token = '1234';
+    const result = hot('a', { a: undefined });
+    when(apiServiceMock.post(AUTH_API_ROUTES.confirmEmail(token))).thenReturn(result);
+
+    expect(service.confirmEmail(token)).toBeObservable(result);
   });
 });

@@ -10,7 +10,6 @@ import { MockModule } from 'ng-mocks';
 import { ReplaySubject } from 'rxjs';
 import { mock, when } from 'ts-mockito';
 
-import { AuthResponse } from '@bunch/auth/common';
 import { AuthFacade } from '@bunch/auth/state';
 import { FormExtractsModule } from '@bunch/core/forms/extract';
 import { NAVIGATION_PATHS, NavigationService } from '@bunch/core/navigation';
@@ -34,7 +33,7 @@ describe('RegisterFormComponent', () => {
   let navigationServiceMock: NavigationService;
   let routerMock: Router;
 
-  let registerSuccess$: ReplaySubject<AuthResponse>;
+  let registerSuccess$: ReplaySubject<void>;
   let registerFailure$: ReplaySubject<HttpErrorResponse>;
 
   beforeEach(async () => {
@@ -42,7 +41,7 @@ describe('RegisterFormComponent', () => {
     navigationServiceMock = mock(NavigationService);
     routerMock = mock(Router);
 
-    registerSuccess$ = new ReplaySubject<AuthResponse>(1);
+    registerSuccess$ = new ReplaySubject<void>(1);
     registerFailure$ = new ReplaySubject<HttpErrorResponse>(1);
 
     when(authFacadeMock.registerSuccess$).thenReturn(registerSuccess$);

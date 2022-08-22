@@ -39,31 +39,31 @@ export class AuthController {
     return this.authService.register(payload);
   }
 
-  @Get('auth/confirm/:token')
+  @Post('auth/confirm/:token')
   async confirmEmail(@Param() params: { token: string }) {
     return this.authService.confirmEmail(params);
   }
 
-  @Get('web/google')
+  @Get('auth/web/google')
   @UseGuards(AuthGuard('google'))
   async authWithGoogle() {
     // google redirect
   }
 
-  @Get('web/google/redirect')
+  @Get('auth/web/google/redirect')
   @Redirect()
   @UseGuards(AuthGuard('google'))
   async authWithGoogleRedirect(@Req() request: { user?: GoogleUser }) {
     return await this.authService.loginWithGoogle(request.user);
   }
 
-  @Get('web/apple')
+  @Get('auth/web/apple')
   @UseGuards(AuthGuard('apple'))
   async authWithApple() {
     // apple redirect
   }
 
-  @Post('web/apple/redirect')
+  @Post('auth/web/apple/redirect')
   @Redirect()
   @UseGuards(AuthGuard('apple'))
   async authWithAppleRedirect(@Req() request: { user?: AppleUser }) {

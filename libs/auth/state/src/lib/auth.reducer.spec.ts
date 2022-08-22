@@ -31,8 +31,8 @@ describe('Auth Reducer', () => {
     expect(result.token).toBe(AUTH_RESPONSE_STUB.accessToken);
   });
 
-  it('registerSuccess() should set logged and token', () => {
-    const action = AuthActions.registerSuccess({ response: AUTH_RESPONSE_STUB });
+  it('confirmEmailSuccess() should set logged and token', () => {
+    const action = AuthActions.confirmEmailSuccess({ response: AUTH_RESPONSE_STUB });
 
     const result = authReducer(state, action);
 

@@ -42,10 +42,7 @@ export class AuthEffects implements OnInitEffects {
     return this.actions$.pipe(
       ofType(AuthActions.register),
       fetch({
-        run: ({ register }) =>
-          this.authApiService
-            .register(register)
-            .pipe(switchMap((response) => this.authManager.put(response).pipe(map(() => AuthActions.registerSuccess({ response }))))),
+        run: ({ register }) => this.authApiService.register(register).pipe(map(() => AuthActions.registerSuccess())),
         onError: (action, error) => AuthActions.registerFailure({ error }),
       })
     );
@@ -72,6 +69,19 @@ export class AuthEffects implements OnInitEffects {
     );
   });
 
+  confirmEmail$ = createEffect(() => {
+    return this.actions$.pipe(
+      ofType(AuthActions.confirmEmail),
+      fetch({
+        run: ({ token }) =>
+          this.authApiService
+            .confirmEmail(token)
+            .pipe(switchMap((response) => this.authManager.put(response).pipe(map(() => AuthActions.confirmEmailSuccess({ response }))))),
+        onError: (action, error) => AuthActions.confirmEmailFailure({ error }),
+      })
+    );
+  });
+
   logout$ = createEffect(() => {
     return this.actions$.pipe(
       ofType(AuthActions.logout),
@@ -87,7 +97,7 @@ export class AuthEffects implements OnInitEffects {
       ofType(AuthActions.oauth),
       fetch({
         run: ({ response }) => this.authManager.put(response).pipe(map(() => AuthActions.oauthSuccess({ response }))),
-        onError: (action, error) => console.error(error),
+        onError: (action, error) => AuthActions.oauthFailure({ error }),
       })
     );
   });

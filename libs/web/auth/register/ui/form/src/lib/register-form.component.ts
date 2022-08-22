@@ -61,7 +61,8 @@ export class RegisterFormComponent implements OnInit {
       .pipe(
         tap(() => {
           this.submitted = false;
-          void this.navigationService.navigateByUrl(this.navigationService.getPaths().dashboard);
+          // TODO: Add notify
+          // void this.navigationService.navigateByUrl(this.navigationService.getPaths().dashboard);
           this.changeDetectorRef.markForCheck();
         }),
         takeUntil(this.destroy$)

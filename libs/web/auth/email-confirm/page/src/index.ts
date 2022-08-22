@@ -1,1 +1,1 @@
-export * from './lib/web-auth-email-confirm-page.module';
+export * from './lib/email-confirm-page.module';

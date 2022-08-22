@@ -26,14 +26,13 @@ describe('AuthEffects', () => {
   let effects: AuthEffects;
   let authApiServiceMock: AuthApiService;
   let authManagerMock: AuthManager;
+  const token = '1234';
 
-  beforeEach(() => {
+  beforeEach(async () => {
     authApiServiceMock = mock(AuthApiService);
     authManagerMock = mock(AuthManager);
-  });
 
-  beforeEach(() => {
-    TestBed.configureTestingModule({
+    await TestBed.configureTestingModule({
       providers: [
         AuthEffects,
         provideMockActions(() => actions),
@@ -42,9 +41,7 @@ describe('AuthEffects', () => {
         providerOf(AuthManager, authManagerMock),
       ],
     });
-  });
 
-  beforeEach(() => {
     effects = TestBed.inject(AuthEffects);
   });
 
@@ -85,13 +82,12 @@ describe('AuthEffects', () => {
 
   it('register$ should return registerSuccess', () => {
     const action = AuthActions.register({ register: AUTH_REGISTER_STUB });
-    const completion = AuthActions.registerSuccess({ response: AUTH_RESPONSE_STUB });
+    const completion = AuthActions.registerSuccess();
 
     actions = hot('a', { a: action });
-    const response = hot('a', { a: AUTH_RESPONSE_STUB });
+    const response = hot('a', { a: undefined });
     const expected = hot('a', { a: completion });
     when(authApiServiceMock.register(deepEqual(AUTH_REGISTER_STUB))).thenReturn(response);
-    when(authManagerMock.put(deepEqual(AUTH_RESPONSE_STUB))).thenReturn(hot('a', { a: undefined }));
 
     expect(effects.register$).toBeObservable(expected);
   });
@@ -179,5 +175,30 @@ describe('AuthEffects', () => {
     when(authManagerMock.remove()).thenReturn(response);
 
     expect(effects.logout$).toBeObservable(expected);
+  });
+
+  it('confirmEmail$ should return confirmEmailSuccess', () => {
+    const action = AuthActions.confirmEmail({ token });
+    const completion = AuthActions.confirmEmailSuccess({ response: AUTH_RESPONSE_STUB });
+
+    actions = hot('a', { a: action });
+    const response = hot('a', { a: AUTH_RESPONSE_STUB });
+    const expected = hot('a', { a: completion });
+    when(authApiServiceMock.confirmEmail(token)).thenReturn(response);
+    when(authManagerMock.put(deepEqual(AUTH_RESPONSE_STUB))).thenReturn(hot('a', { a: undefined }));
+
+    expect(effects.confirmEmail$).toBeObservable(expected);
+  });
+
+  it('confirmEmail$ should return confirmEmailFailure', () => {
+    const action = AuthActions.confirmEmail({ token });
+    const completion = AuthActions.confirmEmailFailure({ error: HTTP_ERROR_STUB });
+
+    actions = hot('a', { a: action });
+    const response = hot('#', null, HTTP_ERROR_STUB);
+    const expected = hot('a', { a: completion });
+    when(authApiServiceMock.confirmEmail(token)).thenReturn(response);
+
+    expect(effects.confirmEmail$).toBeObservable(expected);
   });
 });

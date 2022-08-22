@@ -9,6 +9,7 @@ export const AUTH_API_ROUTES = {
   reset: '/auth/reset',
   changePassword: '/auth/change-password',
   register: '/auth/register',
+  confirmEmail: (token: string) => `/auth/confirm/${token}`,
 };
 
 @Injectable()
@@ -25,6 +26,10 @@ export class AuthApiService {
 
   register(register: AuthRegister): Observable<AuthResponse> {
     return this.apiService.post(AUTH_API_ROUTES.register, register);
+  }
+
+  confirmEmail(token: string): Observable<AuthResponse> {
+    return this.apiService.post(AUTH_API_ROUTES.confirmEmail(token));
   }
 
   changePassword(passwordChange: AuthPasswordChange): Observable<AuthResponse> {

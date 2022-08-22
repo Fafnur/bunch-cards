@@ -30,7 +30,7 @@ const reducer = createReducer(
   ),
   on(
     AuthActions.loginSuccess,
-    AuthActions.registerSuccess,
+    AuthActions.confirmEmailSuccess,
     AuthActions.changePasswordSuccess,
     AuthActions.oauthSuccess,
     (state, { response }): AuthState => ({

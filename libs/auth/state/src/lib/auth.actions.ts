@@ -25,7 +25,7 @@ export const resetFailure = createAction('[Auth] Reset Failure', props<{ error: 
 // Register
 export const register = createAction('[Auth] Register', props<{ register: AuthRegister }>());
 
-export const registerSuccess = createAction('[Auth] Register Success', props<{ response: AuthResponse }>());
+export const registerSuccess = createAction('[Auth] Register Success');
 
 export const registerFailure = createAction('[Auth] Register Failure', props<{ error: HttpErrorResponse }>());
 
@@ -45,4 +45,13 @@ export const logoutSuccess = createAction('[Auth] Logout Success');
 
 export const oauth = createAction('[Auth] Oauth', props<{ response: AuthResponse }>());
 
-export const oauthSuccess = createAction('[Auth] Oauth', props<{ response: AuthResponse }>());
+export const oauthSuccess = createAction('[Auth] Oauth Success', props<{ response: AuthResponse }>());
+
+export const oauthFailure = createAction('[Auth] Oauth Failure', props<{ error: HttpErrorResponse }>());
+
+// Confirm email
+export const confirmEmail = createAction('[Auth] Confirm Email', props<{ token: string }>());
+
+export const confirmEmailSuccess = createAction('[Auth] Confirm Email Success', props<{ response: AuthResponse }>());
+
+export const confirmEmailFailure = createAction('[Auth] Confirm Email Failure', props<{ error: HttpErrorResponse }>());

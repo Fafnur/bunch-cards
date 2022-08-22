@@ -81,6 +81,13 @@ describe('Auth Facade', () => {
     expect(dispatchSpy).toHaveBeenCalledWith(AuthActions.oauth({ response: AUTH_RESPONSE_STUB }));
   });
 
+  it('confirmEmail() should dispatch action', () => {
+    const token = '2123';
+    facade.confirmEmail(token);
+
+    expect(dispatchSpy).toHaveBeenCalledWith(AuthActions.confirmEmail({ token }));
+  });
+
   it('changePassword() should dispatch action', () => {
     facade.changePassword(AUTH_PASSWORD_CHANGE_STUB);
 
@@ -106,10 +113,10 @@ describe('Auth Facade', () => {
   });
 
   it('should emit registerSuccess$', () => {
-    const action = AuthActions.registerSuccess({ response: AUTH_RESPONSE_STUB });
+    const action = AuthActions.registerSuccess();
 
     actions = hot('a', { a: action });
-    const expected = hot('a', { a: AUTH_RESPONSE_STUB });
+    const expected = hot('a', { a: undefined });
 
     expect(facade.registerSuccess$).toBeObservable(expected);
   });
