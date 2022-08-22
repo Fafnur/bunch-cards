@@ -62,6 +62,7 @@
     "web-auth-password-change-ui-form": "libs/web/auth/password-change/ui/form",
     "web-auth-register-page": "libs/web/auth/register/page",
     "web-auth-register-ui-form": "libs/web/auth/register/ui/form",
+    "web-auth-register-ui-notify": "libs/web/auth/register/ui/notify",
     "web-auth-reset-page": "libs/web/auth/reset/page",
     "web-auth-reset-ui-form": "libs/web/auth/reset/ui/form",
     "web-auth-ui-fields": "libs/web/auth/ui/fields",

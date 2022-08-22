@@ -1,0 +1,18 @@
+<h2 automation-id="title" mat-dialog-title i18n="Auth Register|Notify title">Confirm your email</h2>
+<mat-dialog-content automation-id="content">
+  <p i18n="Auth Register|Notify description">
+    {{ register.firstname }}, your account has been created. To activate your account, confirm your email address - {{ register.email }}.
+  </p>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button
+    automation-id="close"
+    mat-raised-button
+    color="primary"
+    [mat-dialog-close]="true"
+    cdkFocusInitial
+    i18n="Auth Register|Notify close"
+  >
+    Close
+  </button>
+</mat-dialog-actions>

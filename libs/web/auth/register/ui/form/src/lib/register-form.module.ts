@@ -5,6 +5,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 
 import { FormExtractsModule } from '@bunch/core/forms/extract';
+import { RegisterNotifyModule } from '@bunch/web/auth/register/ui/notify';
 import { AuthEmailModule, AuthFirstnameModule, AuthLastnameModule, AuthPasswordModule } from '@bunch/web/auth/ui/fields';
 import { ButtonMediumModule } from '@bunch/web/ui/theming';
 
@@ -22,6 +23,7 @@ import { RegisterFormComponent } from './register-form.component';
     MatButtonModule,
     ButtonMediumModule,
     MatFormFieldModule,
+    RegisterNotifyModule,
   ],
   declarations: [RegisterFormComponent],
   exports: [RegisterFormComponent],

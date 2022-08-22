@@ -8,12 +8,13 @@ import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { Router } from '@angular/router';
 import { MockModule } from 'ng-mocks';
 import { ReplaySubject } from 'rxjs';
-import { mock, when } from 'ts-mockito';
+import { anything, mock, when } from 'ts-mockito';
 
 import { AuthFacade } from '@bunch/auth/state';
 import { FormExtractsModule } from '@bunch/core/forms/extract';
 import { NAVIGATION_PATHS, NavigationService } from '@bunch/core/navigation';
 import { providerOf } from '@bunch/core/testing';
+import { RegisterNotifyModule, RegisterNotifyService } from '@bunch/web/auth/register/ui/notify';
 import {
   AuthEmailModule,
   AuthFirstnameModule,
@@ -32,18 +33,23 @@ describe('RegisterFormComponent', () => {
   let authFacadeMock: AuthFacade;
   let navigationServiceMock: NavigationService;
   let routerMock: Router;
+  let registerNotifyServiceMock: RegisterNotifyService;
 
   let registerSuccess$: ReplaySubject<void>;
   let registerFailure$: ReplaySubject<HttpErrorResponse>;
+  let open$: ReplaySubject<boolean>;
 
   beforeEach(async () => {
     authFacadeMock = mock(AuthFacade);
     navigationServiceMock = mock(NavigationService);
     routerMock = mock(Router);
+    registerNotifyServiceMock = mock(RegisterNotifyService);
 
     registerSuccess$ = new ReplaySubject<void>(1);
     registerFailure$ = new ReplaySubject<HttpErrorResponse>(1);
+    open$ = new ReplaySubject<boolean>(1);
 
+    when(registerNotifyServiceMock.open(anything())).thenReturn(open$);
     when(authFacadeMock.registerSuccess$).thenReturn(registerSuccess$);
     when(authFacadeMock.registerFailure$).thenReturn(registerFailure$);
     when(navigationServiceMock.getPaths()).thenReturn(NAVIGATION_PATHS);
@@ -63,12 +69,14 @@ describe('RegisterFormComponent', () => {
         MockModule(MatButtonModule),
         MockModule(ButtonMediumModule),
         MockModule(MatFormFieldModule),
+        MockModule(RegisterNotifyModule),
       ],
       declarations: [RegisterFormComponent],
       providers: [
         providerOf(AuthFacade, authFacadeMock),
         providerOf(NavigationService, navigationServiceMock),
         providerOf(Router, routerMock),
+        providerOf(RegisterNotifyService, registerNotifyServiceMock),
       ],
     }).compileComponents();
 
