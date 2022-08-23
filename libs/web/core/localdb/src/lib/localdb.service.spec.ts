@@ -9,7 +9,9 @@ describe('WebLocalDBService', () => {
   let service: WebLocalDBService;
 
   beforeEach(() => {
-    TestBed.configureTestingModule({});
+    TestBed.configureTestingModule({
+      providers: [WebLocalDBService],
+    });
     service = TestBed.inject(WebLocalDBService);
   });
 

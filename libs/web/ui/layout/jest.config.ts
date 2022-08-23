@@ -1,6 +1,6 @@
+/* eslint-disable */
 export default {
   displayName: 'web-ui-layout',
-
   setupFilesAfterEnv: ['<rootDir>/src/test-setup.ts'],
   globals: {
     'ts-jest': {

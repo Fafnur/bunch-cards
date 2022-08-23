@@ -24,9 +24,9 @@ describe('RegisterNotifyService', () => {
   it('should be show', () => {
     const expected = hot('a', { a: true });
 
-    when(matDialogMock.open(RegisterNotifyComponent, deepEqual({ data: AUTH_REGISTER_STUB, disableClose: true })).afterClosed()).thenReturn(
-      expected
-    );
+    when(matDialogMock.open(RegisterNotifyComponent, deepEqual({ data: AUTH_REGISTER_STUB, disableClose: true }))).thenReturn({
+      afterClosed: () => expected,
+    } as never);
 
     expect(service.open(AUTH_REGISTER_STUB)).toBeObservable(expected);
   });

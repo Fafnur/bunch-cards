@@ -1,3 +1,4 @@
+/* eslint-disable */
 export default {
   displayName: 'nativescript-core-localdb',
   setupFilesAfterEnv: ['<rootDir>/src/test-setup.ts'],

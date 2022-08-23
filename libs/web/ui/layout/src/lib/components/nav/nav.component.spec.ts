@@ -7,9 +7,9 @@ import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterTestingModule } from '@angular/router/testing';
 import { MockModule } from 'ng-mocks';
 
-import { NavigationPipesModule, PATHS_STUB } from '@bunch/core/navigation';
+import { NAVIGATION_PATHS, NavigationPipesModule, PATHS_STUB } from '@bunch/core/navigation';
 
-import { NavComponent } from './nav.component';
+import { getLinks, NavComponent } from './nav.component';
 import { NavComponentPo } from './nav.component.po';
 import { NavLinkModule } from './nav-link/nav-link.module';
 
@@ -48,6 +48,6 @@ describe('NavComponent', () => {
   it('should show', () => {
     fixture.detectChanges();
 
-    expect(pageObject.navLinks.length).toBe(2);
+    expect(pageObject.navLinks.length).toBe(getLinks(NAVIGATION_PATHS).length);
   });
 });

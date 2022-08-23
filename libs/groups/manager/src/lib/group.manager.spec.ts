@@ -3,6 +3,7 @@ import { deepEqual, instance, mock, when } from 'ts-mockito';
 
 import { LocalDBService, LocalDBServiceStub } from '@bunch/core/localdb';
 import { GROUP_CHANGE_STUB, GROUP_CREATE_STUB, GROUP_STUB, GROUPS_STUB } from '@bunch/groups/common';
+import { USER_STUB } from '@bunch/users/common';
 
 import { GroupManager } from './group.manager';
 
@@ -38,11 +39,11 @@ describe('GroupManager', () => {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     jest.spyOn<any, any>(global, 'Date').mockImplementation(() => mockDate);
 
-    const result = hot('-a', { a: GROUP_STUB });
+    const result = hot('-a', { a: { ...GROUP_STUB, owner: USER_STUB.uuid } });
     when(localDBServiceMock.getAll(GroupManager.storeName)).thenReturn(hot('a', { a: [{}] }));
-    when(localDBServiceMock.put(GroupManager.storeName, deepEqual(GROUP_STUB))).thenReturn(result);
+    when(localDBServiceMock.put(GroupManager.storeName, deepEqual({ ...GROUP_STUB, owner: USER_STUB.uuid }))).thenReturn(result);
 
-    expect(service.create(GROUP_CREATE_STUB)).toBeObservable(result);
+    expect(service.create(GROUP_CREATE_STUB, USER_STUB)).toBeObservable(result);
   });
 
   it('should call change()', () => {

@@ -1,10 +1,12 @@
 import { Injectable } from '@angular/core';
-import { Actions, createEffect, ofType, OnInitEffects } from '@ngrx/effects';
-import { Action } from '@ngrx/store';
+import { Actions, concatLatestFrom, createEffect, ofType, OnInitEffects } from '@ngrx/effects';
+import { Action, Store } from '@ngrx/store';
 import { fetch } from '@nrwl/angular';
 import { map } from 'rxjs';
 
+import { isNotNullOrUndefined } from '@bunch/core/utils/operators';
 import { GroupManager } from '@bunch/groups/manager';
+import { selectUser } from '@bunch/users/state';
 
 import * as GroupActions from './group.actions';
 
@@ -47,9 +49,12 @@ export class GroupEffects implements OnInitEffects {
   create$ = createEffect(() => {
     return this.actions$.pipe(
       ofType(GroupActions.create),
+      concatLatestFrom(() => this.store.select(selectUser).pipe(isNotNullOrUndefined())),
       fetch({
-        id: () => 'create',
-        run: ({ groupCreate }) => this.groupManager.create(groupCreate).pipe(map((group) => GroupActions.createSuccess({ group }))),
+        // eslint-disable-next-line @typescript-eslint/no-unused-vars
+        id: (action, user) => 'create',
+        run: ({ groupCreate }, user) =>
+          this.groupManager.create(groupCreate, user).pipe(map((group) => GroupActions.createSuccess({ group }))),
         onError: (action, error) => GroupActions.createFailure({ error }),
       })
     );
@@ -78,7 +83,7 @@ export class GroupEffects implements OnInitEffects {
     );
   });
 
-  constructor(private readonly actions$: Actions, private readonly groupManager: GroupManager) {}
+  constructor(private readonly actions$: Actions, private readonly groupManager: GroupManager, private readonly store: Store) {}
 
   ngrxOnInitEffects(): Action {
     return GroupActions.init();

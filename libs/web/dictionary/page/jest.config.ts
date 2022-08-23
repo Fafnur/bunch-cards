@@ -1,3 +1,4 @@
+/* eslint-disable */
 export default {
   displayName: 'web-dictionary-page',
   preset: '../../../../jest.preset.js',

@@ -3,7 +3,10 @@ import { Application, Color, Device, isIOS } from '@nativescript/core';
 export function setStatusBarColor(color: 'light' | 'dark', tintColor?: string /* android only */) {
   if (isIOS) {
     // ios status-bar background color is set via the .action-bar class
-    UIApplication.sharedApplication.setStatusBarStyleAnimated(color === 'light' ? UIStatusBarStyle.LightContent : UIStatusBarStyle.DarkContent, false);
+    UIApplication.sharedApplication.setStatusBarStyleAnimated(
+      color === 'light' ? UIStatusBarStyle.LightContent : UIStatusBarStyle.DarkContent,
+      false
+    );
   } else {
     const sdkVersion = parseInt(Device.sdkVersion);
     if (sdkVersion >= 21) {
@@ -16,7 +19,10 @@ export function setStatusBarColor(color: 'light' | 'dark', tintColor?: string /*
       if (sdkVersion >= 23) {
         // api level 23+ can programmatically change the text color of the status bar
         // see here: https://developer.android.com/reference/android/view/View#SYSTEM_UI_FLAG_LIGHT_STATUS_BAR
-        activity.getWindow().getDecorView().setSystemUiVisibility((<any>android.view.View).SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
+        activity
+          .getWindow()
+          .getDecorView()
+          .setSystemUiVisibility((<any>android.view.View).SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
       }
     }
   }

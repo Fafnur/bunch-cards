@@ -1,3 +1,4 @@
+/* eslint-disable */
 export default {
   displayName: 'web-dashboard-page',
   preset: '../../../../jest.preset.js',

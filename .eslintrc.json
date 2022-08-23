@@ -31,6 +31,7 @@
         "plugin:@nativescript/recommended"
       ],
       "rules": {
+        "@typescript-eslint/triple-slash-reference": "off",
         "@typescript-eslint/naming-convention": [
           "error",
           {

@@ -1,3 +1,4 @@
+/* eslint-disable */
 export default {
   displayName: 'nativescript-core-config',
   setupFilesAfterEnv: ['<rootDir>/src/test-setup.ts'],
