@@ -24,9 +24,9 @@ describe('ResetNotifyService', () => {
   it('should be show', () => {
     const expected = hot('a', { a: true });
 
-    when(matDialogMock.open(ResetNotifyComponent, deepEqual({ data: AUTH_SECRETS_STUB, disableClose: true })).afterClosed()).thenReturn(
-      expected
-    );
+    when(matDialogMock.open(ResetNotifyComponent, deepEqual({ data: AUTH_SECRETS_STUB, disableClose: true }))).thenReturn({
+      afterClosed: () => expected,
+    } as never);
 
     expect(service.open(AUTH_SECRETS_STUB)).toBeObservable(expected);
   });

@@ -1,55 +1,37 @@
-import { GroupEntity } from './group.models';
-import { groupAdapter, GroupPartialState, initialGroupState } from './group.reducer';
+import { Group, GROUP_STUB, GROUPS_STUB } from '@bunch/groups/common';
+
+import { groupAdapter, GroupState, initialGroupState } from './group.reducer';
 import * as GroupSelectors from './group.selectors';
 
 describe('Group Selectors', () => {
-  const ERROR_MSG = 'No Error Available';
-  const getGroupId = (it: GroupEntity) => it.id;
-  const createGroupEntity = (id: string, name = '') =>
-    ({
-      id,
-      name: name || `name-${id}`,
-    } as GroupEntity);
+  const getState = (data?: Partial<GroupState>, groups: Group[] = []) => groupAdapter.setAll(groups, { ...initialGroupState, ...data });
+  let state: GroupState;
 
-  let state: GroupPartialState;
+  it('selectGroups() should return groups', () => {
+    state = getState({}, GROUPS_STUB);
+    const results = GroupSelectors.selectGroups.projector(state);
 
-  beforeEach(() => {
-    state = {
-      group: groupAdapter.setAll([createGroupEntity('PRODUCT-AAA'), createGroupEntity('PRODUCT-BBB'), createGroupEntity('PRODUCT-CCC')], {
-        ...initialGroupState,
-        selectedId: 'PRODUCT-BBB',
-        error: ERROR_MSG,
-        loaded: true,
-      }),
-    };
+    expect(results.length).toBe(GROUPS_STUB.length);
   });
 
-  describe('Group Selectors', () => {
-    it('getAllGroup() should return the list of Group', () => {
-      const results = GroupSelectors.selectGroups(state);
-      const selId = getGroupId(results[1]);
+  // it('getSelected() should return selected', () => {
+  //   state = getState({ selectedUuid: GROUP_STUB.uuid }, [GROUP_STUB]);
+  //   const result = GroupSelectors.selectSelected.projector(state);
+  //
+  //   expect(result?.uuid).toBe(GROUP_STUB.uuid);
+  // });
 
-      expect(results.length).toBe(3);
-      expect(selId).toBe('PRODUCT-BBB');
-    });
+  it('getGroupLoaded() should return loaded', () => {
+    state = getState({ loaded: true });
+    const result = GroupSelectors.selectLoaded.projector(state);
 
-    it('getSelected() should return the selected Entity', () => {
-      const result = GroupSelectors.selectSelected(state) as GroupEntity;
-      const selId = getGroupId(result);
+    expect(result).toBeTruthy();
+  });
 
-      expect(selId).toBe('PRODUCT-BBB');
-    });
+  it('selectSelectedId() should return selectedUuid', () => {
+    state = getState({ selectedUuid: GROUP_STUB.uuid });
+    const result = GroupSelectors.selectSelectedId.projector(state);
 
-    it('getGroupLoaded() should return the current "loaded" status', () => {
-      const result = GroupSelectors.selectLoaded(state);
-
-      expect(result).toBe(true);
-    });
-
-    it('getGroupError() should return the current "error" state', () => {
-      const result = GroupSelectors.getGroupError(state);
-
-      expect(result).toBe(ERROR_MSG);
-    });
+    expect(result).toBe(GROUP_STUB.uuid);
   });
 });

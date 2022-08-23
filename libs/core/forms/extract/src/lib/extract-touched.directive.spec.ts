@@ -1,27 +1,27 @@
 import { Component, ViewChild } from '@angular/core';
-import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
-import { FormControl, ReactiveFormsModule, Validators } from '@angular/forms';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ReactiveFormsModule, UntypedFormControl, Validators } from '@angular/forms';
 
 import { ExtractTouchedDirective } from './extract-touched.directive';
 
 @Component({
-  template: `<div extractTouched [control]="control"></div>`,
+  template: `<div bunchExtractTouched [control]="control"></div>`,
 })
 class WrapperComponent {
-  control = new FormControl(null, [Validators.required]);
+  control = new UntypedFormControl(null, [Validators.required]);
+
   @ViewChild(ExtractTouchedDirective) directive!: ExtractTouchedDirective;
 }
 
 describe('ExtractTouchedDirective', () => {
   let fixture: ComponentFixture<WrapperComponent>;
-  beforeEach(waitForAsync(() => {
-    void TestBed.configureTestingModule({
+
+  beforeEach(async () => {
+    await TestBed.configureTestingModule({
       imports: [ReactiveFormsModule],
       declarations: [ExtractTouchedDirective, WrapperComponent],
     }).compileComponents();
-  }));
 
-  beforeEach(() => {
     fixture = TestBed.createComponent(WrapperComponent);
   });
 

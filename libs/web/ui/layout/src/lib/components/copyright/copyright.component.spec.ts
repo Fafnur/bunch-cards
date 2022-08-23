@@ -27,7 +27,7 @@ describe('CopyrightComponent', () => {
   beforeEach(() => {
     when(environmentServiceMock.getEnvironments()).thenReturn({ brand: BRAND_STUB } as never);
 
-    jest.useFakeTimers('modern');
+    jest.useFakeTimers();
     jest.setSystemTime(new Date(YEAR_STUB, 1, 1));
 
     fixture = TestBed.createComponent(CopyrightComponent);

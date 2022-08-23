@@ -8,6 +8,7 @@ import { WindowService } from '@bunch/web/core/window';
 @Injectable()
 export class WebConnectivityService implements ConnectivityService, OnDestroy {
   private isOnline = true;
+
   private readonly status$ = new ReplaySubject<ConnectivityStatus>(1);
   private readonly disconnecting$ = new Subject<void>();
   private readonly subscription?: Subscription;

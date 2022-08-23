@@ -1,5 +1,4 @@
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { takeUntil, tap } from 'rxjs';
 
 import { AuthFacade } from '@bunch/auth/state';
@@ -15,10 +14,8 @@ import { DestroyService } from '@bunch/core/utils/destroy';
 })
 export class SettingsPageComponent implements OnInit {
   constructor(
-    private readonly changeDetectorRef: ChangeDetectorRef,
     private readonly authFacade: AuthFacade,
     private readonly navigationService: NavigationService,
-    private readonly router: Router,
     private readonly destroy$: DestroyService
   ) {}
 
@@ -26,8 +23,7 @@ export class SettingsPageComponent implements OnInit {
     this.authFacade.logoutSuccess$
       .pipe(
         tap(() => {
-          void this.router.navigate(this.navigationService.getRoute(this.navigationService.getPaths().authLogin));
-          this.changeDetectorRef.markForCheck();
+          void this.navigationService.navigateByUrl(this.navigationService.getPaths().authLogin);
         }),
         takeUntil(this.destroy$)
       )

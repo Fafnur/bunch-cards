@@ -1,5 +1,5 @@
 import { ChangeDetectorRef, Directive, Input, OnInit } from '@angular/core';
-import { FormControl } from '@angular/forms';
+import { UntypedFormControl } from '@angular/forms';
 import { takeUntil, tap } from 'rxjs/operators';
 
 import { DestroyService } from '@bunch/core/utils/destroy';
@@ -10,8 +10,8 @@ import { extractTouchedChanges } from '@bunch/core/utils/operators';
   providers: [DestroyService],
 })
 export class ExtractTouchedDirective implements OnInit {
-  @Input() control?: FormControl;
-  @Input() children?: FormControl | FormControl[];
+  @Input() control?: UntypedFormControl;
+  @Input() children?: UntypedFormControl | UntypedFormControl[];
 
   constructor(private readonly changeDetectorRef: ChangeDetectorRef, private readonly destroy$: DestroyService) {}
 

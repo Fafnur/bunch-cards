@@ -9,7 +9,9 @@ describe('WebConnectivityService', () => {
   let service: WebConnectivityService;
 
   beforeEach(() => {
-    TestBed.configureTestingModule({});
+    TestBed.configureTestingModule({
+      providers: [WebConnectivityService],
+    });
     service = TestBed.inject(WebConnectivityService);
   });
 

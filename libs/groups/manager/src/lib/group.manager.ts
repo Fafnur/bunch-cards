@@ -3,6 +3,7 @@ import { map, Observable, of, switchMap, throwError } from 'rxjs';
 
 import { LocalDBService } from '@bunch/core/localdb';
 import { Group, GroupChange, GroupCreate } from '@bunch/groups/common';
+import { User } from '@bunch/users/common';
 
 @Injectable()
 export class GroupManager {
@@ -18,14 +19,14 @@ export class GroupManager {
     return this.localDBService.get(GroupManager.storeName, uuid);
   }
 
-  create(payload: GroupCreate): Observable<Group> {
+  create(payload: GroupCreate, user: User): Observable<Group> {
     const currentDate = new Date().toISOString();
     const group: Group = {
       ...payload,
       cover: payload.cover ?? null,
       createdAt: currentDate,
       updatedAt: currentDate,
-      owner: 1, // TODO: Add userId
+      owner: user.uuid,
       cards: [],
       orderCards: payload.orderCards ?? [],
       order: 1,
