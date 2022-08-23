@@ -19,7 +19,10 @@
     "typeorm:migrate": "yarn typeorm-ts-node-esm migration:generate -d apps/api-cards/migrations",
     "typeorm:create": "yarn typeorm-ts-node-esm migration:create apps/api-cards/migrations/<NAME>",
     "typeorm:run": "yarn run typeorm migration:run -d apps/api-cards/migrations",
-    "typeorm:revert": "yarn run typeorm migration:revert"
+    "typeorm:revert": "yarn run typeorm migration:revert",
+    "affected:test": "nx affected:test",
+    "affected:lint": "nx affected:lint",
+    "prepare": "husky install"
   },
   "private": true,
   "dependencies": {
