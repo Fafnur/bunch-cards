@@ -1,3 +1,4 @@
+/* eslint-disable */
 export default {
   displayName: 'web-cards',
   preset: '../../jest.preset.js',

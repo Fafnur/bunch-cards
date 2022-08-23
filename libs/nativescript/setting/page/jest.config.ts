@@ -1,3 +1,4 @@
+/* eslint-disable */
 export default {
   displayName: 'nativescript-setting-page',
 

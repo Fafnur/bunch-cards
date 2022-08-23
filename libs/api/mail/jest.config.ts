@@ -1,3 +1,4 @@
+/* eslint-disable */
 export default {
   displayName: 'api-mail',
   preset: '../../../jest.preset.js',
