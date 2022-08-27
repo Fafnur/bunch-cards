@@ -7,7 +7,7 @@ import { WindowService } from '@bunch/web/core/window';
 
 @Injectable()
 export class WebLocalDBService implements LocalDBService, OnDestroy {
-  static version = 2;
+  static version = 4;
   static dbname = 'bunchcards';
 
   private readonly database$ = new ReplaySubject<IDBDatabase>(1);
@@ -30,6 +30,7 @@ export class WebLocalDBService implements LocalDBService, OnDestroy {
         openRequest.onupgradeneeded = () => {
           try {
             const database: IDBDatabase = openRequest.result;
+
             database.createObjectStore('groups', { keyPath: 'uuid' });
             database.createObjectStore('cards', { keyPath: 'uuid' });
             database.createObjectStore('users', { keyPath: 'uuid' });
