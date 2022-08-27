@@ -62,8 +62,9 @@ describe('GroupManager', () => {
   });
 
   it('should call sync()', () => {
-    const result = hot('a', { a: null });
+    const result = hot('a', { a: GROUPS_STUB });
     when(localDBServiceMock.putAll(GroupManager.storeName, deepEqual(GROUPS_STUB))).thenReturn(result);
+    when(localDBServiceMock.getAll(GroupManager.storeName)).thenReturn(hot('a', { a: GROUPS_STUB }));
 
     expect(service.sync(GROUPS_STUB)).toBeObservable(result);
   });

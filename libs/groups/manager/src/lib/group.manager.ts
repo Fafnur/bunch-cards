@@ -59,7 +59,9 @@ export class GroupManager {
     return this.localDBService.remove(GroupManager.storeName, uuid);
   }
 
-  sync(groups: Group[]): Observable<void> {
-    return this.localDBService.putAll(GroupManager.storeName, groups);
+  sync(groups: Group[]): Observable<Group[]> {
+    return this.localDBService
+      .putAll(GroupManager.storeName, groups)
+      .pipe(switchMap(() => this.localDBService.getAll<Group>(GroupManager.storeName)));
   }
 }
