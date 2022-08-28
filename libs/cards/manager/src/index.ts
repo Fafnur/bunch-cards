@@ -1,1 +1,2 @@
-export * from './lib/cards-manager.module';
+export * from './lib/card.manager';
+export * from './lib/card-manager.module';
