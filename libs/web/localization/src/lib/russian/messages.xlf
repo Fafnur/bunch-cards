@@ -4,6 +4,7 @@
     <body>
       <trans-unit id="6d7c7bf80aecdf93bc8b06b206c0b31fcca7f639" datatype="html">
         <source>Sign in</source>
+        <target state="translated">Войти</target>
         <context-group purpose="location">
           <context context-type="sourcefile">libs/web/auth/login/page/src/lib/login-page.component.html</context>
           <context context-type="linenumber">2</context>
@@ -11,26 +12,59 @@
         <note priority="1" from="description">Title</note>
         <note priority="1" from="meaning">Auth Login</note>
       </trans-unit>
-      <trans-unit id="ac6830f78481572e5a5bb55053e4f49ffc2efc06" datatype="html">
+      <trans-unit id="dd95c8fb51f6fb42e852940d7671e45585d0def5" datatype="html">
         <source>Wrong email or password.</source>
+        <target state="translated">Неверный емайл или пароль</target>
         <context-group purpose="location">
           <context context-type="sourcefile">libs/web/auth/login/ui/form/src/lib/login-form.component.html</context>
           <context context-type="linenumber">5</context>
         </context-group>
-        <note priority="1" from="description">Wrong email</note>
-        <note priority="1" from="meaning">Login Form</note>
+        <note priority="1" from="description">Error wrong email</note>
+        <note priority="1" from="meaning">Auth Login</note>
       </trans-unit>
-      <trans-unit id="1af6e228d3a1eaa1e0770ac5da38674eaa131903" datatype="html">
+      <trans-unit id="7f61f5f3e11900bb3339e69f0eb9dc9a87a5b7b6" datatype="html">
         <source> Sign in </source>
+        <target state="translated">Войти</target>
         <context-group purpose="location">
           <context context-type="sourcefile">libs/web/auth/login/ui/form/src/lib/login-form.component.html</context>
           <context context-type="linenumber">7,9</context>
         </context-group>
         <note priority="1" from="description">Sign in button</note>
-        <note priority="1" from="meaning">Login Form</note>
+        <note priority="1" from="meaning">Auth Login</note>
+      </trans-unit>
+      <trans-unit id="b2805568cf6460b7f955fb74aab79a4767a57b31" datatype="html">
+        <source>Change password</source>
+        <target state="translated">Изменить пароль</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">libs/web/auth/password-change/page/src/lib/password-change-page.component.html</context>
+          <context context-type="linenumber">2</context>
+        </context-group>
+        <note priority="1" from="description">Title</note>
+        <note priority="1" from="meaning">Auth Password Change</note>
+      </trans-unit>
+      <trans-unit id="1d50f111a95817114dfe6fce5c87fdfcd9db3c2d" datatype="html">
+        <source> Passwords do not match. </source>
+        <target state="translated">Пароли не совпадают</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">libs/web/auth/password-change/ui/form/src/lib/password-change-form.component.html</context>
+          <context context-type="linenumber">6,8</context>
+        </context-group>
+        <note priority="1" from="description">Passwords do not match</note>
+        <note priority="1" from="meaning">Auth Password Change</note>
+      </trans-unit>
+      <trans-unit id="d046f245b2d7d21c94d2f3871e0ef2866cf1a3c1" datatype="html">
+        <source> Change password </source>
+        <target state="translated">Изменить пароль</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">libs/web/auth/password-change/ui/form/src/lib/password-change-form.component.html</context>
+          <context context-type="linenumber">10,12</context>
+        </context-group>
+        <note priority="1" from="description">Reset password</note>
+        <note priority="1" from="meaning">Auth Reset</note>
       </trans-unit>
       <trans-unit id="81f28bc316cbd72fd926575de7dffb952de79e03" datatype="html">
         <source>Sign up</source>
+        <target state="translated">Регистрация</target>
         <context-group purpose="location">
           <context context-type="sourcefile">libs/web/auth/register/page/src/lib/register-page.component.html</context>
           <context context-type="linenumber">2</context>
@@ -40,6 +74,7 @@
       </trans-unit>
       <trans-unit id="347dd3f4490f5c0c6463b97bb2cfe391b73ebedc" datatype="html">
         <source>Registration error.</source>
+        <target state="translated">Ошибка регистрации</target>
         <context-group purpose="location">
           <context context-type="sourcefile">libs/web/auth/register/ui/form/src/lib/register-form.component.html</context>
           <context context-type="linenumber">7</context>
@@ -49,6 +84,7 @@
       </trans-unit>
       <trans-unit id="42b2a4a2f883d506551e5e3691a7db237f8efe96" datatype="html">
         <source> Sign up </source>
+        <target state="translated">Зарегистрироваться</target>
         <context-group purpose="location">
           <context context-type="sourcefile">libs/web/auth/register/ui/form/src/lib/register-form.component.html</context>
           <context context-type="linenumber">9,11</context>
@@ -56,8 +92,99 @@
         <note priority="1" from="description">Sign up button</note>
         <note priority="1" from="meaning">Auth Register</note>
       </trans-unit>
+      <trans-unit id="3b2a2f93a6cc56a3e26520d9cac99fe970c4c553" datatype="html">
+        <source>Confirm your email</source>
+        <target state="translated">Подтверждение почты</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">libs/web/auth/register/ui/notify/src/lib/register-notify.component.html</context>
+          <context context-type="linenumber">1</context>
+        </context-group>
+        <note priority="1" from="description">Notify title</note>
+        <note priority="1" from="meaning">Auth Register</note>
+      </trans-unit>
+      <trans-unit id="bd4aded19288e4e41b9643cf6d8bc5d0a8449125" datatype="html">
+        <source> <x id="INTERPOLATION" equiv-text="{{ register.firstname }}"/>, your account has been created. To activate your account, confirm your email address - <x id="INTERPOLATION_1" equiv-text="{{ register.email }}"/>. </source>
+        <target state="translated"><x id="INTERPOLATION" equiv-text="{{ register.firstname }}"/>, ваш аккаунт зарегистрирован. Для активации аккаунта подтвердите свою почту - <x id="INTERPOLATION_1" equiv-text="{{ register.email }}"/>.</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">libs/web/auth/register/ui/notify/src/lib/register-notify.component.html</context>
+          <context context-type="linenumber">3,5</context>
+        </context-group>
+        <note priority="1" from="description">Notify description</note>
+        <note priority="1" from="meaning">Auth Register</note>
+      </trans-unit>
+      <trans-unit id="8f1610fb6bf1b9d8fd0f6197b3f5e3422f28e89c" datatype="html">
+        <source> Close </source>
+        <target state="translated">Закрыть</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">libs/web/auth/register/ui/notify/src/lib/register-notify.component.html</context>
+          <context context-type="linenumber">15,17</context>
+        </context-group>
+        <note priority="1" from="description">Notify close</note>
+        <note priority="1" from="meaning">Auth Register</note>
+      </trans-unit>
+      <trans-unit id="b035f63b367e4f9d23b8c09e22d934886b3fbe5f" datatype="html">
+        <source>Reset password</source>
+        <target state="translated">Восстановление пароля</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">libs/web/auth/reset/page/src/lib/reset-page.component.html</context>
+          <context context-type="linenumber">2</context>
+        </context-group>
+        <note priority="1" from="description">Title</note>
+        <note priority="1" from="meaning">Auth Reset</note>
+      </trans-unit>
+      <trans-unit id="7794fb6a9d5e0c73bab81fcaa897d8ca4cb1b92c" datatype="html">
+        <source>User is not found.</source>
+        <target state="translated">Пользователь не найден.</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">libs/web/auth/reset/ui/form/src/lib/reset-form.component.html</context>
+          <context context-type="linenumber">4</context>
+        </context-group>
+        <note priority="1" from="description">User is not found</note>
+        <note priority="1" from="meaning">Auth Reset</note>
+      </trans-unit>
+      <trans-unit id="ac91eed32bf63dba783e53ade3cbfab7676fab53" datatype="html">
+        <source> Reset password </source>
+        <target state="translated">Сброс пароля</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">libs/web/auth/reset/ui/form/src/lib/reset-form.component.html</context>
+          <context context-type="linenumber">6,8</context>
+        </context-group>
+        <note priority="1" from="description">Reset password</note>
+        <note priority="1" from="meaning">Auth Reset</note>
+      </trans-unit>
+      <trans-unit id="2012d3ee8f12f255ea77c1e5f73f1ee7f2bdaba1" datatype="html">
+        <source>Link for reset password was sent</source>
+        <target state="translated">Ссылка на изменение пароля была отправлена</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">libs/web/auth/reset/ui/notify/src/lib/reset-notify.component.html</context>
+          <context context-type="linenumber">1</context>
+        </context-group>
+        <note priority="1" from="description">Notify title</note>
+        <note priority="1" from="meaning">Auth Reset</note>
+      </trans-unit>
+      <trans-unit id="c46a147dfde4a9b2bdf1231dad9c1605549dd93d" datatype="html">
+        <source>A link to reset the password was sent to the mail - <x id="INTERPOLATION" equiv-text="{{ secrets.email }}"/>.</source>
+        <target state="translated">Ссылкана сброс паролья была отправлена на почту - <x id="INTERPOLATION" equiv-text="{{ secrets.email }}"/>. </target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">libs/web/auth/reset/ui/notify/src/lib/reset-notify.component.html</context>
+          <context context-type="linenumber">3</context>
+        </context-group>
+        <note priority="1" from="description">Notify description</note>
+        <note priority="1" from="meaning">Auth Reset</note>
+      </trans-unit>
+      <trans-unit id="5d1a69bf72036faff371a96256bf4532f00e43d0" datatype="html">
+        <source> Close </source>
+        <target state="translated">Закрыть</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">libs/web/auth/reset/ui/notify/src/lib/reset-notify.component.html</context>
+          <context context-type="linenumber">6,8</context>
+        </context-group>
+        <note priority="1" from="description">Notify close</note>
+        <note priority="1" from="meaning">Auth Reset</note>
+      </trans-unit>
       <trans-unit id="5fda8a4f7eda7cf925b47e0a89e4cc8f1c77f505" datatype="html">
         <source>Email</source>
+        <target state="translated">Эл. почта</target>
         <context-group purpose="location">
           <context context-type="sourcefile">libs/web/auth/ui/fields/src/lib/auth-email/auth-email.component.html</context>
           <context context-type="linenumber">2</context>
@@ -67,6 +194,7 @@
       </trans-unit>
       <trans-unit id="25792f381022d01d7ac673e22420c13ce1f911d0" datatype="html">
         <source>sample@example.com</source>
+        <target state="translated">my@mail.ru</target>
         <context-group purpose="location">
           <context context-type="sourcefile">libs/web/auth/ui/fields/src/lib/auth-email/auth-email.component.html</context>
           <context context-type="linenumber">9</context>
@@ -76,6 +204,7 @@
       </trans-unit>
       <trans-unit id="6d178eb1a88d0139f820b2834e3f650df4783979" datatype="html">
         <source> Another user uses this email </source>
+        <target state="translated">Указанный емейл уже используется</target>
         <context-group purpose="location">
           <context context-type="sourcefile">libs/web/auth/ui/fields/src/lib/auth-email/auth-email.component.html</context>
           <context context-type="linenumber">11,13</context>
@@ -85,6 +214,7 @@
       </trans-unit>
       <trans-unit id="a33039d79ee85d99d7fea2700eac202fabe75cd9" datatype="html">
         <source> Please enter a valid email address </source>
+        <target state="translated">Укажите валидный эл. адрес</target>
         <context-group purpose="location">
           <context context-type="sourcefile">libs/web/auth/ui/fields/src/lib/auth-email/auth-email.component.html</context>
           <context context-type="linenumber">14,16</context>
@@ -94,6 +224,7 @@
       </trans-unit>
       <trans-unit id="48c6bb1f664a1deff6c7017ba279eaf94fd0363b" datatype="html">
         <source> Email is <x id="START_TAG_STRONG" ctype="x-strong" equiv-text="&lt;strong&gt;"/>required<x id="CLOSE_TAG_STRONG" ctype="x-strong" equiv-text="&lt;/strong&gt;"/></source>
+        <target state="translated"> Почта <x id="START_TAG_STRONG" ctype="x-strong" equiv-text="&lt;strong&gt;"/>обязательна<x id="CLOSE_TAG_STRONG" ctype="x-strong" equiv-text="&lt;/strong&gt;"/></target>
         <context-group purpose="location">
           <context context-type="sourcefile">libs/web/auth/ui/fields/src/lib/auth-email/auth-email.component.html</context>
           <context context-type="linenumber">17,18</context>
@@ -103,6 +234,7 @@
       </trans-unit>
       <trans-unit id="16a653faf6cee11424ac488c4c1480fc3ced72b5" datatype="html">
         <source>First name</source>
+         <target state="translated">Имя</target>
         <context-group purpose="location">
           <context context-type="sourcefile">libs/web/auth/ui/fields/src/lib/auth-firstname/auth-firstname.component.html</context>
           <context context-type="linenumber">2</context>
@@ -112,6 +244,7 @@
       </trans-unit>
       <trans-unit id="c264f2a82b52426d24de779da4eabe8bfcc239f1" datatype="html">
         <source>John</source>
+        <target state="translated">Иван</target>
         <context-group purpose="location">
           <context context-type="sourcefile">libs/web/auth/ui/fields/src/lib/auth-firstname/auth-firstname.component.html</context>
           <context context-type="linenumber">9</context>
@@ -121,6 +254,7 @@
       </trans-unit>
       <trans-unit id="e38d8d32df94a00da75c4a449e59b3447a49893f" datatype="html">
         <source> First name is <x id="START_TAG_STRONG" ctype="x-strong" equiv-text="&lt;strong&gt;"/>required<x id="CLOSE_TAG_STRONG" ctype="x-strong" equiv-text="&lt;/strong&gt;"/></source>
+        <target state="translated">Имя <x id="START_TAG_STRONG" ctype="x-strong" equiv-text="&lt;strong&gt;"/>обязательно<x id="CLOSE_TAG_STRONG" ctype="x-strong" equiv-text="&lt;/strong&gt;"/></target>
         <context-group purpose="location">
           <context context-type="sourcefile">libs/web/auth/ui/fields/src/lib/auth-firstname/auth-firstname.component.html</context>
           <context context-type="linenumber">11,12</context>
@@ -130,6 +264,7 @@
       </trans-unit>
       <trans-unit id="c338420ea28cba7015cd8a3db196d03c460477f8" datatype="html">
         <source>Last name</source>
+        <target state="translated">Фамилия</target>
         <context-group purpose="location">
           <context context-type="sourcefile">libs/web/auth/ui/fields/src/lib/auth-lastname/auth-lastname.component.html</context>
           <context context-type="linenumber">2</context>
@@ -139,6 +274,7 @@
       </trans-unit>
       <trans-unit id="b5dca20f723b192bbc9f33c90daeca684d5dce37" datatype="html">
         <source>Doe</source>
+        <target state="translated">Иванов</target>
         <context-group purpose="location">
           <context context-type="sourcefile">libs/web/auth/ui/fields/src/lib/auth-lastname/auth-lastname.component.html</context>
           <context context-type="linenumber">9</context>
@@ -148,6 +284,7 @@
       </trans-unit>
       <trans-unit id="7722d1bf7ea498a816fdfa3e284bcab15ab06e20" datatype="html">
         <source> Last name is <x id="START_TAG_STRONG" ctype="x-strong" equiv-text="&lt;strong&gt;"/>required<x id="CLOSE_TAG_STRONG" ctype="x-strong" equiv-text="&lt;/strong&gt;"/></source>
+        <target state="translated">Фамилия <x id="START_TAG_STRONG" ctype="x-strong" equiv-text="&lt;strong&gt;"/>обязательна<x id="CLOSE_TAG_STRONG" ctype="x-strong" equiv-text="&lt;/strong&gt;"/></target>
         <context-group purpose="location">
           <context context-type="sourcefile">libs/web/auth/ui/fields/src/lib/auth-lastname/auth-lastname.component.html</context>
           <context context-type="linenumber">11,12</context>
@@ -155,8 +292,37 @@
         <note priority="1" from="description">Lastname error required</note>
         <note priority="1" from="meaning">Auth field</note>
       </trans-unit>
+      <trans-unit id="3bbd2a2c2cdfe56da39778b962cdbf7bd62a666b" datatype="html">
+        <source>Confirm password</source>
+        <target state="translated">Подтверждение пароля</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">libs/web/auth/ui/fields/src/lib/auth-password-confirm/auth-password-confirm.component.html</context>
+          <context context-type="linenumber">2</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">libs/web/auth/ui/fields/src/lib/auth-password-confirm/auth-password-confirm.component.html</context>
+          <context context-type="linenumber">9</context>
+        </context-group>
+        <note priority="1" from="description">Password confirm label</note>
+        <note priority="1" from="meaning">Auth field</note>
+      </trans-unit>
+      <trans-unit id="52716699321e4da7f1164148c87952963a87f95f" datatype="html">
+        <source> Password is <x id="START_TAG_STRONG" ctype="x-strong" equiv-text="&lt;strong&gt;"/>required<x id="CLOSE_TAG_STRONG" ctype="x-strong" equiv-text="&lt;/strong&gt;"/></source>
+        <target state="translated">Пароль <x id="START_TAG_STRONG" ctype="x-strong" equiv-text="&lt;strong&gt;"/>обязателен<x id="CLOSE_TAG_STRONG" ctype="x-strong" equiv-text="&lt;/strong&gt;"/> </target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">libs/web/auth/ui/fields/src/lib/auth-password-confirm/auth-password-confirm.component.html</context>
+          <context context-type="linenumber">11,12</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">libs/web/auth/ui/fields/src/lib/auth-password/auth-password.component.html</context>
+          <context context-type="linenumber">11,12</context>
+        </context-group>
+        <note priority="1" from="description">Password confirm error required</note>
+        <note priority="1" from="meaning">Auth field</note>
+      </trans-unit>
       <trans-unit id="fc0b7f9c2282e39d64eda872e640a39e718e5f15" datatype="html">
         <source>Password</source>
+        <target state="translated">Пароль</target>
         <context-group purpose="location">
           <context context-type="sourcefile">libs/web/auth/ui/fields/src/lib/auth-password/auth-password.component.html</context>
           <context context-type="linenumber">2</context>
@@ -164,8 +330,9 @@
         <note priority="1" from="description">Password label</note>
         <note priority="1" from="meaning">Auth field</note>
       </trans-unit>
-      <trans-unit id="2b91ad07bf7cfab9a990a68b4e69da14c231bd07" datatype="html">
-        <source>******</source>
+      <trans-unit id="e8f9a30715aa86c88e92393c12aa71134d3cde1d" datatype="html">
+        <source>Strong password</source>
+        <target state="translated">Сложный пароль</target>
         <context-group purpose="location">
           <context context-type="sourcefile">libs/web/auth/ui/fields/src/lib/auth-password/auth-password.component.html</context>
           <context context-type="linenumber">9</context>
@@ -173,17 +340,9 @@
         <note priority="1" from="description">Password placeholder</note>
         <note priority="1" from="meaning">Auth field</note>
       </trans-unit>
-      <trans-unit id="52716699321e4da7f1164148c87952963a87f95f" datatype="html">
-        <source> Password is <x id="START_TAG_STRONG" ctype="x-strong" equiv-text="&lt;strong&gt;"/>required<x id="CLOSE_TAG_STRONG" ctype="x-strong" equiv-text="&lt;/strong&gt;"/></source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">libs/web/auth/ui/fields/src/lib/auth-password/auth-password.component.html</context>
-          <context context-type="linenumber">11,12</context>
-        </context-group>
-        <note priority="1" from="description">Password error required</note>
-        <note priority="1" from="meaning">Auth field</note>
-      </trans-unit>
       <trans-unit id="134a09d7ae7132155d29c0f0f2c59d5222c85d72" datatype="html">
         <source>Username</source>
+        <target state="translated">Никнейм</target>
         <context-group purpose="location">
           <context context-type="sourcefile">libs/web/auth/ui/fields/src/lib/auth-username/auth-username.component.html</context>
           <context context-type="linenumber">2</context>
@@ -193,6 +352,7 @@
       </trans-unit>
       <trans-unit id="dcda4a70bdffbc39561b3e2b81347cc611f621f4" datatype="html">
         <source>John Doe</source>
+        <target state="translated">Иван Иванов</target>
         <context-group purpose="location">
           <context context-type="sourcefile">libs/web/auth/ui/fields/src/lib/auth-username/auth-username.component.html</context>
           <context context-type="linenumber">9</context>
@@ -202,6 +362,7 @@
       </trans-unit>
       <trans-unit id="065f926bb6b91a548a58418e9445dbfebf452080" datatype="html">
         <source> Username is <x id="START_TAG_STRONG" ctype="x-strong" equiv-text="&lt;strong&gt;"/>required<x id="CLOSE_TAG_STRONG" ctype="x-strong" equiv-text="&lt;/strong&gt;"/></source>
+        <target state="translated">Никнейм <x id="START_TAG_STRONG" ctype="x-strong" equiv-text="&lt;strong&gt;"/>обязателен<x id="CLOSE_TAG_STRONG" ctype="x-strong" equiv-text="&lt;/strong&gt;"/></target>
         <context-group purpose="location">
           <context context-type="sourcefile">libs/web/auth/ui/fields/src/lib/auth-username/auth-username.component.html</context>
           <context context-type="linenumber">11,12</context>
@@ -209,8 +370,49 @@
         <note priority="1" from="description">Username error required</note>
         <note priority="1" from="meaning">Auth field</note>
       </trans-unit>
+      <trans-unit id="5ffca3771160cf10175b40a80e2c31b0410b4a80" datatype="html">
+        <source><x id="START_TAG_MAT_ICON" ctype="x-mat_icon" equiv-text="&lt;mat-icon svgIcon=&quot;logoDark&quot;&gt;"/><x id="CLOSE_TAG_MAT_ICON" ctype="x-mat_icon" equiv-text="&lt;/mat-icon&gt;"/> Sign in</source>
+        <target state="translated"><x id="START_TAG_MAT_ICON" ctype="x-mat_icon" equiv-text="&lt;mat-icon svgIcon=&quot;logoDark&quot;&gt;"/><x id="CLOSE_TAG_MAT_ICON" ctype="x-mat_icon" equiv-text="&lt;/mat-icon&gt;"/> Войти</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">libs/web/auth/ui/links/src/lib/auth-links.component.html</context>
+          <context context-type="linenumber">9,10</context>
+        </context-group>
+        <note priority="1" from="description">Signin link</note>
+        <note priority="1" from="meaning">Auth Links</note>
+      </trans-unit>
+      <trans-unit id="4c8555c8b02dfa7334aeaaa951f0063fabf073ce" datatype="html">
+        <source><x id="START_TAG_MAT_ICON" ctype="x-mat_icon" equiv-text="&lt;mat-icon svgIcon=&quot;logoDark&quot;&gt;"/><x id="CLOSE_TAG_MAT_ICON" ctype="x-mat_icon" equiv-text="&lt;/mat-icon&gt;"/> Sign up</source>
+        <target state="translated"><x id="START_TAG_MAT_ICON" ctype="x-mat_icon" equiv-text="&lt;mat-icon svgIcon=&quot;logoDark&quot;&gt;"/><x id="CLOSE_TAG_MAT_ICON" ctype="x-mat_icon" equiv-text="&lt;/mat-icon&gt;"/> Регистрация </target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">libs/web/auth/ui/links/src/lib/auth-links.component.html</context>
+          <context context-type="linenumber">19,20</context>
+        </context-group>
+        <note priority="1" from="description">Signup link</note>
+        <note priority="1" from="meaning">Auth Links</note>
+      </trans-unit>
+      <trans-unit id="505d63e08f0890c3ea058fd999265c55ee5a4556" datatype="html">
+        <source><x id="START_TAG_MAT_ICON" ctype="x-mat_icon" equiv-text="&lt;mat-icon svgIcon=&quot;googleDarkIcon&quot;&gt;"/><x id="CLOSE_TAG_MAT_ICON" ctype="x-mat_icon" equiv-text="&lt;/mat-icon&gt;"/> Sign in with Google</source>
+        <target state="translated"><x id="START_TAG_MAT_ICON" ctype="x-mat_icon" equiv-text="&lt;mat-icon svgIcon=&quot;googleDarkIcon&quot;&gt;"/><x id="CLOSE_TAG_MAT_ICON" ctype="x-mat_icon" equiv-text="&lt;/mat-icon&gt;"/> Войти с Google </target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">libs/web/auth/ui/links/src/lib/auth-links.component.html</context>
+          <context context-type="linenumber">22,23</context>
+        </context-group>
+        <note priority="1" from="description">Signin google</note>
+        <note priority="1" from="meaning">Auth Links</note>
+      </trans-unit>
+      <trans-unit id="200a80c5deaaa64ab771133ed3553b719be00841" datatype="html">
+        <source><x id="START_TAG_MAT_ICON" ctype="x-mat_icon" equiv-text="&lt;mat-icon svgIcon=&quot;appleDarkIcon&quot;&gt;"/><x id="CLOSE_TAG_MAT_ICON" ctype="x-mat_icon" equiv-text="&lt;/mat-icon&gt;"/> Sign in with Apple</source>
+        <target state="translated"><x id="START_TAG_MAT_ICON" ctype="x-mat_icon" equiv-text="&lt;mat-icon svgIcon=&quot;appleDarkIcon&quot;&gt;"/><x id="CLOSE_TAG_MAT_ICON" ctype="x-mat_icon" equiv-text="&lt;/mat-icon&gt;"/> Войти с Apple</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">libs/web/auth/ui/links/src/lib/auth-links.component.html</context>
+          <context context-type="linenumber">25,26</context>
+        </context-group>
+        <note priority="1" from="description">Signin apple</note>
+        <note priority="1" from="meaning">Auth Links</note>
+      </trans-unit>
       <trans-unit id="385012caf3c594c73b6a31f6271168d2b5c1edc5" datatype="html">
         <source>Start using the BunchCards to learn foreign languages.</source>
+        <target state="translated">Начните использовать BunchCards для изучения иностранных языков</target>
         <context-group purpose="location">
           <context context-type="sourcefile">libs/web/auth/ui/promo/src/lib/auth-promo.component.html</context>
           <context context-type="linenumber">1</context>
@@ -219,14 +421,34 @@
         <note priority="1" from="meaning">Auth promo</note>
       </trans-unit>
       <trans-unit id="0b2d0329c94c60f9ef03558c5094bdff32619b23" datatype="html">
-        <source> BunchCards is an application for memorizing words with flashcards. Create your own word lists and study them anytime. Application available in the browser and as a mobile application on Android and iOS.
-</source>
+        <source> BunchCards is an application for memorizing words with flashcards. Create your own word lists and study them anytime. Application available in the browser and as a mobile application on Android and iOS.</source>
+        <target state="translated">Bunch Cards - это приложение для запоминания слов с помощью карточек. Создавайте свои собственные списки слов и изучайте их в любое время. Приложение доступно в браузере и в виде мобильного приложения на Android и iOS.</target>
         <context-group purpose="location">
           <context context-type="sourcefile">libs/web/auth/ui/promo/src/lib/auth-promo.component.html</context>
           <context context-type="linenumber">2,5</context>
         </context-group>
         <note priority="1" from="description">Description</note>
         <note priority="1" from="meaning">Auth promo</note>
+      </trans-unit>
+      <trans-unit id="7db954bb12acf66a040bc9d59d5a0ffd5f757429" datatype="html">
+        <source>Forgot your password?</source>
+        <target state="translated">Забыли пароль?</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">libs/web/auth/ui/reset/src/lib/auth-reset.component.html</context>
+          <context context-type="linenumber">1</context>
+        </context-group>
+        <note priority="1" from="description">Forgot your password</note>
+        <note priority="1" from="meaning">Auth Reset</note>
+      </trans-unit>
+      <trans-unit id="fdfbdca0ad4cb342449d084e0841737c12485259" datatype="html">
+        <source>Sign in?</source>
+        <target state="translated">Войти?</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">libs/web/auth/ui/signin/src/lib/auth-signin.component.html</context>
+          <context context-type="linenumber">1</context>
+        </context-group>
+        <note priority="1" from="description">Signin</note>
+        <note priority="1" from="meaning">Auth Signin</note>
       </trans-unit>
       <trans-unit id="1827103049169187094" datatype="html">
         <source>Dashboard</source>

@@ -21,8 +21,8 @@ export const GROUPS_DTO_STUB: GroupDto[] = [GROUP_DTO_STUB];
 export const GROUPS_STUB: Group[] = [GROUP_STUB];
 
 export const GROUP_CREATE_STUB: GroupCreate = {
-  name: 'Simple Group',
-  uuid: 'simple-uuid',
+  name: GROUP_STUB.name,
+  uuid: GROUP_STUB.uuid,
 };
 
 export const GROUP_CHANGE_STUB: GroupCreate = GROUP_CREATE_STUB;

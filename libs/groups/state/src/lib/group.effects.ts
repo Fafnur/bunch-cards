@@ -17,9 +17,8 @@ export class GroupEffects implements OnInitEffects {
       ofType(GroupActions.init),
       fetch({
         id: () => 'init',
-        run: () => {
-          return GroupActions.restore({ groups: null });
-        },
+        run: () => this.groupManager.load().pipe(map((groups) => GroupActions.restore({ groups }))),
+        onError: (action, error) => console.error(error),
       })
     );
   });
@@ -40,8 +39,8 @@ export class GroupEffects implements OnInitEffects {
       ofType(GroupActions.loadOne),
       fetch({
         id: ({ uuid }) => `load-${uuid}`,
-        run: ({ uuid }) => this.groupManager.loadOne(uuid).pipe(map((group) => GroupActions.loadOneSuccess({ group }))),
-        onError: (action, error) => GroupActions.loadOneFailure({ error }),
+        run: ({ uuid }) => this.groupManager.loadOne(uuid).pipe(map((group) => GroupActions.loadOneSuccess({ uuid, group }))),
+        onError: ({ uuid }, error) => GroupActions.loadOneFailure({ uuid, error }),
       })
     );
   });
@@ -55,7 +54,7 @@ export class GroupEffects implements OnInitEffects {
         id: (action, user) => 'create',
         run: ({ groupCreate }, user) =>
           this.groupManager.create(groupCreate, user).pipe(map((group) => GroupActions.createSuccess({ group }))),
-        onError: (action, error) => GroupActions.createFailure({ error }),
+        onError: ({ groupCreate }, error) => GroupActions.createFailure({ groupCreate, error }),
       })
     );
   });
@@ -67,7 +66,7 @@ export class GroupEffects implements OnInitEffects {
         id: ({ uuid }) => `change-${uuid}`,
         run: ({ uuid, groupChange }) =>
           this.groupManager.change(uuid, groupChange).pipe(map((group) => GroupActions.changeSuccess({ group }))),
-        onError: (action, error) => GroupActions.changeFailure({ error }),
+        onError: ({ uuid }, error) => GroupActions.changeFailure({ uuid, error }),
       })
     );
   });
@@ -78,7 +77,19 @@ export class GroupEffects implements OnInitEffects {
       fetch({
         id: ({ uuid }) => `remove-${uuid}`,
         run: ({ uuid }) => this.groupManager.remove(uuid).pipe(map(() => GroupActions.removeSuccess({ uuid }))),
-        onError: (action, error) => GroupActions.removeFailure({ error }),
+        onError: ({ uuid }, error) => GroupActions.removeFailure({ uuid, error }),
+      })
+    );
+  });
+
+  sync$ = createEffect(() => {
+    return this.actions$.pipe(
+      ofType(GroupActions.sync),
+      fetch({
+        id: () => 'sync',
+        run: ({ groups }) =>
+          this.groupManager.sync(groups).pipe(map((updatedGroups) => GroupActions.syncSuccess({ groups: updatedGroups }))),
+        onError: (action, error) => GroupActions.syncFailure({ error }),
       })
     );
   });
