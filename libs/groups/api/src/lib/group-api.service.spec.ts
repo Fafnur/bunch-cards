@@ -53,4 +53,11 @@ describe('GroupApiService', () => {
 
     expect(service.remove(GROUP_STUB.uuid)).toBeObservable(result);
   });
+
+  it('should call sync()', () => {
+    const result = hot('a', { a: GROUPS_STUB });
+    when(apiServiceMock.put(GROUP_API_ROUTES.sync, deepEqual(GROUPS_STUB))).thenReturn(result);
+
+    expect(service.sync(GROUPS_STUB)).toBeObservable(result);
+  });
 });

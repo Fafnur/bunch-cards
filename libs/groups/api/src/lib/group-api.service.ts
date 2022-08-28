@@ -10,6 +10,7 @@ export const GROUP_API_ROUTES = {
   create: '/groups',
   change: (uuid: string) => `/groups/${uuid}`,
   delete: (uuid: string) => `/groups/${uuid}`,
+  sync: '/groups',
 };
 
 export function castGroup(group: GroupDto): Group {
@@ -38,5 +39,9 @@ export class GroupApiService {
 
   remove(uuid: string): Observable<void> {
     return this.apiService.delete(GROUP_API_ROUTES.change(uuid));
+  }
+
+  sync(payload: Group[]): Observable<Group[]> {
+    return this.apiService.put<GroupDto[]>(GROUP_API_ROUTES.sync, payload).pipe(map((groups) => groups.map(castGroup)));
   }
 }
