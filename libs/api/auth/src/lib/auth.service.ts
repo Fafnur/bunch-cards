@@ -130,8 +130,9 @@ export class AuthService {
       throw new BadRequestException({ token: { invalid: 'Token expired' } });
     }
 
-    const password = await this.passwordService.getHash(payload.password);
-    await this.userService.update(user.uuid, { password });
+    const password = await this.passwordService.getHash(payload.password.toString());
+
+    await this.userService.update(user.uuid, { password, reset: null, resetAt: null });
 
     return {
       accessToken: this.jwtService.sign({ uuid: user.uuid }),

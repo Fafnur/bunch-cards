@@ -4,7 +4,6 @@ export interface NavigationPaths {
   home: string;
   dashboard: string;
   settings: string;
-  dictionary: string;
   user: string;
   learning: string;
 
@@ -18,6 +17,9 @@ export interface NavigationPaths {
   authOauth: string;
   authEmailConfirm: string;
 
+  dictionary: string;
+  managementGroups: string;
+
   // Errors
   serverError: string;
   notFound: string;
@@ -27,7 +29,6 @@ export const NAVIGATION_PATHS: NavigationPaths = {
   home: '',
   dashboard: 'dashboard',
   settings: 'settings',
-  dictionary: 'dictionary',
   learning: 'learning',
   user: 'user',
 
@@ -40,6 +41,9 @@ export const NAVIGATION_PATHS: NavigationPaths = {
   authWithApple: 'auth/web/apple',
   authOauth: 'auth/oauth',
   authEmailConfirm: 'auth/email/confirm',
+
+  dictionary: 'dictionary',
+  managementGroups: 'dictionary/groups',
 
   serverError: 'server-error',
   notFound: 'not-found',

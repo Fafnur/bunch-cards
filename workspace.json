@@ -89,6 +89,7 @@
     "web-core-window": "libs/web/core/window",
     "web-dashboard-page": "libs/web/dashboard/page",
     "web-dictionary-page": "libs/web/dictionary/page",
+    "web-groups-management-page": "libs/web/groups/management/page",
     "web-learning-page": "libs/web/learning/page",
     "web-localization": "libs/web/localization",
     "web-settings-page": "libs/web/settings/page",
