@@ -109,7 +109,7 @@ export class AuthService {
         subject: 'Reset password',
         template: 'reset',
         context: {
-          link: `${this.frontUrl}/auth/reset?token=${resetToken}`,
+          link: `${this.frontUrl}/auth/password/change?token=${resetToken}`,
         },
       });
     }
@@ -120,7 +120,7 @@ export class AuthService {
     return await this.userService.update(user.uuid, { reset: resetToken, resetAt: resetAt.toISOString() }).then(() => undefined);
   }
 
-  async changePassword(payload: AuthPasswordChange): Promise<void> {
+  async changePassword(payload: AuthPasswordChange): Promise<AuthResponse> {
     const user = (await this.userService.findOneByReset(payload.token)) ?? null;
 
     if (!user) {
@@ -131,8 +131,12 @@ export class AuthService {
     }
 
     const password = await this.passwordService.getHash(payload.password);
+    await this.userService.update(user.uuid, { password });
 
-    return await this.userService.update(user.uuid, { password }).then(() => undefined);
+    return {
+      accessToken: this.jwtService.sign({ uuid: user.uuid }),
+      uuid: user.uuid,
+    };
   }
 
   async register(payload: AuthRegister): Promise<AuthResponse> {
