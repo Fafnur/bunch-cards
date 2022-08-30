@@ -1,5 +1,12 @@
 import { Observable } from 'rxjs';
 
+export enum LocalDbKeys {
+  Cards = 'cards',
+  Groups = 'groups',
+  Users = 'users',
+  Auth = 'tokens',
+}
+
 export type LocalDBRecord = Record<string, unknown> & { uuid: string };
 
 /**

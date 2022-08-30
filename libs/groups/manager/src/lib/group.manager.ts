@@ -1,13 +1,13 @@
 import { Injectable } from '@angular/core';
 import { map, Observable, of, switchMap, throwError } from 'rxjs';
 
-import { LocalDBService } from '@bunch/core/localdb';
+import { LocalDbKeys, LocalDBService } from '@bunch/core/localdb';
 import { Group, GroupChange, GroupCreate } from '@bunch/groups/common';
 import { User } from '@bunch/users/common';
 
 @Injectable()
 export class GroupManager {
-  static storeName = 'group';
+  static storeName = LocalDbKeys.Groups;
 
   constructor(private readonly localDBService: LocalDBService) {}
 

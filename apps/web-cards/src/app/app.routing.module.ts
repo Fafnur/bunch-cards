@@ -21,7 +21,7 @@ const routes: Routes = [
         loadChildren: () => import('@bunch/web/dashboard/page').then((modules) => modules.DashboardPageModule),
       },
       {
-        path: NAVIGATION_PATHS.dictionary,
+        path: '',
         loadChildren: () => import('@bunch/web/dictionary/page').then((modules) => modules.DictionaryPageModule),
       },
       {
