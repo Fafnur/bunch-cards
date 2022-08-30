@@ -1,4 +1,9 @@
+import { CommonModule } from '@angular/common';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { RouterTestingModule } from '@angular/router/testing';
+import { MockModule } from 'ng-mocks';
+
+import { NavigationPipesModule, PATHS_STUB } from '@bunch/core/navigation';
 
 import { GroupCreateComponent } from './group-create.component';
 
@@ -8,7 +13,9 @@ describe('GroupCreateComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
+      imports: [CommonModule, RouterTestingModule, MockModule(NavigationPipesModule)],
       declarations: [GroupCreateComponent],
+      providers: [PATHS_STUB],
     }).compileComponents();
 
     fixture = TestBed.createComponent(GroupCreateComponent);
