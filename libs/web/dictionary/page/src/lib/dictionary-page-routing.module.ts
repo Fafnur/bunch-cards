@@ -8,7 +8,7 @@ import { DictionaryPageComponent } from './dictionary-page.component';
 const routes: Routes = [
   {
     path: NAVIGATION_PATHS.dictionary,
-    redirectTo: NAVIGATION_PATHS.managementGroups,
+    redirectTo: NAVIGATION_PATHS.groupsManagement,
     pathMatch: 'full',
   },
   {
@@ -16,7 +16,7 @@ const routes: Routes = [
     component: DictionaryPageComponent,
     children: [
       {
-        path: NAVIGATION_PATHS.managementGroups,
+        path: NAVIGATION_PATHS.groupsManagement,
         loadChildren: () => import('@bunch/web/groups/management/page').then((modules) => modules.ManagementPageModule),
       },
     ],

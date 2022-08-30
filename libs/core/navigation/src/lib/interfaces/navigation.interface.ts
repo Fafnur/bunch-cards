@@ -18,7 +18,8 @@ export interface NavigationPaths {
   authEmailConfirm: string;
 
   dictionary: string;
-  managementGroups: string;
+  groupsManagement: string;
+  groupsCreate: string;
 
   // Errors
   serverError: string;
@@ -43,7 +44,8 @@ export const NAVIGATION_PATHS: NavigationPaths = {
   authEmailConfirm: 'auth/email/confirm',
 
   dictionary: 'dictionary',
-  managementGroups: 'dictionary/groups',
+  groupsManagement: 'dictionary/groups',
+  groupsCreate: 'dictionary/groups/create',
 
   serverError: 'server-error',
   notFound: 'not-found',
