@@ -102,6 +102,7 @@
       "@bunch/web/groups/management/page": ["libs/web/groups/management/page/src/index.ts"],
       "@bunch/web/groups/management/ui/create": ["libs/web/groups/management/ui/create/src/index.ts"],
       "@bunch/web/groups/ui/card": ["libs/web/groups/ui/card/src/index.ts"],
+      "@bunch/web/groups/ui/collection": ["libs/web/groups/ui/collection/src/index.ts"],
       "@bunch/web/learning/page": ["libs/web/learning/page/src/index.ts"],
       "@bunch/web/localization": ["libs/web/localization/src/index.ts"],
       "@bunch/web/settings/page": ["libs/web/settings/page/src/index.ts"],

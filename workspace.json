@@ -92,6 +92,7 @@
     "web-groups-management-page": "libs/web/groups/management/page",
     "web-groups-management-ui-create": "libs/web/groups/management/ui/create",
     "web-groups-ui-card": "libs/web/groups/ui/card",
+    "web-groups-ui-collection": "libs/web/groups/ui/collection",
     "web-learning-page": "libs/web/learning/page",
     "web-localization": "libs/web/localization",
     "web-settings-page": "libs/web/settings/page",

@@ -1,0 +1,15 @@
+<ng-container *ngIf="ordering; then orderingCollection; else collection"></ng-container>
+
+<ng-template #collection>
+  <div *ngIf="groups; else loading">
+    <bunch-group-card [group]="group" *ngFor="let group of groups"></bunch-group-card>
+  </div>
+</ng-template>
+
+<ng-template #orderingCollection>
+  <div cdkDropList (cdkDropListDropped)="onDropped($event)" *ngIf="groups; else loading">
+    <bunch-group-card cdkDrag [group]="group" *ngFor="let group of groups"></bunch-group-card>
+  </div>
+</ng-template>
+
+<ng-template #loading> TODO: Add preload logic </ng-template>
