@@ -3,6 +3,7 @@
 <ng-template #collection>
   <div *ngIf="groups; else loading">
     <bunch-group-card [group]="group" *ngFor="let group of groups"></bunch-group-card>
+    <ng-content select="[creating]"></ng-content>
   </div>
 </ng-template>
 

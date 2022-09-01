@@ -1,8 +1,4 @@
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
-
-import { Group } from '@bunch/groups/common';
-import { GroupFacade } from '@bunch/groups/state';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 @Component({
   selector: 'bunch-groups-management-page',
@@ -10,12 +6,4 @@ import { GroupFacade } from '@bunch/groups/state';
   styleUrls: ['./management-page.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class ManagementPageComponent implements OnInit {
-  groups$!: Observable<Group[]>;
-
-  constructor(private readonly groupFacade: GroupFacade) {}
-
-  ngOnInit(): void {
-    this.groups$ = this.groupFacade.groups$;
-  }
-}
+export class ManagementPageComponent {}

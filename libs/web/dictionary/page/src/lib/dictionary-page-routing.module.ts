@@ -19,6 +19,10 @@ const routes: Routes = [
         path: NAVIGATION_PATHS.groupsManagement,
         loadChildren: () => import('@bunch/web/groups/management/page').then((modules) => modules.ManagementPageModule),
       },
+      {
+        path: NAVIGATION_PATHS.groupsCreate,
+        loadChildren: () => import('@bunch/web/groups/create/page').then((modules) => modules.CreatePageModule),
+      },
     ],
   },
 ];
