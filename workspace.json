@@ -55,6 +55,7 @@
     "users-common": "libs/users/common",
     "users-manager": "libs/users/manager",
     "users-state": "libs/users/state",
+    "users-sync": "libs/users/sync",
     "web-auth-email-confirm-page": "libs/web/auth/email-confirm/page",
     "web-auth-guards": "libs/web/auth/guards",
     "web-auth-login-page": "libs/web/auth/login/page",

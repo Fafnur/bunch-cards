@@ -1,14 +1,32 @@
+import { CommonModule } from '@angular/common';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { RouterTestingModule } from '@angular/router/testing';
+import { MockModule } from 'ng-mocks';
+import { mock, when } from 'ts-mockito';
+
+import { NAVIGATION_PATHS, NavigationService } from '@bunch/core/navigation';
+import { providerOf } from '@bunch/core/testing';
+import { CreateFormModule } from '@bunch/web/groups/create/ui/form';
 
 import { CreatePageComponent } from './create-page.component';
 
+/**
+ * TODO: Add tests
+ */
 describe('CreatePageComponent', () => {
   let component: CreatePageComponent;
   let fixture: ComponentFixture<CreatePageComponent>;
+  let navigationServiceMock: NavigationService;
 
   beforeEach(async () => {
+    navigationServiceMock = mock(NavigationService);
+
+    when(navigationServiceMock.getPaths()).thenReturn(NAVIGATION_PATHS);
+
     await TestBed.configureTestingModule({
+      imports: [CommonModule, RouterTestingModule, MockModule(CreateFormModule)],
       declarations: [CreatePageComponent],
+      providers: [providerOf(NavigationService, navigationServiceMock)],
     }).compileComponents();
 
     fixture = TestBed.createComponent(CreatePageComponent);

@@ -20,11 +20,9 @@ describe('UserEffects', () => {
   let effects: UserEffects;
   let userManagerMock: UserManager;
 
-  beforeEach(() => {
-    userManagerMock = mock(UserManager);
-  });
-
   beforeEach(async () => {
+    userManagerMock = mock(UserManager);
+
     await TestBed.configureTestingModule({
       providers: [
         UserEffects,
@@ -35,73 +33,89 @@ describe('UserEffects', () => {
         providerOf(UserManager, userManagerMock),
       ],
     });
-  });
 
-  beforeEach(() => {
     effects = TestBed.inject(UserEffects);
   });
 
-  describe('init$', () => {
-    it('should work', () => {
-      actions = hot('a', { a: UserActions.init() });
+  it('init$ should work', () => {
+    actions = hot('a', { a: UserActions.init() });
 
-      // TODO: Fix
-      when(userManagerMock.load()).thenReturn(of(USER_STUB));
-      const expected = hot('a', { a: UserActions.restore({ user: USER_STUB }) });
+    // TODO: Fix
+    when(userManagerMock.load()).thenReturn(of(USER_STUB));
+    const expected = hot('a', { a: UserActions.restore({ user: USER_STUB }) });
 
-      expect(effects.init$).toBeObservable(expected);
-    });
+    expect(effects.init$).toBeObservable(expected);
   });
 
-  describe('load$', () => {
-    it('should return loadSuccess', () => {
-      const action = UserActions.load();
-      const completion = UserActions.loadSuccess({ user: USER_STUB });
+  it('load$ should return loadSuccess', () => {
+    const action = UserActions.load();
+    const completion = UserActions.loadSuccess({ user: USER_STUB });
 
-      actions = hot('a', { a: action });
-      const response = hot('a', { a: USER_STUB });
-      const expected = hot('a', { a: completion });
-      when(userManagerMock.load()).thenReturn(response);
+    actions = hot('a', { a: action });
+    const response = hot('a', { a: USER_STUB });
+    const expected = hot('a', { a: completion });
+    when(userManagerMock.load()).thenReturn(response);
 
-      expect(effects.load$).toBeObservable(expected);
-    });
-
-    it('should return loadFailure', () => {
-      const action = UserActions.load();
-      const completion = UserActions.loadFailure({ error: HTTP_ERROR_STUB });
-
-      actions = hot('a', { a: action });
-      const response = hot('#', null, HTTP_ERROR_STUB);
-      const expected = hot('a', { a: completion });
-      when(userManagerMock.load()).thenReturn(response);
-
-      expect(effects.load$).toBeObservable(expected);
-    });
+    expect(effects.load$).toBeObservable(expected);
   });
 
-  describe('change$', () => {
-    it('should return changeSuccess', () => {
-      const action = UserActions.change({ userChange: USER_CHANGE_STUB });
-      const completion = UserActions.changeSuccess({ user: USER_STUB });
+  it('load$ should return loadFailure', () => {
+    const action = UserActions.load();
+    const completion = UserActions.loadFailure({ error: HTTP_ERROR_STUB });
 
-      actions = hot('a', { a: action });
-      const response = hot('a', { a: USER_STUB });
-      const expected = hot('a', { a: completion });
-      when(userManagerMock.change(deepEqual(USER_CHANGE_STUB))).thenReturn(response);
+    actions = hot('a', { a: action });
+    const response = hot('#', null, HTTP_ERROR_STUB);
+    const expected = hot('a', { a: completion });
+    when(userManagerMock.load()).thenReturn(response);
 
-      expect(effects.change$).toBeObservable(expected);
-    });
+    expect(effects.load$).toBeObservable(expected);
+  });
 
-    it('should return changeFailure', () => {
-      const action = UserActions.change({ userChange: USER_CHANGE_STUB });
-      const completion = UserActions.changeFailure({ error: HTTP_ERROR_STUB });
+  it('change$ should return changeSuccess', () => {
+    const action = UserActions.change({ userChange: USER_CHANGE_STUB });
+    const completion = UserActions.changeSuccess({ user: USER_STUB });
 
-      actions = hot('a', { a: action });
-      const response = hot('#', null, HTTP_ERROR_STUB);
-      const expected = hot('a', { a: completion });
-      when(userManagerMock.change(deepEqual(USER_CHANGE_STUB))).thenReturn(response);
+    actions = hot('a', { a: action });
+    const response = hot('a', { a: USER_STUB });
+    const expected = hot('a', { a: completion });
+    when(userManagerMock.change(deepEqual(USER_CHANGE_STUB))).thenReturn(response);
 
-      expect(effects.change$).toBeObservable(expected);
-    });
+    expect(effects.change$).toBeObservable(expected);
+  });
+
+  it('change$ should return changeFailure', () => {
+    const action = UserActions.change({ userChange: USER_CHANGE_STUB });
+    const completion = UserActions.changeFailure({ error: HTTP_ERROR_STUB });
+
+    actions = hot('a', { a: action });
+    const response = hot('#', null, HTTP_ERROR_STUB);
+    const expected = hot('a', { a: completion });
+    when(userManagerMock.change(deepEqual(USER_CHANGE_STUB))).thenReturn(response);
+
+    expect(effects.change$).toBeObservable(expected);
+  });
+
+  it('sync$ should return syncSuccess', () => {
+    const action = UserActions.sync({ user: USER_STUB });
+    const completion = UserActions.syncSuccess({ user: USER_STUB });
+
+    actions = hot('a', { a: action });
+    const response = hot('a', { a: USER_STUB });
+    const expected = hot('a', { a: completion });
+    when(userManagerMock.sync(deepEqual(USER_STUB))).thenReturn(response);
+
+    expect(effects.sync$).toBeObservable(expected);
+  });
+
+  it('sync$ should return syncFailure', () => {
+    const action = UserActions.sync({ user: USER_STUB });
+    const completion = UserActions.syncFailure({ error: HTTP_ERROR_STUB });
+
+    actions = hot('a', { a: action });
+    const response = hot('#', null, HTTP_ERROR_STUB);
+    const expected = hot('a', { a: completion });
+    when(userManagerMock.sync(deepEqual(USER_STUB))).thenReturn(response);
+
+    expect(effects.sync$).toBeObservable(expected);
   });
 });

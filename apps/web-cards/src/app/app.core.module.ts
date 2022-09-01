@@ -10,6 +10,7 @@ import { NAVIGATION_PATHS, PATHS } from '@bunch/core/navigation';
 import { RootStoreModule } from '@bunch/core/store/root';
 import { GroupStateModule } from '@bunch/groups/state';
 import { UserStateModule } from '@bunch/users/state';
+import { UserSyncModule } from '@bunch/users/sync';
 import { ConnectivityModule } from '@bunch/web/core/connectivity';
 import { HammerModule } from '@bunch/web/core/hammer';
 import { LocaldbModule } from '@bunch/web/core/localdb';
@@ -24,8 +25,9 @@ import { environment } from '../environments/environment';
     HammerModule,
     ConnectivityModule,
     RootStoreModule,
-    UserStateModule,
     AuthStateModule,
+    UserStateModule,
+    UserSyncModule,
     LocaldbModule,
     NavigationModule,
     GroupStateModule,

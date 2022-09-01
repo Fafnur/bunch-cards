@@ -45,6 +45,17 @@ export class UserEffects implements OnInitEffects {
     );
   });
 
+  sync$ = createEffect(() => {
+    return this.actions$.pipe(
+      ofType(UserActions.sync),
+      fetch({
+        id: () => 'sync',
+        run: ({ user }) => this.userManager.sync(user).pipe(map(() => UserActions.syncSuccess({ user }))),
+        onError: (action, error) => UserActions.syncFailure({ error }),
+      })
+    );
+  });
+
   constructor(private readonly actions$: Actions, private readonly userManager: UserManager) {}
 
   ngrxOnInitEffects(): Action {

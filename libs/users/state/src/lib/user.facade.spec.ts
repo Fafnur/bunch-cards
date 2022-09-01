@@ -50,6 +50,12 @@ describe('User Facade', () => {
     expect(dispatchSpy).toHaveBeenCalledWith(UserActions.load());
   });
 
+  it('sync() should dispatch action', () => {
+    facade.sync(USER_STUB);
+
+    expect(dispatchSpy).toHaveBeenCalledWith(UserActions.sync({ user: USER_STUB }));
+  });
+
   it('load() should dispatch action', () => {
     facade.change(USER_CHANGE_STUB);
 

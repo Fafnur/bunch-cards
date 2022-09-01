@@ -67,6 +67,7 @@
       "@bunch/users/common": ["libs/users/common/src/index.ts"],
       "@bunch/users/manager": ["libs/users/manager/src/index.ts"],
       "@bunch/users/state": ["libs/users/state/src/index.ts"],
+      "@bunch/users/sync": ["libs/users/sync/src/index.ts"],
       "@bunch/web/auth/email-confirm/page": ["libs/web/auth/email-confirm/page/src/index.ts"],
       "@bunch/web/auth/guards": ["libs/web/auth/guards/src/index.ts"],
       "@bunch/web/auth/login/page": ["libs/web/auth/login/page/src/index.ts"],

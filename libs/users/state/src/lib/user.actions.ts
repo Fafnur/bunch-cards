@@ -23,3 +23,11 @@ export const change = createAction('[User] Change', props<{ userChange: UserChan
 export const changeSuccess = createAction('[User] Change Success', props<{ user: User }>());
 
 export const changeFailure = createAction('[User] Change Failure', props<{ error: HttpErrorResponse }>());
+
+// Sync
+
+export const sync = createAction('[User] Sync', props<{ user: User }>());
+
+export const syncSuccess = createAction('[User] Sync Success', props<{ user: User }>());
+
+export const syncFailure = createAction('[User] Sync Failure', props<{ error: unknown }>());
