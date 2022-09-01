@@ -2,8 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 import { NAVIGATION_PATHS } from '@bunch/core/navigation';
-
-import { DictionaryPageComponent } from './dictionary-page.component';
+import { DictionaryLayoutComponent, DictionaryLayoutModule } from '@bunch/web/dictionary/ui/layout';
 
 const routes: Routes = [
   {
@@ -13,7 +12,7 @@ const routes: Routes = [
   },
   {
     path: '',
-    component: DictionaryPageComponent,
+    component: DictionaryLayoutComponent,
     children: [
       {
         path: NAVIGATION_PATHS.groupsManagement,
@@ -28,7 +27,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forChild(routes)],
+  imports: [RouterModule.forChild(routes), DictionaryLayoutModule],
   exports: [RouterModule],
 })
 export class DictionaryPageRoutingModule {}
