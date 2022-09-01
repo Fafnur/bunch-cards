@@ -13,10 +13,11 @@ describe('CreatePageComponent', () => {
 
     fixture = TestBed.createComponent(CreatePageComponent);
     component = fixture.componentInstance;
-    fixture.detectChanges();
   });
 
   it('should create', () => {
+    fixture.detectChanges();
+
     expect(component).toBeTruthy();
   });
 });

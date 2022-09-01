@@ -101,6 +101,7 @@
       "@bunch/web/dictionary/page": ["libs/web/dictionary/page/src/index.ts"],
       "@bunch/web/dictionary/ui/layout": ["libs/web/dictionary/ui/layout/src/index.ts"],
       "@bunch/web/groups/create/page": ["libs/web/groups/create/page/src/index.ts"],
+      "@bunch/web/groups/create/ui/form": ["libs/web/groups/create/ui/form/src/index.ts"],
       "@bunch/web/groups/management/page": ["libs/web/groups/management/page/src/index.ts"],
       "@bunch/web/groups/management/ui/create": ["libs/web/groups/management/ui/create/src/index.ts"],
       "@bunch/web/groups/ui/card": ["libs/web/groups/ui/card/src/index.ts"],
