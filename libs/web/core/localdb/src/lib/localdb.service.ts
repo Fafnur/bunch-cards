@@ -7,7 +7,7 @@ import { WindowService } from '@bunch/web/core/window';
 
 @Injectable()
 export class WebLocalDBService implements LocalDBService, OnDestroy {
-  static version = 8;
+  static version = 12;
   static dbname = 'bunchcards';
 
   private readonly database$ = new ReplaySubject<IDBDatabase>(1);
@@ -30,9 +30,9 @@ export class WebLocalDBService implements LocalDBService, OnDestroy {
         openRequest.onupgradeneeded = () => {
           try {
             const database: IDBDatabase = openRequest.result;
-            const allStores = ['groups', 'cards', 'users', 'tokens'];
+            const allStores = Array.from(database.objectStoreNames);
 
-            const stores = Array.from(database.objectStoreNames).filter((store) => !allStores.includes(store));
+            const stores = ['groups', 'cards', 'users', 'tokens'].filter((store) => !allStores.includes(store));
 
             for (const store of stores) {
               database.createObjectStore(store, { keyPath: 'uuid' });
