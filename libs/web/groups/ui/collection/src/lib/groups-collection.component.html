@@ -1,10 +1,14 @@
 <ng-container *ngIf="ordering; then orderingCollection; else collection"></ng-container>
 
 <ng-template #collection>
-  <div *ngIf="groups; else loading">
-    <bunch-group-card [group]="group" *ngFor="let group of groups"></bunch-group-card>
-    <ng-content select="[creating]"></ng-content>
-  </div>
+  <bunch-row tablet *ngIf="groups; else loading">
+    <bunch-column tablet="4" web="3">
+      <ng-content select="[creating]"></ng-content>
+    </bunch-column>
+    <bunch-column tablet="4" web="3" *ngFor="let group of groups">
+      <bunch-group-card [group]="group"></bunch-group-card>
+    </bunch-column>
+  </bunch-row>
 </ng-template>
 
 <ng-template #orderingCollection>

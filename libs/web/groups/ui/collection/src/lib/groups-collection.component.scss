@@ -1,0 +1,9 @@
+@use 'libs/web/ui/stylesheets/mixins' as mixins;
+
+bunch-column {
+  margin-bottom: 1rem;
+
+  @include mixins.media-tablet-up() {
+    margin-bottom: 2rem;
+  }
+}

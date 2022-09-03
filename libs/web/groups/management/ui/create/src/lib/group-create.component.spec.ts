@@ -1,5 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { MatCardModule } from '@angular/material/card';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterTestingModule } from '@angular/router/testing';
 import { MockModule } from 'ng-mocks';
 
@@ -13,7 +15,7 @@ describe('GroupCreateComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [CommonModule, RouterTestingModule, MockModule(NavigationPipesModule)],
+      imports: [CommonModule, RouterTestingModule, NoopAnimationsModule, MockModule(NavigationPipesModule), MockModule(MatCardModule)],
       declarations: [GroupCreateComponent],
       providers: [PATHS_STUB],
     }).compileComponents();
