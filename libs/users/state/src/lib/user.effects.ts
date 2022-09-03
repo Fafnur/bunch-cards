@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Actions, concatLatestFrom, createEffect, ofType, OnInitEffects } from '@ngrx/effects';
+import { Actions, createEffect, ofType, OnInitEffects } from '@ngrx/effects';
 import { Action } from '@ngrx/store';
 import { fetch } from '@nrwl/angular';
 import { map } from 'rxjs';
@@ -13,12 +13,10 @@ export class UserEffects implements OnInitEffects {
   init$ = createEffect(() => {
     return this.actions$.pipe(
       ofType(UserActions.init),
-      concatLatestFrom(() => this.userManager.load()),
       fetch({
-        // eslint-disable-next-line @typescript-eslint/no-unused-vars
-        id: (action, user) => 'init',
-        run: (action, user) => UserActions.restore({ user }),
-        onError: (action, error) => console.error('Error', error),
+        id: () => 'init',
+        run: () => this.userManager.load().pipe(map((user) => UserActions.restore({ user }))),
+        onError: (action, error) => console.error(error),
       })
     );
   });

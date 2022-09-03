@@ -59,7 +59,7 @@ export class WebLocalDBService implements LocalDBService, OnDestroy {
         .pipe()
         .subscribe((database) => {
           try {
-            const transaction = database.transaction([storeName], 'readwrite');
+            const transaction = database.transaction([storeName], 'readonly');
             const store = transaction.objectStore(storeName);
             const getRequest: IDBRequest<T[]> = store.getAll();
 
