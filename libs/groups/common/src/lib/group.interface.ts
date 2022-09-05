@@ -36,4 +36,5 @@ export interface GroupCreate {
   readonly cards?: string[];
 }
 
-export type GroupChange = Partial<GroupEntity>;
+// eslint-disable-next-line @typescript-eslint/no-empty-interface
+export interface GroupChange extends GroupCreate {}

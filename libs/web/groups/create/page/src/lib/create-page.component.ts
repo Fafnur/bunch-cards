@@ -3,7 +3,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { NavigationService } from '@bunch/core/navigation';
 
 @Component({
-  selector: 'bunch-create-page',
+  selector: 'bunch-group-create-page',
   templateUrl: './create-page.component.html',
   styleUrls: ['./create-page.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
