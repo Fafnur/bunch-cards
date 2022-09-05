@@ -2,18 +2,18 @@
 
 <ng-template #collection>
   <bunch-row tablet *ngIf="groups; else loading">
-    <bunch-column tablet="4" web="3">
+    <bunch-column tablet="6" web="3">
       <ng-content select="[creating]"></ng-content>
     </bunch-column>
-    <bunch-column tablet="4" web="3" *ngFor="let group of groups">
-      <bunch-group-card [group]="group"></bunch-group-card>
+    <bunch-column tablet="6" web="3" *ngFor="let group of groups">
+      <bunch-group-card [group]="group" [editing]="editing" [viewing]="viewing"></bunch-group-card>
     </bunch-column>
   </bunch-row>
 </ng-template>
 
 <ng-template #orderingCollection>
   <div cdkDropList (cdkDropListDropped)="onDropped($event)" *ngIf="groups; else loading">
-    <bunch-group-card cdkDrag [group]="group" *ngFor="let group of groups"></bunch-group-card>
+    <bunch-group-card cdkDrag [group]="group" *ngFor="let group of groups" [editing]="editing" [viewing]="viewing"></bunch-group-card>
   </div>
 </ng-template>
 

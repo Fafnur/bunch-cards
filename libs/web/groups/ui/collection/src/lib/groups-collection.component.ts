@@ -15,6 +15,8 @@ import { GroupFacade } from '@bunch/groups/state';
 })
 export class GroupsCollectionComponent implements OnInit {
   @Input() ordering = false;
+  @Input() editing = false;
+  @Input() viewing = false;
 
   groups!: Group[];
 

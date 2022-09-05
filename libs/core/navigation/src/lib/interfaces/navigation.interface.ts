@@ -20,6 +20,7 @@ export interface NavigationPaths {
   dictionary: string;
   groupsManagement: string;
   groupsCreate: string;
+  groupsEdit: string;
 
   // Errors
   serverError: string;
@@ -46,6 +47,7 @@ export const NAVIGATION_PATHS: NavigationPaths = {
   dictionary: 'dictionary',
   groupsManagement: 'dictionary/groups',
   groupsCreate: 'dictionary/groups/create',
+  groupsEdit: 'dictionary/groups/:uuid/edit',
 
   serverError: 'server-error',
   notFound: 'not-found',
