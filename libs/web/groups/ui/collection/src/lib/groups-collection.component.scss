@@ -1,9 +1,23 @@
 @use 'libs/web/ui/stylesheets/mixins' as mixins;
 
+bunch-row {
+  @include mixins.media-tablet() {
+    &[tablet] {
+      margin: 0 -0.5rem;
+    }
+  }
+}
+
 bunch-column {
   margin-bottom: 1rem;
 
-  @include mixins.media-tablet-up() {
+  @include mixins.media-tablet() {
+    &[tablet] {
+      padding: 0 0.5rem;
+    }
+  }
+
+  @include mixins.media-web() {
     margin-bottom: 2rem;
   }
 }

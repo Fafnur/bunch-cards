@@ -94,6 +94,7 @@
     "web-dashboard-page": "libs/web/dashboard/page",
     "web-dictionary-page": "libs/web/dictionary/page",
     "web-dictionary-ui-layout": "libs/web/dictionary/ui/layout",
+    "web-dictionary-ui-tabs": "libs/web/dictionary/ui/tabs",
     "web-groups-create-page": "libs/web/groups/create/page",
     "web-groups-create-ui-form": "libs/web/groups/create/ui/form",
     "web-groups-edit-page": "libs/web/groups/edit/page",

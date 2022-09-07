@@ -1,0 +1,10 @@
+@use 'libs/web/ui/stylesheets/mixins' as mixins;
+
+:host {
+  display: block;
+  margin-bottom: 1rem;
+
+  @include mixins.media-web() {
+    margin-bottom: 2rem;
+  }
+}

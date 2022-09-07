@@ -1,0 +1,14 @@
+<nav mat-tab-nav-bar automation-id="nav" [tabPanel]="tabPanel">
+  <a
+    automation-id="link"
+    mat-tab-link
+    [routerLink]="link.route | path"
+    #rla="routerLinkActive"
+    routerLinkActive="is-active"
+    *ngFor="let link of links"
+    [active]="rla.isActive"
+  >
+    {{ link.label }}
+  </a>
+</nav>
+<mat-tab-nav-panel #tabPanel></mat-tab-nav-panel>
