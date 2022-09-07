@@ -19,8 +19,14 @@ export interface NavigationPaths {
 
   dictionary: string;
   groupsManagement: string;
-  groupsCreate: string;
-  groupsEdit: string;
+  groupCreate: string;
+  groupView: string;
+  groupCardCreate: string;
+  groupEdit: string;
+
+  cardsManagement: string;
+  cardCreate: string;
+  cardEdit: string;
 
   // Errors
   serverError: string;
@@ -46,8 +52,14 @@ export const NAVIGATION_PATHS: NavigationPaths = {
 
   dictionary: 'dictionary',
   groupsManagement: 'dictionary/groups',
-  groupsCreate: 'dictionary/groups/create',
-  groupsEdit: 'dictionary/groups/:uuid/edit',
+  groupCreate: 'dictionary/groups/create',
+  groupView: 'dictionary/groups/:uuid/view',
+  groupCardCreate: 'dictionary/groups/:uuid/cards/create',
+  groupEdit: 'dictionary/groups/:uuid/edit',
+
+  cardsManagement: 'dictionary/cards',
+  cardCreate: 'dictionary/cards/create',
+  cardEdit: 'dictionary/cards/:uuid/edit',
 
   serverError: 'server-error',
   notFound: 'not-found',

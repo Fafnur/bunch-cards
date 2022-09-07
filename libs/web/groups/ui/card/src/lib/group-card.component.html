@@ -4,10 +4,10 @@
   <mat-divider inset></mat-divider>
   <mat-card-actions align="end">
     <ng-content select="[actions]"></ng-content>
-    <a mat-icon-button [routerLink]="paths.groupsEdit | path: { uuid: group.uuid }" *ngIf="viewing">
+    <a mat-icon-button [routerLink]="paths.groupEdit | path: { uuid: group.uuid }" *ngIf="viewing">
       <mat-icon>school</mat-icon>
     </a>
-    <a mat-icon-button [routerLink]="paths.groupsEdit | path: { uuid: group.uuid }" *ngIf="editing">
+    <a mat-icon-button [routerLink]="paths.groupEdit | path: { uuid: group.uuid }" *ngIf="editing">
       <mat-icon>edit</mat-icon>
     </a>
   </mat-card-actions>

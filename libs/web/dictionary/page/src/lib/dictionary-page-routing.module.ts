@@ -20,13 +20,26 @@ const routes: Routes = [
         loadChildren: () => import('@bunch/web/groups/management/page').then((modules) => modules.ManagementPageModule),
       },
       {
-        path: NAVIGATION_PATHS.groupsCreate,
+        path: NAVIGATION_PATHS.groupCreate,
         loadChildren: () => import('@bunch/web/groups/create/page').then((modules) => modules.CreatePageModule),
       },
       {
-        path: NAVIGATION_PATHS.groupsEdit,
+        path: NAVIGATION_PATHS.groupEdit,
         canActivate: [GroupEditGuard],
         loadChildren: () => import('@bunch/web/groups/edit/page').then((modules) => modules.EditPageModule),
+      },
+      {
+        path: NAVIGATION_PATHS.groupCardCreate,
+        canActivate: [GroupEditGuard],
+        loadChildren: () => import('@bunch/web/cards/create/page').then((modules) => modules.CreatePageModule),
+      },
+      {
+        path: NAVIGATION_PATHS.cardsManagement,
+        loadChildren: () => import('@bunch/web/cards/management/page').then((modules) => modules.ManagementPageModule),
+      },
+      {
+        path: NAVIGATION_PATHS.cardCreate,
+        loadChildren: () => import('@bunch/web/cards/create/page').then((modules) => modules.CreatePageModule),
       },
     ],
   },
