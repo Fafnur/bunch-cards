@@ -15,6 +15,7 @@ import { ConnectivityModule } from '@bunch/web/core/connectivity';
 import { HammerModule } from '@bunch/web/core/hammer';
 import { LocaldbModule } from '@bunch/web/core/localdb';
 import { NavigationModule } from '@bunch/web/core/navigation';
+import { RussianLocalizationModule } from '@bunch/web/localization';
 
 import { environment } from '../environments/environment';
 
@@ -32,6 +33,7 @@ import { environment } from '../environments/environment';
     NavigationModule,
     GroupStateModule,
     CardsStateModule,
+    RussianLocalizationModule,
     !environment.production ? StoreDevtoolsModule.instrument({ logOnly: environment.production }) : [],
   ],
   providers: [

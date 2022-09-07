@@ -450,6 +450,24 @@
         <note priority="1" from="description">Signin</note>
         <note priority="1" from="meaning">Auth Signin</note>
       </trans-unit>
+      <trans-unit id="3926261351125873948" datatype="html">
+        <source>Lists</source>
+        <target state="translated">Списки</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">libs/web/dictionary/ui/tabs/src/lib/dictionary-tabs.component.ts</context>
+          <context context-type="linenumber">9</context>
+        </context-group>
+        <note priority="1" from="meaning">Dictionary tabs</note>
+      </trans-unit>
+      <trans-unit id="7259494053702406093" datatype="html">
+        <source>Cards</source>
+        <target state="translated">Карточки</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">libs/web/dictionary/ui/tabs/src/lib/dictionary-tabs.component.ts</context>
+          <context context-type="linenumber">13</context>
+        </context-group>
+        <note priority="1" from="meaning">Dictionary tabs</note>
+      </trans-unit>
       <trans-unit id="1827103049169187094" datatype="html">
         <source>Dashboard</source>
         <target state="translated">Главная</target>

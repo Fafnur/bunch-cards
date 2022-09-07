@@ -1,10 +1,8 @@
 <bunch-nav-link automation-id="nav-link" *ngFor="let link of links; trackBy: trackByFn">
   <a
     mat-button
-    #rla="routerLinkActive"
-    routerLinkActive
+    routerLinkActive="is-active"
     [attr.aria-label]="link.label"
-    [class.is-active]="rla.isActive"
     [routerLinkActiveOptions]="link.routerLinkActiveOptions || { exact: false }"
     [routerLink]="link.route | path"
   >
