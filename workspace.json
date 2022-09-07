@@ -78,6 +78,8 @@
     "web-auth-ui-signin": "libs/web/auth/ui/signin",
     "web-auth-ui-title": "libs/web/auth/ui/title",
     "web-cards": "apps/web-cards",
+    "web-cards-create-page": "libs/web/cards/create/page",
+    "web-cards-create-ui-form": "libs/web/cards/create/ui/form",
     "web-cards-e2e": "apps/web-cards-e2e",
     "web-cards-management-page": "libs/web/cards/management/page",
     "web-core-connectivity": "libs/web/core/connectivity",
