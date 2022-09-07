@@ -4,5 +4,6 @@
     <input [formControl]="form.controls.name" matInput placeholder="Name collection cards" />
   </mat-form-field>
 
+  <a [routerLink]="paths.groupsManagement | path" mat-raised-button>Cancel</a>
   <button type="submit" mat-raised-button color="primary" [disabled]="submitted">Edit</button>
 </form>

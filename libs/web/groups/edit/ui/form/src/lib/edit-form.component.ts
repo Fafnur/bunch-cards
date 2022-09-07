@@ -2,6 +2,7 @@ import { ChangeDetectionStrategy, ChangeDetectorRef, Component, EventEmitter, In
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { takeUntil, tap } from 'rxjs';
 
+import { NavigationPaths, NavigationService } from '@bunch/core/navigation';
 import { DestroyService } from '@bunch/core/utils/destroy';
 import { Form } from '@bunch/core/utils/types';
 import { Group, GroupChange } from '@bunch/groups/common';
@@ -22,13 +23,18 @@ export class EditFormComponent implements OnInit {
 
   submitted = false;
 
+  paths!: NavigationPaths;
+
   constructor(
     private readonly changeDetectorRef: ChangeDetectorRef,
     private readonly groupFacade: GroupFacade,
+    private readonly navigationService: NavigationService,
     private readonly destroy$: DestroyService
   ) {}
 
   ngOnInit(): void {
+    this.paths = this.navigationService.getPaths();
+
     this.form = new FormGroup<Form<GroupChange>>({
       uuid: new FormControl<string>(this.group.uuid, { nonNullable: true, validators: [Validators.required] }),
       name: new FormControl<string>(this.group.name, { nonNullable: true, validators: [Validators.required] }),
