@@ -16,10 +16,6 @@ export class CopyrightComponent implements OnInit {
 
   constructor(private readonly environmentService: EnvironmentService) {}
 
-  get copyright(): string {
-    return !this.short ? `© 2021-${this.year} «${this.brand}»` : `© ${this.year}`;
-  }
-
   ngOnInit(): void {
     this.year = new Date().getFullYear();
     this.brand = this.environmentService.getEnvironments().brand;

@@ -1,1 +1,9 @@
-{{ copyright }}
+<ng-container *ngIf="short; then shortCopyright; else fullCopyright"></ng-container>
+
+<ng-template #shortCopyright>
+  <span>© {{ year }}</span>
+</ng-template>
+
+<ng-template #fullCopyright>
+  <span i18n="Layout Footer|Copyright">© 2021-{{ year }} «{{ brand }}». All right reserved.</span>
+</ng-template>
