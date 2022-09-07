@@ -7,11 +7,11 @@ import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { MockModule } from 'ng-mocks';
 import { mock } from 'ts-mockito';
 
+import { providerOf } from '@bunch/core/testing';
 import { GroupFacade } from '@bunch/groups/state';
 import { WidthModule } from '@bunch/web/ui/theming';
 
 import { EditFormComponent } from './edit-form.component';
-import { providerOf } from '@bunch/core/testing';
 
 describe('EditFormComponent', () => {
   let component: EditFormComponent;
