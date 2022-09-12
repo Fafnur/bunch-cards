@@ -58,6 +58,17 @@ export class GroupCreateForm implements GroupCreate {
 }
 
 export class GroupChangeForm implements GroupChange {
+  @IsNotEmpty({
+    context: { errorCode: FormErrorType.IsNotEmpty },
+  })
+  @IsString({
+    context: { errorCode: FormErrorType.IsString },
+  })
+  @Length(36, 36, {
+    context: { errorCode: 'isLength' },
+  })
+  uuid!: string;
+
   @Length(1, 60, {
     context: { errorCode: 'isLength' },
   })
