@@ -4,12 +4,24 @@ import { Action } from '@ngrx/store';
 import { fetch } from '@nrwl/angular';
 import { map } from 'rxjs';
 
+import { loginSuccess } from '@bunch/auth/state';
 import { UserManager } from '@bunch/users/manager';
 
 import * as UserActions from './user.actions';
 
 @Injectable()
 export class UserEffects implements OnInitEffects {
+  loginSuccess$ = createEffect(() => {
+    return this.actions$.pipe(
+      ofType(loginSuccess),
+      fetch({
+        id: () => 'login-success',
+        run: () => UserActions.load(),
+        onError: (action, error) => console.error(error),
+      })
+    );
+  });
+
   init$ = createEffect(() => {
     return this.actions$.pipe(
       ofType(UserActions.init),
