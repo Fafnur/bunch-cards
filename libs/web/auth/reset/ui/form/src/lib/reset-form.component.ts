@@ -6,7 +6,7 @@ import { AuthSecrets } from '@bunch/auth/common';
 import { AuthFacade } from '@bunch/auth/state';
 import { NavigationService } from '@bunch/core/navigation';
 import { DestroyService } from '@bunch/core/utils/destroy';
-import { Form } from '@bunch/core/utils/types';
+import { FormFor } from '@bunch/core/utils/types';
 import { ResetNotifyService } from '@bunch/web/auth/reset/ui/notify';
 
 @Component({
@@ -20,7 +20,7 @@ export class ResetFormComponent implements OnInit {
   submitted = false;
   error = false;
 
-  readonly form = new FormGroup<Form<AuthSecrets>>({
+  readonly form = new FormGroup<FormFor<AuthSecrets>>({
     email: new FormControl('', { nonNullable: true, validators: [Validators.required, Validators.email] }),
   });
 

@@ -4,7 +4,7 @@ import { takeUntil, tap } from 'rxjs';
 
 import { NavigationPaths, NavigationService } from '@bunch/core/navigation';
 import { DestroyService } from '@bunch/core/utils/destroy';
-import { Form } from '@bunch/core/utils/types';
+import { FormFor } from '@bunch/core/utils/types';
 import { Group, GroupChange } from '@bunch/groups/common';
 import { GroupFacade } from '@bunch/groups/state';
 
@@ -19,7 +19,7 @@ export class EditFormComponent implements OnInit {
   @Input() group!: Group;
   @Output() edited = new EventEmitter<Group>();
 
-  form!: FormGroup<Form<GroupChange>>;
+  form!: FormGroup<FormFor<GroupChange>>;
 
   submitted = false;
 
@@ -35,7 +35,7 @@ export class EditFormComponent implements OnInit {
   ngOnInit(): void {
     this.paths = this.navigationService.getPaths();
 
-    this.form = new FormGroup<Form<GroupChange>>({
+    this.form = new FormGroup<FormFor<GroupChange>>({
       uuid: new FormControl<string>(this.group.uuid, { nonNullable: true, validators: [Validators.required] }),
       name: new FormControl<string>(this.group.name, { nonNullable: true, validators: [Validators.required] }),
       cover: new FormControl<string | null>(this.group.cover),

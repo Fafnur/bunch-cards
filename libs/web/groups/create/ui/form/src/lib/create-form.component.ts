@@ -3,7 +3,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { takeUntil, tap } from 'rxjs';
 
 import { DestroyService } from '@bunch/core/utils/destroy';
-import { Form } from '@bunch/core/utils/types';
+import { FormFor } from '@bunch/core/utils/types';
 import { uuidv4 } from '@bunch/core/utils/uuid';
 import { Group, GroupCreate } from '@bunch/groups/common';
 import { GroupFacade } from '@bunch/groups/state';
@@ -18,7 +18,7 @@ import { GroupFacade } from '@bunch/groups/state';
 export class CreateFormComponent implements OnInit {
   @Output() created = new EventEmitter<Group>();
 
-  readonly form = new FormGroup<Form<GroupCreate>>({
+  readonly form = new FormGroup<FormFor<GroupCreate>>({
     uuid: new FormControl<string>(uuidv4(), { nonNullable: true, validators: [Validators.required] }),
     name: new FormControl<string>('', { nonNullable: true, validators: [Validators.required] }),
     cover: new FormControl<string | null>(null),

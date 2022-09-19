@@ -24,6 +24,16 @@ export class CardFacade {
     map(({ error }) => error)
   );
 
+  createSuccess$ = this.actions$.pipe(
+    ofType(CardActions.createSuccess),
+    map(({ card }) => card)
+  );
+
+  createFailure$ = this.actions$.pipe(
+    ofType(CardActions.createFailure),
+    map(({ error }) => error)
+  );
+
   loadOneSuccess$ = (uuid: string) =>
     this.actions$.pipe(
       ofType(CardActions.loadOneSuccess),
@@ -52,14 +62,14 @@ export class CardFacade {
       map(({ error }) => error)
     );
 
-  createSuccess$ = (uuid: string) =>
+  createOneSuccess$ = (uuid: string) =>
     this.actions$.pipe(
       ofType(CardActions.createSuccess),
       filter((response) => response.card.uuid === uuid),
       map(({ card }) => card)
     );
 
-  createFailure$ = (uuid: string) =>
+  createOneFailure$ = (uuid: string) =>
     this.actions$.pipe(
       ofType(CardActions.createFailure),
       filter((response) => response.cardCreate.uuid === uuid),
@@ -79,6 +89,8 @@ export class CardFacade {
       filter((response) => response.uuid === uuid),
       map(({ error }) => error)
     );
+
+  cardsByGroup$ = (uuid: string) => this.store.select(CardSelectors.selectCardsByGroupUuid(uuid));
 
   constructor(private readonly actions$: Actions, private readonly store: Store) {}
 

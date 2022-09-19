@@ -6,7 +6,7 @@ import { AuthRegister } from '@bunch/auth/common';
 import { AuthFacade } from '@bunch/auth/state';
 import { NavigationService } from '@bunch/core/navigation';
 import { DestroyService } from '@bunch/core/utils/destroy';
-import { Form } from '@bunch/core/utils/types';
+import { FormFor } from '@bunch/core/utils/types';
 import { uuidv4 } from '@bunch/core/utils/uuid';
 import { RegisterNotifyService } from '@bunch/web/auth/register/ui/notify';
 
@@ -21,7 +21,7 @@ export class RegisterFormComponent implements OnInit {
   submitted = false;
   error = false;
 
-  readonly form = new FormGroup<Form<AuthRegister>>({
+  readonly form = new FormGroup<FormFor<AuthRegister>>({
     password: new FormControl('', { nonNullable: true, validators: [Validators.required, Validators.minLength(6)] }),
     email: new FormControl('', { nonNullable: true, validators: [Validators.required, Validators.email] }),
     firstname: new FormControl('', { nonNullable: true, validators: [Validators.required] }),

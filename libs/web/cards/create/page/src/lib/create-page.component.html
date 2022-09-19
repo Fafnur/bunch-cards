@@ -1,1 +1,2 @@
-<p>create-page works!</p>
+<bunch-card-create-form *ngIf="!group"></bunch-card-create-form>
+<bunch-card-create-form [group]="group" *ngIf="group"></bunch-card-create-form>

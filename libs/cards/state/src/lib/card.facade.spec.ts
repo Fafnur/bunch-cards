@@ -97,7 +97,7 @@ describe('CardFacade', () => {
     actions = hot('a', { a: action });
     const expected = hot('a', { a: CARD_STUB });
 
-    expect(facade.createSuccess$(CARD_STUB.uuid)).toBeObservable(expected);
+    expect(facade.createOneSuccess$(CARD_STUB.uuid)).toBeObservable(expected);
   });
 
   it('should emit createFailure$', () => {
@@ -106,7 +106,7 @@ describe('CardFacade', () => {
     actions = hot('a', { a: action });
     const expected = hot('a', { a: HTTP_ERROR_STUB });
 
-    expect(facade.createFailure$(CARD_CREATE_STUB.uuid)).toBeObservable(expected);
+    expect(facade.createOneFailure$(CARD_CREATE_STUB.uuid)).toBeObservable(expected);
   });
 
   it('should emit changeSuccess$', () => {
