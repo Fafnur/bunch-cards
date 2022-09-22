@@ -4,6 +4,7 @@ import { Action, Store } from '@ngrx/store';
 import { fetch } from '@nrwl/angular';
 import { map } from 'rxjs';
 
+import { cardRemoveSuccess } from '@bunch/cards/state';
 import { isNotNullOrUndefined } from '@bunch/core/utils/operators';
 import { GroupManager } from '@bunch/groups/manager';
 import { selectUser } from '@bunch/users/state';
@@ -93,6 +94,17 @@ export class GroupEffects implements OnInitEffects {
       })
     );
   });
+
+  // cardRemoveSuccess$ = createEffect(() => {
+  //   return this.actions$.pipe(
+  //     ofType(cardRemoveSuccess),
+  //     fetch({
+  //       id: () => 'card-remove-success',
+  //       run: ({ card }) =>  { groups: updatedGroups }))),
+  //       onError: (action, error) => GroupActions.syncFailure({ error }),
+  //     })
+  //   );
+  // });
 
   constructor(private readonly actions$: Actions, private readonly groupManager: GroupManager, private readonly store: Store) {}
 

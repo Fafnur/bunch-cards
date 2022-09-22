@@ -73,9 +73,9 @@ export class CardEffects implements OnInitEffects {
     return this.actions$.pipe(
       ofType(CardActions.remove),
       fetch({
-        id: ({ uuid }) => `remove-${uuid}`,
-        run: ({ uuid }) => this.cardManager.remove(uuid).pipe(map(() => CardActions.removeSuccess({ uuid }))),
-        onError: ({ uuid }, error) => CardActions.removeFailure({ uuid, error }),
+        id: ({ card }) => `remove-${card.uuid}`,
+        run: ({ card }) => this.cardManager.remove(card.uuid).pipe(map(() => CardActions.removeSuccess({ card }))),
+        onError: ({ card }, error) => CardActions.removeFailure({ card, error }),
       })
     );
   });

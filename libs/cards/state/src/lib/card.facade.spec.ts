@@ -128,7 +128,7 @@ describe('CardFacade', () => {
   });
 
   it('should emit removeSuccess$', () => {
-    const action = CardActions.removeSuccess({ uuid: CARD_STUB.uuid });
+    const action = CardActions.removeSuccess({ card: CARD_STUB });
 
     actions = hot('a', { a: action });
     const expected = hot('a', { a: undefined });
@@ -137,7 +137,7 @@ describe('CardFacade', () => {
   });
 
   it('should emit removeFailure$', () => {
-    const action = CardActions.removeFailure({ uuid: CARD_STUB.uuid, error: HTTP_ERROR_STUB });
+    const action = CardActions.removeFailure({ card: CARD_STUB, error: HTTP_ERROR_STUB });
 
     actions = hot('a', { a: action });
     const expected = hot('a', { a: HTTP_ERROR_STUB });
@@ -170,9 +170,9 @@ describe('CardFacade', () => {
   });
 
   it('remove() should dispatch action', () => {
-    facade.remove(CARD_STUB.uuid);
+    facade.remove(CARD_STUB);
 
-    expect(dispatchSpy).toHaveBeenCalledWith(CardActions.remove({ uuid: CARD_STUB.uuid }));
+    expect(dispatchSpy).toHaveBeenCalledWith(CardActions.remove({ card: CARD_STUB }));
   });
 
   it('sync() should dispatch action', () => {

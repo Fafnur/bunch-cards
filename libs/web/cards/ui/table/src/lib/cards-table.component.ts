@@ -18,7 +18,7 @@ export class CardsTableComponent implements OnInit {
 
   cards!: Card[];
 
-  readonly columns: string[] = ['original', 'translation'];
+  readonly columns: string[] = ['original', 'translation', 'actions'];
 
   constructor(
     private readonly changeDetectorRef: ChangeDetectorRef,
@@ -33,7 +33,6 @@ export class CardsTableComponent implements OnInit {
         .pipe(
           tap((cards) => {
             this.cards = cards;
-            console.log(this.cards);
             this.changeDetectorRef.markForCheck();
           }),
           takeUntil(this.destroy$)
@@ -50,5 +49,10 @@ export class CardsTableComponent implements OnInit {
         )
         .subscribe();
     }
+  }
+
+  onRemove(card: Card): void {
+    const groupUuid = card.groupUuid;
+    this.cardFacade.remove(card.uuid);
   }
 }

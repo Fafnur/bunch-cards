@@ -51,14 +51,14 @@ export class CardFacade {
   removeSuccess$ = (uuid: string): Observable<void> =>
     this.actions$.pipe(
       ofType(CardActions.removeSuccess),
-      filter((response) => response.uuid === uuid),
+      filter((response) => response.card.uuid === uuid),
       map(() => undefined)
     );
 
   removeFailure$ = (uuid: string) =>
     this.actions$.pipe(
       ofType(CardActions.removeFailure),
-      filter((response) => response.uuid === uuid),
+      filter((response) => response.card.uuid === uuid),
       map(({ error }) => error)
     );
 
@@ -110,8 +110,8 @@ export class CardFacade {
     this.store.dispatch(CardActions.change({ cardChange, uuid }));
   }
 
-  remove(uuid: string): void {
-    this.store.dispatch(CardActions.remove({ uuid }));
+  remove(card: Card): void {
+    this.store.dispatch(CardActions.remove({ card }));
   }
 
   sync(cards: Card[]): void {

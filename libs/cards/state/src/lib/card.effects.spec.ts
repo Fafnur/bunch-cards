@@ -115,16 +115,16 @@ describe('CardEffects', () => {
   });
 
   it('remove$ should return removeSuccess()', () => {
-    actions = hot('a', { a: CardActions.remove({ uuid: CARD_STUB.uuid }) });
-    const expected = hot('a', { a: CardActions.removeSuccess({ uuid: CARD_STUB.uuid }) });
+    actions = hot('a', { a: CardActions.remove({ card: CARD_STUB }) });
+    const expected = hot('a', { a: CardActions.removeSuccess({ card: CARD_STUB }) });
     when(cardManagerMock.remove(CARD_STUB.uuid)).thenReturn(hot('a', { a: undefined }));
 
     expect(effects.remove$).toBeObservable(expected);
   });
 
   it('remove$ should return removeFailure()', () => {
-    actions = hot('a', { a: CardActions.remove({ uuid: CARD_STUB.uuid }) });
-    const expected = hot('a', { a: CardActions.removeFailure({ uuid: CARD_STUB.uuid, error: API_ERROR_STUB }) });
+    actions = hot('a', { a: CardActions.remove({ card: CARD_STUB }) });
+    const expected = hot('a', { a: CardActions.removeFailure({ card: CARD_STUB, error: API_ERROR_STUB }) });
     when(cardManagerMock.remove(CARD_STUB.uuid)).thenReturn(hot('#', null, API_ERROR_STUB));
 
     expect(effects.remove$).toBeObservable(expected);

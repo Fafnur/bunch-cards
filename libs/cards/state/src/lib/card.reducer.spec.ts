@@ -66,7 +66,7 @@ describe('Card Reducer', () => {
 
   it('removeSuccess() should change card', () => {
     state = getState({}, [CARD_STUB]);
-    const action = CardActions.removeSuccess({ uuid: CARD_STUB.uuid });
+    const action = CardActions.removeSuccess({ card: CARD_STUB });
     const result = cardReducer(state, action);
 
     expect(result.ids.length).toBe(0);
