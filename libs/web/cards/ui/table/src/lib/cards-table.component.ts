@@ -53,6 +53,11 @@ export class CardsTableComponent implements OnInit {
 
   onRemove(card: Card): void {
     const groupUuid = card.groupUuid;
-    this.cardFacade.remove(card.uuid);
+    this.cardFacade.remove(card);
+  }
+
+  onChange(card: Card): void {
+    // const groupUuid = card.groupUuid;
+    // this.cardFacade.remove(card.uuid);
   }
 }

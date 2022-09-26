@@ -95,16 +95,28 @@ export class GroupEffects implements OnInitEffects {
     );
   });
 
-  // cardRemoveSuccess$ = createEffect(() => {
-  //   return this.actions$.pipe(
-  //     ofType(cardRemoveSuccess),
-  //     fetch({
-  //       id: () => 'card-remove-success',
-  //       run: ({ card }) =>  { groups: updatedGroups }))),
-  //       onError: (action, error) => GroupActions.syncFailure({ error }),
-  //     })
-  //   );
-  // });
+  cardRemoveSuccess$ = createEffect(() => {
+    return this.actions$.pipe(
+      ofType(cardRemoveSuccess),
+      fetch({
+        id: () => 'card-remove-success',
+        run: ({ card }) =>
+          this.groupManager.loadOne(card.groupUuid).pipe(
+            isNotNullOrUndefined(),
+            map((group) =>
+              GroupActions.change({
+                uuid: group.uuid,
+                groupChange: {
+                  ...group,
+                  cards: group.cards.filter((item) => item !== card.uuid),
+                },
+              })
+            )
+          ),
+        onError: (action, error) => GroupActions.syncFailure({ error }),
+      })
+    );
+  });
 
   constructor(private readonly actions$: Actions, private readonly groupManager: GroupManager, private readonly store: Store) {}
 

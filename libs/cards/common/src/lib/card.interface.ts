@@ -32,4 +32,5 @@ export interface CardCreate {
   readonly cover?: string | null;
 }
 
-export type CardChange = Partial<CardEntity>;
+// eslint-disable-next-line @typescript-eslint/no-empty-interface
+export interface CardChange extends CardCreate {}
