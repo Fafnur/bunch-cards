@@ -3,6 +3,7 @@ import { takeUntil, tap } from 'rxjs';
 
 import { Card } from '@bunch/cards/common';
 import { CardFacade } from '@bunch/cards/state';
+import { NavigationPaths, NavigationService } from '@bunch/core/navigation';
 import { DestroyService } from '@bunch/core/utils/destroy';
 import { Group } from '@bunch/groups/common';
 
@@ -18,15 +19,20 @@ export class CardsTableComponent implements OnInit {
 
   cards!: Card[];
 
+  paths!: NavigationPaths;
+
   readonly columns: string[] = ['original', 'translation', 'actions'];
 
   constructor(
     private readonly changeDetectorRef: ChangeDetectorRef,
     private readonly cardFacade: CardFacade,
-    private readonly destroy$: DestroyService
+    private readonly destroy$: DestroyService,
+    private readonly navigationService: NavigationService
   ) {}
 
   ngOnInit(): void {
+    this.paths = this.navigationService.getPaths();
+
     if (this.group) {
       this.cardFacade
         .cardsByGroup$(this.group.uuid)
@@ -52,7 +58,6 @@ export class CardsTableComponent implements OnInit {
   }
 
   onRemove(card: Card): void {
-    const groupUuid = card.groupUuid;
     this.cardFacade.remove(card);
   }
 

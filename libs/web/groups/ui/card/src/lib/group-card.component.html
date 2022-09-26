@@ -1,6 +1,6 @@
 <mat-card *ngIf="group; else loading">
   <mat-card-title>{{ group.name }}</mat-card-title>
-  <mat-card-subtitle>Cards {{ group.cards.length }}</mat-card-subtitle>
+  <mat-card-subtitle>Cards {{ cards.length }}</mat-card-subtitle>
   <mat-divider inset></mat-divider>
   <mat-card-actions align="end">
     <ng-content select="[actions]"></ng-content>

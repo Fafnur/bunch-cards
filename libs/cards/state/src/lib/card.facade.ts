@@ -34,6 +34,16 @@ export class CardFacade {
     map(({ error }) => error)
   );
 
+  changeSuccess$ = this.actions$.pipe(
+    ofType(CardActions.changeSuccess),
+    map(({ card }) => card)
+  );
+
+  changeFailure$ = this.actions$.pipe(
+    ofType(CardActions.changeFailure),
+    map(({ error }) => error)
+  );
+
   loadOneSuccess$ = (uuid: string) =>
     this.actions$.pipe(
       ofType(CardActions.loadOneSuccess),
@@ -76,14 +86,14 @@ export class CardFacade {
       map(({ error }) => error)
     );
 
-  changeSuccess$ = (uuid: string) =>
+  changeOneSuccess$ = (uuid: string) =>
     this.actions$.pipe(
       ofType(CardActions.changeSuccess),
       filter((response) => response.card.uuid === uuid),
       map(({ card }) => card)
     );
 
-  changeFailure$ = (uuid: string) =>
+  changeOneFailure$ = (uuid: string) =>
     this.actions$.pipe(
       ofType(CardActions.changeFailure),
       filter((response) => response.uuid === uuid),

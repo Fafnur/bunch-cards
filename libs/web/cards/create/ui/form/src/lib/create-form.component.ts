@@ -71,15 +71,6 @@ export class CreateFormComponent implements OnInit {
     this.cardFacade.createSuccess$
       .pipe(
         tap((card) => {
-          const group = this.group ?? this.groups.find((item) => item.uuid === card.groupUuid);
-          if (group) {
-            this.groupFacade.change(group.uuid, {
-              uuid: group.uuid,
-              name: group.name, // TODO: Fix
-              cards: [...group.cards, card.uuid],
-            });
-          }
-
           this.created.emit(card);
           this.form.reset();
           for (const control of Object.values(this.form.controls)) {

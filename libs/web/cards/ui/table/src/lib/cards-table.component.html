@@ -15,9 +15,9 @@
       <button type="button" mat-icon-button (click)="onRemove(element)">
         <mat-icon>remove</mat-icon>
       </button>
-      <button type="button" mat-icon-button (click)="onChange(element)">
+      <a mat-icon-button [routerLink]="paths.cardEdit | path: { uuid: element.uuid }">
         <mat-icon>edit</mat-icon>
-      </button>
+      </a>
     </td>
   </ng-container>
 

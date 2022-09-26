@@ -4,7 +4,6 @@ import { Action, Store } from '@ngrx/store';
 import { fetch } from '@nrwl/angular';
 import { map } from 'rxjs';
 
-import { cardRemoveSuccess } from '@bunch/cards/state';
 import { isNotNullOrUndefined } from '@bunch/core/utils/operators';
 import { GroupManager } from '@bunch/groups/manager';
 import { selectUser } from '@bunch/users/state';
@@ -90,29 +89,6 @@ export class GroupEffects implements OnInitEffects {
         id: () => 'sync',
         run: ({ groups }) =>
           this.groupManager.sync(groups).pipe(map((updatedGroups) => GroupActions.syncSuccess({ groups: updatedGroups }))),
-        onError: (action, error) => GroupActions.syncFailure({ error }),
-      })
-    );
-  });
-
-  cardRemoveSuccess$ = createEffect(() => {
-    return this.actions$.pipe(
-      ofType(cardRemoveSuccess),
-      fetch({
-        id: () => 'card-remove-success',
-        run: ({ card }) =>
-          this.groupManager.loadOne(card.groupUuid).pipe(
-            isNotNullOrUndefined(),
-            map((group) =>
-              GroupActions.change({
-                uuid: group.uuid,
-                groupChange: {
-                  ...group,
-                  cards: group.cards.filter((item) => item !== card.uuid),
-                },
-              })
-            )
-          ),
         onError: (action, error) => GroupActions.syncFailure({ error }),
       })
     );

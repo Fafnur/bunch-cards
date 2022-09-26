@@ -27,8 +27,6 @@ export class GroupManager {
       createdAt: currentDate,
       updatedAt: currentDate,
       owner: user.uuid,
-      cards: [],
-      orderCards: payload.orderCards ?? [],
       order: 1,
     };
 

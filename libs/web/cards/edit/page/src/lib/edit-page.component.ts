@@ -15,10 +15,12 @@ import { GroupFacade } from '@bunch/groups/state';
   templateUrl: './edit-page.component.html',
   styleUrls: ['./edit-page.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
+  providers: [DestroyService],
 })
 export class EditPageComponent implements OnInit {
   group?: Group;
-  card?: Card;
+
+  card!: Card;
 
   constructor(
     private readonly changeDetectorRef: ChangeDetectorRef,

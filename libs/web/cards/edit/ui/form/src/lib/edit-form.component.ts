@@ -59,7 +59,7 @@ export class EditFormComponent implements OnInit {
       this.form.controls.groupUuid.disable();
     }
 
-    this.cardFacade.createFailure$
+    this.cardFacade.changeFailure$
       .pipe(
         tap(() => {
           this.submitted = false;
@@ -69,18 +69,9 @@ export class EditFormComponent implements OnInit {
       )
       .subscribe();
 
-    this.cardFacade.createSuccess$
+    this.cardFacade.changeSuccess$
       .pipe(
         tap((card) => {
-          const group = this.group ?? this.groups.find((item) => item.uuid === card.groupUuid);
-          if (group) {
-            this.groupFacade.change(group.uuid, {
-              uuid: group.uuid,
-              name: group.name, // TODO: Fix
-              cards: [...group.cards, card.uuid],
-            });
-          }
-
           this.edited.emit(card);
           this.form.reset();
           for (const control of Object.values(this.form.controls)) {

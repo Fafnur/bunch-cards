@@ -1,1 +1,22 @@
-<p>edit-form works!</p>
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+  <mat-form-field bunchFullWidth appearance="fill" [class.is-disable]="form.controls.groupUuid.disabled">
+    <mat-label>Bunch</mat-label>
+    <mat-select [formControl]="form.controls.groupUuid">
+      <mat-option *ngFor="let group of groups" [value]="group.uuid">
+        {{ group.name }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field bunchFullWidth appearance="fill">
+    <mat-label>Original</mat-label>
+    <input [formControl]="form.controls.original" matInput placeholder="Apple" />
+  </mat-form-field>
+
+  <mat-form-field bunchFullWidth appearance="fill">
+    <mat-label>Translation</mat-label>
+    <input [formControl]="form.controls.translation" matInput placeholder="Apple on russian" />
+  </mat-form-field>
+
+  <button type="submit" bunchButtonMedium mat-raised-button color="primary" [disabled]="submitted">Edit</button>
+</form>

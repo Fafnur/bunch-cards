@@ -41,6 +41,10 @@ const routes: Routes = [
         path: NAVIGATION_PATHS.cardCreate,
         loadChildren: () => import('@bunch/web/cards/create/page').then((modules) => modules.CreatePageModule),
       },
+      {
+        path: NAVIGATION_PATHS.cardEdit,
+        loadChildren: () => import('@bunch/web/cards/edit/page').then((modules) => modules.EditPageModule),
+      },
     ],
   },
 ];
