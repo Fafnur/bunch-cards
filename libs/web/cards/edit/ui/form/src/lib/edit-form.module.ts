@@ -5,7 +5,9 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
+import { RouterLinkWithHref } from '@angular/router';
 
+import { NavigationPipesModule } from '@bunch/core/navigation';
 import { ButtonMediumModule, WidthModule } from '@bunch/web/ui/theming';
 
 import { EditFormComponent } from './edit-form.component';
@@ -20,6 +22,8 @@ import { EditFormComponent } from './edit-form.component';
     WidthModule,
     MatSelectModule,
     ButtonMediumModule,
+    RouterLinkWithHref,
+    NavigationPipesModule,
   ],
   declarations: [EditFormComponent],
   exports: [EditFormComponent],

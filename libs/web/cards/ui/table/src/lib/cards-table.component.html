@@ -24,3 +24,10 @@
   <tr mat-header-row *matHeaderRowDef="columns"></tr>
   <tr mat-row *matRowDef="let row; columns: columns"></tr>
 </table>
+
+<div>
+  <a bunchButtonMedium mat-raised-button color="primary" *ngIf="group" [routerLink]="paths.groupCardCreate | path: { uuid: group.uuid }">
+    Add
+  </a>
+  <a bunchButtonMedium mat-raised-button color="primary" *ngIf="!group" [routerLink]="paths.cardCreate | path">Add</a>
+</div>

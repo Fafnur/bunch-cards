@@ -4,6 +4,7 @@ import { takeUntil, tap } from 'rxjs';
 
 import { Card, CardChange } from '@bunch/cards/common';
 import { CardFacade } from '@bunch/cards/state';
+import { NavigationPaths, NavigationService } from '@bunch/core/navigation';
 import { DestroyService } from '@bunch/core/utils/destroy';
 import { FormFor } from '@bunch/core/utils/types';
 import { Group } from '@bunch/groups/common';
@@ -33,14 +34,19 @@ export class EditFormComponent implements OnInit {
 
   submitted = false;
 
+  paths!: NavigationPaths;
+
   constructor(
     private readonly changeDetectorRef: ChangeDetectorRef,
     private readonly cardFacade: CardFacade,
     private readonly groupFacade: GroupFacade,
-    private readonly destroy$: DestroyService
+    private readonly destroy$: DestroyService,
+    private readonly navigationService: NavigationService
   ) {}
 
   ngOnInit(): void {
+    this.paths = this.navigationService.getPaths();
+
     this.groupFacade.groups$
       .pipe(
         tap((groups) => {
