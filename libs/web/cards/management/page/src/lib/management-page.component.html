@@ -1,1 +1,2 @@
-<p>management-page works!</p>
+<bunch-cards-table *ngIf="!group"></bunch-cards-table>
+<bunch-cards-table [group]="group" *ngIf="group"></bunch-cards-table>

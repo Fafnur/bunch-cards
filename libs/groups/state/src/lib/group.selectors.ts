@@ -11,3 +11,5 @@ export const selectLoaded = createSelector(selectGroupState, (state) => state.lo
 export const selectGroups = createSelector(selectGroupState, (state) => selectAll(state));
 
 export const selectGroupEntities = createSelector(selectGroupState, (state) => selectEntities(state));
+
+export const selectGroup = (uuid: string) => createSelector(selectGroupEntities, (entities) => entities[uuid] ?? null);

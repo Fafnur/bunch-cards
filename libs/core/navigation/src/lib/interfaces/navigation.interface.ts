@@ -23,6 +23,7 @@ export interface NavigationPaths {
   groupView: string;
   groupCardCreate: string;
   groupEdit: string;
+  groupCardsEdit: string;
 
   cardsManagement: string;
   cardCreate: string;
@@ -56,6 +57,7 @@ export const NAVIGATION_PATHS: NavigationPaths = {
   groupView: 'dictionary/groups/:uuid/view',
   groupCardCreate: 'dictionary/groups/:uuid/cards/create',
   groupEdit: 'dictionary/groups/:uuid/edit',
+  groupCardsEdit: 'dictionary/groups/:uuid/cards/edit',
 
   cardsManagement: 'dictionary/cards',
   cardCreate: 'dictionary/cards/create',

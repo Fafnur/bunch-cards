@@ -58,12 +58,14 @@ export class EditFormComponent implements OnInit {
       )
       .subscribe();
 
+    console.log(this.card);
+
     this.form.patchValue(this.card);
 
-    if (this.group) {
-      this.form.patchValue({ groupUuid: this.group.uuid });
-      this.form.controls.groupUuid.disable();
-    }
+    // if (this.group) {
+    //   this.form.patchValue({ groupUuid: this.group.uuid });
+    //   this.form.controls.groupUuid.disable();
+    // }
 
     this.cardFacade.changeFailure$
       .pipe(

@@ -38,6 +38,10 @@ const routes: Routes = [
         loadChildren: () => import('@bunch/web/cards/management/page').then((modules) => modules.ManagementPageModule),
       },
       {
+        path: NAVIGATION_PATHS.groupCardsEdit,
+        loadChildren: () => import('@bunch/web/cards/management/page').then((modules) => modules.ManagementPageModule),
+      },
+      {
         path: NAVIGATION_PATHS.cardCreate,
         loadChildren: () => import('@bunch/web/cards/create/page').then((modules) => modules.CreatePageModule),
       },

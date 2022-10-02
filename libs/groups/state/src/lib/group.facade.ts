@@ -7,12 +7,14 @@ import { Group, GroupChange, GroupCreate } from '@bunch/groups/common';
 
 import * as GroupActions from './group.actions';
 import * as GroupSelectors from './group.selectors';
+import { selectGroupEntities } from './group.selectors';
 
 @Injectable()
 export class GroupFacade {
   loaded$ = this.store.select(GroupSelectors.selectLoaded);
 
   groups$ = this.store.select(GroupSelectors.selectGroups);
+  groupsEntities$ = this.store.select(GroupSelectors.selectGroupEntities);
 
   loadSuccess$ = this.actions$.pipe(
     ofType(GroupActions.loadSuccess),
@@ -23,6 +25,8 @@ export class GroupFacade {
     ofType(GroupActions.loadFailure),
     map(({ error }) => error)
   );
+
+  group$ = (uuid: string) => this.store.select(GroupSelectors.selectGroup(uuid));
 
   loadOneSuccess$ = (uuid: string) =>
     this.actions$.pipe(

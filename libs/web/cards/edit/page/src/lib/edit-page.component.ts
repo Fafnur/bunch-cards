@@ -44,6 +44,8 @@ export class EditPageComponent implements OnInit {
           tap((card) => {
             this.card = card;
 
+            console.log(card);
+
             this.changeDetectorRef.markForCheck();
           }),
           filter((card) => !!card.groupUuid),

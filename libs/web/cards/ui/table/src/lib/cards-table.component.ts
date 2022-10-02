@@ -1,4 +1,5 @@
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Input, OnInit } from '@angular/core';
+import { Dictionary } from '@ngrx/entity';
 import { takeUntil, tap } from 'rxjs';
 
 import { Card } from '@bunch/cards/common';
@@ -6,6 +7,7 @@ import { CardFacade } from '@bunch/cards/state';
 import { NavigationPaths, NavigationService } from '@bunch/core/navigation';
 import { DestroyService } from '@bunch/core/utils/destroy';
 import { Group } from '@bunch/groups/common';
+import { GroupFacade } from '@bunch/groups/state';
 
 @Component({
   selector: 'bunch-cards-table',
@@ -18,14 +20,16 @@ export class CardsTableComponent implements OnInit {
   @Input() group?: Group;
 
   cards!: Card[];
+  groups!: Dictionary<Group>;
 
   paths!: NavigationPaths;
 
-  readonly columns: string[] = ['original', 'translation', 'actions'];
+  readonly columns: string[] = ['groupName', 'original', 'translation', 'actions'];
 
   constructor(
     private readonly changeDetectorRef: ChangeDetectorRef,
     private readonly cardFacade: CardFacade,
+    private readonly groupFacade: GroupFacade,
     private readonly destroy$: DestroyService,
     private readonly navigationService: NavigationService
   ) {}
@@ -33,12 +37,25 @@ export class CardsTableComponent implements OnInit {
   ngOnInit(): void {
     this.paths = this.navigationService.getPaths();
 
+    this.groupFacade.groupsEntities$
+      .pipe(
+        tap((groups) => {
+          this.groups = groups;
+
+          this.changeDetectorRef.markForCheck();
+        }),
+        takeUntil(this.destroy$)
+      )
+      .subscribe();
+
     if (this.group) {
       this.cardFacade
         .cardsByGroup$(this.group.uuid)
         .pipe(
           tap((cards) => {
             this.cards = cards;
+            this.cards.sort((a, b) => (a.groupUuid < b.groupUuid ? 1 : -1));
+
             this.changeDetectorRef.markForCheck();
           }),
           takeUntil(this.destroy$)
@@ -49,6 +66,7 @@ export class CardsTableComponent implements OnInit {
         .pipe(
           tap((cards) => {
             this.cards = cards;
+            this.cards.sort((a, b) => (a.groupUuid < b.groupUuid ? 1 : -1));
             this.changeDetectorRef.markForCheck();
           }),
           takeUntil(this.destroy$)

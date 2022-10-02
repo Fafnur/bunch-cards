@@ -4,6 +4,7 @@ import { takeUntil, tap } from 'rxjs';
 
 import { Card, CardCreate } from '@bunch/cards/common';
 import { CardFacade } from '@bunch/cards/state';
+import { NavigationPaths, NavigationService } from '@bunch/core/navigation';
 import { DestroyService } from '@bunch/core/utils/destroy';
 import { FormFor } from '@bunch/core/utils/types';
 import { uuidv4 } from '@bunch/core/utils/uuid';
@@ -24,6 +25,8 @@ export class CreateFormComponent implements OnInit {
 
   groups!: Group[];
 
+  paths!: NavigationPaths;
+
   readonly form = new FormGroup<FormFor<CardCreate>>({
     uuid: new FormControl<string>(uuidv4(), { nonNullable: true, validators: [Validators.required] }),
     original: new FormControl<string>('', { nonNullable: true, validators: [Validators.required] }),
@@ -38,10 +41,13 @@ export class CreateFormComponent implements OnInit {
     private readonly changeDetectorRef: ChangeDetectorRef,
     private readonly cardFacade: CardFacade,
     private readonly groupFacade: GroupFacade,
+    private readonly navigationService: NavigationService,
     private readonly destroy$: DestroyService
   ) {}
 
   ngOnInit(): void {
+    this.paths = this.navigationService.getPaths();
+
     this.groupFacade.groups$
       .pipe(
         tap((groups) => {
