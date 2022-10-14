@@ -1,5 +1,6 @@
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { ActivatedRoute } from '@angular/router';
 import { takeUntil, tap } from 'rxjs';
 
 import { Card, CardChange } from '@bunch/cards/common';
@@ -33,11 +34,13 @@ export class EditFormComponent implements OnInit {
   });
 
   submitted = false;
+  back = false;
 
   paths!: NavigationPaths;
 
   constructor(
     private readonly changeDetectorRef: ChangeDetectorRef,
+    private readonly route: ActivatedRoute,
     private readonly cardFacade: CardFacade,
     private readonly groupFacade: GroupFacade,
     private readonly destroy$: DestroyService,
@@ -45,6 +48,8 @@ export class EditFormComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    this.back = !!this.route.snapshot.queryParams['back'];
+
     this.paths = this.navigationService.getPaths();
 
     this.groupFacade.groups$
@@ -57,8 +62,6 @@ export class EditFormComponent implements OnInit {
         takeUntil(this.destroy$)
       )
       .subscribe();
-
-    console.log(this.card);
 
     this.form.patchValue(this.card);
 

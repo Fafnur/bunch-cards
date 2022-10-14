@@ -18,17 +18,10 @@
     <input [formControl]="form.controls.translation" matInput placeholder="Apple on russian" />
   </mat-form-field>
 
+  <a *ngIf="!back" [routerLink]="paths.cardsManagement | path" bunchButtonMedium mat-raised-button [disabled]="submitted">Cancel</a>
   <a
-    *ngIf="!form.controls.groupUuid.value"
-    [routerLink]="paths.cardsManagement | path"
-    bunchButtonMedium
-    mat-raised-button
-    [disabled]="submitted"
-    >Cancel</a
-  >
-  <a
-    *ngIf="form.controls.groupUuid.value"
-    [routerLink]="paths.groupEdit | path: { uuid: form.controls.groupUuid.value }"
+    *ngIf="back"
+    [routerLink]="paths.groupCardsEdit | path: { uuid: form.controls.groupUuid.value }"
     bunchButtonMedium
     mat-raised-button
     [disabled]="submitted"

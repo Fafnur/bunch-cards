@@ -25,7 +25,7 @@
       <button type="button" mat-icon-button (click)="onRemove(element)">
         <mat-icon>remove</mat-icon>
       </button>
-      <a mat-icon-button [routerLink]="paths.cardEdit | path: { uuid: element.uuid }">
+      <a mat-icon-button [routerLink]="paths.cardEdit | path: { uuid: element.uuid }" [queryParams]="{ back: group?.uuid }">
         <mat-icon>edit</mat-icon>
       </a>
     </td>
@@ -36,8 +36,12 @@
 </table>
 
 <div>
-  <a bunchButtonMedium mat-raised-button color="primary" *ngIf="group" [routerLink]="paths.groupCardCreate | path: { uuid: group.uuid }">
-    Add
-  </a>
-  <a bunchButtonMedium mat-raised-button color="primary" *ngIf="!group" [routerLink]="paths.cardCreate | path">Add</a>
+  <ng-container *ngIf="group">
+    <a bunchButtonMedium mat-raised-button [routerLink]="paths.groupsManagement | path"> Cancel </a>
+    <a bunchButtonMedium mat-raised-button color="primary" [routerLink]="paths.groupCardCreate | path: { uuid: group.uuid }"> Add </a>
+  </ng-container>
+  <ng-container *ngIf="!group">
+    <a bunchButtonMedium mat-raised-button [routerLink]="paths.cardsManagement | path"> Cancel </a>
+    <a bunchButtonMedium mat-raised-button color="primary" [routerLink]="paths.cardCreate | path">Add</a>
+  </ng-container>
 </div>
