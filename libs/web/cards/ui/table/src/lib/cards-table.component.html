@@ -35,7 +35,7 @@
   <tr mat-row *matRowDef="let row; columns: columns"></tr>
 </table>
 
-<div>
+<div class="actions">
   <ng-container *ngIf="group">
     <a bunchButtonMedium mat-raised-button [routerLink]="paths.groupsManagement | path"> Cancel </a>
     <a bunchButtonMedium mat-raised-button color="primary" [routerLink]="paths.groupCardCreate | path: { uuid: group.uuid }"> Add </a>

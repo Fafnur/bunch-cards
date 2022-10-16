@@ -18,6 +18,7 @@
     <input [formControl]="form.controls.translation" matInput placeholder="Apple on russian" />
   </mat-form-field>
 
-  <a [routerLink]="paths.groupsManagement | path" bunchButtonMedium mat-raised-button>Cancel</a>
+  <a [routerLink]="paths.cardsManagement | path" bunchButtonMedium mat-raised-button *ngIf="!group">Cancel</a>
+  <a [routerLink]="paths.groupCardsEdit | path: { uuid: group.uuid }" bunchButtonMedium mat-raised-button *ngIf="group">Cancel</a>
   <button type="submit" bunchButtonMedium mat-raised-button color="primary" [disabled]="submitted">Create</button>
 </form>

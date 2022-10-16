@@ -1,2 +1,12 @@
+@use 'libs/web/ui/stylesheets/mixins' as mixins;
+
 @import 'libs/web/ui/theming/src/lib/width/full-width.directive';
 @import 'libs/web/ui/theming/src/lib/button-medium/button-medium.directive';
+
+table {
+  margin-bottom: 1rem;
+
+  @include mixins.media-web() {
+    margin-bottom: 2rem;
+  }
+}
