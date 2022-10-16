@@ -1,7 +1,7 @@
-<form [formGroup]="form" (ngSubmit)="onSubmit()">
+<form automation-id="form" [formGroup]="form" (ngSubmit)="onSubmit()">
   <mat-form-field bunchFullWidth appearance="fill" [class.is-disable]="form.controls.groupUuid.disabled">
-    <mat-label>Bunch</mat-label>
-    <mat-select [formControl]="form.controls.groupUuid">
+    <mat-label automation-id="group-label">Bunch</mat-label>
+    <mat-select automation-id="group-control" [formControl]="form.controls.groupUuid">
       <mat-option *ngFor="let group of groups" [value]="group.uuid">
         {{ group.name }}
       </mat-option>
@@ -9,16 +9,44 @@
   </mat-form-field>
 
   <mat-form-field bunchFullWidth appearance="fill">
-    <mat-label>Original</mat-label>
-    <input [formControl]="form.controls.original" matInput placeholder="Apple" />
+    <mat-label automation-id="original-label">Original</mat-label>
+    <input automation-id="original-control" [formControl]="form.controls.original" matInput placeholder="Apple" />
   </mat-form-field>
 
   <mat-form-field bunchFullWidth appearance="fill">
-    <mat-label>Translation</mat-label>
-    <input [formControl]="form.controls.translation" matInput placeholder="Apple on russian" />
+    <mat-label automation-id="translation-label">Translation</mat-label>
+    <input automation-id="translation-control" [formControl]="form.controls.translation" matInput placeholder="Apple on russian" />
   </mat-form-field>
 
-  <a [routerLink]="paths.cardsManagement | path" bunchButtonMedium mat-raised-button *ngIf="!group">Cancel</a>
-  <a [routerLink]="paths.groupCardsEdit | path: { uuid: group.uuid }" bunchButtonMedium mat-raised-button *ngIf="group">Cancel</a>
-  <button type="submit" bunchButtonMedium mat-raised-button color="primary" [disabled]="submitted">Create</button>
+  <a
+    automation-id="cancel"
+    [routerLink]="paths.cardsManagement | path"
+    bunchButtonMedium
+    mat-raised-button
+    i18n="Card Create|Cancel"
+    *ngIf="!group"
+  >
+    Cancel
+  </a>
+  <a
+    automation-id="cancel"
+    bunchButtonMedium
+    mat-raised-button
+    i18n="Card Create|Cancel"
+    [routerLink]="paths.groupCardsEdit | path: { uuid: group.uuid }"
+    *ngIf="group"
+  >
+    Cancel
+  </a>
+  <button
+    automation-id="create"
+    type="submit"
+    bunchButtonMedium
+    mat-raised-button
+    color="primary"
+    [disabled]="submitted"
+    i18n="Card Create|Create"
+  >
+    Create
+  </button>
 </form>
