@@ -28,10 +28,8 @@ export class CreatePageComponent implements OnInit {
     const { uuid } = this.route.snapshot.params;
 
     if (uuid) {
-      this.groupFacade.loadOne(uuid);
-
       this.groupFacade
-        .loadOneSuccess$(uuid)
+        .group$(uuid)
         .pipe(
           isNotNullOrUndefined(),
           tap((group) => {
