@@ -16,6 +16,7 @@ import { GroupFacade } from '@bunch/groups/state';
   templateUrl: './edit-form.component.html',
   styleUrls: ['./edit-form.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
+  providers: [DestroyService],
 })
 export class EditFormComponent implements OnInit {
   @Input() group?: Group;
@@ -43,13 +44,12 @@ export class EditFormComponent implements OnInit {
     private readonly route: ActivatedRoute,
     private readonly cardFacade: CardFacade,
     private readonly groupFacade: GroupFacade,
-    private readonly destroy$: DestroyService,
-    private readonly navigationService: NavigationService
+    private readonly navigationService: NavigationService,
+    private readonly destroy$: DestroyService
   ) {}
 
   ngOnInit(): void {
     this.back = !!this.route.snapshot.queryParams['back'];
-
     this.paths = this.navigationService.getPaths();
 
     this.groupFacade.groups$
