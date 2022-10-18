@@ -1,5 +1,5 @@
 <form automation-id="form" [formGroup]="form" (ngSubmit)="onSubmit()">
-  <mat-form-field bunchFullWidth appearance="fill" [class.is-disable]="form.controls.groupUuid.disabled">
+  <mat-form-field bunchFullWidth appearance="fill">
     <mat-label automation-id="group-label" i18n="Card Create|Group label">Bunch</mat-label>
     <mat-select automation-id="group-control" [formControl]="form.controls.groupUuid">
       <mat-option *ngFor="let group of groups" [value]="group.uuid">
@@ -35,7 +35,8 @@
     [routerLink]="paths.cardsManagement | path"
     bunchButtonMedium
     mat-raised-button
-    i18n="Card Create|Cancel"
+    i18n="Action|Cancel"
+    [disabled]="submitted"
     *ngIf="!group"
   >
     Cancel
@@ -44,8 +45,9 @@
     automation-id="cancel-group"
     bunchButtonMedium
     mat-raised-button
-    i18n="Card Create|Cancel"
+    i18n="Action|Cancel"
     [routerLink]="paths.groupCardsEdit | path: { uuid: group.uuid }"
+    [disabled]="submitted"
     *ngIf="group"
   >
     Cancel
@@ -56,8 +58,8 @@
     bunchButtonMedium
     mat-raised-button
     color="primary"
+    i18n="Action|Create"
     [disabled]="submitted"
-    i18n="Card Create|Create"
   >
     Create
   </button>

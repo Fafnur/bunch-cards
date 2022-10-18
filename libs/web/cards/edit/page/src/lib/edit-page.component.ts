@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { filter, switchMap, takeUntil, tap } from 'rxjs';
+import { switchMap, takeUntil, tap } from 'rxjs';
 
 import { Card } from '@bunch/cards/common';
 import { CardFacade } from '@bunch/cards/state';
@@ -18,8 +18,7 @@ import { GroupFacade } from '@bunch/groups/state';
   providers: [DestroyService],
 })
 export class EditPageComponent implements OnInit {
-  group?: Group;
-
+  group!: Group;
   card!: Card;
 
   constructor(
@@ -35,26 +34,16 @@ export class EditPageComponent implements OnInit {
     const { uuid } = this.route.snapshot.params;
 
     if (uuid) {
-      this.cardFacade.loadOne(uuid);
-
       this.cardFacade
-        .loadOneSuccess$(uuid)
+        .card$(uuid)
         .pipe(
           isNotNullOrUndefined(),
           tap((card) => {
             this.card = card;
 
-            console.log(card);
-
             this.changeDetectorRef.markForCheck();
           }),
-          filter((card) => !!card.groupUuid),
-          switchMap((card) => {
-            this.groupFacade.loadOne(card.groupUuid);
-
-            return this.groupFacade.loadOneSuccess$(card.groupUuid);
-          }),
-          isNotNullOrUndefined(),
+          switchMap((card) => this.groupFacade.group$(card.groupUuid).pipe(isNotNullOrUndefined())),
           tap((group) => {
             this.group = group;
 

@@ -1,4 +1,1 @@
-<ng-container *ngIf="card">
-  <bunch-card-edit-form [card]="card" *ngIf="!group" (edited)="onEdited()"></bunch-card-edit-form>
-  <bunch-card-edit-form [card]="card" [group]="group" *ngIf="group" (edited)="onEdited()"></bunch-card-edit-form>
-</ng-container>
+<bunch-card-edit-form automation-id="form" [card]="card" [group]="group" (edited)="onEdited()" *ngIf="card"></bunch-card-edit-form>

@@ -12,5 +12,7 @@ export const selectCards = createSelector(selectCardState, (state) => selectAll(
 
 export const selectCardEntities = createSelector(selectCardState, (state) => selectEntities(state));
 
+export const selectCardByUuid = (uuid: string) => createSelector(selectCardEntities, (entities) => entities[uuid] ?? null);
+
 export const selectCardsByGroupUuid = (groupUuid: string) =>
   createSelector(selectCards, (cards) => cards.filter((card) => card.groupUuid === groupUuid));

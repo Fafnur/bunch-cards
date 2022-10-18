@@ -100,6 +100,8 @@ export class CardFacade {
       map(({ error }) => error)
     );
 
+  card$ = (uuid: string) => this.store.select(CardSelectors.selectCardByUuid(uuid));
+
   cardsByGroup$ = (uuid: string) => this.store.select(CardSelectors.selectCardsByGroupUuid(uuid));
 
   constructor(private readonly actions$: Actions, private readonly store: Store) {}

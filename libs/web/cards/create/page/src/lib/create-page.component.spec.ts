@@ -10,7 +10,6 @@ import { providerOf } from '@bunch/core/testing';
 import { Group, GROUP_STUB } from '@bunch/groups/common';
 import { GroupFacade } from '@bunch/groups/state';
 import { CreateFormModule } from '@bunch/web/cards/create/ui/form';
-import { ButtonMediumModule } from '@bunch/web/ui/theming';
 
 import { CreatePageComponent } from './create-page.component';
 import { CreatePageComponentPo } from './create-page.component.po';
@@ -32,7 +31,7 @@ describe('CreatePageComponent', () => {
     when(groupFacadeMock.group$(GROUP_STUB.uuid)).thenReturn(group$);
 
     await TestBed.configureTestingModule({
-      imports: [CommonModule, RouterTestingModule, MockModule(CreateFormModule), MockModule(ButtonMediumModule)],
+      imports: [CommonModule, RouterTestingModule, MockModule(CreateFormModule)],
       declarations: [CreatePageComponent],
       providers: [providerOf(GroupFacade, groupFacadeMock), providerOf(ActivatedRoute, activatedRouteMock)],
     }).compileComponents();
