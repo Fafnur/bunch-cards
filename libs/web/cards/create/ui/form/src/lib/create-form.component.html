@@ -1,6 +1,6 @@
 <form automation-id="form" [formGroup]="form" (ngSubmit)="onSubmit()">
   <mat-form-field bunchFullWidth appearance="fill" [class.is-disable]="form.controls.groupUuid.disabled">
-    <mat-label automation-id="group-label">Bunch</mat-label>
+    <mat-label automation-id="group-label" i18n="Card Create|Group label">Bunch</mat-label>
     <mat-select automation-id="group-control" [formControl]="form.controls.groupUuid">
       <mat-option *ngFor="let group of groups" [value]="group.uuid">
         {{ group.name }}
@@ -9,17 +9,29 @@
   </mat-form-field>
 
   <mat-form-field bunchFullWidth appearance="fill">
-    <mat-label automation-id="original-label">Original</mat-label>
-    <input automation-id="original-control" [formControl]="form.controls.original" matInput placeholder="Apple" />
+    <mat-label automation-id="original-label" i18n="Card Create|Original label">Original</mat-label>
+    <input
+      automation-id="original-control"
+      matInput
+      i18n-placeholder="Card Create|Original placeholder"
+      placeholder="Apple"
+      [formControl]="form.controls.original"
+    />
   </mat-form-field>
 
   <mat-form-field bunchFullWidth appearance="fill">
-    <mat-label automation-id="translation-label">Translation</mat-label>
-    <input automation-id="translation-control" [formControl]="form.controls.translation" matInput placeholder="Apple on russian" />
+    <mat-label automation-id="translation-label" i18n="Card Create|Translation label">Translation</mat-label>
+    <input
+      automation-id="translation-control"
+      matInput
+      i18n-placeholder="Card Create|Translation placeholder"
+      placeholder="Apple on russian"
+      [formControl]="form.controls.translation"
+    />
   </mat-form-field>
 
   <a
-    automation-id="cancel"
+    automation-id="cancel-cards"
     [routerLink]="paths.cardsManagement | path"
     bunchButtonMedium
     mat-raised-button
@@ -29,7 +41,7 @@
     Cancel
   </a>
   <a
-    automation-id="cancel"
+    automation-id="cancel-group"
     bunchButtonMedium
     mat-raised-button
     i18n="Card Create|Cancel"

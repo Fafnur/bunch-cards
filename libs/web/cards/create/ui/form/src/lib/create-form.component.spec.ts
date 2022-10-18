@@ -7,10 +7,14 @@ import { MatSelectModule } from '@angular/material/select';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterTestingModule } from '@angular/router/testing';
 import { MockModule } from 'ng-mocks';
-import { mock } from 'ts-mockito';
+import { ReplaySubject } from 'rxjs';
+import { mock, when } from 'ts-mockito';
 
-import { NavigationPipesModule, NavigationService } from '@bunch/core/navigation';
+import { Card } from '@bunch/cards/common';
+import { CardFacade } from '@bunch/cards/state';
+import { NAVIGATION_PATHS, NavigationPipesModule, NavigationService } from '@bunch/core/navigation';
 import { providerOf } from '@bunch/core/testing';
+import { Group } from '@bunch/groups/common';
 import { GroupFacade } from '@bunch/groups/state';
 import { ButtonMediumModule, WidthModule } from '@bunch/web/ui/theming';
 
@@ -21,11 +25,25 @@ describe('CreateFormComponent', () => {
   let po: CreateFormComponentPo;
   let fixture: ComponentFixture<CreateFormComponent>;
   let groupFacadeMock: GroupFacade;
+  let cardFacadeMock: CardFacade;
   let navigationServiceMock: NavigationService;
+  let groups$: ReplaySubject<Group[]>;
+  let createFailure$: ReplaySubject<unknown>;
+  let createSuccess$: ReplaySubject<Card>;
 
   beforeEach(async () => {
     groupFacadeMock = mock(GroupFacade);
+    cardFacadeMock = mock(CardFacade);
     navigationServiceMock = mock(NavigationService);
+
+    groups$ = new ReplaySubject<Group[]>(1);
+    createFailure$ = new ReplaySubject<unknown>(1);
+    createSuccess$ = new ReplaySubject<Card>(1);
+
+    when(navigationServiceMock.getPaths()).thenReturn(NAVIGATION_PATHS);
+    when(groupFacadeMock.groups$).thenReturn(groups$);
+    when(cardFacadeMock.createFailure$).thenReturn(createFailure$);
+    when(cardFacadeMock.createSuccess$).thenReturn(createSuccess$);
 
     await TestBed.configureTestingModule({
       imports: [
@@ -41,7 +59,11 @@ describe('CreateFormComponent', () => {
         MockModule(NavigationPipesModule),
       ],
       declarations: [CreateFormComponent],
-      providers: [providerOf(GroupFacade, groupFacadeMock), providerOf(NavigationService, navigationServiceMock)],
+      providers: [
+        providerOf(GroupFacade, groupFacadeMock),
+        providerOf(CardFacade, cardFacadeMock),
+        providerOf(NavigationService, navigationServiceMock),
+      ],
     }).compileComponents();
 
     fixture = TestBed.createComponent(CreateFormComponent);
@@ -57,6 +79,15 @@ describe('CreateFormComponent', () => {
   it('should show', () => {
     fixture.detectChanges();
 
-    expect(po).toBeTruthy();
+    expect(po.form).toBeTruthy();
+    expect(po.groupLabel).toBeTruthy();
+    expect(po.groupControl).toBeTruthy();
+    expect(po.originalLabel).toBeTruthy();
+    expect(po.originalControl).toBeTruthy();
+    expect(po.translationLabel).toBeTruthy();
+    expect(po.translationControl).toBeTruthy();
+    expect(po.cancelCards).toBeTruthy();
+    expect(po.cancelGroup).toBeFalsy();
+    expect(po.create).toBeTruthy();
   });
 });
