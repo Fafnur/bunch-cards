@@ -14,6 +14,7 @@ export const GROUP_STUB: Group = GROUP_DTO_STUB;
 
 export const GROUPS_DTO_STUB: GroupDto[] = [GROUP_DTO_STUB];
 export const GROUPS_STUB: Group[] = [GROUP_STUB];
+export const GROUPS_ENTITIES_STUB: Record<string, Group> = { [GROUP_STUB.uuid]: GROUP_STUB };
 
 export const GROUP_CREATE_STUB: GroupCreate = {
   name: GROUP_STUB.name,

@@ -30,8 +30,8 @@ export class CardsTableComponent implements OnInit {
     private readonly changeDetectorRef: ChangeDetectorRef,
     private readonly cardFacade: CardFacade,
     private readonly groupFacade: GroupFacade,
-    private readonly destroy$: DestroyService,
-    private readonly navigationService: NavigationService
+    private readonly navigationService: NavigationService,
+    private readonly destroy$: DestroyService
   ) {}
 
   ngOnInit(): void {
