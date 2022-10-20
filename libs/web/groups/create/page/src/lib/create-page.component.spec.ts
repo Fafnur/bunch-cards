@@ -9,12 +9,10 @@ import { providerOf } from '@bunch/core/testing';
 import { CreateFormModule } from '@bunch/web/groups/create/ui/form';
 
 import { CreatePageComponent } from './create-page.component';
+import { CreatePageComponentPo } from './create-page.component.po';
 
-/**
- * TODO: Add tests
- */
 describe('CreatePageComponent', () => {
-  let component: CreatePageComponent;
+  let po: CreatePageComponentPo;
   let fixture: ComponentFixture<CreatePageComponent>;
   let navigationServiceMock: NavigationService;
 
@@ -30,12 +28,18 @@ describe('CreatePageComponent', () => {
     }).compileComponents();
 
     fixture = TestBed.createComponent(CreatePageComponent);
-    component = fixture.componentInstance;
+    po = new CreatePageComponentPo(fixture);
   });
 
   it('should create', () => {
     fixture.detectChanges();
 
-    expect(component).toBeTruthy();
+    expect(fixture.componentInstance).toBeTruthy();
+  });
+
+  it('should show', () => {
+    fixture.detectChanges();
+
+    expect(po.form).toBeTruthy();
   });
 });
