@@ -5,36 +5,16 @@ export class CreateFormComponentPo extends PageObject {
     return this.getByAutomationId('form');
   }
 
-  get groupLabel() {
-    return this.getByAutomationId('group-label');
+  get nameLabel() {
+    return this.getByAutomationId('name-label');
   }
 
-  get groupControl() {
-    return this.getByAutomationId('group-control');
+  get nameControl() {
+    return this.getByAutomationId('name-control');
   }
 
-  get originalLabel() {
-    return this.getByAutomationId('original-label');
-  }
-
-  get originalControl() {
-    return this.getByAutomationId('original-control');
-  }
-
-  get translationLabel() {
-    return this.getByAutomationId('translation-label');
-  }
-
-  get translationControl() {
-    return this.getByAutomationId('translation-control');
-  }
-
-  get cancelGroup() {
-    return this.getByAutomationId('cancel-group');
-  }
-
-  get cancelCards() {
-    return this.getByAutomationId('cancel-cards');
+  get cancel() {
+    return this.getByAutomationId('cancel');
   }
 
   get create() {

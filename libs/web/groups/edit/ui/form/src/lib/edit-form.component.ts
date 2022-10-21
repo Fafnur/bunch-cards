@@ -42,7 +42,7 @@ export class EditFormComponent implements OnInit {
     });
 
     this.groupFacade
-      .changeFailure$(this.form.controls.uuid.value)
+      .changeOneFailure$(this.form.controls.uuid.value)
       .pipe(
         tap(() => {
           this.submitted = false;
@@ -53,7 +53,7 @@ export class EditFormComponent implements OnInit {
       .subscribe();
 
     this.groupFacade
-      .changeSuccess$(this.form.controls.uuid.value)
+      .changeOneSuccess$(this.form.controls.uuid.value)
       .pipe(
         tap((group) => {
           this.edited.emit(group);

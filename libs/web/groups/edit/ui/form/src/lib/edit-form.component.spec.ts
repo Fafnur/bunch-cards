@@ -32,8 +32,8 @@ describe('EditFormComponent', () => {
     changeFailure$ = new ReplaySubject<unknown>(1);
     changeSuccess$ = new ReplaySubject<Group>(1);
 
-    when(groupFacadeMock.changeFailure$(GROUP_STUB.uuid)).thenReturn(changeFailure$);
-    when(groupFacadeMock.changeSuccess$(GROUP_STUB.uuid)).thenReturn(changeSuccess$);
+    when(groupFacadeMock.changeOneFailure$(GROUP_STUB.uuid)).thenReturn(changeFailure$);
+    when(groupFacadeMock.changeOneSuccess$(GROUP_STUB.uuid)).thenReturn(changeSuccess$);
     when(navigationServiceMock.getPaths()).thenReturn(NAVIGATION_PATHS);
 
     await TestBed.configureTestingModule({

@@ -1,8 +1,35 @@
-<form [formGroup]="form" (ngSubmit)="onSubmit()">
+<form automation-id="form" [formGroup]="form" (ngSubmit)="onSubmit()">
   <mat-form-field bunchFullWidth appearance="fill">
-    <mat-label>Name</mat-label>
-    <input [formControl]="form.controls.name" matInput placeholder="Name collection cards" />
+    <mat-label automation-id="name-label" i18n="Group Create|Name label">Name</mat-label>
+    <input
+      automation-id="name-control"
+      matInput
+      i18n-placeholder="Group Create|Name placeholder"
+      placeholder="Name collection cards"
+      [formControl]="form.controls.name"
+    />
   </mat-form-field>
 
-  <button type="submit" mat-raised-button color="primary" [disabled]="submitted">Create</button>
+  <a
+    automation-id="cancel"
+    bunchButtonMedium
+    mat-raised-button
+    color="primary"
+    i18n="Actions|Cancel"
+    [disabled]="submitted"
+    [routerLink]="paths.groupsManagement | path"
+  >
+    Cancel
+  </a>
+  <button
+    automation-id="create"
+    type="submit"
+    bunchButtonMedium
+    mat-raised-button
+    color="primary"
+    i18n="Actions|Create"
+    [disabled]="submitted"
+  >
+    Create
+  </button>
 </form>
