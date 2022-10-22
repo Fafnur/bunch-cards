@@ -2,41 +2,37 @@ import { CommonModule } from '@angular/common';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { MockModule } from 'ng-mocks';
-import { ReplaySubject } from 'rxjs';
-import { mock, when } from 'ts-mockito';
 
-import { providerOf } from '@bunch/core/testing';
-import { Group } from '@bunch/groups/common';
-import { GroupFacade } from '@bunch/groups/state';
-import { SpinnerModule } from '@bunch/web/ui/spinner';
+import { GroupCreateModule } from '@bunch/web/groups/management/ui/create';
+import { GroupsCollectionModule } from '@bunch/web/groups/ui/collection';
 
 import { ManagementPageComponent } from './management-page.component';
+import { ManagementPageComponentPo } from './management-page.component.po';
 
 describe('ManagementPageComponent', () => {
-  let component: ManagementPageComponent;
+  let po: ManagementPageComponentPo;
   let fixture: ComponentFixture<ManagementPageComponent>;
-  let groupFacadeMock: GroupFacade;
-  let groups$: ReplaySubject<Group[]>;
 
   beforeEach(async () => {
-    groupFacadeMock = mock(GroupFacade);
-    groups$ = new ReplaySubject<Group[]>(1);
-
-    when(groupFacadeMock.groups$).thenReturn(groups$);
-
     await TestBed.configureTestingModule({
-      imports: [CommonModule, RouterTestingModule, MockModule(SpinnerModule)],
+      imports: [CommonModule, RouterTestingModule, MockModule(GroupsCollectionModule), MockModule(GroupCreateModule)],
       declarations: [ManagementPageComponent],
-      providers: [providerOf(GroupFacade, groupFacadeMock)],
     }).compileComponents();
 
     fixture = TestBed.createComponent(ManagementPageComponent);
-    component = fixture.componentInstance;
+    po = new ManagementPageComponentPo(fixture);
   });
 
   it('should create', () => {
     fixture.detectChanges();
 
-    expect(component).toBeTruthy();
+    expect(fixture.componentInstance).toBeTruthy();
+  });
+
+  it('should show', () => {
+    fixture.detectChanges();
+
+    expect(po.create).toBeTruthy();
+    expect(po.collection).toBeTruthy();
   });
 });
