@@ -6,7 +6,7 @@ import { NavigationService } from '@bunch/core/navigation';
 import { DestroyService } from '@bunch/core/utils/destroy';
 import { isNotNullOrUndefined } from '@bunch/core/utils/operators';
 import { Group } from '@bunch/groups/common';
-import { GroupManager } from '@bunch/groups/manager';
+import { GroupFacade } from '@bunch/groups/state';
 
 @Component({
   selector: 'bunch-group-edit-page',
@@ -22,17 +22,18 @@ export class EditPageComponent implements OnInit {
     private readonly changeDetectorRef: ChangeDetectorRef,
     private readonly route: ActivatedRoute,
     private readonly navigationService: NavigationService,
-    private readonly groupManager: GroupManager,
+    private readonly groupFacade: GroupFacade,
     private readonly destroy$: DestroyService
   ) {}
 
   ngOnInit(): void {
     const { uuid } = this.route.snapshot.params;
+
     if (uuid) {
-      this.groupManager
-        .loadOne(uuid)
-        .pipe(isNotNullOrUndefined())
+      this.groupFacade
+        .group$(uuid)
         .pipe(
+          isNotNullOrUndefined(),
           tap((group) => {
             this.group = group;
             this.changeDetectorRef.markForCheck();
