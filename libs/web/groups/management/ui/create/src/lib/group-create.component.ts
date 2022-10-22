@@ -1,6 +1,6 @@
-import { ChangeDetectionStrategy, Component, Inject } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 
-import { NavigationPaths, PATHS } from '@bunch/core/navigation';
+import { NavigationPaths, NavigationService } from '@bunch/core/navigation';
 
 @Component({
   selector: 'bunch-group-create',
@@ -8,6 +8,12 @@ import { NavigationPaths, PATHS } from '@bunch/core/navigation';
   styleUrls: ['./group-create.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class GroupCreateComponent {
-  constructor(@Inject(PATHS) public readonly paths: NavigationPaths) {}
+export class GroupCreateComponent implements OnInit {
+  paths!: NavigationPaths;
+
+  constructor(private readonly navigationService: NavigationService) {}
+
+  ngOnInit(): void {
+    this.paths = this.navigationService.getPaths();
+  }
 }
