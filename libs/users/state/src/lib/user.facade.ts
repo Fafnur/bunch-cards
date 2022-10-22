@@ -4,7 +4,7 @@ import { Store } from '@ngrx/store';
 import { map } from 'rxjs';
 
 import { isNotNullOrUndefined } from '@bunch/core/utils/operators';
-import { UserChange } from '@bunch/users/common';
+import { User, UserChange } from '@bunch/users/common';
 
 import * as UserActions from './user.actions';
 import * as UserSelectors from './user.selectors';
@@ -41,5 +41,9 @@ export class UserFacade {
 
   change(userChange: UserChange): void {
     this.store.dispatch(UserActions.change({ userChange }));
+  }
+
+  sync(user: User): void {
+    this.store.dispatch(UserActions.sync({ user }));
   }
 }

@@ -6,7 +6,7 @@ import { AuthCredentials } from '@bunch/auth/common';
 import { AuthFacade } from '@bunch/auth/state';
 import { NavigationService } from '@bunch/core/navigation';
 import { DestroyService } from '@bunch/core/utils/destroy';
-import { Form } from '@bunch/core/utils/types';
+import { FormFor } from '@bunch/core/utils/types';
 
 @Component({
   selector: 'bunch-login-form',
@@ -19,7 +19,7 @@ export class LoginFormComponent implements OnInit {
   submitted = false;
   error = false;
 
-  readonly form = new FormGroup<Form<AuthCredentials>>({
+  readonly form = new FormGroup<FormFor<AuthCredentials>>({
     username: new FormControl('', { nonNullable: true, validators: [Validators.required, Validators.email] }),
     password: new FormControl('', { nonNullable: true, validators: [Validators.required, Validators.minLength(6)] }),
   });

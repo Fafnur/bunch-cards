@@ -70,7 +70,7 @@ const reducer = createReducer(
         state
       )
   ),
-  on(CardActions.removeSuccess, (state, { uuid }): CardState => cardAdapter.removeOne(uuid, state))
+  on(CardActions.removeSuccess, (state, { card }): CardState => cardAdapter.removeOne(card.uuid, state))
 );
 
 export function cardReducer(state: CardState | undefined, action: Action): CardState {

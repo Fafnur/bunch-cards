@@ -12,7 +12,7 @@ import { anything, mock, when } from 'ts-mockito';
 
 import { AuthFacade } from '@bunch/auth/state';
 import { FormExtractsModule } from '@bunch/core/forms/extract';
-import { NAVIGATION_PATHS, NavigationService } from '@bunch/core/navigation';
+import { NAVIGATION_PATHS, NavigationService, NavigationServiceStub } from '@bunch/core/navigation';
 import { providerOf } from '@bunch/core/testing';
 import { ResetNotifyModule, ResetNotifyService } from '@bunch/web/auth/reset/ui/notify';
 import { AuthEmailModule, AuthPasswordModule } from '@bunch/web/auth/ui/fields';
@@ -35,7 +35,7 @@ describe('ResetFormComponent', () => {
 
   beforeEach(async () => {
     authFacadeMock = mock(AuthFacade);
-    navigationServiceMock = mock(NavigationService);
+    navigationServiceMock = mock(NavigationServiceStub);
     routerMock = mock(Router);
     resetNotifyServiceMock = mock(ResetNotifyService);
 

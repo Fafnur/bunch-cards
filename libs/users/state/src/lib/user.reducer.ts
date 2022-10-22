@@ -24,6 +24,7 @@ const reducer = createReducer(
     UserActions.restore,
     UserActions.loadSuccess,
     UserActions.changeSuccess,
+    UserActions.syncSuccess,
     (state, { user }): UserState => ({
       ...state,
       user,

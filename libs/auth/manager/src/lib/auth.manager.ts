@@ -2,11 +2,11 @@ import { Injectable } from '@angular/core';
 import { map, Observable } from 'rxjs';
 
 import { AuthResponse } from '@bunch/auth/common';
-import { LocalDBService } from '@bunch/core/localdb';
+import { LocalDbKeys, LocalDBService } from '@bunch/core/localdb';
 
 @Injectable()
 export class AuthManager {
-  static storeName = 'tokens';
+  static storeName = LocalDbKeys.Auth;
 
   constructor(private readonly localDBService: LocalDBService) {}
 

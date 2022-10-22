@@ -2,12 +2,12 @@ import { Injectable } from '@angular/core';
 import { map, Observable, of, switchMap, throwError } from 'rxjs';
 
 import { Card, CardChange, CardCreate } from '@bunch/cards/common';
-import { LocalDBService } from '@bunch/core/localdb';
+import { LocalDbKeys, LocalDBService } from '@bunch/core/localdb';
 import { User } from '@bunch/users/common';
 
 @Injectable()
 export class CardManager {
-  static storeName = 'card';
+  static storeName = LocalDbKeys.Cards;
 
   constructor(private readonly localDBService: LocalDBService) {}
 

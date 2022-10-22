@@ -1,24 +1,34 @@
 import { Injectable } from '@angular/core';
-import { Actions, concatLatestFrom, createEffect, ofType, OnInitEffects } from '@ngrx/effects';
+import { Actions, createEffect, ofType, OnInitEffects } from '@ngrx/effects';
 import { Action } from '@ngrx/store';
 import { fetch } from '@nrwl/angular';
 import { map } from 'rxjs';
 
+import { loginSuccess } from '@bunch/auth/state';
 import { UserManager } from '@bunch/users/manager';
 
 import * as UserActions from './user.actions';
 
 @Injectable()
 export class UserEffects implements OnInitEffects {
+  loginSuccess$ = createEffect(() => {
+    return this.actions$.pipe(
+      ofType(loginSuccess),
+      fetch({
+        id: () => 'login-success',
+        run: () => UserActions.load(),
+        onError: (action, error) => console.error(error),
+      })
+    );
+  });
+
   init$ = createEffect(() => {
     return this.actions$.pipe(
       ofType(UserActions.init),
-      concatLatestFrom(() => this.userManager.load()),
       fetch({
-        // eslint-disable-next-line @typescript-eslint/no-unused-vars
-        id: (action, user) => 'init',
-        run: (action, user) => UserActions.restore({ user }),
-        onError: (action, error) => console.error('Error', error),
+        id: () => 'init',
+        run: () => this.userManager.load().pipe(map((user) => UserActions.restore({ user }))),
+        onError: (action, error) => console.error(error),
       })
     );
   });
@@ -41,6 +51,17 @@ export class UserEffects implements OnInitEffects {
         id: () => 'change',
         run: ({ userChange }) => this.userManager.change(userChange).pipe(map((user) => UserActions.changeSuccess({ user }))),
         onError: (action, error) => UserActions.changeFailure({ error }),
+      })
+    );
+  });
+
+  sync$ = createEffect(() => {
+    return this.actions$.pipe(
+      ofType(UserActions.sync),
+      fetch({
+        id: () => 'sync',
+        run: ({ user }) => this.userManager.sync(user).pipe(map(() => UserActions.syncSuccess({ user }))),
+        onError: (action, error) => UserActions.syncFailure({ error }),
       })
     );
   });

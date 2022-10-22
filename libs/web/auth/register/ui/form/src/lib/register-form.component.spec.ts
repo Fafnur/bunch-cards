@@ -12,7 +12,7 @@ import { anything, mock, when } from 'ts-mockito';
 
 import { AuthFacade } from '@bunch/auth/state';
 import { FormExtractsModule } from '@bunch/core/forms/extract';
-import { NAVIGATION_PATHS, NavigationService } from '@bunch/core/navigation';
+import { NAVIGATION_PATHS, NavigationService, NavigationServiceStub } from '@bunch/core/navigation';
 import { providerOf } from '@bunch/core/testing';
 import { RegisterNotifyModule, RegisterNotifyService } from '@bunch/web/auth/register/ui/notify';
 import {
@@ -41,7 +41,7 @@ describe('RegisterFormComponent', () => {
 
   beforeEach(async () => {
     authFacadeMock = mock(AuthFacade);
-    navigationServiceMock = mock(NavigationService);
+    navigationServiceMock = mock(NavigationServiceStub);
     routerMock = mock(Router);
     registerNotifyServiceMock = mock(RegisterNotifyService);
 

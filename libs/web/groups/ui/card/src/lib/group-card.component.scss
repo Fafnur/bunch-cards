@@ -1,0 +1,13 @@
+@use '@angular/material' as mat;
+//@use 'libs/web/ui/stylesheets/mixins' as mixins;
+@use 'libs/web/ui/stylesheets/variables' as variables;
+
+mat-card {
+  background-color: mat.get-color-from-palette(mat.$gray-palette, 100);
+}
+
+mat-icon {
+  &:hover {
+    color: variables.$color-primary;
+  }
+}

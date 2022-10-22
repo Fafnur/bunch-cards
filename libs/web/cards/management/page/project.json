@@ -1,0 +1,22 @@
+{
+  "projectType": "library",
+  "sourceRoot": "libs/web/cards/management/page/src",
+  "prefix": "bunch",
+  "targets": {
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/libs/web/cards/management/page"],
+      "options": {
+        "jestConfig": "libs/web/cards/management/page/jest.config.ts",
+        "passWithNoTests": true
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": ["libs/web/cards/management/page/**/*.ts", "libs/web/cards/management/page/**/*.html"]
+      }
+    }
+  },
+  "tags": []
+}

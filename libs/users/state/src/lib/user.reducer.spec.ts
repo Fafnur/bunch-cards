@@ -28,6 +28,13 @@ describe('User Reducer', () => {
     expect(result.user?.id).toBe(USER_STUB.id);
   });
 
+  it('syncSuccess() should set user', () => {
+    const action = UserActions.syncSuccess({ user: USER_STUB });
+    const result = userReducer(state, action);
+
+    expect(result.user?.id).toBe(USER_STUB.id);
+  });
+
   it('restore() should set user', () => {
     const action = UserActions.restore({ user: USER_STUB });
     const result = userReducer(state, action);

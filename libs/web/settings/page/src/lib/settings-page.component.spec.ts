@@ -5,7 +5,7 @@ import { ReplaySubject } from 'rxjs';
 import { mock, when } from 'ts-mockito';
 
 import { AuthFacade } from '@bunch/auth/state';
-import { NavigationService } from '@bunch/core/navigation';
+import { NavigationService, NavigationServiceStub } from '@bunch/core/navigation';
 import { providerOf } from '@bunch/core/testing';
 
 import { SettingsPageComponent } from './settings-page.component';
@@ -20,7 +20,7 @@ describe('SettingsPageComponent', () => {
 
   beforeEach(async () => {
     authFacadeMock = mock(AuthFacade);
-    navigationServiceMock = mock(NavigationService);
+    navigationServiceMock = mock(NavigationServiceStub);
     logoutSuccess$ = new ReplaySubject<void>(1);
 
     when(authFacadeMock.logoutSuccess$).thenReturn(logoutSuccess$);

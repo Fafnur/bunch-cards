@@ -4,7 +4,6 @@ export interface NavigationPaths {
   home: string;
   dashboard: string;
   settings: string;
-  dictionary: string;
   user: string;
   learning: string;
 
@@ -18,6 +17,18 @@ export interface NavigationPaths {
   authOauth: string;
   authEmailConfirm: string;
 
+  dictionary: string;
+  groupsManagement: string;
+  groupCreate: string;
+  groupView: string;
+  groupCardCreate: string;
+  groupEdit: string;
+  groupCardsEdit: string;
+
+  cardsManagement: string;
+  cardCreate: string;
+  cardEdit: string;
+
   // Errors
   serverError: string;
   notFound: string;
@@ -27,7 +38,6 @@ export const NAVIGATION_PATHS: NavigationPaths = {
   home: '',
   dashboard: 'dashboard',
   settings: 'settings',
-  dictionary: 'dictionary',
   learning: 'learning',
   user: 'user',
 
@@ -40,6 +50,18 @@ export const NAVIGATION_PATHS: NavigationPaths = {
   authWithApple: 'auth/web/apple',
   authOauth: 'auth/oauth',
   authEmailConfirm: 'auth/email/confirm',
+
+  dictionary: 'dictionary',
+  groupsManagement: 'dictionary/groups',
+  groupCreate: 'dictionary/groups/create',
+  groupView: 'dictionary/groups/:uuid/view',
+  groupCardCreate: 'dictionary/groups/:uuid/cards/create',
+  groupEdit: 'dictionary/groups/:uuid/edit',
+  groupCardsEdit: 'dictionary/groups/:uuid/cards/edit',
+
+  cardsManagement: 'dictionary/cards',
+  cardCreate: 'dictionary/cards/create',
+  cardEdit: 'dictionary/cards/:uuid/edit',
 
   serverError: 'server-error',
   notFound: 'not-found',

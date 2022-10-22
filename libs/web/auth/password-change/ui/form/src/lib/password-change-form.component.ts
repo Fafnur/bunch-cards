@@ -6,7 +6,7 @@ import { AuthPasswordChange } from '@bunch/auth/common';
 import { AuthFacade } from '@bunch/auth/state';
 import { NavigationService } from '@bunch/core/navigation';
 import { DestroyService } from '@bunch/core/utils/destroy';
-import { Form } from '@bunch/core/utils/types';
+import { FormFor } from '@bunch/core/utils/types';
 
 export const passwordValidator: ValidatorFn = (control: AbstractControl): ValidationErrors | null => {
   const password = control.get('password');
@@ -28,7 +28,7 @@ export class PasswordChangeFormComponent implements OnInit {
   submitted = false;
   error = false;
 
-  readonly form = new FormGroup<Form<AuthPasswordChange & { passwordConfirm: string }>>(
+  readonly form = new FormGroup<FormFor<AuthPasswordChange & { passwordConfirm: string }>>(
     {
       password: new FormControl('', { nonNullable: true, validators: [Validators.required, Validators.minLength(6)] }),
       passwordConfirm: new FormControl('', { nonNullable: true, validators: [Validators.required, Validators.minLength(6)] }),

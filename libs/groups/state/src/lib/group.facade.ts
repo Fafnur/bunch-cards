@@ -13,6 +13,7 @@ export class GroupFacade {
   loaded$ = this.store.select(GroupSelectors.selectLoaded);
 
   groups$ = this.store.select(GroupSelectors.selectGroups);
+  groupsEntities$ = this.store.select(GroupSelectors.selectGroupEntities);
 
   loadSuccess$ = this.actions$.pipe(
     ofType(GroupActions.loadSuccess),
@@ -23,6 +24,28 @@ export class GroupFacade {
     ofType(GroupActions.loadFailure),
     map(({ error }) => error)
   );
+
+  createSuccess$ = this.actions$.pipe(
+    ofType(GroupActions.createSuccess),
+    map(({ group }) => group)
+  );
+
+  createFailure$ = this.actions$.pipe(
+    ofType(GroupActions.createFailure),
+    map(({ error }) => error)
+  );
+
+  changeSuccess$ = this.actions$.pipe(
+    ofType(GroupActions.changeSuccess),
+    map(({ group }) => group)
+  );
+
+  changeFailure$ = this.actions$.pipe(
+    ofType(GroupActions.changeFailure),
+    map(({ error }) => error)
+  );
+
+  group$ = (uuid: string) => this.store.select(GroupSelectors.selectGroup(uuid));
 
   loadOneSuccess$ = (uuid: string) =>
     this.actions$.pipe(
@@ -38,42 +61,42 @@ export class GroupFacade {
       map(({ error }) => error)
     );
 
-  removeSuccess$ = (uuid: string): Observable<void> =>
+  removeOneSuccess$ = (uuid: string): Observable<void> =>
     this.actions$.pipe(
       ofType(GroupActions.removeSuccess),
       filter((response) => response.uuid === uuid),
       map(() => undefined)
     );
 
-  removeFailure$ = (uuid: string) =>
+  removeOneFailure$ = (uuid: string) =>
     this.actions$.pipe(
       ofType(GroupActions.removeFailure),
       filter((response) => response.uuid === uuid),
       map(({ error }) => error)
     );
 
-  createSuccess$ = (uuid: string) =>
+  createOneSuccess$ = (uuid: string) =>
     this.actions$.pipe(
       ofType(GroupActions.createSuccess),
       filter((response) => response.group.uuid === uuid),
       map(({ group }) => group)
     );
 
-  createFailure$ = (uuid: string) =>
+  createOneFailure$ = (uuid: string) =>
     this.actions$.pipe(
       ofType(GroupActions.createFailure),
       filter((response) => response.groupCreate.uuid === uuid),
       map(({ error }) => error)
     );
 
-  changeSuccess$ = (uuid: string) =>
+  changeOneSuccess$ = (uuid: string) =>
     this.actions$.pipe(
       ofType(GroupActions.changeSuccess),
       filter((response) => response.group.uuid === uuid),
       map(({ group }) => group)
     );
 
-  changeFailure$ = (uuid: string) =>
+  changeOneFailure$ = (uuid: string) =>
     this.actions$.pipe(
       ofType(GroupActions.changeFailure),
       filter((response) => response.uuid === uuid),

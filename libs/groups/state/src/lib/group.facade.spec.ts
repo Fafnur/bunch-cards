@@ -97,7 +97,7 @@ describe('GroupFacade', () => {
     actions = hot('a', { a: action });
     const expected = hot('a', { a: GROUP_STUB });
 
-    expect(facade.createSuccess$(GROUP_STUB.uuid)).toBeObservable(expected);
+    expect(facade.createOneSuccess$(GROUP_STUB.uuid)).toBeObservable(expected);
   });
 
   it('should emit createFailure$', () => {
@@ -106,7 +106,7 @@ describe('GroupFacade', () => {
     actions = hot('a', { a: action });
     const expected = hot('a', { a: HTTP_ERROR_STUB });
 
-    expect(facade.createFailure$(GROUP_CREATE_STUB.uuid)).toBeObservable(expected);
+    expect(facade.createOneFailure$(GROUP_CREATE_STUB.uuid)).toBeObservable(expected);
   });
 
   it('should emit changeSuccess$', () => {
@@ -115,7 +115,7 @@ describe('GroupFacade', () => {
     actions = hot('a', { a: action });
     const expected = hot('a', { a: GROUP_STUB });
 
-    expect(facade.changeSuccess$(GROUP_STUB.uuid)).toBeObservable(expected);
+    expect(facade.changeOneSuccess$(GROUP_STUB.uuid)).toBeObservable(expected);
   });
 
   it('should emit changeFailure$', () => {
@@ -124,7 +124,7 @@ describe('GroupFacade', () => {
     actions = hot('a', { a: action });
     const expected = hot('a', { a: HTTP_ERROR_STUB });
 
-    expect(facade.changeFailure$(GROUP_STUB.uuid)).toBeObservable(expected);
+    expect(facade.changeOneFailure$(GROUP_STUB.uuid)).toBeObservable(expected);
   });
 
   it('should emit removeSuccess$', () => {
@@ -133,7 +133,7 @@ describe('GroupFacade', () => {
     actions = hot('a', { a: action });
     const expected = hot('a', { a: undefined });
 
-    expect(facade.removeSuccess$(GROUP_STUB.uuid)).toBeObservable(expected);
+    expect(facade.removeOneSuccess$(GROUP_STUB.uuid)).toBeObservable(expected);
   });
 
   it('should emit removeFailure$', () => {
@@ -142,7 +142,7 @@ describe('GroupFacade', () => {
     actions = hot('a', { a: action });
     const expected = hot('a', { a: HTTP_ERROR_STUB });
 
-    expect(facade.removeFailure$(GROUP_STUB.uuid)).toBeObservable(expected);
+    expect(facade.removeOneFailure$(GROUP_STUB.uuid)).toBeObservable(expected);
   });
 
   it('load() should dispatch action', () => {

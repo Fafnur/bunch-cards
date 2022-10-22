@@ -450,6 +450,255 @@
         <note priority="1" from="description">Signin</note>
         <note priority="1" from="meaning">Auth Signin</note>
       </trans-unit>
+      <trans-unit id="149214758fe00c4119a9068f5574384909d38910" datatype="html">
+        <source>Bunch</source>
+        <target state="translated">Коллекция</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">libs/web/cards/create/ui/form/src/lib/create-form.component.html</context>
+          <context context-type="linenumber">3</context>
+        </context-group>
+        <note priority="1" from="description">Group label</note>
+        <note priority="1" from="meaning">Card Create</note>
+      </trans-unit>
+      <trans-unit id="132c0faaee1b531c749bba4edc5c91d8f778b968" datatype="html">
+        <source>Original</source>
+        <target state="translated">Оригинал</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">libs/web/cards/create/ui/form/src/lib/create-form.component.html</context>
+          <context context-type="linenumber">12</context>
+        </context-group>
+        <note priority="1" from="description">Original label</note>
+        <note priority="1" from="meaning">Card Create</note>
+      </trans-unit>
+      <trans-unit id="d3a1cee1aa20e9db52eea5c5ab3fd03752204281" datatype="html">
+        <source>Apple</source>
+        <target state="translated">Яблоко</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">libs/web/cards/create/ui/form/src/lib/create-form.component.html</context>
+          <context context-type="linenumber">17</context>
+        </context-group>
+        <note priority="1" from="description">Original placeholder</note>
+        <note priority="1" from="meaning">Card Create</note>
+      </trans-unit>
+      <trans-unit id="90787200e4471733add41f482d4f83f19f6dca61" datatype="html">
+        <source>Translation</source>
+        <target state="translated">Перевод</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">libs/web/cards/create/ui/form/src/lib/create-form.component.html</context>
+          <context context-type="linenumber">23</context>
+        </context-group>
+        <note priority="1" from="description">Translation label</note>
+        <note priority="1" from="meaning">Card Create</note>
+      </trans-unit>
+      <trans-unit id="2f33e40fe327f20a0c7c0533d09ec92ed3455273" datatype="html">
+        <source>Apple on russian</source>
+        <target state="translated">Яблоко на английском</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">libs/web/cards/create/ui/form/src/lib/create-form.component.html</context>
+          <context context-type="linenumber">28</context>
+        </context-group>
+        <note priority="1" from="description">Translation placeholder</note>
+        <note priority="1" from="meaning">Card Create</note>
+      </trans-unit>
+      <trans-unit id="2ec17105169d50ddfc0247a138e2523b84bc2422" datatype="html">
+        <source> Cancel </source>
+        <target state="translated"> Отмена </target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">libs/web/cards/create/ui/form/src/lib/create-form.component.html</context>
+          <context context-type="linenumber">41,43</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">libs/web/cards/create/ui/form/src/lib/create-form.component.html</context>
+          <context context-type="linenumber">52,54</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">libs/web/cards/edit/ui/form/src/lib/edit-form.component.html</context>
+          <context context-type="linenumber">29,31</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">libs/web/cards/edit/ui/form/src/lib/edit-form.component.html</context>
+          <context context-type="linenumber">40,42</context>
+        </context-group>
+        <note priority="1" from="description">Cancel</note>
+        <note priority="1" from="meaning">Action</note>
+      </trans-unit>
+      <trans-unit id="8b7ac1ca2e0189bae851fd60b404a236ea438480" datatype="html">
+        <source> Create </source>
+        <target state="translated">Создать</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">libs/web/cards/create/ui/form/src/lib/create-form.component.html</context>
+          <context context-type="linenumber">63,65</context>
+        </context-group>
+        <note priority="1" from="description">Create</note>
+        <note priority="1" from="meaning">Action</note>
+      </trans-unit>
+      <trans-unit id="de4b7e552d8b47173fa2bf9afb2d9b877cb72462" datatype="html">
+        <source> Save </source>
+        <target state="translated">Сохранить</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">libs/web/cards/edit/ui/form/src/lib/edit-form.component.html</context>
+          <context context-type="linenumber">43,45</context>
+        </context-group>
+        <note priority="1" from="description">Save</note>
+        <note priority="1" from="meaning">Action</note>
+      </trans-unit>
+      <trans-unit id="97784800f99016bce0fc983437a2fe2ca8a1b80c" datatype="html">
+        <source>Group</source>
+        <target state="translated">Коллекция</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">libs/web/cards/ui/table/src/lib/cards-table.component.html</context>
+          <context context-type="linenumber">3</context>
+        </context-group>
+        <note priority="1" from="description">Group header</note>
+        <note priority="1" from="meaning">Card Table</note>
+      </trans-unit>
+      <trans-unit id="8de2ff273f53ff469d2f6f6465b4ae00b5dc963f" datatype="html">
+        <source>Phrase</source>
+        <target state="translated">Фраза</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">libs/web/cards/ui/table/src/lib/cards-table.component.html</context>
+          <context context-type="linenumber">13</context>
+        </context-group>
+        <note priority="1" from="description">Original header</note>
+        <note priority="1" from="meaning">Card Table</note>
+      </trans-unit>
+      <trans-unit id="605ca1f910c3910cec415c92616e7d2f943dfd07" datatype="html">
+        <source>Translation</source>
+        <target state="translated">Перевод</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">libs/web/cards/ui/table/src/lib/cards-table.component.html</context>
+          <context context-type="linenumber">18</context>
+        </context-group>
+        <note priority="1" from="description">Translation header</note>
+        <note priority="1" from="meaning">Card Table</note>
+      </trans-unit>
+      <trans-unit id="be7ccd3a272728f9879aa21eda91832dc02465c9" datatype="html">
+        <source>Actions</source>
+        <target state="translated">Действия</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">libs/web/cards/ui/table/src/lib/cards-table.component.html</context>
+          <context context-type="linenumber">23</context>
+        </context-group>
+        <note priority="1" from="description">Actions header</note>
+        <note priority="1" from="meaning">Card Table</note>
+      </trans-unit>
+      <trans-unit id="8f35f0b7345732b10a2dae5c7f4d5cd9e860c87d" datatype="html">
+        <source> Cancel </source>
+        <target state="translated"> Отмена </target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">libs/web/cards/ui/table/src/lib/cards-table.component.html</context>
+          <context context-type="linenumber">45,47</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">libs/web/cards/ui/table/src/lib/cards-table.component.html</context>
+          <context context-type="linenumber">60,62</context>
+        </context-group>
+        <note priority="1" from="description">Cancel</note>
+        <note priority="1" from="meaning">Actions</note>
+      </trans-unit>
+      <trans-unit id="e7fceb1028df44b3e189a609b5db68316ad00e8b" datatype="html">
+        <source> Add </source>
+        <target state="translated">Добавить</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">libs/web/cards/ui/table/src/lib/cards-table.component.html</context>
+          <context context-type="linenumber">55,57</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">libs/web/cards/ui/table/src/lib/cards-table.component.html</context>
+          <context context-type="linenumber">70,72</context>
+        </context-group>
+        <note priority="1" from="description">Add</note>
+        <note priority="1" from="meaning">Actions</note>
+      </trans-unit>
+      <trans-unit id="3926261351125873948" datatype="html">
+        <source>Lists</source>
+        <target state="translated">Списки</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">libs/web/dictionary/ui/tabs/src/lib/dictionary-tabs.component.ts</context>
+          <context context-type="linenumber">9</context>
+        </context-group>
+        <note priority="1" from="meaning">Dictionary tabs</note>
+      </trans-unit>
+      <trans-unit id="7259494053702406093" datatype="html">
+        <source>Cards</source>
+        <target state="translated">Карточки</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">libs/web/dictionary/ui/tabs/src/lib/dictionary-tabs.component.ts</context>
+          <context context-type="linenumber">13</context>
+        </context-group>
+        <note priority="1" from="meaning">Dictionary tabs</note>
+      </trans-unit>
+      <trans-unit id="10ead6414aeb9504b85eb76f470abb936f6d7c43" datatype="html">
+        <source>Name</source>
+        <target state="translated">Название коллекции</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">libs/web/groups/create/ui/form/src/lib/create-form.component.html</context>
+          <context context-type="linenumber">3</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">libs/web/groups/edit/ui/form/src/lib/edit-form.component.html</context>
+          <context context-type="linenumber">3</context>
+        </context-group>
+        <note priority="1" from="description">Name label</note>
+        <note priority="1" from="meaning">Group</note>
+      </trans-unit>
+      <trans-unit id="7cea4a74379f0fbb57e40a7f5720de477dc77a4d" datatype="html">
+        <source>Name collection cards</source>
+        <target state="translated">Название коллекции карточек</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">libs/web/groups/create/ui/form/src/lib/create-form.component.html</context>
+          <context context-type="linenumber">8</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">libs/web/groups/edit/ui/form/src/lib/edit-form.component.html</context>
+          <context context-type="linenumber">8</context>
+        </context-group>
+        <note priority="1" from="description">Name placeholder</note>
+        <note priority="1" from="meaning">Group</note>
+      </trans-unit>
+      <trans-unit id="7b8ed9d47ce4b323226c608a7e267cd1cc08d9f9" datatype="html">
+        <source> Cancel </source>
+        <target state="translated">Отмена</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">libs/web/groups/create/ui/form/src/lib/create-form.component.html</context>
+          <context context-type="linenumber">21,23</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">libs/web/groups/edit/ui/form/src/lib/edit-form.component.html</context>
+          <context context-type="linenumber">20,22</context>
+        </context-group>
+        <note priority="1" from="description">Cancel</note>
+        <note priority="1" from="meaning">Actions</note>
+      </trans-unit>
+      <trans-unit id="a6b6cccb3651218b9fd95f9c5100fb612c7cd504" datatype="html">
+        <source> Create </source>
+        <target state="translated">Создать</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">libs/web/groups/create/ui/form/src/lib/create-form.component.html</context>
+          <context context-type="linenumber">32,34</context>
+        </context-group>
+        <note priority="1" from="description">Create</note>
+        <note priority="1" from="meaning">Actions</note>
+      </trans-unit>
+      <trans-unit id="6b53e93e7171b4ce3914986e5b943524f0216965" datatype="html">
+        <source> Save </source>
+        <target state="translated">Сохранить</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">libs/web/groups/edit/ui/form/src/lib/edit-form.component.html</context>
+          <context context-type="linenumber">23,25</context>
+        </context-group>
+        <note priority="1" from="description">Save</note>
+        <note priority="1" from="meaning">Actions</note>
+      </trans-unit>
+      <trans-unit id="e895628d71abaf3aa5e4cb20f5937d966a0e4647" datatype="html">
+        <source>Cards <x id="INTERPOLATION" equiv-text="{{ cards.length }}"/></source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">libs/web/groups/ui/card/src/lib/group-card.component.html</context>
+          <context context-type="linenumber">3</context>
+        </context-group>
+        <note priority="1" from="description">Count</note>
+        <note priority="1" from="meaning">Group Card</note>
+      </trans-unit>
       <trans-unit id="1827103049169187094" datatype="html">
         <source>Dashboard</source>
         <target state="translated">Главная</target>

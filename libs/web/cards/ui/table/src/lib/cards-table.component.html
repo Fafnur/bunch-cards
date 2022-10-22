@@ -1,0 +1,74 @@
+<table automation-id="table" mat-table bunchFullWidth [dataSource]="cards" *ngIf="cards">
+  <ng-container matColumnDef="groupName">
+    <th automation-id="group-header" mat-header-cell i18n="Card Table|Group header" *matHeaderCellDef>Group</th>
+    <td automation-id="group" mat-cell *matCellDef="let element">
+      <ng-container *ngIf="groups[element.groupUuid]; let groupCard; else: withoutGroup">
+        {{ groupCard.name }}
+      </ng-container>
+      <ng-template #withoutGroup>{{ element.groupUuid }}</ng-template>
+    </td>
+  </ng-container>
+
+  <ng-container matColumnDef="original">
+    <th automation-id="original-header" mat-header-cell i18n="Card Table|Original header" *matHeaderCellDef>Phrase</th>
+    <td automation-id="original" mat-cell *matCellDef="let element">{{ element.original }}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="translation">
+    <th automation-id="translation-header" mat-header-cell i18n="Card Table|Translation header" *matHeaderCellDef>Translation</th>
+    <td automation-id="translation" mat-cell *matCellDef="let element">{{ element.translation }}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="actions">
+    <th automation-id="actions-header" mat-header-cell i18n="Card Table|Actions header" *matHeaderCellDef>Actions</th>
+    <td automation-id="actions" mat-cell *matCellDef="let element">
+      <button automation-id="remove" type="button" mat-icon-button (click)="onRemove(element)">
+        <mat-icon>remove</mat-icon>
+      </button>
+      <a
+        automation-id="edit"
+        mat-icon-button
+        [routerLink]="paths.cardEdit | path: { uuid: element.uuid }"
+        [queryParams]="{ back: group?.uuid }"
+      >
+        <mat-icon>edit</mat-icon>
+      </a>
+    </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="columns" automation-id="header-row"></tr>
+  <tr mat-row *matRowDef="let row; columns: columns" automation-id="value-row"></tr>
+</table>
+
+<div class="actions">
+  <ng-container *ngIf="group">
+    <a automation-id="cancel-group" bunchButtonMedium mat-raised-button i18n="Actions|Cancel" [routerLink]="paths.groupsManagement | path">
+      Cancel
+    </a>
+    <a
+      automation-id="add-group"
+      bunchButtonMedium
+      mat-raised-button
+      color="primary"
+      i18n="Actions|Add"
+      [routerLink]="paths.groupCardCreate | path: { uuid: group.uuid }"
+    >
+      Add
+    </a>
+  </ng-container>
+  <ng-container *ngIf="!group">
+    <a automation-id="cancel-cards" bunchButtonMedium mat-raised-button i18n="Actions|Cancel" [routerLink]="paths.cardsManagement | path">
+      Cancel
+    </a>
+    <a
+      automation-id="add-cards"
+      bunchButtonMedium
+      mat-raised-button
+      color="primary"
+      i18n="Actions|Add"
+      [routerLink]="paths.cardCreate | path"
+    >
+      Add
+    </a>
+  </ng-container>
+</div>

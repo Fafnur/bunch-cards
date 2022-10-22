@@ -1,0 +1,46 @@
+<form automation-id="form" [formGroup]="form" (ngSubmit)="onSubmit()">
+  <mat-form-field bunchFullWidth appearance="fill">
+    <mat-label automation-id="group-label">Bunch</mat-label>
+    <mat-select automation-id="group-control" [formControl]="form.controls.groupUuid">
+      <mat-option *ngFor="let group of groups" [value]="group.uuid">
+        {{ group.name }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field bunchFullWidth appearance="fill">
+    <mat-label automation-id="original-label">Original</mat-label>
+    <input automation-id="original-control" matInput placeholder="Apple" [formControl]="form.controls.original" />
+  </mat-form-field>
+
+  <mat-form-field bunchFullWidth appearance="fill">
+    <mat-label automation-id="translation-label">Translation</mat-label>
+    <input automation-id="translation-control" [formControl]="form.controls.translation" matInput placeholder="Apple on russian" />
+  </mat-form-field>
+
+  <a
+    automation-id="cancel-cards"
+    bunchButtonMedium
+    mat-raised-button
+    i18n="Action|Cancel"
+    [disabled]="submitted"
+    [routerLink]="paths.cardsManagement | path"
+    *ngIf="!back"
+  >
+    Cancel
+  </a>
+  <a
+    automation-id="cancel-groups"
+    bunchButtonMedium
+    mat-raised-button
+    i18n="Action|Cancel"
+    [routerLink]="paths.groupCardsEdit | path: { uuid: form.controls.groupUuid.value }"
+    [disabled]="submitted"
+    *ngIf="back"
+  >
+    Cancel
+  </a>
+  <button automation-id="save" type="submit" bunchButtonMedium mat-raised-button color="primary" i18n="Action|Save" [disabled]="submitted">
+    Save
+  </button>
+</form>

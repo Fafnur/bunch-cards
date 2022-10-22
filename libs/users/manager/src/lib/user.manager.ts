@@ -1,12 +1,12 @@
 import { Injectable } from '@angular/core';
 import { map, Observable, of, switchMap, throwError } from 'rxjs';
 
-import { LocalDBService } from '@bunch/core/localdb';
+import { LocalDbKeys, LocalDBService } from '@bunch/core/localdb';
 import { User, UserChange } from '@bunch/users/common';
 
 @Injectable()
 export class UserManager {
-  static storeName = 'users';
+  static storeName = LocalDbKeys.Users;
 
   constructor(private readonly localDBService: LocalDBService) {}
 

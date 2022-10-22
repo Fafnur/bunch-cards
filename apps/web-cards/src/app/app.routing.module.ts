@@ -3,7 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { NAVIGATION_PATHS } from '@bunch/core/navigation';
 import { AuthGuard, AuthGuardsModule, LoggedGuard } from '@bunch/web/auth/guards';
-import { LayoutComponent } from '@bunch/web/ui/layout';
+import { LayoutComponent, LayoutModule } from '@bunch/web/ui/layout';
 
 const routes: Routes = [
   {
@@ -21,7 +21,7 @@ const routes: Routes = [
         loadChildren: () => import('@bunch/web/dashboard/page').then((modules) => modules.DashboardPageModule),
       },
       {
-        path: NAVIGATION_PATHS.dictionary,
+        path: '',
         loadChildren: () => import('@bunch/web/dictionary/page').then((modules) => modules.DictionaryPageModule),
       },
       {
@@ -44,6 +44,7 @@ const routes: Routes = [
 @NgModule({
   imports: [
     AuthGuardsModule,
+    LayoutModule,
     RouterModule.forRoot(routes, {
       anchorScrolling: 'enabled',
       initialNavigation: 'enabledBlocking',

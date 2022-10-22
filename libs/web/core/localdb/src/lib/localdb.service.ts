@@ -7,7 +7,7 @@ import { WindowService } from '@bunch/web/core/window';
 
 @Injectable()
 export class WebLocalDBService implements LocalDBService, OnDestroy {
-  static version = 4;
+  static version = 12;
   static dbname = 'bunchcards';
 
   private readonly database$ = new ReplaySubject<IDBDatabase>(1);
@@ -30,11 +30,13 @@ export class WebLocalDBService implements LocalDBService, OnDestroy {
         openRequest.onupgradeneeded = () => {
           try {
             const database: IDBDatabase = openRequest.result;
+            const allStores = Array.from(database.objectStoreNames);
 
-            database.createObjectStore('groups', { keyPath: 'uuid' });
-            database.createObjectStore('cards', { keyPath: 'uuid' });
-            database.createObjectStore('users', { keyPath: 'uuid' });
-            database.createObjectStore('tokens', { keyPath: 'uuid' });
+            const stores = ['groups', 'cards', 'users', 'tokens'].filter((store) => !allStores.includes(store));
+
+            for (const store of stores) {
+              database.createObjectStore(store, { keyPath: 'uuid' });
+            }
           } catch (error) {
             onError(error);
           }
@@ -50,31 +52,33 @@ export class WebLocalDBService implements LocalDBService, OnDestroy {
   getAll<T = LocalDBRecord>(storeName: string): Observable<T[]> {
     return new Observable((observer) => {
       const onError = (error: unknown) => {
-        console.log(error);
+        console.error(error, { storeName, operation: 'getAll' });
         observer.complete();
       };
-      this.getDatabase().subscribe((database) => {
-        try {
-          const transaction = database.transaction([storeName], 'readonly');
-          const store = transaction.objectStore(storeName);
-          const getRequest: IDBRequest<T[]> = store.getAll();
+      this.getDatabase()
+        .pipe()
+        .subscribe((database) => {
+          try {
+            const transaction = database.transaction([storeName], 'readonly');
+            const store = transaction.objectStore(storeName);
+            const getRequest: IDBRequest<T[]> = store.getAll();
 
-          getRequest.onerror = () => onError(getRequest.error);
-          getRequest.onsuccess = () => {
-            observer.next(getRequest.result ?? []);
-            observer.complete();
-          };
-        } catch (err) {
-          onError(err);
-        }
-      });
+            getRequest.onerror = () => onError(getRequest.error);
+            getRequest.onsuccess = () => {
+              observer.next(getRequest.result ?? []);
+              observer.complete();
+            };
+          } catch (err) {
+            onError(err);
+          }
+        });
     });
   }
 
   get<T = LocalDBRecord>(storeName: string, key: string): Observable<T | null> {
     return new Observable((observer) => {
       const onError = (error: unknown) => {
-        console.log(error);
+        console.error(error, { storeName, operation: 'get' });
         observer.complete();
       };
       this.getDatabase().subscribe((database) => {
@@ -98,7 +102,7 @@ export class WebLocalDBService implements LocalDBService, OnDestroy {
   put<T = LocalDBRecord>(storeName: string, record: T): Observable<void> {
     return new Observable((observer) => {
       const onError = (error: unknown) => {
-        console.error(error);
+        console.error(error, { storeName, operation: 'put' });
         observer.complete();
       };
       this.getDatabase().subscribe((database) => {
@@ -121,7 +125,7 @@ export class WebLocalDBService implements LocalDBService, OnDestroy {
   putAll<T = LocalDBRecord>(storeName: string, records: T[]): Observable<void> {
     return new Observable((observer) => {
       const onError = (error: unknown) => {
-        console.error(error);
+        console.error(error, { storeName, operation: 'putAll' });
         observer.complete();
       };
       this.getDatabase().subscribe((database) => {
@@ -147,7 +151,7 @@ export class WebLocalDBService implements LocalDBService, OnDestroy {
   remove(storeName: string, key: string): Observable<void> {
     return new Observable((observer) => {
       const onError = (error: unknown) => {
-        console.error(error);
+        console.error(error, { storeName, operation: 'remove' });
         observer.complete();
       };
       this.getDatabase().subscribe((database) => {
@@ -173,7 +177,7 @@ export class WebLocalDBService implements LocalDBService, OnDestroy {
         try {
           database.transaction([storeName], 'readwrite').objectStore(storeName).clear();
         } catch (error) {
-          console.error(error);
+          console.error(error, { storeName, operation: 'clear' });
         }
         observer.next();
         observer.complete();

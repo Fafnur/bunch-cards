@@ -40,11 +40,11 @@ export const changeFailure = createAction('[Card] Change Failure', props<{ uuid:
 
 // Remove
 
-export const remove = createAction('[Card] Remove', props<{ uuid: string }>());
+export const remove = createAction('[Card] Remove', props<{ card: Card }>());
 
-export const removeSuccess = createAction('[Card] Remove Success', props<{ uuid: string }>());
+export const removeSuccess = createAction('[Card] Remove Success', props<{ card: Card }>());
 
-export const removeFailure = createAction('[Card] Remove Failure', props<{ uuid: string; error: unknown }>());
+export const removeFailure = createAction('[Card] Remove Failure', props<{ card: Card; error: unknown }>());
 
 // Sync
 
