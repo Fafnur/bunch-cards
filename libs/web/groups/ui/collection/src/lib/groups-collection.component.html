@@ -5,14 +5,14 @@
     <bunch-column tablet="6" web="3">
       <ng-content select="[creating]"></ng-content>
     </bunch-column>
-    <bunch-column tablet="6" web="3" *ngFor="let group of groups">
+    <bunch-column automation-id="column" tablet="6" web="3" *ngFor="let group of groups">
       <bunch-group-card [group]="group" [editing]="editing" [viewing]="viewing"></bunch-group-card>
     </bunch-column>
   </bunch-row>
 </ng-template>
 
 <ng-template #orderingCollection>
-  <div cdkDropList (cdkDropListDropped)="onDropped($event)" *ngIf="groups; else loading">
+  <div automation-id="drop" cdkDropList (cdkDropListDropped)="onDropped($event)" *ngIf="groups; else loading">
     <bunch-group-card cdkDrag [group]="group" *ngFor="let group of groups" [editing]="editing" [viewing]="viewing"></bunch-group-card>
   </div>
 </ng-template>
