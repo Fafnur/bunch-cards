@@ -13,7 +13,7 @@ import { mock, when } from 'ts-mockito';
 import { AuthResponse } from '@bunch/auth/common';
 import { AuthFacade } from '@bunch/auth/state';
 import { FormExtractsModule } from '@bunch/core/forms/extract';
-import { NAVIGATION_PATHS, NavigationService } from '@bunch/core/navigation';
+import { NAVIGATION_PATHS, NavigationService, NavigationServiceStub } from '@bunch/core/navigation';
 import { providerOf } from '@bunch/core/testing';
 import { AuthEmailModule, AuthPasswordModule } from '@bunch/web/auth/ui/fields';
 import { ButtonMediumModule } from '@bunch/web/ui/theming';
@@ -33,7 +33,7 @@ describe('LoginFormComponent', () => {
 
   beforeEach(async () => {
     authFacadeMock = mock(AuthFacade);
-    navigationServiceMock = mock(NavigationService);
+    navigationServiceMock = mock(NavigationServiceStub);
     routerMock = mock(Router);
 
     loginSuccess$ = new ReplaySubject<AuthResponse>(1);

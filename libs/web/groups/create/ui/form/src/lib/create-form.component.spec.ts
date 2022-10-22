@@ -9,7 +9,7 @@ import { MockModule } from 'ng-mocks';
 import { ReplaySubject } from 'rxjs';
 import { mock, when } from 'ts-mockito';
 
-import { NAVIGATION_PATHS, NavigationPipesModule, NavigationService } from '@bunch/core/navigation';
+import { NAVIGATION_PATHS, NavigationPipesModule, NavigationService, NavigationServiceStub } from '@bunch/core/navigation';
 import { providerOf } from '@bunch/core/testing';
 import { Group } from '@bunch/groups/common';
 import { GroupFacade } from '@bunch/groups/state';
@@ -33,7 +33,7 @@ describe('CreateFormComponent', () => {
 
   beforeEach(async () => {
     groupFacadeMock = mock(GroupFacade);
-    navigationServiceMock = mock(NavigationService);
+    navigationServiceMock = mock(NavigationServiceStub);
 
     createFailure$ = new ReplaySubject<unknown>(1);
     createSuccess$ = new ReplaySubject<Group>(1);

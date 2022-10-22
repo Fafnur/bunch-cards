@@ -8,7 +8,7 @@ import { RouterTestingModule } from '@angular/router/testing';
 import { MockModule } from 'ng-mocks';
 import { mock, when } from 'ts-mockito';
 
-import { NAVIGATION_PATHS, NavigationPipesModule, NavigationService } from '@bunch/core/navigation';
+import { NAVIGATION_PATHS, NavigationPipesModule, NavigationService, NavigationServiceStub } from '@bunch/core/navigation';
 import { providerOf } from '@bunch/core/testing';
 
 import { GroupCreateComponent } from './group-create.component';
@@ -20,7 +20,7 @@ describe('GroupCreateComponent', () => {
   let navigationServiceMock: NavigationService;
 
   beforeEach(async () => {
-    navigationServiceMock = mock(NavigationService);
+    navigationServiceMock = mock(NavigationServiceStub);
 
     when(navigationServiceMock.getPaths()).thenReturn(NAVIGATION_PATHS);
 

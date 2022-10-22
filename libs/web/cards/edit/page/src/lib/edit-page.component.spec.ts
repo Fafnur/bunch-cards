@@ -8,7 +8,7 @@ import { mock, when } from 'ts-mockito';
 
 import { Card, CARD_STUB } from '@bunch/cards/common';
 import { CardFacade } from '@bunch/cards/state';
-import { NAVIGATION_PATHS, NavigationService } from '@bunch/core/navigation';
+import { NAVIGATION_PATHS, NavigationService, NavigationServiceStub } from '@bunch/core/navigation';
 import { providerOf } from '@bunch/core/testing';
 import { Group, GROUP_STUB } from '@bunch/groups/common';
 import { GroupFacade } from '@bunch/groups/state';
@@ -28,7 +28,7 @@ describe('EditPageComponent', () => {
   let card$: ReplaySubject<Card>;
 
   beforeEach(async () => {
-    navigationServiceMock = mock(NavigationService);
+    navigationServiceMock = mock(NavigationServiceStub);
     groupFacadeMock = mock(GroupFacade);
     cardFacadeMock = mock(CardFacade);
     activatedRouteMock = mock(ActivatedRoute);

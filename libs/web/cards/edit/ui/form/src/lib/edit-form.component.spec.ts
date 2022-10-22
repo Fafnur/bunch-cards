@@ -15,7 +15,7 @@ import { mock, when } from 'ts-mockito';
 
 import { Card, CARD_STUB } from '@bunch/cards/common';
 import { CardFacade } from '@bunch/cards/state';
-import { NAVIGATION_PATHS, NavigationPipesModule, NavigationService } from '@bunch/core/navigation';
+import { NAVIGATION_PATHS, NavigationPipesModule, NavigationService, NavigationServiceStub } from '@bunch/core/navigation';
 import { providerOf } from '@bunch/core/testing';
 import { Group, GROUP_STUB } from '@bunch/groups/common';
 import { GroupFacade } from '@bunch/groups/state';
@@ -46,7 +46,7 @@ describe('EditFormComponent', () => {
   beforeEach(async () => {
     groupFacadeMock = mock(GroupFacade);
     cardFacadeMock = mock(CardFacade);
-    navigationServiceMock = mock(NavigationService);
+    navigationServiceMock = mock(NavigationServiceStub);
     activatedRouteMock = mock(ActivatedRoute);
 
     groups$ = new ReplaySubject<Group[]>(1);

@@ -12,7 +12,7 @@ import { mock, when } from 'ts-mockito';
 
 import { Card, CARDS_STUB } from '@bunch/cards/common';
 import { CardFacade } from '@bunch/cards/state';
-import { NAVIGATION_PATHS, NavigationPipesModule, NavigationService } from '@bunch/core/navigation';
+import { NAVIGATION_PATHS, NavigationPipesModule, NavigationService, NavigationServiceStub } from '@bunch/core/navigation';
 import { providerOf } from '@bunch/core/testing';
 import { Group, GROUP_STUB, GROUPS_ENTITIES_STUB } from '@bunch/groups/common';
 import { GroupFacade } from '@bunch/groups/state';
@@ -44,7 +44,7 @@ describe('CardsTableComponent', () => {
   beforeEach(async () => {
     cardFacadeMock = mock(CardFacade);
     groupFacadeMock = mock(GroupFacade);
-    navigationServiceMock = mock(NavigationService);
+    navigationServiceMock = mock(NavigationServiceStub);
 
     groupsEntities$ = new ReplaySubject<Record<string, Group>>(1);
     cardsByGroup$ = new ReplaySubject<Card[]>(1);

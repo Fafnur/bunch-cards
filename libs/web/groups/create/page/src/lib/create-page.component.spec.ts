@@ -4,7 +4,7 @@ import { RouterTestingModule } from '@angular/router/testing';
 import { MockModule } from 'ng-mocks';
 import { mock, when } from 'ts-mockito';
 
-import { NAVIGATION_PATHS, NavigationService } from '@bunch/core/navigation';
+import { NAVIGATION_PATHS, NavigationService, NavigationServiceStub } from '@bunch/core/navigation';
 import { providerOf } from '@bunch/core/testing';
 import { CreateFormModule } from '@bunch/web/groups/create/ui/form';
 
@@ -17,7 +17,7 @@ describe('CreatePageComponent', () => {
   let navigationServiceMock: NavigationService;
 
   beforeEach(async () => {
-    navigationServiceMock = mock(NavigationService);
+    navigationServiceMock = mock(NavigationServiceStub);
 
     when(navigationServiceMock.getPaths()).thenReturn(NAVIGATION_PATHS);
 
