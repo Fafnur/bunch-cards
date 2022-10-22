@@ -19,7 +19,7 @@ export class GroupCardComponent implements OnInit {
   @Input() editing = false;
   @Input() viewing = false;
 
-  cards!: Card[];
+  cards: Card[] = [];
 
   paths!: NavigationPaths;
 
@@ -32,6 +32,7 @@ export class GroupCardComponent implements OnInit {
 
   ngOnInit(): void {
     this.paths = this.navigationService.getPaths();
+
     if (this.group?.uuid) {
       this.cardFacade
         .cardsByGroup$(this.group.uuid)
@@ -43,8 +44,6 @@ export class GroupCardComponent implements OnInit {
           takeUntil(this.destroy$)
         )
         .subscribe();
-    } else {
-      this.cards = [];
     }
   }
 }

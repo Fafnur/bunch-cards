@@ -1,19 +1,19 @@
-<mat-card *ngIf="group; else loading">
-  <mat-card-title>{{ group.name }}</mat-card-title>
-  <mat-card-subtitle>Cards {{ cards.length }}</mat-card-subtitle>
-  <mat-divider inset></mat-divider>
-  <mat-card-actions align="end">
+<mat-card automation-id="card" *ngIf="group; else loading">
+  <mat-card-title automation-id="title">{{ group.name }}</mat-card-title>
+  <mat-card-subtitle automation-id="subtitle" i18n="Group Card|Count">Cards {{ cards.length }}</mat-card-subtitle>
+  <mat-divider inset automation-id="divider"></mat-divider>
+  <mat-card-actions align="end" automation-id="actions">
     <ng-content select="[actions]"></ng-content>
-    <a mat-icon-button [routerLink]="paths.groupEdit | path: { uuid: group.uuid }" *ngIf="viewing">
+    <a automation-id="view" mat-icon-button [routerLink]="paths.groupEdit | path: { uuid: group.uuid }" *ngIf="viewing">
       <mat-icon>school</mat-icon>
     </a>
-    <a mat-icon-button [routerLink]="paths.groupCardCreate | path: { uuid: group.uuid }" *ngIf="editing">
+    <a automation-id="create" mat-icon-button [routerLink]="paths.groupCardCreate | path: { uuid: group.uuid }" *ngIf="editing">
       <mat-icon>add_circle_outline</mat-icon>
     </a>
-    <a mat-icon-button [routerLink]="paths.groupCardsEdit | path: { uuid: group.uuid }" *ngIf="editing">
+    <a automation-id="edit-cards" mat-icon-button [routerLink]="paths.groupCardsEdit | path: { uuid: group.uuid }" *ngIf="editing">
       <mat-icon>style</mat-icon>
     </a>
-    <a mat-icon-button [routerLink]="paths.groupEdit | path: { uuid: group.uuid }" *ngIf="editing">
+    <a automation-id="edit" mat-icon-button [routerLink]="paths.groupEdit | path: { uuid: group.uuid }" *ngIf="editing">
       <mat-icon>edit</mat-icon>
     </a>
   </mat-card-actions>
