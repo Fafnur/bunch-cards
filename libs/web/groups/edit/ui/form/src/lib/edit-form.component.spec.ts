@@ -1,4 +1,5 @@
 import { CommonModule } from '@angular/common';
+import { Component } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
@@ -16,10 +17,18 @@ import { GroupFacade } from '@bunch/groups/state';
 import { WidthModule } from '@bunch/web/ui/theming';
 
 import { EditFormComponent } from './edit-form.component';
+import { EditFormComponentPo } from './edit-form.component.po';
+
+@Component({
+  template: `<bunch-group-edit-form [group]="group"></bunch-group-edit-form>`,
+})
+class WrapperComponent {
+  group = GROUP_STUB;
+}
 
 describe('EditFormComponent', () => {
-  let component: EditFormComponent;
-  let fixture: ComponentFixture<EditFormComponent>;
+  let po: EditFormComponentPo;
+  let fixture: ComponentFixture<WrapperComponent>;
   let groupFacadeMock: GroupFacade;
   let navigationServiceMock: NavigationService;
   let changeFailure$: ReplaySubject<unknown>;
@@ -32,8 +41,8 @@ describe('EditFormComponent', () => {
     changeFailure$ = new ReplaySubject<unknown>(1);
     changeSuccess$ = new ReplaySubject<Group>(1);
 
-    when(groupFacadeMock.changeOneFailure$(GROUP_STUB.uuid)).thenReturn(changeFailure$);
-    when(groupFacadeMock.changeOneSuccess$(GROUP_STUB.uuid)).thenReturn(changeSuccess$);
+    when(groupFacadeMock.changeFailure$).thenReturn(changeFailure$);
+    when(groupFacadeMock.changeSuccess$).thenReturn(changeSuccess$);
     when(navigationServiceMock.getPaths()).thenReturn(NAVIGATION_PATHS);
 
     await TestBed.configureTestingModule({
@@ -47,19 +56,23 @@ describe('EditFormComponent', () => {
         MockModule(WidthModule),
         MockModule(NavigationPipesModule),
       ],
-      declarations: [EditFormComponent],
+      declarations: [EditFormComponent, WrapperComponent],
       providers: [providerOf(GroupFacade, groupFacadeMock), providerOf(NavigationService, navigationServiceMock)],
     }).compileComponents();
 
-    fixture = TestBed.createComponent(EditFormComponent);
-    component = fixture.componentInstance;
-    // TODO: Make WrapperComponent
-    component.group = GROUP_STUB;
+    fixture = TestBed.createComponent(WrapperComponent);
+    po = new EditFormComponentPo(fixture);
   });
 
   it('should create', () => {
     fixture.detectChanges();
 
-    expect(component).toBeTruthy();
+    expect(fixture.componentInstance).toBeTruthy();
+  });
+
+  it('should show', () => {
+    fixture.detectChanges();
+
+    expect(po).toBeTruthy();
   });
 });

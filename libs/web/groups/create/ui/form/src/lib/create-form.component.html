@@ -1,10 +1,10 @@
 <form automation-id="form" [formGroup]="form" (ngSubmit)="onSubmit()">
   <mat-form-field bunchFullWidth appearance="fill">
-    <mat-label automation-id="name-label" i18n="Group Create|Name label">Name</mat-label>
+    <mat-label automation-id="name-label" i18n="Group|Name label">Name</mat-label>
     <input
       automation-id="name-control"
       matInput
-      i18n-placeholder="Group Create|Name placeholder"
+      i18n-placeholder="Group|Name placeholder"
       placeholder="Name collection cards"
       [formControl]="form.controls.name"
     />

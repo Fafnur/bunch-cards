@@ -35,6 +35,16 @@ export class GroupFacade {
     map(({ error }) => error)
   );
 
+  changeSuccess$ = this.actions$.pipe(
+    ofType(GroupActions.changeSuccess),
+    map(({ group }) => group)
+  );
+
+  changeFailure$ = this.actions$.pipe(
+    ofType(GroupActions.changeFailure),
+    map(({ error }) => error)
+  );
+
   group$ = (uuid: string) => this.store.select(GroupSelectors.selectGroup(uuid));
 
   loadOneSuccess$ = (uuid: string) =>

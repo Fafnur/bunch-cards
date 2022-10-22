@@ -41,8 +41,7 @@ export class EditFormComponent implements OnInit {
       cover: new FormControl<string | null>(this.group.cover),
     });
 
-    this.groupFacade
-      .changeOneFailure$(this.form.controls.uuid.value)
+    this.groupFacade.changeFailure$
       .pipe(
         tap(() => {
           this.submitted = false;
@@ -52,12 +51,10 @@ export class EditFormComponent implements OnInit {
       )
       .subscribe();
 
-    this.groupFacade
-      .changeOneSuccess$(this.form.controls.uuid.value)
+    this.groupFacade.changeSuccess$
       .pipe(
         tap((group) => {
           this.edited.emit(group);
-
           this.submitted = false;
           this.changeDetectorRef.markForCheck();
         }),
@@ -70,22 +67,12 @@ export class EditFormComponent implements OnInit {
     this.form.markAllAsTouched();
 
     if (this.form.valid && !this.submitted) {
-      if (this.isChanged()) {
-        this.submitted = true;
-        this.groupFacade.change(this.group.uuid, this.form.getRawValue());
-      } else {
-        this.edited.emit(this.group);
-      }
+      this.submitted = true;
+      this.groupFacade.change(this.group.uuid, this.form.getRawValue());
     } else {
       // TODO: Scroll to error
     }
 
     this.changeDetectorRef.markForCheck();
-  }
-
-  private isChanged(): boolean {
-    const { uuid, name, cover } = this.group;
-
-    return JSON.stringify({ uuid, name, cover }) !== JSON.stringify(this.form.getRawValue());
   }
 }
