@@ -41,7 +41,7 @@ export class GroupService {
     return this.repository.delete({ uuid }).then();
   }
 
-  async save(group: GroupEntity): Promise<GroupEntity> {
+  async save(group: Omit<GroupEntity, 'cards'>): Promise<GroupEntity> {
     return this.repository.save(group);
   }
 

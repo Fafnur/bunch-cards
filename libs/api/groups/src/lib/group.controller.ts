@@ -57,7 +57,7 @@ export class GroupController {
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const { cards, ...other } = form;
 
-    return this.service.save({ ...group, ...other });
+    return this.service.save({ ...group, ...other, orderCards: other.orderCards ?? cards ?? [] });
   }
 
   @Get()
