@@ -6,7 +6,7 @@
   "targets": {
     "test": {
       "executor": "@nrwl/jest:jest",
-      "outputs": ["coverage/libs/web/ui/theming"],
+      "outputs": ["{workspaceRoot}/coverage/libs/web/ui/theming"],
       "options": {
         "jestConfig": "libs/web/ui/theming/jest.config.ts",
         "passWithNoTests": true

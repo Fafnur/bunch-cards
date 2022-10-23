@@ -6,7 +6,7 @@
   "targets": {
     "test": {
       "executor": "@nrwl/jest:jest",
-      "outputs": ["coverage/libs/api/passwords"],
+      "outputs": ["{workspaceRoot}/coverage/libs/api/passwords"],
       "options": {
         "jestConfig": "libs/api/passwords/jest.config.ts",
         "passWithNoTests": true

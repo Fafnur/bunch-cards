@@ -12,7 +12,7 @@
     },
     "test": {
       "executor": "@nrwl/jest:jest",
-      "outputs": ["coverage/libs/nativescript/learning/page"],
+      "outputs": ["{workspaceRoot}/coverage/libs/nativescript/learning/page"],
       "options": {
         "jestConfig": "libs/nativescript/learning/page/jest.config.ts",
         "passWithNoTests": true

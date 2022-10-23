@@ -5,7 +5,7 @@
   "targets": {
     "test": {
       "executor": "@nrwl/jest:jest",
-      "outputs": ["coverage/libs/web/cards/ui/table"],
+      "outputs": ["{workspaceRoot}/coverage/libs/web/cards/ui/table"],
       "options": {
         "jestConfig": "libs/web/cards/ui/table/jest.config.ts",
         "passWithNoTests": true

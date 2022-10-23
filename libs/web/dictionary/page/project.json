@@ -6,7 +6,7 @@
   "targets": {
     "test": {
       "executor": "@nrwl/jest:jest",
-      "outputs": ["coverage/libs/web/dictionary/page"],
+      "outputs": ["{workspaceRoot}/coverage/libs/web/dictionary/page"],
       "options": {
         "jestConfig": "libs/web/dictionary/page/jest.config.ts",
         "passWithNoTests": true

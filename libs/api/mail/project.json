@@ -6,7 +6,7 @@
   "targets": {
     "test": {
       "executor": "@nrwl/jest:jest",
-      "outputs": ["coverage/libs/api/mail"],
+      "outputs": ["{workspaceRoot}/coverage/libs/api/mail"],
       "options": {
         "jestConfig": "libs/api/mail/jest.config.ts",
         "passWithNoTests": true

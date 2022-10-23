@@ -6,7 +6,7 @@
   "targets": {
     "test": {
       "executor": "@nrwl/jest:jest",
-      "outputs": ["coverage/libs/web/core/hammer"],
+      "outputs": ["{workspaceRoot}/coverage/libs/web/core/hammer"],
       "options": {
         "jestConfig": "libs/web/core/hammer/jest.config.ts",
         "passWithNoTests": true

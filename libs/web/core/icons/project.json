@@ -5,7 +5,7 @@
   "targets": {
     "test": {
       "executor": "@nrwl/jest:jest",
-      "outputs": ["coverage/libs/web/core/icons"],
+      "outputs": ["{workspaceRoot}/coverage/libs/web/core/icons"],
       "options": {
         "jestConfig": "libs/web/core/icons/jest.config.ts",
         "passWithNoTests": true

@@ -4,13 +4,15 @@
   "projectType": "application",
   "targets": {
     "build": {
-      "executor": "@nrwl/node:webpack",
+      "executor": "@nrwl/webpack:webpack",
       "outputs": ["{options.outputPath}"],
       "options": {
         "outputPath": "dist/apps/api-cards",
         "main": "apps/api-cards/src/main.ts",
         "tsConfig": "apps/api-cards/tsconfig.app.json",
-        "assets": ["apps/api-cards/src/assets"]
+        "assets": ["apps/api-cards/src/assets"],
+        "target": "node",
+        "compiler": "tsc"
       },
       "configurations": {
         "production": {
@@ -41,7 +43,7 @@
     },
     "test": {
       "executor": "@nrwl/jest:jest",
-      "outputs": ["coverage/apps/api-cards"],
+      "outputs": ["{workspaceRoot}/coverage/apps/api-cards"],
       "options": {
         "jestConfig": "apps/api-cards/jest.config.ts",
         "passWithNoTests": true

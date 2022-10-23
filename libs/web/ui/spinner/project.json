@@ -5,7 +5,7 @@
   "targets": {
     "test": {
       "executor": "@nrwl/jest:jest",
-      "outputs": ["coverage/libs/web/ui/spinner"],
+      "outputs": ["{workspaceRoot}/coverage/libs/web/ui/spinner"],
       "options": {
         "jestConfig": "libs/web/ui/spinner/jest.config.ts",
         "passWithNoTests": true

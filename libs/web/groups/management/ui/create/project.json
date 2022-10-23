@@ -5,7 +5,7 @@
   "targets": {
     "test": {
       "executor": "@nrwl/jest:jest",
-      "outputs": ["coverage/libs/web/groups/management/ui/create"],
+      "outputs": ["{workspaceRoot}/coverage/libs/web/groups/management/ui/create"],
       "options": {
         "jestConfig": "libs/web/groups/management/ui/create/jest.config.ts",
         "passWithNoTests": true

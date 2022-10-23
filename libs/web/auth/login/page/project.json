@@ -5,7 +5,7 @@
   "targets": {
     "test": {
       "executor": "@nrwl/jest:jest",
-      "outputs": ["coverage/libs/web/auth/login/page"],
+      "outputs": ["{workspaceRoot}/coverage/libs/web/auth/login/page"],
       "options": {
         "jestConfig": "libs/web/auth/login/page/jest.config.ts",
         "passWithNoTests": true

@@ -5,7 +5,7 @@
   "targets": {
     "test": {
       "executor": "@nrwl/jest:jest",
-      "outputs": ["coverage/libs/api/jwt/guards"],
+      "outputs": ["{workspaceRoot}/coverage/libs/api/jwt/guards"],
       "options": {
         "jestConfig": "libs/api/jwt/guards/jest.config.ts",
         "passWithNoTests": true
