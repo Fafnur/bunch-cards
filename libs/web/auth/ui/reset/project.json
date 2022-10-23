@@ -5,7 +5,7 @@
   "targets": {
     "test": {
       "executor": "@nrwl/jest:jest",
-      "outputs": ["coverage/libs/web/auth/ui/reset"],
+      "outputs": ["{workspaceRoot}/coverage/libs/web/auth/ui/reset"],
       "options": {
         "jestConfig": "libs/web/auth/ui/reset/jest.config.ts",
         "passWithNoTests": true

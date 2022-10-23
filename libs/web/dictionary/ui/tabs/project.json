@@ -5,7 +5,7 @@
   "targets": {
     "test": {
       "executor": "@nrwl/jest:jest",
-      "outputs": ["coverage/libs/web/dictionary/ui/tabs"],
+      "outputs": ["{workspaceRoot}/coverage/libs/web/dictionary/ui/tabs"],
       "options": {
         "jestConfig": "libs/web/dictionary/ui/tabs/jest.config.ts",
         "passWithNoTests": true

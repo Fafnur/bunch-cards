@@ -6,7 +6,7 @@
   "targets": {
     "test": {
       "executor": "@nrwl/jest:jest",
-      "outputs": ["coverage/libs/core/navigation"],
+      "outputs": ["{workspaceRoot}/coverage/libs/core/navigation"],
       "options": {
         "jestConfig": "libs/core/navigation/jest.config.ts",
         "passWithNoTests": true

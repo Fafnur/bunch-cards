@@ -66,19 +66,19 @@ export class CardChangeForm implements CardChange {
     context: { errorCode: 'isLength' },
   })
   @IsOptional()
-  uuid?: string;
+  uuid!: string;
 
   @Length(1, 60, {
     context: { errorCode: 'isLength' },
   })
   @IsOptional()
-  original?: string;
+  original!: string;
 
   @Length(1, 60, {
     context: { errorCode: FormErrorType.IsLength },
   })
   @IsOptional()
-  translation?: string;
+  translation!: string;
 
   @IsString({
     context: { errorCode: FormErrorType.IsString },
@@ -87,7 +87,7 @@ export class CardChangeForm implements CardChange {
     context: { errorCode: 'isLength' },
   })
   @IsOptional()
-  groupUuid?: string;
+  groupUuid!: string;
 
   @IsString({
     context: { errorCode: FormErrorType.IsString },

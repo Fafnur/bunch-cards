@@ -5,7 +5,7 @@
   "targets": {
     "test": {
       "executor": "@nrwl/jest:jest",
-      "outputs": ["coverage/libs/core/localdb"],
+      "outputs": ["{workspaceRoot}/coverage/libs/core/localdb"],
       "options": {
         "jestConfig": "libs/core/localdb/jest.config.ts",
         "passWithNoTests": true

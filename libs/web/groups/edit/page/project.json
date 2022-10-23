@@ -5,7 +5,7 @@
   "targets": {
     "test": {
       "executor": "@nrwl/jest:jest",
-      "outputs": ["coverage/libs/web/groups/edit/page"],
+      "outputs": ["{workspaceRoot}/coverage/libs/web/groups/edit/page"],
       "options": {
         "jestConfig": "libs/web/groups/edit/page/jest.config.ts",
         "passWithNoTests": true

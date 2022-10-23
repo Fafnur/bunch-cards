@@ -5,7 +5,7 @@
   "targets": {
     "test": {
       "executor": "@nrwl/jest:jest",
-      "outputs": ["coverage/libs/users/sync"],
+      "outputs": ["{workspaceRoot}/coverage/libs/users/sync"],
       "options": {
         "jestConfig": "libs/users/sync/jest.config.ts",
         "passWithNoTests": true

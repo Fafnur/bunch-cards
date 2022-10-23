@@ -5,7 +5,7 @@
   "targets": {
     "test": {
       "executor": "@nrwl/jest:jest",
-      "outputs": ["coverage/libs/web/auth/register/ui/notify"],
+      "outputs": ["{workspaceRoot}/coverage/libs/web/auth/register/ui/notify"],
       "options": {
         "jestConfig": "libs/web/auth/register/ui/notify/jest.config.ts",
         "passWithNoTests": true

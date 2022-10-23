@@ -12,7 +12,7 @@
     },
     "test": {
       "executor": "@nrwl/jest:jest",
-      "outputs": ["coverage/libs/nativescript/auth/guards"],
+      "outputs": ["{workspaceRoot}/coverage/libs/nativescript/auth/guards"],
       "options": {
         "jestConfig": "libs/nativescript/auth/guards/jest.config.ts",
         "passWithNoTests": true
